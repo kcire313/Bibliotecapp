@@ -47,21 +47,20 @@ public class Blibliotecapp extends JComponent {
     }
 
     private void dibuja() throws Exception {
-        SwingUtilities.invokeAndWait(new Runnable() {
-            @Override
-            public void run() {
-                paintImmediately(0, 0, 450, 450);
-            }
+        SwingUtilities.invokeAndWait(() -> {
+            paintImmediately(0, 0, 450, 450);
         });
     }
 
     /**
      * @param args the command line arguments
+     * @throws java.lang.Exception
      */
     public static void main(String[] args) throws Exception {
         // TODO code application logic here        
         JFrame jf = new JFrame("Blibliotecapp");
         jf.addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
                 System.exit(0);
             }
