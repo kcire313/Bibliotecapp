@@ -20,31 +20,32 @@ import javax.swing.SwingUtilities;
  *
  * @author erick
  */
-public class Blibliotecapp extends JComponent{
-    
-    public Blibliotecapp() {        
+public class Blibliotecapp extends JComponent {
+
+    public Blibliotecapp() {
         setPreferredSize(new Dimension(450, 450));
         addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                
+
             }
         });
     }
+
     @Override
     public void paint(Graphics g) {
         g.setColor(Color.WHITE);
         g.fillRect(0, 0, 450, 450);
         g.setColor(Color.BLACK);
-        g.drawString("Pruebas", 10, 10);
+        g.drawString("Pagina de prueba", 10, 10);
     }
-    
-    public void cicloPrincipalJuego() throws Exception {        
-        while (true) {            
+
+    public void cicloPrincipalJuego() throws Exception {
+        while (true) {
             dibuja();
         }
     }
-    
+
     private void dibuja() throws Exception {
         SwingUtilities.invokeAndWait(new Runnable() {
             @Override
@@ -53,6 +54,7 @@ public class Blibliotecapp extends JComponent{
             }
         });
     }
+
     /**
      * @param args the command line arguments
      */
@@ -65,10 +67,13 @@ public class Blibliotecapp extends JComponent{
             }
         });
         jf.setResizable(false);
+        jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Already there
+        jf.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        jf.setUndecorated(true);
         Blibliotecapp app = new Blibliotecapp();
         jf.getContentPane().add(app);
         jf.pack();
         jf.setVisible(true);
         app.cicloPrincipalJuego();
-    }    
+    }
 }
