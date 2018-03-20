@@ -5,6 +5,9 @@
  */
 package blibliotecapp;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -20,7 +23,7 @@ public class Log_in extends javax.swing.JFrame {
      * Creates new form Log_in
      */
     public Log_in() {
-        this.setUndecorated(true);        
+        this.setUndecorated(true);
         initComponents();
     }
 
@@ -40,10 +43,22 @@ public class Log_in extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 0, 0));
 
+        id.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                idMouseClicked(evt);
+            }
+        });
+
         jButton1.setText("aceptar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        pass.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                passMouseClicked(evt);
             }
         });
 
@@ -80,23 +95,43 @@ public class Log_in extends javax.swing.JFrame {
             this.setVisible(false);
             String consulta = "select * from usuario where ID=" + id.getText() + ";";
             objConn.Consultar(consulta);
-            if (objConn.rs.getRow() != 0) {                
+            if (objConn.rs.getRow() != 0) {
                 if (objConn.rs.getString(2).equals(pass.getText().trim())) {
                     VariablesGlobales.id = id.getText();
                     VariablesGlobales.pass = pass.getText();
                     VariablesGlobales.prestamos = objConn.rs.getInt(3);
                     JOptionPane.showMessageDialog(this, "Log in exitoso");
                     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                }else{
+                } else {
                     JOptionPane.showMessageDialog(this, "Contraseña incorrecta");
                 }
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(this, "Usuario incorrecta");
             }
         } catch (Exception e) {
             System.out.println("Error SQL");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void idMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_idMouseClicked
+        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            Runtime.getRuntime().exec("cmd /c osk");
+        } catch (IOException ex) {
+            Logger.getLogger(Log_in.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_idMouseClicked
+
+    private void passMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passMouseClicked
+        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            Runtime.getRuntime().exec("cmd /c osk");
+        } catch (IOException ex) {
+            Logger.getLogger(Log_in.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_passMouseClicked
 
     /**
      * @param args the command line arguments

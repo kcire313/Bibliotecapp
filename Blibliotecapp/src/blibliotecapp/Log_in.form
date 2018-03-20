@@ -53,6 +53,9 @@
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JTextField" name="id">
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="idMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
@@ -63,6 +66,9 @@
       </Events>
     </Component>
     <Component class="javax.swing.JPasswordField" name="pass">
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="passMouseClicked"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
