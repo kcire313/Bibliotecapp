@@ -14,6 +14,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
 
 /**
@@ -21,31 +22,41 @@ import javax.swing.SwingUtilities;
  * @author erick
  */
 public class Blibliotecapp extends JComponent {
-
+    
     public Blibliotecapp() {
         setPreferredSize(new Dimension(450, 450));
         addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-
+                System.out.println("Mouse pressed at X: " + e.getX() + " Y: " + e.getY());
+                System.out.println("ID: " + VariablesGlobales.id + " Prestamos: " + VariablesGlobales.prestamos);
+                System.out.println("-----------------------------------------------------------------");
+                if (e.getX() >= 600 && e.getX() <= 650 && e.getY() >= 90 && e.getY() <= 110) {                    
+                    System.out.println("log in pressed");
+                    Log_in log = new Log_in();
+                    log.pack();
+                    log.setLocationRelativeTo(null);
+                    log.setVisible(true);
+                }
             }
         });
     }
-
+    
     @Override
     public void paint(Graphics g) {
         g.setColor(Color.WHITE);
-        g.fillRect(0, 0, 450, 450);
-        g.setColor(Color.BLACK);
-        g.drawString("Pagina de prueba", 10, 10);
+        //1366 x 768  Mi tamaño de pantalla
+        g.fillRect(0, 0, 1366, 768);
+        g.setColor(Color.BLUE);
+        g.drawString("Log in", 600, 100);        
     }
-
+    
     public void cicloPrincipalJuego() throws Exception {
         while (true) {
             dibuja();
         }
     }
-
+    
     private void dibuja() throws Exception {
         SwingUtilities.invokeAndWait(() -> {
             paintImmediately(0, 0, 450, 450);
@@ -72,6 +83,7 @@ public class Blibliotecapp extends JComponent {
         Blibliotecapp app = new Blibliotecapp();
         jf.getContentPane().add(app);
         jf.pack();
+        jf.setLocationRelativeTo(null);
         jf.setVisible(true);
         app.cicloPrincipalJuego();
     }
