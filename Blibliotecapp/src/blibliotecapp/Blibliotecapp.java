@@ -71,6 +71,10 @@ public class Blibliotecapp extends JComponent {
                 //Botón idioma
                 if (e.getX() >= 942 && e.getX() <= 1192 && e.getY() >= 514 && e.getY() <= 714) {
                     System.out.println("idioma");
+                    Idioma log = new Idioma();
+                    log.pack();
+                    log.setLocationRelativeTo(null);
+                    log.setVisible(true);
                 }
                 
             }
@@ -78,7 +82,17 @@ public class Blibliotecapp extends JComponent {
     }
 
     @Override
-    public void paint(Graphics g) {        
+    public void paint(Graphics g) {      
+        switch(VariablesGlobales.idioma){
+            case "espanol":                
+            break;
+            case "ingles":                
+            break;
+            case "frances":                
+            break;
+            case "aleman":                
+            break;
+        }
         //1366 x 768  Mi tamaño de pantalla
         //g.fillRect(0, 0, 1366, 768);
         g.drawImage(fondo, 0, 0, 1366, 170, this);

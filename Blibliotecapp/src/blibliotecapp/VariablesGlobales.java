@@ -13,4 +13,5 @@ public class VariablesGlobales {
     public static String id="NaN";
     public static String pass="NaN";
     public static int prestamos=0;
+    public static String idioma="espanol";
 }
