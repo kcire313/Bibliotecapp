@@ -29,7 +29,7 @@ public class Blibliotecapp extends JComponent {
     private Image fondo = new ImageIcon("src/surce/franja.gif").getImage();
     private Image both = new ImageIcon("src/surce/back.png").getImage();
     private Image placa = new ImageIcon("src/surce/placa.gif").getImage();
-    private Image boton = new ImageIcon("src/surce/botones3.png").getImage();
+    private Image boton = new ImageIcon("src/surce/botones4.png").getImage();
     private Image uaalogo = new ImageIcon("src/surce/uaalogo.png").getImage();
 
     public Blibliotecapp() {
