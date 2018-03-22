@@ -36,6 +36,7 @@ public class Log_in extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel2 = new javax.swing.JLabel();
         id = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         pass = new javax.swing.JPasswordField();
@@ -46,6 +47,13 @@ public class Log_in extends javax.swing.JFrame {
         setMaximumSize(new java.awt.Dimension(1366, 768));
         setPreferredSize(new java.awt.Dimension(1366, 768));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 130, 120));
 
         id.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -96,8 +104,12 @@ public class Log_in extends javax.swing.JFrame {
                     VariablesGlobales.id = id.getText();
                     VariablesGlobales.pass = pass.getText();
                     VariablesGlobales.prestamos = objConn.rs.getInt(3);
-                    JOptionPane.showMessageDialog(this, "Log in exitoso");
-                    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    //JOptionPane.showMessageDialog(this, "Log in exitoso");
+                    //this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    perfilDatos log = new perfilDatos();
+                    log.pack();
+                    log.setLocationRelativeTo(null);
+                    log.setVisible(true);
                 } else {
                     JOptionPane.showMessageDialog(this, "Contraseña incorrecta");
                 }
@@ -118,6 +130,11 @@ public class Log_in extends javax.swing.JFrame {
             Logger.getLogger(Log_in.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_passMouseClicked
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        // TODO add your handling code here:
+        this.setVisible(false);
+    }//GEN-LAST:event_jLabel2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -158,6 +175,7 @@ public class Log_in extends javax.swing.JFrame {
     private javax.swing.JTextField id;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPasswordField pass;
     // End of variables declaration//GEN-END:variables
 }
