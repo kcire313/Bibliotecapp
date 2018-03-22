@@ -26,6 +26,12 @@ import javax.swing.SwingUtilities;
  */
 public class Blibliotecapp extends JComponent {
 
+    private Image fondo = new ImageIcon("src/surce/franja.gif").getImage();
+    private Image both = new ImageIcon("src/surce/bajo.png").getImage();
+    private Image placa = new ImageIcon("src/surce/placa.gif").getImage();
+    private Image boton = new ImageIcon("src/surce/botones3.png").getImage();
+    private Image uaalogo = new ImageIcon("src/surce/uaalogo.png").getImage();
+
     public Blibliotecapp() {
         setPreferredSize(new Dimension(450, 450));
         addMouseListener(new MouseAdapter() {
@@ -46,19 +52,14 @@ public class Blibliotecapp extends JComponent {
     }
 
     @Override
-    public void paint(Graphics g) {
-        Image fondo = new ImageIcon("src/surce/franja.gif").getImage();
-        Image both = new ImageIcon("src/surce/bajo.png").getImage();
-        Image placa = new ImageIcon("src/surce/placa.gif").getImage();
-        Image boton = new ImageIcon("src/surce/botones3.png").getImage();
-        //g.setColor(Color.WHITE);
+    public void paint(Graphics g) {        
         //1366 x 768  Mi tamaño de pantalla
         //g.fillRect(0, 0, 1366, 768);
         g.drawImage(fondo, 0, 0, 1366, 170, this);
         g.drawImage(both, 0, 17, 1366, 768, this);
         g.drawImage(placa, 1150, 50, this);
-        g.drawImage(boton, 0,0,this);
-        g.drawImage(new ImageIcon("src/surce/uaalogo.png").getImage(), 491, 50, this);
+        g.drawImage(boton, 0, 0, this);
+        g.drawImage(uaalogo, 491, 50, this); //Logo de fuego
         g.setColor(Color.BLUE);
         g.drawString("Log in", 600, 100);
     }
