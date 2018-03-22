@@ -105,7 +105,7 @@ public class Blibliotecapp extends JComponent {
         g.drawImage(boton, 0, 0, this);
         g.drawImage(uaalogo, 491, 50, this); //Logo de fuego
         g.setColor(Color.BLUE);
-        g.drawString("Log in", 600, 100);
+        //g.drawString("Log in", 600, 100);
     }
 
     public void cicloPrincipalJuego() throws Exception {
