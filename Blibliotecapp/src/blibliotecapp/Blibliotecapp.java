@@ -29,7 +29,7 @@ public class Blibliotecapp extends JComponent {
     private Image fondo = new ImageIcon("src/surce/franja.gif").getImage();
     private Image both = new ImageIcon("src/surce/back.png").getImage();
     private Image placa = new ImageIcon("src/surce/placa.gif").getImage();
-    private Image boton = new ImageIcon("src/surce/botones4.png").getImage();
+    private Image boton = new ImageIcon("src/surce/espaniol.png").getImage();
     private Image uaalogo = new ImageIcon("src/surce/uaalogo.png").getImage();
 
     public Blibliotecapp() {
@@ -84,13 +84,17 @@ public class Blibliotecapp extends JComponent {
     @Override
     public void paint(Graphics g) {      
         switch(VariablesGlobales.idioma){
-            case "espanol":                
+            case "espanol":   
+    boton = new ImageIcon("src/surce/espaniol.png").getImage();             
             break;
-            case "ingles":                
+            case "ingles": 
+    boton = new ImageIcon("src/surce/ingles.png").getImage();               
             break;
-            case "frances":                
+            case "frances":
+    boton = new ImageIcon("src/surce/espaniol.png").getImage();                
             break;
-            case "aleman":                
+            case "aleman":
+    boton = new ImageIcon("src/surce/aleman.png").getImage();                
             break;
         }
         //1366 x 768  Mi tamaño de pantalla
