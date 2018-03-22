@@ -51,9 +51,9 @@ public class Blibliotecapp extends JComponent {
         Image both = new ImageIcon("src/surce/bajo.png").getImage();
         Image placa = new ImageIcon("src/surce/placa.gif").getImage();
         Image boton = new ImageIcon("src/surce/botones3.png").getImage();
-        g.setColor(Color.WHITE);
+        //g.setColor(Color.WHITE);
         //1366 x 768  Mi tamaño de pantalla
-        g.fillRect(0, 0, 1366, 768);
+        //g.fillRect(0, 0, 1366, 768);
         g.drawImage(fondo, 0, 0, 1366, 170, this);
         g.drawImage(both, 0, 17, 1366, 768, this);
         g.drawImage(placa, 1150, 50, this);
