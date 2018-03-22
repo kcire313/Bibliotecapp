@@ -37,16 +37,42 @@ public class Blibliotecapp extends JComponent {
         addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                System.out.println("Mouse pressed at X: " + e.getX() + " Y: " + e.getY());
-                System.out.println("ID: " + VariablesGlobales.id + " Prestamos: " + VariablesGlobales.prestamos);
-                System.out.println("-----------------------------------------------------------------");
-                if (e.getX() >= 600 && e.getX() <= 650 && e.getY() >= 90 && e.getY() <= 110) {
-                    System.out.println("log in pressed");
+                //System.out.println("Mouse pressed at X: " + e.getX() + " Y: " + e.getY());
+                //System.out.println("ID: " + VariablesGlobales.id + " Prestamos: " + VariablesGlobales.prestamos);
+                //System.out.println("-----------------------------------------------------------------");
+                //Botón búsqueda
+                if (e.getX() >= 180 && e.getX() <= 430 && e.getY() >= 310 && e.getY() <= 714) {
+                    System.out.println("Búsqueda");
+                }
+                //Botón prestamo
+                if (e.getX() >= 430 && e.getX() <= 680 && e.getY() >= 310 && e.getY() <= 510) {
+                    System.out.println("Prestamo");
+                }
+                //Botón devolución
+                if (e.getX() >= 688 && e.getX() <= 938 && e.getY() >= 310 && e.getY() <= 510) {
+                    System.out.println("devolución");
+                }
+                //Botón renovar
+                if (e.getX() >= 942 && e.getX() <= 1192 && e.getY() >= 310 && e.getY() <= 510) {
+                    System.out.println("renovar");
+                }
+                //Botón perfil 
+                if (e.getX() >= 434 && e.getX() <= 650 && e.getY() >= 514 && e.getY() <= 714) {
+                    System.out.println("Profile");
                     Log_in log = new Log_in();
                     log.pack();
                     log.setLocationRelativeTo(null);
                     log.setVisible(true);
                 }
+                //Botón canjear
+                if (e.getX() >= 688 && e.getX() <= 938 && e.getY() >= 514 && e.getY() <= 714) {
+                    System.out.println("canjear");
+                }
+                //Botón idioma
+                if (e.getX() >= 942 && e.getX() <= 1192 && e.getY() >= 514 && e.getY() <= 714) {
+                    System.out.println("idioma");
+                }
+                
             }
         });
     }
