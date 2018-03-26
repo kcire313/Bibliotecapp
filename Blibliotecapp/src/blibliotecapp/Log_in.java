@@ -60,7 +60,7 @@ public class Log_in extends javax.swing.JFrame {
                 idMouseClicked(evt);
             }
         });
-        getContentPane().add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 220, 40));
+        getContentPane().add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 280, 220, 40));
 
         jButton1.setText("aceptar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -68,16 +68,16 @@ public class Log_in extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 280, 230, 210));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 450, 220, 90));
 
         pass.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 passMouseClicked(evt);
             }
         });
-        getContentPane().add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 220, 40));
+        getContentPane().add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 370, 220, 40));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/fondo.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/fondo1.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 770));
 
         pack();
@@ -119,6 +119,10 @@ public class Log_in extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println("Error SQL");
         }
+        perfilDatos log = new perfilDatos();
+        log.pack();
+        log.setLocationRelativeTo(null);
+        log.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void passMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passMouseClicked

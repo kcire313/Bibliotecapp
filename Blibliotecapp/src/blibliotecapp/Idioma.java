@@ -73,7 +73,7 @@ public class Idioma extends javax.swing.JFrame {
         });
         getContentPane().add(regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 170, 120));
 
-        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/flags.jpg"))); // NOI18N
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/flags1.png"))); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
