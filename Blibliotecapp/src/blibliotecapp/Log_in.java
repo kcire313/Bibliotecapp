@@ -36,17 +36,25 @@ public class Log_in extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        boton = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         id = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
         pass = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 0, 0));
         setMaximumSize(new java.awt.Dimension(1366, 768));
         setPreferredSize(new java.awt.Dimension(1366, 768));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        boton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonMouseClicked(evt);
+            }
+        });
+        getContentPane().add(boton, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 380, 300, 150));
 
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -60,7 +68,17 @@ public class Log_in extends javax.swing.JFrame {
                 idMouseClicked(evt);
             }
         });
-        getContentPane().add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 280, 220, 40));
+        getContentPane().add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 220, 220, 40));
+
+        pass.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                passMouseClicked(evt);
+            }
+        });
+        getContentPane().add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 270, 220, 40));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/logesp.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 770));
 
         jButton1.setText("aceptar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -68,17 +86,7 @@ public class Log_in extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 450, 220, 90));
-
-        pass.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                passMouseClicked(evt);
-            }
-        });
-        getContentPane().add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 370, 220, 40));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/fondo1.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 770));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, 140, 80));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -140,6 +148,38 @@ public class Log_in extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jLabel2MouseClicked
 
+    private void botonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonMouseClicked
+        // TODO add your handling code here:
+        perfilDatos log = new perfilDatos();
+        log.pack();
+        log.setLocationRelativeTo(null);
+        log.setVisible(true);
+        try {
+            this.setVisible(false);
+            String consulta = "select * from usuario where ID=" + id.getText() + ";";
+            objConn.Consultar(consulta);
+            if (objConn.rs.getRow() != 0) {
+                if (objConn.rs.getString(2).equals(pass.getText().trim())) {
+                    VariablesGlobales.id = id.getText();
+                    VariablesGlobales.pass = pass.getText();
+                    VariablesGlobales.prestamos = objConn.rs.getInt(3);
+                    //JOptionPane.showMessageDialog(this, "Log in exitoso");
+                    //this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    log = new perfilDatos();
+                    log.pack();
+                    log.setLocationRelativeTo(null);
+                    log.setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Contraseña incorrecta");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Usuario incorrecta");
+            }
+        } catch (Exception e) {
+            System.out.println("Error SQL");
+        }
+    }//GEN-LAST:event_botonMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -176,6 +216,7 @@ public class Log_in extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel boton;
     private javax.swing.JTextField id;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
