@@ -8,6 +8,7 @@ package blibliotecapp;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -24,6 +25,23 @@ public class Log_in extends javax.swing.JFrame {
      */
     public Log_in() {
         this.setUndecorated(true);
+        ImageIcon icon = new ImageIcon("src/surce/logesp.png");
+        switch (VariablesGlobales.idioma) {
+            case "espanol":
+                icon = new ImageIcon("src/surce/logesp.png");
+                break;
+            case "ingles":
+                icon = new ImageIcon("src/surce/logingles.png");
+                break;
+            case "frances":
+                icon = new ImageIcon("src/surce/logesp.png");
+                break;
+            case "aleman":
+                icon = new ImageIcon("src/surce/logale.png");
+                break;
+        }
+        icon.getImage().flush();
+        background.setIcon(icon);
         initComponents();
     }
 
@@ -40,7 +58,7 @@ public class Log_in extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         id = new javax.swing.JTextField();
         pass = new javax.swing.JPasswordField();
-        jLabel1 = new javax.swing.JLabel();
+        background = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -77,8 +95,8 @@ public class Log_in extends javax.swing.JFrame {
         });
         getContentPane().add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 270, 220, 40));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/logesp.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 770));
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/logesp.png"))); // NOI18N
+        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 770));
 
         jButton1.setText("aceptar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -216,10 +234,10 @@ public class Log_in extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel background;
     private javax.swing.JLabel boton;
     private javax.swing.JTextField id;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPasswordField pass;
     // End of variables declaration//GEN-END:variables
