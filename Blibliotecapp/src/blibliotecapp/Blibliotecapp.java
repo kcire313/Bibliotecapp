@@ -34,12 +34,17 @@ public class Blibliotecapp extends JComponent {
 
     public Blibliotecapp() {
         setPreferredSize(new Dimension(450, 450));
+        //Instancia de la pantalla de log-in
+        VarG.jfLogin = new Log_in();
+        VarG.jfLogin.pack();
+        VarG.jfLogin.setLocationRelativeTo(null);
+        //Instancia de la pantalla de perfilDatos
+        VarG.jfPerfil = new perfilDatos();        
+        VarG.jfPerfil.pack();
+        VarG.jfPerfil.setLocationRelativeTo(null);
         addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                //System.out.println("Mouse pressed at X: " + e.getX() + " Y: " + e.getY());
-                //System.out.println("ID: " + VariablesGlobales.id + " Prestamos: " + VariablesGlobales.prestamos);
-                //System.out.println("-----------------------------------------------------------------");
                 //Botón búsqueda
                 if (e.getX() >= 180 && e.getX() <= 430 && e.getY() >= 310 && e.getY() <= 714) {
                     System.out.println("Búsqueda");
@@ -59,10 +64,7 @@ public class Blibliotecapp extends JComponent {
                 //Botón perfil 
                 if (e.getX() >= 434 && e.getX() <= 650 && e.getY() >= 514 && e.getY() <= 714) {
                     System.out.println("Profile");
-                    Log_in log = new Log_in();
-                    log.pack();
-                    log.setLocationRelativeTo(null);
-                    log.setVisible(true);
+                    VarG.jfLogin.setVisible(true);
                 }
                 //Botón canjear
                 if (e.getX() >= 688 && e.getX() <= 938 && e.getY() >= 514 && e.getY() <= 714) {
@@ -76,26 +78,26 @@ public class Blibliotecapp extends JComponent {
                     log.setLocationRelativeTo(null);
                     log.setVisible(true);
                 }
-                
+
             }
         });
     }
 
     @Override
-    public void paint(Graphics g) {      
-        switch(VariablesGlobales.idioma){
-            case "espanol":   
-    boton = new ImageIcon("src/surce/espaniol.png").getImage();             
-            break;
-            case "ingles": 
-    boton = new ImageIcon("src/surce/ingles.png").getImage();               
-            break;
+    public void paint(Graphics g) {
+        switch (VarG.idioma) {
+            case "espanol":
+                boton = new ImageIcon("src/surce/espaniol.png").getImage();
+                break;
+            case "ingles":
+                boton = new ImageIcon("src/surce/ingles.png").getImage();
+                break;
             case "frances":
-    boton = new ImageIcon("src/surce/espaniol.png").getImage();                
-            break;
+                boton = new ImageIcon("src/surce/espaniol.png").getImage();
+                break;
             case "aleman":
-    boton = new ImageIcon("src/surce/aleman.png").getImage();                
-            break;
+                boton = new ImageIcon("src/surce/aleman.png").getImage();
+                break;
         }
         //1366 x 768  Mi tamaño de pantalla
         //g.fillRect(0, 0, 1366, 768);

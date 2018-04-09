@@ -9,9 +9,6 @@ package blibliotecapp;
  *
  * @author erick
  */
-public class VariablesGlobales {
-    public static String id="NaN";
-    public static String pass="NaN";
-    public static int prestamos=0;
-    public static String idioma="espanol";
+interface InterfaceRMI {
+    public void perfil(String id,String pass) throws Exception;
 }

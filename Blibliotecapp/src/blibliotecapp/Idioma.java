@@ -104,7 +104,7 @@ public class Idioma extends javax.swing.JFrame {
         cambiaIdioma("aleman");
     }//GEN-LAST:event_alemanMouseClicked
     public void cambiaIdioma(String idioma){
-        VariablesGlobales.idioma=idioma;
+        VarG.idioma=idioma;
         this.setVisible(false);
     }
     /**

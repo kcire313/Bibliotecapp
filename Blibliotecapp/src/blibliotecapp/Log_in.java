@@ -6,6 +6,8 @@
 package blibliotecapp;
 
 import java.io.IOException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -16,32 +18,30 @@ import javax.swing.JOptionPane;
  *
  * @author erick
  */
-public class Log_in extends javax.swing.JFrame {
-
-    MySqlConexion objConn = new MySqlConexion();
+public class Log_in extends javax.swing.JFrame {   
 
     /**
      * Creates new form Log_in
      */
     public Log_in() {
         this.setUndecorated(true);
-        ImageIcon icon = new ImageIcon("src/surce/logesp.png");
-        switch (VariablesGlobales.idioma) {
+        ImageIcon icon = new ImageIcon("src/logesp.png");
+        switch (VarG.idioma) {
             case "espanol":
-                icon = new ImageIcon("src/surce/logesp.png");
+                icon = new ImageIcon("src/logesp.png");
                 break;
             case "ingles":
-                icon = new ImageIcon("src/surce/logingles.png");
+                icon = new ImageIcon("src/logingles.png");
                 break;
             case "frances":
-                icon = new ImageIcon("src/surce/logesp.png");
+                icon = new ImageIcon("src/logesp.png");
                 break;
             case "aleman":
-                icon = new ImageIcon("src/surce/logale.png");
+                icon = new ImageIcon("src/logale.png");
                 break;
         }
         icon.getImage().flush();
-        background.setIcon(icon);
+        //background.setIcon(icon);
         initComponents();
     }
 
@@ -59,7 +59,6 @@ public class Log_in extends javax.swing.JFrame {
         id = new javax.swing.JTextField();
         pass = new javax.swing.JPasswordField();
         background = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 0, 0));
@@ -81,6 +80,7 @@ public class Log_in extends javax.swing.JFrame {
         });
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 130, 120));
 
+        id.setText("190798");
         id.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 idMouseClicked(evt);
@@ -88,6 +88,7 @@ public class Log_in extends javax.swing.JFrame {
         });
         getContentPane().add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 220, 220, 40));
 
+        pass.setText("070996");
         pass.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 passMouseClicked(evt);
@@ -97,14 +98,6 @@ public class Log_in extends javax.swing.JFrame {
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/logesp.png"))); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 770));
-
-        jButton1.setText("aceptar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, 140, 80));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -118,38 +111,6 @@ public class Log_in extends javax.swing.JFrame {
             Logger.getLogger(Log_in.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_idMouseClicked
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        try {
-            this.setVisible(false);
-            String consulta = "select * from usuario where ID=" + id.getText() + ";";
-            objConn.Consultar(consulta);
-            if (objConn.rs.getRow() != 0) {
-                if (objConn.rs.getString(2).equals(pass.getText().trim())) {
-                    VariablesGlobales.id = id.getText();
-                    VariablesGlobales.pass = pass.getText();
-                    VariablesGlobales.prestamos = objConn.rs.getInt(3);
-                    //JOptionPane.showMessageDialog(this, "Log in exitoso");
-                    //this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                    perfilDatos log = new perfilDatos();
-                    log.pack();
-                    log.setLocationRelativeTo(null);
-                    log.setVisible(true);
-                } else {
-                    JOptionPane.showMessageDialog(this, "Contraseña incorrecta");
-                }
-            } else {
-                JOptionPane.showMessageDialog(this, "Usuario incorrecta");
-            }
-        } catch (Exception e) {
-            System.out.println("Error SQL");
-        }
-        perfilDatos log = new perfilDatos();
-        log.pack();
-        log.setLocationRelativeTo(null);
-        log.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void passMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passMouseClicked
         // TODO add your handling code here:
@@ -167,34 +128,40 @@ public class Log_in extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void botonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonMouseClicked
-        // TODO add your handling code here:
-        perfilDatos log = new perfilDatos();
-        log.pack();
-        log.setLocationRelativeTo(null);
-        log.setVisible(true);
+        // TODO add your handling code here:        
         try {
-            this.setVisible(false);
-            String consulta = "select * from usuario where ID=" + id.getText() + ";";
-            objConn.Consultar(consulta);
-            if (objConn.rs.getRow() != 0) {
-                if (objConn.rs.getString(2).equals(pass.getText().trim())) {
-                    VariablesGlobales.id = id.getText();
-                    VariablesGlobales.pass = pass.getText();
-                    VariablesGlobales.prestamos = objConn.rs.getInt(3);
-                    //JOptionPane.showMessageDialog(this, "Log in exitoso");
-                    //this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                    log = new perfilDatos();
-                    log.pack();
-                    log.setLocationRelativeTo(null);
-                    log.setVisible(true);
-                } else {
-                    JOptionPane.showMessageDialog(this, "Contraseña incorrecta");
-                }
+            if (id.getText().equals("") || pass.getText().equals("")) {
+                System.out.println("Campos vacios");
             } else {
-                JOptionPane.showMessageDialog(this, "Usuario incorrecta");
+                String consulta = "select * from usuario where ID=" + id.getText() + ";";
+                VarG.objConn.Consultar(consulta);
+                if (VarG.objConn.rs.getRow() != 0) {
+                    if (VarG.objConn.rs.getString(2).equals(pass.getText().trim())) {                        
+                        //System.out.println("Entró aquí");
+                        //Conexión RMI
+                        Registry registro = LocateRegistry.getRegistry("localhost", 8080);
+                        InterfaceRMI getPerfil = (InterfaceRMI) registro.lookup("key");
+                        getPerfil.perfil(id.getText(), pass.getText());
+                        //print para comprobar que los datos se agregaron exitosamente
+                        System.out.println("nomb: "+VarG.id+ "pass: "+VarG.pass);
+                        
+                        //Pantallas de continuidad
+                        VarG.jfPerfil.setVisible(true);
+                        VarG.jfLogin.setVisible(false);
+
+                        //Borra los datos previamente usados
+                        id.setText("");
+                        pass.setText("");
+
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Contraseña incorrecta");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this, "Usuario incorrecta");
+                }
             }
         } catch (Exception e) {
-            System.out.println("Error SQL");
+            System.out.println(e.getMessage());
         }
     }//GEN-LAST:event_botonMouseClicked
 
@@ -237,7 +204,6 @@ public class Log_in extends javax.swing.JFrame {
     private javax.swing.JLabel background;
     private javax.swing.JLabel boton;
     private javax.swing.JTextField id;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPasswordField pass;
     // End of variables declaration//GEN-END:variables
