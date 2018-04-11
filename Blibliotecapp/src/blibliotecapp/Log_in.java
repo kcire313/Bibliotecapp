@@ -13,24 +13,25 @@ import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import sun.audio.AudioPlayer;
 
 /**
  *
  * @author erick
  */
-public class Log_in extends javax.swing.JFrame {   
+public class Log_in extends javax.swing.JFrame {
 
     /**
      * Creates new form Log_in
      */
-    public Log_in() {        
-        this.setUndecorated(true);        
+    public Log_in() {
+        this.setUndecorated(true);
         ImageIcon icon = new ImageIcon("src/surce/logesp.png");
         switch (VarG.idioma) {
             case "espanol":
                 icon = new ImageIcon("src/surce/logesp.png");
                 break;
-            case "ingles":                
+            case "ingles":
                 icon = new ImageIcon("src/surce/logingles.png");
                 break;
             case "frances":
@@ -136,17 +137,30 @@ public class Log_in extends javax.swing.JFrame {
                 String consulta = "select * from usuario where ID=" + id.getText() + ";";
                 VarG.objConn.Consultar(consulta);
                 if (VarG.objConn.rs.getRow() != 0) {
-                    if (VarG.objConn.rs.getString(2).equals(pass.getText().trim())) {                        
+                    if (VarG.objConn.rs.getString(2).equals(pass.getText().trim())) {
                         //System.out.println("Entró aquí");
                         //Conexión RMI
-                        Registry registro = LocateRegistry.getRegistry("localhost", 8080);
-                        InterfaceRMI getPerfil = (InterfaceRMI) registro.lookup("key");
-                        getPerfil.perfil(id.getText(), pass.getText());
+                        //Registry registro = LocateRegistry.getRegistry("localhost", 8080);
+                        //InterfaceRMI getPerfil = (InterfaceRMI) registro.lookup("key");
+                        //getPerfil.perfil(id.getText(), pass.getText());
                         //print para comprobar que los datos se agregaron exitosamente
-                        System.out.println("nomb: "+VarG.id+ "pass: "+VarG.pass);
-                        
+                        //System.out.println("nomb: "+VarG.id+ "pass: "+VarG.pass);
+
                         //Pantallas de continuidad
-                        VarG.jfPerfil.setVisible(true);
+                        switch (VarG.currentFrame) {
+                            case "perfil":
+                                //AudioPlayer.player.start(VarG.a);
+                                VarG.jfPerfil.setVisible(true);
+                                break;
+                            case "prestamo":
+                                VarG.jfPrestamo.setVisible(true);
+                                AudioPlayer.player.start(VarG.aPrestamo);
+                                break;
+                            case "renovar":
+                                VarG.jfRenovar.setVisible(true);
+                                AudioPlayer.player.start(VarG.aRenovar);
+                                break;                            
+                        }                        
                         VarG.jfLogin.setVisible(false);
 
                         //Borra los datos previamente usados

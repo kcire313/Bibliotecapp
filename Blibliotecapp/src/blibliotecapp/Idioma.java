@@ -187,7 +187,7 @@ public class Idioma extends javax.swing.JFrame {
         Log_in.background.setIcon(icon);
     }
 
-    private void setAudioPerfil() {
+    public void setAudioPerfil() {
         try {
             InputStream music = new FileInputStream(new File("src\\Audios\\PerfilEsp.wav"));
             switch (VarG.idioma) {
@@ -210,7 +210,7 @@ public class Idioma extends javax.swing.JFrame {
         }
     }
 
-    private void setAudioIdiomas() {
+    public void setAudioIdiomas() {
         try {
             InputStream music = new FileInputStream(new File("src\\Audios\\IdiomaEsp.wav"));
             switch (VarG.idioma) {
@@ -233,7 +233,7 @@ public class Idioma extends javax.swing.JFrame {
         }
     }
 
-    private void setAudioPrestamo() {
+    public void setAudioPrestamo() {
         try {
             InputStream music = new FileInputStream(new File("src\\Audios\\PrestamoEsp.wav"));
             switch (VarG.idioma) {
@@ -256,7 +256,7 @@ public class Idioma extends javax.swing.JFrame {
         }
     }
 
-    private void setAudioRenovar() {
+    public void setAudioRenovar() {
         try {
             InputStream music = new FileInputStream(new File("src\\Audios\\RenovarPrestamoEsp.wav"));
             switch (VarG.idioma) {

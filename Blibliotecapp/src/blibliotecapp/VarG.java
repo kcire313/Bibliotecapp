@@ -19,6 +19,9 @@ public class VarG {
     public static int prestamos=0;
     public static String idioma="espanol";
     
+    //Variable para saber que pagina abrir despues del login
+    public static String currentFrame="perfil";
+    
     //Objeto perfil
     public static Perfil perfil=null;
     
@@ -28,6 +31,7 @@ public class VarG {
     public static Idioma jfIdioma=null;
     public static Prestamo jfPrestamo=null;
     public static Renovar jfRenovar=null;
+    public static Inicio jfInicio=null;
     
     //Variables de audio
     public static AudioStream aLogin; //Boton del Perfil
