@@ -5,6 +5,8 @@
  */
 package blibliotecapp;
 
+import sun.audio.AudioStream;
+
 /**
  *
  * @author erick
@@ -24,6 +26,10 @@ public class VarG {
     public static Log_in jfLogin=null;
     public static perfilDatos jfPerfil=null;
     public static Idioma jfIdioma=null;
+    
+    //Variables de audio
+    public static AudioStream aLogin; //Boton del Perfil
+    public static AudioStream aIdioma; //Boton de los idiomas
     
     //Conexión con MySQL
     public static MySqlConexion objConn = new MySqlConexion();

@@ -5,7 +5,13 @@
  */
 package blibliotecapp;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import sun.audio.AudioStream;
 
 /**
  *
@@ -108,9 +114,10 @@ public class Idioma extends javax.swing.JFrame {
     public void cambiaIdioma(String idioma) {
         VarG.idioma = idioma;
         imagesProfile(); //Cambia las imagenes del Log_in
-        
+        setAudioPerfil(); //Cambia el audio del boton de perfil
+        setAudioIdiomas(); //Cambia el audio del boton de idiomas
+
         //Faltan mas funciones para las demas pantallas!!!!
-        
         this.setVisible(false); //Cierra la ventana
     }
 
@@ -175,5 +182,51 @@ public class Idioma extends javax.swing.JFrame {
                 break;
         }
         Log_in.background.setIcon(icon);
+    }
+
+    private void setAudioPerfil() {
+        try {
+            InputStream music = new FileInputStream(new File("src\\Audios\\PerfilEsp.wav"));
+            switch (VarG.idioma) {
+                case "espanol":
+                    music = new FileInputStream(new File("src\\Audios\\PerfilEsp.wav"));
+                    break;
+                case "ingles":
+                    music = new FileInputStream(new File("src\\Audios\\PerfilEng.wav"));
+                    break;
+                case "frances":
+                    music = new FileInputStream(new File("src\\Audios\\BienvenidaEsp.wav"));
+                    break;
+                case "aleman":
+                    music = new FileInputStream(new File("src\\Audios\\BienvenidaEsp.wav"));
+                    break;
+            }
+            VarG.aLogin = new AudioStream(music);
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+    }
+
+    private void setAudioIdiomas() {
+        try {
+            InputStream music = new FileInputStream(new File("src\\Audios\\IdiomaEsp.wav"));
+            switch (VarG.idioma) {
+                case "espanol":
+                    music = new FileInputStream(new File("src\\Audios\\IdiomaEsp.wav"));
+                    break;
+                case "ingles":
+                    music = new FileInputStream(new File("src\\Audios\\IdiomaEng.wav"));
+                    break;
+                case "frances":
+                    music = new FileInputStream(new File("src\\Audios\\BienvenidaEsp.wav"));
+                    break;
+                case "aleman":
+                    music = new FileInputStream(new File("src\\Audios\\BienvenidaEsp.wav"));
+                    break;
+            }
+            VarG.aIdioma = new AudioStream(music);
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
     }
 }

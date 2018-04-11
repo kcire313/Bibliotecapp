@@ -43,8 +43,12 @@ public class Blibliotecapp extends JComponent {
 
         InputStream music;
         try {
-            music = new FileInputStream(new File("src\\Audios\\BienvenidaEsp.wav"));
+            music = new FileInputStream(new File("src\\Audios\\BienvenidaEsp.wav"));            
             audios = new AudioStream(music);            
+            music = new FileInputStream(new File("src\\Audios\\PerfilEsp.wav"));
+            VarG.aLogin = new AudioStream(music);
+            music = new FileInputStream(new File("src\\Audios\\IdiomaEsp.wav"));
+            VarG.aIdioma = new AudioStream(music);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getLocalizedMessage());
         }
@@ -87,6 +91,7 @@ public class Blibliotecapp extends JComponent {
                 //Botón perfil 
                 if (e.getX() >= 434 && e.getX() <= 650 && e.getY() >= 514 && e.getY() <= 714) {
                     System.out.println("Profile");
+                    AudioPlayer.player.start(VarG.aLogin);
                     VarG.jfLogin.setVisible(true);
                 }
                 //Botón canjear
@@ -96,6 +101,7 @@ public class Blibliotecapp extends JComponent {
                 //Botón idioma
                 if (e.getX() >= 942 && e.getX() <= 1192 && e.getY() >= 514 && e.getY() <= 714) {
                     System.out.println("idioma");
+                    AudioPlayer.player.start(VarG.aIdioma);
                     VarG.jfIdioma.setVisible(true);
                 }
             }
