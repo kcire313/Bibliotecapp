@@ -49,6 +49,10 @@ public class Blibliotecapp extends JComponent {
             VarG.aLogin = new AudioStream(music);
             music = new FileInputStream(new File("src\\Audios\\IdiomaEsp.wav"));
             VarG.aIdioma = new AudioStream(music);
+            music = new FileInputStream(new File("src\\Audios\\PrestamoEsp.wav"));
+            VarG.aPrestamo = new AudioStream(music);
+            music = new FileInputStream(new File("src\\Audios\\RenovarPrestamoEsp.wav"));
+            VarG.aRenovar = new AudioStream(music);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getLocalizedMessage());
         }
@@ -67,6 +71,16 @@ public class Blibliotecapp extends JComponent {
         VarG.jfIdioma = new Idioma();
         VarG.jfIdioma.pack();
         VarG.jfIdioma.setLocationRelativeTo(null);
+        
+        //Instancia de la pantalla del cambio de Prestamo
+        VarG.jfPrestamo = new Prestamo();
+        VarG.jfPrestamo.pack();
+        VarG.jfPrestamo.setLocationRelativeTo(null);
+        
+        //Instancia de la pantalla del cambio de Renovar
+        VarG.jfRenovar = new Renovar();
+        VarG.jfRenovar.pack();
+        VarG.jfRenovar.setLocationRelativeTo(null);
 
         //Key listener para la pantalla
         addMouseListener(new MouseAdapter() {
@@ -79,6 +93,8 @@ public class Blibliotecapp extends JComponent {
                 //Botón prestamo
                 if (e.getX() >= 430 && e.getX() <= 680 && e.getY() >= 310 && e.getY() <= 510) {
                     System.out.println("Prestamo");
+                    AudioPlayer.player.start(VarG.aPrestamo);
+                    VarG.jfPrestamo.setVisible(true);
                 }
                 //Botón devolución
                 if (e.getX() >= 688 && e.getX() <= 938 && e.getY() >= 310 && e.getY() <= 510) {
@@ -87,6 +103,8 @@ public class Blibliotecapp extends JComponent {
                 //Botón renovar
                 if (e.getX() >= 942 && e.getX() <= 1192 && e.getY() >= 310 && e.getY() <= 510) {
                     System.out.println("renovar");
+                    AudioPlayer.player.start(VarG.aRenovar);
+                    VarG.jfRenovar.setVisible(true);
                 }
                 //Botón perfil 
                 if (e.getX() >= 434 && e.getX() <= 650 && e.getY() >= 514 && e.getY() <= 714) {

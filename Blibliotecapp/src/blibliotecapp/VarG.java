@@ -26,10 +26,14 @@ public class VarG {
     public static Log_in jfLogin=null;
     public static perfilDatos jfPerfil=null;
     public static Idioma jfIdioma=null;
+    public static Prestamo jfPrestamo=null;
+    public static Renovar jfRenovar=null;
     
     //Variables de audio
     public static AudioStream aLogin; //Boton del Perfil
     public static AudioStream aIdioma; //Boton de los idiomas
+    public static AudioStream aPrestamo; //Boton de los prestamo
+    public static AudioStream aRenovar; //Boton de los renovar
     
     //Conexión con MySQL
     public static MySqlConexion objConn = new MySqlConexion();
