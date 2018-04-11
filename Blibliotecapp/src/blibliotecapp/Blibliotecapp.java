@@ -33,15 +33,25 @@ public class Blibliotecapp extends JComponent {
     private Image uaalogo = new ImageIcon("src/surce/uaalogo.png").getImage();
 
     public Blibliotecapp() {
-        setPreferredSize(new Dimension(450, 450));
+        
+        //setPreferredSize(new Dimension(450, 450));
+        
         //Instancia de la pantalla de log-in
         VarG.jfLogin = new Log_in();
         VarG.jfLogin.pack();
         VarG.jfLogin.setLocationRelativeTo(null);
+        
         //Instancia de la pantalla de perfilDatos
         VarG.jfPerfil = new perfilDatos();        
         VarG.jfPerfil.pack();
         VarG.jfPerfil.setLocationRelativeTo(null);
+        
+        //Instancia de la pantalla del cambio de idioma
+        VarG.jfIdioma = new Idioma();        
+        VarG.jfIdioma.pack();
+        VarG.jfIdioma.setLocationRelativeTo(null);
+        
+        //Key listener para la pantalla
         addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
@@ -73,12 +83,8 @@ public class Blibliotecapp extends JComponent {
                 //Botón idioma
                 if (e.getX() >= 942 && e.getX() <= 1192 && e.getY() >= 514 && e.getY() <= 714) {
                     System.out.println("idioma");
-                    Idioma log = new Idioma();
-                    log.pack();
-                    log.setLocationRelativeTo(null);
-                    log.setVisible(true);
+                    VarG.jfIdioma.setVisible(true);
                 }
-
             }
         });
     }

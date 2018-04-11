@@ -23,26 +23,26 @@ public class Log_in extends javax.swing.JFrame {
     /**
      * Creates new form Log_in
      */
-    public Log_in() {
-        this.setUndecorated(true);
-        ImageIcon icon = new ImageIcon("src/logesp.png");
+    public Log_in() {        
+        this.setUndecorated(true);        
+        ImageIcon icon = new ImageIcon("src/surce/logesp.png");
         switch (VarG.idioma) {
             case "espanol":
-                icon = new ImageIcon("src/logesp.png");
+                icon = new ImageIcon("src/surce/logesp.png");
                 break;
-            case "ingles":
-                icon = new ImageIcon("src/logingles.png");
+            case "ingles":                
+                icon = new ImageIcon("src/surce/logingles.png");
                 break;
             case "frances":
-                icon = new ImageIcon("src/logesp.png");
+                icon = new ImageIcon("src/surce/logesp.png");
                 break;
             case "aleman":
-                icon = new ImageIcon("src/logale.png");
+                icon = new ImageIcon("src/surce/logale.png");
                 break;
         }
-        icon.getImage().flush();
-        //background.setIcon(icon);
+        //icon.getImage().flush();       
         initComponents();
+        background.setIcon(icon);
     }
 
     /**
@@ -201,7 +201,7 @@ public class Log_in extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel background;
+    public static javax.swing.JLabel background;
     private javax.swing.JLabel boton;
     private javax.swing.JTextField id;
     private javax.swing.JLabel jLabel2;

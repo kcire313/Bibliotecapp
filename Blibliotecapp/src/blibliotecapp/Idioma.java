@@ -5,6 +5,8 @@
  */
 package blibliotecapp;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author erick
@@ -80,8 +82,8 @@ public class Idioma extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void regresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresarMouseClicked
-         // TODO add your handling code here:
-         this.setVisible(false);
+        // TODO add your handling code here:
+        this.setVisible(false);
     }//GEN-LAST:event_regresarMouseClicked
 
     private void espanolMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_espanolMouseClicked
@@ -103,10 +105,15 @@ public class Idioma extends javax.swing.JFrame {
         // TODO add your handling code here:
         cambiaIdioma("aleman");
     }//GEN-LAST:event_alemanMouseClicked
-    public void cambiaIdioma(String idioma){
-        VarG.idioma=idioma;
-        this.setVisible(false);
+    public void cambiaIdioma(String idioma) {
+        VarG.idioma = idioma;
+        imagesProfile(); //Cambia las imagenes del Log_in
+        
+        //Faltan mas funciones para las demas pantallas!!!!
+        
+        this.setVisible(false); //Cierra la ventana
     }
+
     /**
      * @param args the command line arguments
      */
@@ -150,4 +157,23 @@ public class Idioma extends javax.swing.JFrame {
     private javax.swing.JLabel ingles;
     private javax.swing.JLabel regresar;
     // End of variables declaration//GEN-END:variables
+
+    private void imagesProfile() {
+        ImageIcon icon = new ImageIcon("src/surce/logesp.png");
+        switch (VarG.idioma) {
+            case "espanol":
+                icon = new ImageIcon("src/surce/logesp.png");
+                break;
+            case "ingles":
+                icon = new ImageIcon("src/surce/logingles.png");
+                break;
+            case "frances":
+                icon = new ImageIcon("src/surce/logesp.png");
+                break;
+            case "aleman":
+                icon = new ImageIcon("src/surce/logale.png");
+                break;
+        }
+        Log_in.background.setIcon(icon);
+    }
 }
