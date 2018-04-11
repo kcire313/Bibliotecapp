@@ -11,12 +11,12 @@ import javax.swing.JFrame;
  *
  * @author erick
  */
-public class Busqueda extends javax.swing.JFrame {
+public class Devolucion extends javax.swing.JFrame {
 
     /**
      * Creates new form perfilDatos
      */
-    public Busqueda() {
+    public Devolucion() {
         this.setUndecorated(true);
         initComponents();
     }
@@ -31,6 +31,7 @@ public class Busqueda extends javax.swing.JFrame {
     private void initComponents() {
 
         regresar = new javax.swing.JLabel();
+        home = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -43,7 +44,14 @@ public class Busqueda extends javax.swing.JFrame {
         });
         getContentPane().add(regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 130, 140));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/busqueda.png"))); // NOI18N
+        home.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                homeMouseClicked(evt);
+            }
+        });
+        getContentPane().add(home, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 170, 140));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/devolución.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 770));
 
         pack();
@@ -55,6 +63,12 @@ public class Busqueda extends javax.swing.JFrame {
         VarG.jfLogin.setVisible(true);
         System.out.println("return profile data");
     }//GEN-LAST:event_regresarMouseClicked
+
+    private void homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeMouseClicked
+        // TODO add your handling code here:
+        VarG.jfLogin.setVisible(false);
+        this.setVisible(false);
+    }//GEN-LAST:event_homeMouseClicked
 
     /**
      * @param args the command line arguments
@@ -73,13 +87,13 @@ public class Busqueda extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Busqueda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Devolucion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Busqueda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Devolucion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Busqueda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Devolucion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Busqueda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Devolucion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -87,12 +101,13 @@ public class Busqueda extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Busqueda().setVisible(true);
+                new Devolucion().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel home;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel regresar;
     // End of variables declaration//GEN-END:variables
