@@ -13,12 +13,18 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
+import sun.audio.AudioPlayer;
+import sun.audio.AudioStream;
 
 /**
  *
@@ -31,26 +37,33 @@ public class Blibliotecapp extends JComponent {
     private Image placa = new ImageIcon("src/surce/placa.gif").getImage();
     private Image boton = new ImageIcon("src/surce/espaniol.png").getImage();
     private Image uaalogo = new ImageIcon("src/surce/uaalogo.png").getImage();
+    private AudioStream audios;
 
     public Blibliotecapp() {
-        
-        //setPreferredSize(new Dimension(450, 450));
-        
+
+        InputStream music;
+        try {
+            music = new FileInputStream(new File("src\\Audios\\BienvenidaEsp.wav"));
+            audios = new AudioStream(music);            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getLocalizedMessage());
+        }
+
         //Instancia de la pantalla de log-in
         VarG.jfLogin = new Log_in();
         VarG.jfLogin.pack();
         VarG.jfLogin.setLocationRelativeTo(null);
-        
+
         //Instancia de la pantalla de perfilDatos
-        VarG.jfPerfil = new perfilDatos();        
+        VarG.jfPerfil = new perfilDatos();
         VarG.jfPerfil.pack();
         VarG.jfPerfil.setLocationRelativeTo(null);
-        
+
         //Instancia de la pantalla del cambio de idioma
-        VarG.jfIdioma = new Idioma();        
+        VarG.jfIdioma = new Idioma();
         VarG.jfIdioma.pack();
         VarG.jfIdioma.setLocationRelativeTo(null);
-        
+
         //Key listener para la pantalla
         addMouseListener(new MouseAdapter() {
             @Override
@@ -87,6 +100,7 @@ public class Blibliotecapp extends JComponent {
                 }
             }
         });
+        AudioPlayer.player.start(audios);
     }
 
     @Override
