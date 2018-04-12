@@ -51,9 +51,8 @@ public class Busqueda extends javax.swing.JFrame {
 
     private void regresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresarMouseClicked
         // TODO add your handling code here:
-        this.setVisible(false);
-        VarG.jfLogin.setVisible(true);
-        System.out.println("return profile data");
+        this.setVisible(false);        
+        System.out.println("return to menu");
     }//GEN-LAST:event_regresarMouseClicked
 
     /**

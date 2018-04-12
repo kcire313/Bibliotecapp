@@ -115,9 +115,12 @@ public class Idioma extends javax.swing.JFrame {
         VarG.idioma = idioma;
         imagesProfile(); //Cambia las imagenes del Log_in
         setAudioPerfil(); //Cambia el audio del boton de perfil
+        setAudioBusqueda(); //Cambia el audio del boton de busqueda
         setAudioIdiomas(); //Cambia el audio del boton de idiomas
         setAudioPrestamo(); //Cambia el audio del boton de prestamo
         setAudioRenovar(); //Cambia el audio del boton de renovar
+        setAudioDevolucion(); //Cambia el audio del boton de devolucion
+        setAudioPerfilDatos(); //Cambia el audio del boton de perfil datos
         
 
         //Faltan mas funciones para las demas pantallas!!!!
@@ -189,19 +192,19 @@ public class Idioma extends javax.swing.JFrame {
 
     public void setAudioPerfil() {
         try {
-            InputStream music = new FileInputStream(new File("src\\Audios\\PerfilEsp.wav"));
+            InputStream music = new FileInputStream(new File("src\\Audios\\IngresoDatosEsp.wav"));
             switch (VarG.idioma) {
                 case "espanol":
-                    music = new FileInputStream(new File("src\\Audios\\PerfilEsp.wav"));
+                    music = new FileInputStream(new File("src\\Audios\\IngresoDatosEsp.wav"));
                     break;
                 case "ingles":
-                    music = new FileInputStream(new File("src\\Audios\\PerfilEng.wav"));
+                    music = new FileInputStream(new File("src\\Audios\\IngresoDatosEng.wav"));
                     break;
                 case "frances":
-                    music = new FileInputStream(new File("src\\Audios\\PerfilEsp.wav"));
+                    music = new FileInputStream(new File("src\\Audios\\IngresoDatosEsp.wav"));
                     break;
                 case "aleman":
-                    music = new FileInputStream(new File("src\\Audios\\PerfilEsp.wav"));
+                    music = new FileInputStream(new File("src\\Audios\\IngresoDatosEsp.wav"));
                     break;
             }
             VarG.aLogin = new AudioStream(music);
@@ -274,6 +277,75 @@ public class Idioma extends javax.swing.JFrame {
                     break;
             }
             VarG.aRenovar = new AudioStream(music);
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+    }
+
+    private void setAudioBusqueda() {
+        try {
+            InputStream music = new FileInputStream(new File("src\\Audios\\LLenarCasillasEsp2.wav"));
+            switch (VarG.idioma) {
+                case "espanol":
+                    music = new FileInputStream(new File("src\\Audios\\LLenarCasillasEsp2.wav"));
+                    break;
+                case "ingles":
+                    music = new FileInputStream(new File("src\\Audios\\LLenarCasillasEng.wav"));
+                    break;
+                case "frances":
+                    music = new FileInputStream(new File("src\\Audios\\LLenarCasillasEsp2.wav"));
+                    break;
+                case "aleman":
+                    music = new FileInputStream(new File("src\\Audios\\LLenarCasillasEsp2.wav"));
+                    break;
+            }
+            VarG.aBusqueda = new AudioStream(music);
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+    }
+    
+    private void setAudioDevolucion() {
+        try {
+            InputStream music = new FileInputStream(new File("src\\Audios\\DevuelveEsp.wav"));
+            switch (VarG.idioma) {
+                case "espanol":
+                    music = new FileInputStream(new File("src\\Audios\\DevuelveEsp.wav"));
+                    break;
+                case "ingles":
+                    music = new FileInputStream(new File("src\\Audios\\DevuelveEng.wav"));
+                    break;
+                case "frances":
+                    music = new FileInputStream(new File("src\\Audios\\DevuelveEsp.wav"));
+                    break;
+                case "aleman":
+                    music = new FileInputStream(new File("src\\Audios\\DevuelveEsp.wav"));
+                    break;
+            }
+            VarG.aDevolucion = new AudioStream(music);
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+    }
+    
+    public void setAudioPerfilDatos() {
+        try {
+            InputStream music = new FileInputStream(new File("src\\Audios\\DatosPerfilEsp.wav"));
+            switch (VarG.idioma) {
+                case "espanol":
+                    music = new FileInputStream(new File("src\\Audios\\DatosPerfilEsp.wav"));
+                    break;
+                case "ingles":
+                    music = new FileInputStream(new File("src\\Audios\\DatosPerfilEng.wav"));
+                    break;
+                case "frances":
+                    music = new FileInputStream(new File("src\\Audios\\DatosPerfilEsp.wav"));
+                    break;
+                case "aleman":
+                    music = new FileInputStream(new File("src\\Audios\\DatosPerfilEsp.wav"));
+                    break;
+            }
+            VarG.aPerfilDatos = new AudioStream(music);
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }

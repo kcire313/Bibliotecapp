@@ -41,7 +41,7 @@ public class Blibliotecapp extends JComponent {
     private AudioStream audios;
 
     public Blibliotecapp() {
-        //preLoadAudios();
+        preLoadAudios();
         InputStream music;
         try {
             music = new FileInputStream(new File("src\\Audios\\BienvenidaEsp.wav"));
@@ -62,7 +62,12 @@ public class Blibliotecapp extends JComponent {
         VarG.jfInicio = new Inicio();
         VarG.jfInicio.pack();
         VarG.jfInicio.setLocationRelativeTo(null);
-
+        
+        //Instancia de la pantalla de Busqueda
+        VarG.jfBusqueda = new Busqueda();
+        VarG.jfBusqueda.pack();
+        VarG.jfBusqueda.setLocationRelativeTo(null);
+        
         //Instancia de la pantalla de log-in
         VarG.jfLogin = new Log_in();
         VarG.jfLogin.pack();
@@ -77,6 +82,11 @@ public class Blibliotecapp extends JComponent {
         VarG.jfIdioma = new Idioma();
         VarG.jfIdioma.pack();
         VarG.jfIdioma.setLocationRelativeTo(null);
+        
+        //Instancia de la pantalla de Devolucion
+        VarG.jfDevolucion = new Devolucion();
+        VarG.jfDevolucion.pack();
+        VarG.jfDevolucion.setLocationRelativeTo(null);
 
         //Instancia de la pantalla del cambio de Prestamo
         VarG.jfPrestamo = new Prestamo();
@@ -96,6 +106,8 @@ public class Blibliotecapp extends JComponent {
                 //Botón búsqueda
                 if (e.getX() >= 180 && e.getX() <= 430 && e.getY() >= 310 && e.getY() <= 714) {
                     System.out.println("Búsqueda");
+                    AudioPlayer.player.start(VarG.aBusqueda);
+                    VarG.jfBusqueda.setVisible(true);
                 }
                 //Botón prestamo
                 if (e.getX() >= 430 && e.getX() <= 680 && e.getY() >= 310 && e.getY() <= 510) {
@@ -107,6 +119,9 @@ public class Blibliotecapp extends JComponent {
                 //Botón devolución
                 if (e.getX() >= 688 && e.getX() <= 938 && e.getY() >= 310 && e.getY() <= 510) {
                     System.out.println("devolución");
+                    VarG.currentFrame = "devolucion";
+                    AudioPlayer.player.start(VarG.aLogin);
+                    VarG.jfLogin.setVisible(true);
                 }
                 //Botón renovar
                 if (e.getX() >= 942 && e.getX() <= 1192 && e.getY() >= 310 && e.getY() <= 510) {
@@ -213,23 +228,26 @@ public class Blibliotecapp extends JComponent {
         setAudioPerfil();
         setAudioPrestamo();
         setAudioRenovar();
+        setAudioBusqueda();
+        setAudioDevolucion();
+        setAudioPerfilDatos();
     }
 
     public void setAudioPerfil() {
         try {
-            InputStream music = new FileInputStream(new File("src\\Audios\\PerfilEsp.wav"));
+            InputStream music = new FileInputStream(new File("src\\Audios\\IngresoDatosEsp.wav"));
             switch (VarG.idioma) {
                 case "espanol":
-                    music = new FileInputStream(new File("src\\Audios\\PerfilEsp.wav"));
+                    music = new FileInputStream(new File("src\\Audios\\IngresoDatosEsp.wav"));
                     break;
                 case "ingles":
-                    music = new FileInputStream(new File("src\\Audios\\PerfilEng.wav"));
+                    music = new FileInputStream(new File("src\\Audios\\IngresoDatosEng.wav"));
                     break;
                 case "frances":
-                    music = new FileInputStream(new File("src\\Audios\\PerfilEsp.wav"));
+                    music = new FileInputStream(new File("src\\Audios\\IngresoDatosEsp.wav"));
                     break;
                 case "aleman":
-                    music = new FileInputStream(new File("src\\Audios\\PerfilEsp.wav"));
+                    music = new FileInputStream(new File("src\\Audios\\IngresoDatosEsp.wav"));
                     break;
             }
             VarG.aLogin = new AudioStream(music);
@@ -304,11 +322,79 @@ public class Blibliotecapp extends JComponent {
             VarG.aRenovar = new AudioStream(music);
         } catch (Exception e) {
             System.err.println(e.getMessage());
+        }        
+    }
+    
+    private void setAudioBusqueda() {
+        try {
+            InputStream music = new FileInputStream(new File("src\\Audios\\LLenarCasillasEsp2.wav"));
+            switch (VarG.idioma) {
+                case "espanol":
+                    music = new FileInputStream(new File("src\\Audios\\LLenarCasillasEsp2.wav"));
+                    break;
+                case "ingles":
+                    music = new FileInputStream(new File("src\\Audios\\LLenarCasillasEng.wav"));
+                    break;
+                case "frances":
+                    music = new FileInputStream(new File("src\\Audios\\RenovarPrestamoEsp.wav"));
+                    break;
+                case "aleman":
+                    music = new FileInputStream(new File("src\\Audios\\RenovarPrestamoEsp.wav"));
+                    break;
+            }
+            VarG.aBusqueda = new AudioStream(music);
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
         }
     }
 
     private void callInicio() {
         VarG.jfInicio.setVisible(true);
     }
-
+    
+    private void setAudioDevolucion() {
+        try {
+            InputStream music = new FileInputStream(new File("src\\Audios\\DevuelveEsp.wav"));
+            switch (VarG.idioma) {
+                case "espanol":
+                    music = new FileInputStream(new File("src\\Audios\\DevuelveEsp.wav"));
+                    break;
+                case "ingles":
+                    music = new FileInputStream(new File("src\\Audios\\DevuelveEng.wav"));
+                    break;
+                case "frances":
+                    music = new FileInputStream(new File("src\\Audios\\DevuelveEsp.wav"));
+                    break;
+                case "aleman":
+                    music = new FileInputStream(new File("src\\Audios\\DevuelveEsp.wav"));
+                    break;
+            }
+            VarG.aDevolucion = new AudioStream(music);
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+    }
+    
+    public void setAudioPerfilDatos() {
+        try {
+            InputStream music = new FileInputStream(new File("src\\Audios\\DatosPerfilEsp.wav"));
+            switch (VarG.idioma) {
+                case "espanol":
+                    music = new FileInputStream(new File("src\\Audios\\DatosPerfilEsp.wav"));
+                    break;
+                case "ingles":
+                    music = new FileInputStream(new File("src\\Audios\\DatosPerfilEng.wav"));
+                    break;
+                case "frances":
+                    music = new FileInputStream(new File("src\\Audios\\DatosPerfilEsp.wav"));
+                    break;
+                case "aleman":
+                    music = new FileInputStream(new File("src\\Audios\\DatosPerfilEsp.wav"));
+                    break;
+            }
+            VarG.aPerfilDatos = new AudioStream(music);
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+    }
 }

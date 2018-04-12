@@ -149,7 +149,7 @@ public class Log_in extends javax.swing.JFrame {
                         //Pantallas de continuidad
                         switch (VarG.currentFrame) {
                             case "perfil":
-                                //AudioPlayer.player.start(VarG.a);
+                                AudioPlayer.player.start(VarG.aPerfilDatos);
                                 VarG.jfPerfil.setVisible(true);
                                 break;
                             case "prestamo":
@@ -159,7 +159,11 @@ public class Log_in extends javax.swing.JFrame {
                             case "renovar":
                                 VarG.jfRenovar.setVisible(true);
                                 AudioPlayer.player.start(VarG.aRenovar);
-                                break;                            
+                                break;  
+                            case "devolucion":
+                                VarG.jfDevolucion.setVisible(true);
+                                AudioPlayer.player.start(VarG.aDevolucion);
+                                break;
                         }                        
                         VarG.jfLogin.setVisible(false);
 
