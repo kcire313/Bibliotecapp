@@ -34,6 +34,7 @@ public class VarG {
     public static Inicio jfInicio=null;
     public static Busqueda jfBusqueda=null;
     public static Devolucion jfDevolucion=null;
+    public static Canjear jfCanjeo=null;
     
     //Variables de audio
     public static AudioStream aLogin; //Boton del Perfil
@@ -43,6 +44,7 @@ public class VarG {
     public static AudioStream aRenovar; //Boton de los renovar
     public static AudioStream aDevolucion; //Boton de los devolucion
     public static AudioStream aPerfilDatos; //Boton de los devolucion
+    public static AudioStream aCanjear; //Boton de los devolucion
     
     //Conexión con MySQL
     public static MySqlConexion objConn = new MySqlConexion();

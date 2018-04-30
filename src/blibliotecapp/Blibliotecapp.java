@@ -54,6 +54,8 @@ public class Blibliotecapp extends JComponent {
             VarG.aPrestamo = new AudioStream(music);
             music = new FileInputStream(new File("src\\Audios\\RenovarPrestamoEsp.wav"));
             VarG.aRenovar = new AudioStream(music);
+            music = new FileInputStream(new File ("src\\Audios\\CanjeaEsp.wav"));
+            VarG.aCanjear = new AudioStream(music);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getLocalizedMessage());
         }
