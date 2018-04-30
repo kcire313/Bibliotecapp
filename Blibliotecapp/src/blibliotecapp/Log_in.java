@@ -24,15 +24,23 @@ public class Log_in extends javax.swing.JFrame {
     /**
      * Creates new form Log_in
      */
+    String error= "";
+    String error1="";
+    
+    
     public Log_in() {
         this.setUndecorated(true);
         ImageIcon icon = new ImageIcon("src/surce/logesp.png");
         switch (VarG.idioma) {
             case "espanol":
                 icon = new ImageIcon("src/surce/logesp.png");
+                error = "Uno o más datos son incorrectos";
+                error1 = "Por favor, intentelo de nuevo";
                 break;
             case "ingles":
                 icon = new ImageIcon("src/surce/logingles.png");
+                error = "Your ID or Password is incorrect";
+                error1 ="Please, try again";
                 break;
             case "frances":
                 icon = new ImageIcon("src/surce/logesp.png");
@@ -45,7 +53,6 @@ public class Log_in extends javax.swing.JFrame {
         initComponents();
         background.setIcon(icon);
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -55,6 +62,8 @@ public class Log_in extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        LBerror = new javax.swing.JLabel();
+        LBerror1 = new javax.swing.JLabel();
         boton = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         id = new javax.swing.JTextField();
@@ -63,9 +72,15 @@ public class Log_in extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 0, 0));
-        setMaximumSize(new java.awt.Dimension(1366, 768));
-        setPreferredSize(new java.awt.Dimension(1366, 768));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        LBerror.setFont(new java.awt.Font("Californian FB", 1, 24)); // NOI18N
+        LBerror.setForeground(new java.awt.Color(204, 0, 0));
+        getContentPane().add(LBerror, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 300, 380, 50));
+
+        LBerror1.setFont(new java.awt.Font("Californian FB", 1, 24)); // NOI18N
+        LBerror1.setForeground(new java.awt.Color(204, 0, 0));
+        getContentPane().add(LBerror1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 330, 380, 50));
 
         boton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -125,6 +140,7 @@ public class Log_in extends javax.swing.JFrame {
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         // TODO add your handling code here:
+        borradatos();
         this.setVisible(false);
     }//GEN-LAST:event_jLabel2MouseClicked
 
@@ -133,8 +149,31 @@ public class Log_in extends javax.swing.JFrame {
         try {
             if (id.getText().equals("") || pass.getText().equals("")) {
                 System.out.println("Campos vacios");
+                //Especificando error segun idioma
+                switch (VarG.idioma) {
+                    case "espanol":
+                        error = "Uno o más datos están en blanco";
+                        error1 = "Por favor, intentelo de nuevo";
+                        break;
+                    case "ingles":
+                        error = "Your ID or Password are missing";
+                        error1 ="Please, try again";
+                        break;
+                }
+                moserror();
             } else {
-                String consulta = "select * from usuario where ID=" + id.getText() + ";";
+                 //Especificando en caso de error segun idioma
+                switch (VarG.idioma) {
+                    case "espanol":
+                        error = "Uno o más datos están incorrectos";
+                        error1 = "Por favor, intentelo de nuevo";
+                        break;
+                    case "ingles":
+                        error = "Your ID or Password are incorrect";
+                        error1 ="Please, try again";
+                        break;
+                }
+                String consulta = "select * from usuario where id_usuario=" + id.getText() + ";";
                 VarG.objConn.Consultar(consulta);
                 if (VarG.objConn.rs.getRow() != 0) {
                     if (VarG.objConn.rs.getString(2).equals(pass.getText().trim())) {
@@ -146,6 +185,9 @@ public class Log_in extends javax.swing.JFrame {
                         //print para comprobar que los datos se agregaron exitosamente
                         //System.out.println("nomb: "+VarG.id+ "pass: "+VarG.pass);
 
+                        //Borra los datos previamente usados
+                        borradatos();
+                        
                         //Pantallas de continuidad
                         switch (VarG.currentFrame) {
                             case "perfil":
@@ -164,25 +206,34 @@ public class Log_in extends javax.swing.JFrame {
                                 VarG.jfDevolucion.setVisible(true);
                                 AudioPlayer.player.start(VarG.aDevolucion);
                                 break;
-                        }                        
+                        }       
+                      
+
                         VarG.jfLogin.setVisible(false);
 
-                        //Borra los datos previamente usados
-                        id.setText("");
-                        pass.setText("");
-
                     } else {
-                        JOptionPane.showMessageDialog(this, "Contraseña incorrecta");
+                        //JOptionPane.showMessageDialog(this, "Contraseña incorrecta");
+                        moserror();
                     }
                 } else {
-                    JOptionPane.showMessageDialog(this, "Usuario incorrecta");
+                    //JOptionPane.showMessageDialog(this, "Usuario incorrecta");
+                    moserror();
                 }
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }//GEN-LAST:event_botonMouseClicked
-
+public void borradatos(){
+    id.setText("");
+    pass.setText("");
+    LBerror.setText("");
+    LBerror1.setText("");
+}
+public void moserror(){
+    LBerror.setText(error);
+    LBerror1.setText(error1);
+}
     /**
      * @param args the command line arguments
      */
@@ -209,6 +260,7 @@ public class Log_in extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Log_in.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -219,6 +271,8 @@ public class Log_in extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LBerror;
+    private javax.swing.JLabel LBerror1;
     public static javax.swing.JLabel background;
     private javax.swing.JLabel boton;
     private javax.swing.JTextField id;
