@@ -31,7 +31,11 @@ public class Busqueda extends javax.swing.JFrame {
     private void initComponents() {
 
         regresar = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        LBBusqueda = new javax.swing.JLabel();
+        TxtPalabra = new javax.swing.JTextField();
+        LBCampo = new javax.swing.JLabel();
+        CMBCampo = new javax.swing.JComboBox();
+        LBFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -43,8 +47,24 @@ public class Busqueda extends javax.swing.JFrame {
         });
         getContentPane().add(regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 130, 140));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/busqueda.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 770));
+        LBBusqueda.setFont(new java.awt.Font("Calibri Light", 1, 24)); // NOI18N
+        LBBusqueda.setText("Palabra(s) a buscar:");
+        getContentPane().add(LBBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, 230, 50));
+
+        TxtPalabra.setFont(new java.awt.Font("Calibri Light", 0, 24)); // NOI18N
+        getContentPane().add(TxtPalabra, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 200, 480, 40));
+
+        LBCampo.setFont(new java.awt.Font("Calibri Light", 1, 24)); // NOI18N
+        LBCampo.setText("Palabra(s) a buscar:");
+        getContentPane().add(LBCampo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, 230, 50));
+
+        CMBCampo.setFont(new java.awt.Font("Calibri Light", 1, 28)); // NOI18N
+        CMBCampo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ID de libro", "Titulo", "Autor", "Año" }));
+        getContentPane().add(CMBCampo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 280, 480, 80));
+
+        LBFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/busqueda.png"))); // NOI18N
+        LBFondo.setText("ss");
+        getContentPane().add(LBFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 770));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -82,6 +102,8 @@ public class Busqueda extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -92,7 +114,11 @@ public class Busqueda extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JComboBox CMBCampo;
+    private javax.swing.JLabel LBBusqueda;
+    private javax.swing.JLabel LBCampo;
+    private javax.swing.JLabel LBFondo;
+    private javax.swing.JTextField TxtPalabra;
     private javax.swing.JLabel regresar;
     // End of variables declaration//GEN-END:variables
 }
