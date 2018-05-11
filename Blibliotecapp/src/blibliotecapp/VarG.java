@@ -34,6 +34,8 @@ public class VarG {
     public static Inicio jfInicio=null;
     public static Busqueda jfBusqueda=null;
     public static Devolucion jfDevolucion=null;
+    public static Canjear jfCanjear=null;
+    public static Libros jfLibros=null;
     
     //Variables de audio
     public static AudioStream aLogin; //Boton del Perfil

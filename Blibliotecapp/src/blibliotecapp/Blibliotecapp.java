@@ -97,7 +97,16 @@ public class Blibliotecapp extends JComponent {
         VarG.jfRenovar = new Renovar();
         VarG.jfRenovar.pack();
         VarG.jfRenovar.setLocationRelativeTo(null);
-
+        
+        //Instancia de la pantalla del cambio de Renovar
+        VarG.jfCanjear = new Canjear();
+        VarG.jfCanjear.pack();
+        VarG.jfCanjear.setLocationRelativeTo(null);
+        
+        //Instancia de la pantalla del cambio de Renovar
+        VarG.jfLibros = new Libros();
+        VarG.jfLibros.pack();
+        VarG.jfLibros.setLocationRelativeTo(null);
         //Key listener para la pantalla
         addMouseListener(new MouseAdapter() {
             @Override
@@ -140,6 +149,9 @@ public class Blibliotecapp extends JComponent {
                 //Botón canjear
                 if (e.getX() >= 688 && e.getX() <= 938 && e.getY() >= 514 && e.getY() <= 714) {
                     System.out.println("canjear");
+                    VarG.currentFrame = "canjear";
+                    AudioPlayer.player.start(VarG.aLogin);
+                    VarG.jfLogin.setVisible(true);
                 }
                 //Botón idioma
                 if (e.getX() >= 942 && e.getX() <= 1192 && e.getY() >= 514 && e.getY() <= 714) {
