@@ -40,7 +40,7 @@ public class VarG {
     //Variables de audio
     public static AudioStream aLogin; //Boton del Perfil
     public static AudioStream aIdioma; //Boton de los idiomas
-    public static AudioStream aBusqueda; //Boton de los Busqueda
+    public static AudioStream aBusqueda; //Boton de los Busqueda2
     public static AudioStream aPrestamo; //Boton de los prestamo
     public static AudioStream aRenovar; //Boton de los renovar
     public static AudioStream aDevolucion; //Boton de los devolucion

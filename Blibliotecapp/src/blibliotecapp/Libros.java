@@ -58,15 +58,13 @@ public class Libros extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void regresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresarMouseClicked
-        // TODO add your handling code here:
+        VarG.jfBusqueda.setVisible(true);
         this.setVisible(false);
-        VarG.jfLogin.setVisible(true);
         System.out.println("return profile data");
     }//GEN-LAST:event_regresarMouseClicked
 
     private void homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeMouseClicked
-        // TODO add your handling code here:
-        VarG.jfLogin.setVisible(false);
+        VarG.jfBusqueda.setVisible(false);
         this.setVisible(false);
     }//GEN-LAST:event_homeMouseClicked
 

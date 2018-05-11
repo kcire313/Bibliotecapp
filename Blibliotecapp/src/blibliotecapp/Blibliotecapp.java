@@ -63,7 +63,7 @@ public class Blibliotecapp extends JComponent {
         VarG.jfInicio.pack();
         VarG.jfInicio.setLocationRelativeTo(null);
         
-        //Instancia de la pantalla de Busqueda
+        //Instancia de la pantalla de Busqueda2
         VarG.jfBusqueda = new Busqueda();
         VarG.jfBusqueda.pack();
         VarG.jfBusqueda.setLocationRelativeTo(null);
