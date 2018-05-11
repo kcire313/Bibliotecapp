@@ -57,13 +57,17 @@ public class Blibliotecapp extends JComponent {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getLocalizedMessage());
         }
-
+        //Instancias de animaciones
+        VarG.anOpen = new javax.swing.ImageIcon(getClass().getResource("/surce/gif/libro-abre.gif"));
+        VarG.anClose = new javax.swing.ImageIcon(getClass().getResource("/surce/gif/libro-cierra.gif"));
+        VarG.anActual = VarG.anOpen; 
+        
         //Instancia de la pantalla de Inicio
         VarG.jfInicio = new Inicio();
         VarG.jfInicio.pack();
         VarG.jfInicio.setLocationRelativeTo(null);
         
-        //Instancia de la pantalla de Busqueda2
+        //Instancia de la pantalla de Busqueda
         VarG.jfBusqueda = new Busqueda();
         VarG.jfBusqueda.pack();
         VarG.jfBusqueda.setLocationRelativeTo(null);
@@ -98,15 +102,16 @@ public class Blibliotecapp extends JComponent {
         VarG.jfRenovar.pack();
         VarG.jfRenovar.setLocationRelativeTo(null);
         
-        //Instancia de la pantalla del cambio de Renovar
+        //Instancia de la pantalla de cupones
         VarG.jfCanjear = new Canjear();
         VarG.jfCanjear.pack();
         VarG.jfCanjear.setLocationRelativeTo(null);
         
-        //Instancia de la pantalla del cambio de Renovar
+        //Instancia de la pantalla de Resultados de busqueda
         VarG.jfLibros = new Libros();
         VarG.jfLibros.pack();
         VarG.jfLibros.setLocationRelativeTo(null);
+        
         //Key listener para la pantalla
         addMouseListener(new MouseAdapter() {
             @Override
@@ -194,6 +199,8 @@ public class Blibliotecapp extends JComponent {
         g.drawImage(boton, 0, 0, this);
         g.drawImage(uaalogo, 491, 50, this); //Logo de fuego
         g.setColor(Color.BLUE);
+        //animaciones
+        g.drawImage(VarG.anActual.getImage(), 0, 0, 1366, 768, this);
         //g.drawString("Log in", 600, 100);
     }
 

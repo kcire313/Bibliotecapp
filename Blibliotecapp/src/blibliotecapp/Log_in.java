@@ -31,6 +31,8 @@ public class Log_in extends javax.swing.JFrame {
     public Log_in() {
         this.setUndecorated(true);
         ImageIcon icon = new ImageIcon("src/surce/logesp.png");
+        ImageIcon anima = new javax.swing.ImageIcon(getClass().getResource("/surce/gif/libro-abre.gif"));
+        anima.getImage().flush();
         switch (VarG.idioma) {
             case "espanol":
                 icon = new ImageIcon("src/surce/logesp.png");
@@ -142,6 +144,8 @@ public class Log_in extends javax.swing.JFrame {
         // TODO add your handling code here:
         borradatos();
         this.setVisible(false);
+        VarG.anActual = VarG.anClose;
+        VarG.anActual.getImage().flush();
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void botonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonMouseClicked

@@ -5,6 +5,7 @@
  */
 package blibliotecapp;
 
+import javax.swing.ImageIcon;
 import sun.audio.AudioStream;
 
 /**
@@ -46,6 +47,11 @@ public class VarG {
     public static AudioStream aDevolucion; //Boton de los devolucion
     public static AudioStream aPerfilDatos; //Boton de los devolucion
     
+    //Gifs de transicion
+    public static ImageIcon anOpen;
+    public static ImageIcon anClose; 
+    public static ImageIcon anActual; 
+        
     //Conexión con MySQL
     public static MySqlConexion objConn = new MySqlConexion();
 }
