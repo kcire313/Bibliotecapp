@@ -32,7 +32,7 @@ public class Libros extends javax.swing.JFrame {
 
         regresar = new javax.swing.JLabel();
         home = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        jFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -51,8 +51,8 @@ public class Libros extends javax.swing.JFrame {
         });
         getContentPane().add(home, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 170, 140));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/libros.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 770));
+        jFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/libros.png"))); // NOI18N
+        getContentPane().add(jFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 770));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -108,7 +108,7 @@ public class Libros extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel home;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jFondo;
     private javax.swing.JLabel regresar;
     // End of variables declaration//GEN-END:variables
 }
