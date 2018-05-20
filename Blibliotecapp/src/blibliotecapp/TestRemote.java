@@ -4,11 +4,15 @@
  * and open the template in the editor.
  */
 package blibliotecapp;
+import java.rmi.Remote;
+import java.rmi.RemoteException;
 
 /**
  *
  * @author erick
  */
-interface InterfaceRMI {
-    public void perfil(String id,String pass) throws Exception;
+public interface TestRemote extends Remote {
+
+    String pullData(String name) throws RemoteException;
+
 }

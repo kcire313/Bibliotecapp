@@ -24,10 +24,9 @@ public class Log_in extends javax.swing.JFrame {
     /**
      * Creates new form Log_in
      */
-    String error= "";
-    String error1="";
-    
-    
+    String error = "";
+    String error1 = "";
+
     public Log_in() {
         this.setUndecorated(true);
         ImageIcon icon = new ImageIcon("src/surce/logesp.png");
@@ -42,7 +41,7 @@ public class Log_in extends javax.swing.JFrame {
             case "ingles":
                 icon = new ImageIcon("src/surce/logingles.png");
                 error = "Your ID or Password is incorrect";
-                error1 ="Please, try again";
+                error1 = "Please, try again";
                 break;
             case "frances":
                 icon = new ImageIcon("src/surce/logesp.png");
@@ -55,6 +54,7 @@ public class Log_in extends javax.swing.JFrame {
         initComponents();
         background.setIcon(icon);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -161,12 +161,12 @@ public class Log_in extends javax.swing.JFrame {
                         break;
                     case "ingles":
                         error = "Your ID or Password are missing";
-                        error1 ="Please, try again";
+                        error1 = "Please, try again";
                         break;
                 }
                 moserror();
             } else {
-                 //Especificando en caso de error segun idioma
+                //Especificando en caso de error segun idioma
                 switch (VarG.idioma) {
                     case "espanol":
                         error = "Uno o más datos están incorrectos";
@@ -174,24 +174,31 @@ public class Log_in extends javax.swing.JFrame {
                         break;
                     case "ingles":
                         error = "Your ID or Password are incorrect";
-                        error1 ="Please, try again";
+                        error1 = "Please, try again";
                         break;
                 }
                 String consulta = "select * from usuario where id_usuario=" + id.getText() + ";";
                 VarG.objConn.Consultar(consulta);
                 if (VarG.objConn.rs.getRow() != 0) {
+                    String[] data;
+                    String result;
                     if (VarG.objConn.rs.getString(2).equals(pass.getText().trim())) {
                         //System.out.println("Entró aquí");
-                        //Conexión RMI
-                        //Registry registro = LocateRegistry.getRegistry("localhost", 8080);
-                        //InterfaceRMI getPerfil = (InterfaceRMI) registro.lookup("key");
-                        //getPerfil.perfil(id.getText(), pass.getText());
-                        //print para comprobar que los datos se agregaron exitosamente
-                        //System.out.println("nomb: "+VarG.id+ "pass: "+VarG.pass);
-
+                        Registry registry = LocateRegistry.getRegistry();
+                        TestRemote testRemote = (TestRemote) registry.lookup("Test");
+                        result=testRemote.pullData(this.id.getText());
+                        data=result.split(",");
+                        VarG.id_usuario = Integer.parseInt(data[0]);
+                        VarG.password = data[1];
+                        VarG.nombre = data[2];
+                        VarG.appat = data[3];
+                        VarG.apmat = data[4];
+                        VarG.puntaje = Integer.parseInt(data[5]);
+                        System.out.println(VarG.nombre);
+                        VarG.jfLogin.setVisible(false);
                         //Borra los datos previamente usados
                         borradatos();
-                        
+
                         //Pantallas de continuidad
                         switch (VarG.currentFrame) {
                             case "perfil":
@@ -205,7 +212,7 @@ public class Log_in extends javax.swing.JFrame {
                             case "renovar":
                                 VarG.jfRenovar.setVisible(true);
                                 AudioPlayer.player.start(VarG.aRenovar);
-                                break;  
+                                break;
                             case "devolucion":
                                 VarG.jfDevolucion.setVisible(true);
                                 AudioPlayer.player.start(VarG.aDevolucion);
@@ -214,8 +221,7 @@ public class Log_in extends javax.swing.JFrame {
                                 VarG.jfCanjear.setVisible(true);
                                 AudioPlayer.player.start(VarG.aCanjear);
                                 break;
-                        }       
-                      
+                        }
 
                         VarG.jfLogin.setVisible(false);
 
@@ -232,16 +238,18 @@ public class Log_in extends javax.swing.JFrame {
             System.out.println(e.getMessage());
         }
     }//GEN-LAST:event_botonMouseClicked
-public void borradatos(){
-    id.setText("");
-    pass.setText("");
-    LBerror.setText("");
-    LBerror1.setText("");
-}
-public void moserror(){
-    LBerror.setText(error);
-    LBerror1.setText(error1);
-}
+    public void borradatos() {
+        id.setText("");
+        pass.setText("");
+        LBerror.setText("");
+        LBerror1.setText("");
+    }
+
+    public void moserror() {
+        LBerror.setText(error);
+        LBerror1.setText(error1);
+    }
+
     /**
      * @param args the command line arguments
      */

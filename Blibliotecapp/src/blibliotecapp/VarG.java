@@ -15,9 +15,13 @@ import sun.audio.AudioStream;
 public class VarG {
     
     //Pienso pasar estas variables al objeto Perfil
-    public static String id="NaN";
-    public static String pass="NaN";
-    public static int prestamos=0;
+    public static int id_usuario=0;
+    public static String password="NaN";
+    public static String nombre="NaN";
+    public static String appat="NaN";
+    public static String apmat="NaN";
+    public static int puntaje=0;
+    
     public static String idioma="espanol";
     
     //Variable para saber que pagina abrir despues del login
