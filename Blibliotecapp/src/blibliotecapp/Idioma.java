@@ -121,6 +121,7 @@ public class Idioma extends javax.swing.JFrame {
         setAudioRenovar(); //Cambia el audio del boton de renovar
         setAudioDevolucion(); //Cambia el audio del boton de devolucion
         setAudioPerfilDatos(); //Cambia el audio del boton de perfil datos
+        setAudioCanjear(); //Cambia el audio del boton de canjea
         
 
         //Faltan mas funciones para las demas pantallas!!!!
@@ -343,6 +344,29 @@ public class Idioma extends javax.swing.JFrame {
                     break;
                 case "aleman":
                     music = new FileInputStream(new File("src\\Audios\\DatosPerfilEsp.wav"));
+                    break;
+            }
+            VarG.aPerfilDatos = new AudioStream(music);
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+    }
+    
+    public void setAudioCanjear() {
+        try {
+            InputStream music = new FileInputStream(new File("src\\Audios\\CanjeaEsp.wav"));
+            switch (VarG.idioma) {
+                case "espanol":
+                    music = new FileInputStream(new File("src\\Audios\\CanjeaEsp.wav"));
+                    break;
+                case "ingles":
+                    music = new FileInputStream(new File("src\\Audios\\CanjeaEsp.wav"));
+                    break;
+                case "frances":
+                    music = new FileInputStream(new File("src\\Audios\\CanjeaEsp.wav"));
+                    break;
+                case "aleman":
+                    music = new FileInputStream(new File("src\\Audios\\CanjeaEsp.wav"));
                     break;
             }
             VarG.aPerfilDatos = new AudioStream(music);

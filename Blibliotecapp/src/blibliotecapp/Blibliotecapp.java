@@ -54,6 +54,8 @@ public class Blibliotecapp extends JComponent {
             VarG.aPrestamo = new AudioStream(music);
             music = new FileInputStream(new File("src\\Audios\\RenovarPrestamoEsp.wav"));
             VarG.aRenovar = new AudioStream(music);
+            music = new FileInputStream(new File("src\\Audios\\CanjeaEsp.wav"));
+            VarG.aCanjear = new AudioStream(music);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getLocalizedMessage());
         }
@@ -250,6 +252,7 @@ public class Blibliotecapp extends JComponent {
         setAudioBusqueda();
         setAudioDevolucion();
         setAudioPerfilDatos();
+        setAudioCanjear();
     }
 
     public void setAudioPerfil() {
@@ -365,11 +368,7 @@ public class Blibliotecapp extends JComponent {
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
-    }
-
-    private void callInicio() {
-        VarG.jfInicio.setVisible(true);
-    }
+    }    
     
     private void setAudioDevolucion() {
         try {
@@ -415,5 +414,32 @@ public class Blibliotecapp extends JComponent {
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
+    }
+    
+    public void setAudioCanjear() {
+        try {
+            InputStream music = new FileInputStream(new File("src\\Audios\\CanjeaEsp.wav"));
+            switch (VarG.idioma) {
+                case "espanol":
+                    music = new FileInputStream(new File("src\\Audios\\CanjeaEsp.wav"));
+                    break;
+                case "ingles":
+                    music = new FileInputStream(new File("src\\Audios\\CanjeaEsp.wav"));
+                    break;
+                case "frances":
+                    music = new FileInputStream(new File("src\\Audios\\CanjeaEsp.wav"));
+                    break;
+                case "aleman":
+                    music = new FileInputStream(new File("src\\Audios\\CanjeaEsp.wav"));
+                    break;
+            }
+            VarG.aPerfilDatos = new AudioStream(music);
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+    }
+
+    private void callInicio() {
+        VarG.jfInicio.setVisible(true);
     }
 }

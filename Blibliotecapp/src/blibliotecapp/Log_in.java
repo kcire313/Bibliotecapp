@@ -212,7 +212,7 @@ public class Log_in extends javax.swing.JFrame {
                                 break;
                             case "canjear":
                                 VarG.jfCanjear.setVisible(true);
-                                AudioPlayer.player.start(VarG.aLogin);
+                                AudioPlayer.player.start(VarG.aCanjear);
                                 break;
                         }       
                       
