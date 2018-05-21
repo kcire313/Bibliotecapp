@@ -5,6 +5,8 @@
  */
 package blibliotecapp;
 
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import sun.audio.AudioPlayer;
 
@@ -60,6 +62,11 @@ public class Busqueda extends javax.swing.JFrame {
         LBFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         LBTitulo.setFont(new java.awt.Font("Calibri Light", 1, 30)); // NOI18N
@@ -134,7 +141,7 @@ public class Busqueda extends javax.swing.JFrame {
         });
         getContentPane().add(jLBBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 154, 280, 280));
 
-        LBFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/busqueda.png"))); // NOI18N
+        LBFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/busqueda basica.png"))); // NOI18N
         LBFondo.setText("ss");
         getContentPane().add(LBFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 770));
 
@@ -149,6 +156,7 @@ public class Busqueda extends javax.swing.JFrame {
 
     private void LBBusAvanzadaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LBBusAvanzadaMouseClicked
       if(!bandera){
+        LBFondo.setIcon(new ImageIcon("src/surce/busqueda avanzada.png"));
         LBBusqueda.setVisible(false);
         LBCampo.setVisible(false);
         TxtPalabra.setVisible(false);
@@ -171,13 +179,13 @@ public class Busqueda extends javax.swing.JFrame {
 
     private void LBBusBasicaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LBBusBasicaMouseClicked
       if (bandera){
+        LBFondo.setIcon(new ImageIcon("src/surce/busqueda basica.png"));
         LBTitulo.setVisible(false);
         LBAutor.setVisible(false);
         LBAño.setVisible(false);
         TxtTitulo.setVisible(false);
         TxtAutor.setVisible(false);
         TxtAnio.setVisible(false);
-        
         LBBusqueda.setVisible(true);
         LBCampo.setVisible(true);
         TxtPalabra.setVisible(true);
@@ -197,6 +205,32 @@ public class Busqueda extends javax.swing.JFrame {
         //AudioPlayer.player.start(VarG.aLogin); //audio
     }//GEN-LAST:event_jLBBuscarMouseClicked
 
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        
+        String[] ing = {"Title","Author","Book ID","Year"};
+        String[] esp = {"Titulo","Autor","ID del libro","Año"};
+        if(VarG.idioma.equals("ingles")){
+            LBCampo.setText("Words to searh for:");
+            LBBusqueda.setText("Search in:");
+            LBTitulo.setText("Title:");
+            LBAutor.setText("Author:");
+            LBAño.setText("Year:");
+            DefaultComboBoxModel model = new DefaultComboBoxModel( ing );
+            CMBCampo.setModel( model );
+        }else{
+            LBCampo.setText("Palabra(s) a buscar:");
+            LBBusqueda.setText("Buscar en:");
+            LBTitulo.setText("Titulo:");
+            LBAutor.setText("Autor:");
+            LBAño.setText("Año:");
+            DefaultComboBoxModel model = new DefaultComboBoxModel( esp );
+            CMBCampo.setModel( model );
+        }
+    }//GEN-LAST:event_formWindowActivated
+
+    
+    
+    
     /**
      * @param args the command line arguments
      */

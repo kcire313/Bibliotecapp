@@ -32,9 +32,19 @@ public class Canjear extends javax.swing.JFrame {
 
         regresar = new javax.swing.JLabel();
         home = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        LBboton = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        LBpuntos = new javax.swing.JLabel();
+        LBpuntaje = new javax.swing.JLabel();
+        LBfondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         regresar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -50,9 +60,22 @@ public class Canjear extends javax.swing.JFrame {
             }
         });
         getContentPane().add(home, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 170, 140));
+        getContentPane().add(LBboton, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 590, 360, 110));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 590, 360, 110));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 590, 360, 110));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/cupones.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 770));
+        LBpuntos.setFont(new java.awt.Font("Calibri", 1, 36)); // NOI18N
+        LBpuntos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LBpuntos.setText("Puntaje Actual");
+        getContentPane().add(LBpuntos, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 30, 370, -1));
+
+        LBpuntaje.setFont(new java.awt.Font("Calibri", 1, 36)); // NOI18N
+        LBpuntaje.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LBpuntaje.setText("0 Pts.");
+        getContentPane().add(LBpuntaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, 370, -1));
+
+        LBfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/cupones.png"))); // NOI18N
+        getContentPane().add(LBfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 770));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -69,6 +92,16 @@ public class Canjear extends javax.swing.JFrame {
         VarG.jfLogin.setVisible(false);
         this.setVisible(false);
     }//GEN-LAST:event_homeMouseClicked
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        if(VarG.idioma.equals("espanol")){
+            LBpuntos.setText("Puntaje Actual");
+            LBpuntaje.setText("0 Pts.");
+        }else{
+            LBpuntos.setText("Current Score");
+            LBpuntaje.setText("0 Pts.");
+        }
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
@@ -109,8 +142,13 @@ public class Canjear extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LBboton;
+    private javax.swing.JLabel LBfondo;
+    private javax.swing.JLabel LBpuntaje;
+    private javax.swing.JLabel LBpuntos;
     private javax.swing.JLabel home;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel regresar;
     // End of variables declaration//GEN-END:variables
 }

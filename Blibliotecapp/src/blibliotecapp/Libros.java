@@ -32,9 +32,32 @@ public class Libros extends javax.swing.JFrame {
 
         regresar = new javax.swing.JLabel();
         home = new javax.swing.JLabel();
-        jFondo = new javax.swing.JLabel();
+        LBcontador = new javax.swing.JLabel();
+        LBop0 = new javax.swing.JLabel();
+        LBtitulo0 = new javax.swing.JLabel();
+        LBdatos0 = new javax.swing.JLabel();
+        LBop1 = new javax.swing.JLabel();
+        LBtitulo1 = new javax.swing.JLabel();
+        LBdatos1 = new javax.swing.JLabel();
+        LBop2 = new javax.swing.JLabel();
+        LBtitulo2 = new javax.swing.JLabel();
+        LBdatos2 = new javax.swing.JLabel();
+        LBop3 = new javax.swing.JLabel();
+        LBtitulo3 = new javax.swing.JLabel();
+        LBdatos3 = new javax.swing.JLabel();
+        LBop4 = new javax.swing.JLabel();
+        LBtitulo4 = new javax.swing.JLabel();
+        LBdatos4 = new javax.swing.JLabel();
+        LBIDStatic = new javax.swing.JLabel();
+        LBID = new javax.swing.JLabel();
+        LBfondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         regresar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -51,8 +74,73 @@ public class Libros extends javax.swing.JFrame {
         });
         getContentPane().add(home, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 170, 140));
 
-        jFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/libros.png"))); // NOI18N
-        getContentPane().add(jFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 770));
+        LBcontador.setFont(new java.awt.Font("Calibri", 1, 50)); // NOI18N
+        LBcontador.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LBcontador.setText("0/0");
+        getContentPane().add(LBcontador, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, 150, 100));
+        getContentPane().add(LBop0, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 850, 100));
+
+        LBtitulo0.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        LBtitulo0.setText("Moby Dick");
+        getContentPane().add(LBtitulo0, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 850, 50));
+
+        LBdatos0.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        LBdatos0.setForeground(new java.awt.Color(51, 51, 51));
+        LBdatos0.setText("Cervantes Saavedra, Miguel de / Año: 2014");
+        getContentPane().add(LBdatos0, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 840, 50));
+        getContentPane().add(LBop1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 850, 100));
+
+        LBtitulo1.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        LBtitulo1.setText("Moby Dick");
+        getContentPane().add(LBtitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 850, 50));
+
+        LBdatos1.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        LBdatos1.setForeground(new java.awt.Color(51, 51, 51));
+        LBdatos1.setText("Cervantes Saavedra, Miguel de / Año: 2014");
+        getContentPane().add(LBdatos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 840, 50));
+        getContentPane().add(LBop2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 850, 100));
+
+        LBtitulo2.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        LBtitulo2.setText("Moby Dick");
+        getContentPane().add(LBtitulo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 850, 50));
+
+        LBdatos2.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        LBdatos2.setForeground(new java.awt.Color(51, 51, 51));
+        LBdatos2.setText("Cervantes Saavedra, Miguel de / Año: 2014");
+        getContentPane().add(LBdatos2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 840, 50));
+        getContentPane().add(LBop3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, 850, 100));
+
+        LBtitulo3.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        LBtitulo3.setText("Moby Dick");
+        getContentPane().add(LBtitulo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, 850, 50));
+
+        LBdatos3.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        LBdatos3.setForeground(new java.awt.Color(51, 51, 51));
+        LBdatos3.setText("Cervantes Saavedra, Miguel de / Año: 2014");
+        getContentPane().add(LBdatos3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 540, 840, 50));
+        getContentPane().add(LBop4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 600, 850, 100));
+
+        LBtitulo4.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        LBtitulo4.setText("Moby Dick");
+        getContentPane().add(LBtitulo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 600, 850, 50));
+
+        LBdatos4.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        LBdatos4.setForeground(new java.awt.Color(51, 51, 51));
+        LBdatos4.setText("Cervantes Saavedra, Miguel de / Año: 2014");
+        getContentPane().add(LBdatos4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 640, 840, 50));
+
+        LBIDStatic.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        LBIDStatic.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LBIDStatic.setText("ID del libro");
+        getContentPane().add(LBIDStatic, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 280, 330, 50));
+
+        LBID.setFont(new java.awt.Font("Arial", 1, 30)); // NOI18N
+        LBID.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LBID.setText("863.3C3553r");
+        getContentPane().add(LBID, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 330, 330, 50));
+
+        LBfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/libros.png"))); // NOI18N
+        getContentPane().add(LBfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 770));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -67,6 +155,14 @@ public class Libros extends javax.swing.JFrame {
         VarG.jfBusqueda.setVisible(false);
         this.setVisible(false);
     }//GEN-LAST:event_homeMouseClicked
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+       if(VarG.idioma.equals("ingles")){
+            LBIDStatic.setText("Book´s ID");
+        }else{
+           LBIDStatic.setText("ID del libro");
+       }
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
@@ -107,8 +203,26 @@ public class Libros extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LBID;
+    private javax.swing.JLabel LBIDStatic;
+    private javax.swing.JLabel LBcontador;
+    private javax.swing.JLabel LBdatos0;
+    private javax.swing.JLabel LBdatos1;
+    private javax.swing.JLabel LBdatos2;
+    private javax.swing.JLabel LBdatos3;
+    private javax.swing.JLabel LBdatos4;
+    private javax.swing.JLabel LBfondo;
+    private javax.swing.JLabel LBop0;
+    private javax.swing.JLabel LBop1;
+    private javax.swing.JLabel LBop2;
+    private javax.swing.JLabel LBop3;
+    private javax.swing.JLabel LBop4;
+    private javax.swing.JLabel LBtitulo0;
+    private javax.swing.JLabel LBtitulo1;
+    private javax.swing.JLabel LBtitulo2;
+    private javax.swing.JLabel LBtitulo3;
+    private javax.swing.JLabel LBtitulo4;
     private javax.swing.JLabel home;
-    private javax.swing.JLabel jFondo;
     private javax.swing.JLabel regresar;
     // End of variables declaration//GEN-END:variables
 }
