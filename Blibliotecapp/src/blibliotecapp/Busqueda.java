@@ -5,9 +5,12 @@
  */
 package blibliotecapp;
 
+import java.awt.Component;
+import java.awt.KeyboardFocusManager;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JTextField;
 import sun.audio.AudioPlayer;
 
 /**
@@ -59,6 +62,7 @@ public class Busqueda extends javax.swing.JFrame {
         CMBCampo = new javax.swing.JComboBox();
         LBCampo = new javax.swing.JLabel();
         jLBBuscar = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         LBFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -141,6 +145,15 @@ public class Busqueda extends javax.swing.JFrame {
         });
         getContentPane().add(jLBBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 154, 280, 280));
 
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("A");
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 460, 230, 140));
+
         LBFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/busqueda basica.png"))); // NOI18N
         LBFondo.setText("ss");
         getContentPane().add(LBFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 770));
@@ -200,8 +213,49 @@ public class Busqueda extends javax.swing.JFrame {
     }//GEN-LAST:event_LBBusBasicaMouseClicked
 
     private void jLBBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBBuscarMouseClicked
-        VarG.jfLibros.setVisible(true);
-        this.setVisible(false);
+        /*
+        TxtTitulo
+        TxtAutor
+        TxtAnio
+        */
+        String busqueda = "";
+        String titulo ="";
+        String autor="";
+        String anio="";
+        if (!bandera){
+            if (TxtPalabra.getText().trim().isEmpty()){
+                System.out.println("No hay nada escrito en basica");
+                //Poner Aviso de falta de datos
+            }else{
+                titulo=TxtPalabra.getText();
+                System.out.println(titulo);
+                busqueda=CMBCampo.getSelectedItem().toString();
+                System.out.println(busqueda);
+                VarG.jfLibros.setVisible(true);
+                this.setVisible(false);
+            }
+        }else{
+            if(TxtTitulo.getText().trim().isEmpty() && TxtAutor.getText().trim().isEmpty() && 
+               TxtAnio.getText().trim().isEmpty()  ){
+                 System.out.println("no hay nada escrito en avanzada");
+                //Poner Aviso de falta de datos
+            }else{
+                if(!TxtTitulo.getText().trim().isEmpty()){
+                    titulo=TxtTitulo.getText();
+                    System.out.println(titulo);
+                }
+                if(!TxtAutor.getText().trim().isEmpty() ){
+                    autor=TxtAutor.getText();
+                    System.out.println(autor);
+                }
+                if(!TxtAnio.getText().trim().isEmpty()){
+                    anio=TxtAnio.getText();
+                    System.out.println(anio);
+                }    
+                
+            }    
+        }
+        
         //AudioPlayer.player.start(VarG.aLogin); //audio
     }//GEN-LAST:event_jLBBuscarMouseClicked
 
@@ -209,6 +263,10 @@ public class Busqueda extends javax.swing.JFrame {
         
         String[] ing = {"Title","Author","Book ID","Year"};
         String[] esp = {"Titulo","Autor","ID del libro","Año"};
+        TxtPalabra.setText("");
+        TxtTitulo.setText("");
+        TxtAutor.setText("");
+        TxtAnio.setText("");
         if(VarG.idioma.equals("ingles")){
             LBCampo.setText("Words to searh for:");
             LBBusqueda.setText("Search in:");
@@ -227,6 +285,12 @@ public class Busqueda extends javax.swing.JFrame {
             CMBCampo.setModel( model );
         }
     }//GEN-LAST:event_formWindowActivated
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        String la = testField.getName();
+       // if(.get)
+    }//GEN-LAST:event_jLabel1MouseClicked
 
     
     
@@ -297,6 +361,7 @@ public class Busqueda extends javax.swing.JFrame {
     private javax.swing.JTextField TxtPalabra;
     private javax.swing.JTextField TxtTitulo;
     private javax.swing.JLabel jLBBuscar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel regresar;
     // End of variables declaration//GEN-END:variables
 }
