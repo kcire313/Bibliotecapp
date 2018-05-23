@@ -62,7 +62,7 @@ public class Busqueda extends javax.swing.JFrame {
         CMBCampo = new javax.swing.JComboBox();
         LBCampo = new javax.swing.JLabel();
         jLBBuscar = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        LetraA = new javax.swing.JLabel();
         LBFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -150,14 +150,14 @@ public class Busqueda extends javax.swing.JFrame {
         });
         getContentPane().add(jLBBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 154, 280, 280));
 
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("A");
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+        LetraA.setForeground(new java.awt.Color(255, 255, 255));
+        LetraA.setText("A");
+        LetraA.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel1MouseClicked(evt);
+                LetraAMouseClicked(evt);
             }
         });
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 460, 230, 140));
+        getContentPane().add(LetraA, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 460, 230, 140));
 
         LBFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/busqueda basica.png"))); // NOI18N
         LBFondo.setText("ss");
@@ -291,20 +291,23 @@ public class Busqueda extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formWindowActivated
 
-    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+    private void LetraAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraAMouseClicked
         Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
         if(testField.equals(TxtPalabra)){
             if(TxtPalabra.getText().isEmpty()){
                 TxtPalabra.setText("A");
             }else{
-                String aux = TxtPalabra.getText();
-                TxtPalabra.setText(aux + "A");
+                String aux = TxtPalabra.getText();              
+                int pos=TxtPalabra.getCaretPosition();
+                String texto= aux.substring(0, pos)+"A"+aux.substring(pos, aux.length());
+                TxtPalabra.setText(texto);
+                TxtPalabra.setCaretPosition(pos+1);
             }
         }
         
         
        // if(.get)
-    }//GEN-LAST:event_jLabel1MouseClicked
+    }//GEN-LAST:event_LetraAMouseClicked
 
     private void TxtPalabraFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TxtPalabraFocusGained
         // TODO add your handling code here:
@@ -374,12 +377,12 @@ public class Busqueda extends javax.swing.JFrame {
     private javax.swing.JLabel LBCampo;
     private javax.swing.JLabel LBFondo;
     private javax.swing.JLabel LBTitulo;
+    private javax.swing.JLabel LetraA;
     private javax.swing.JTextField TxtAnio;
     private javax.swing.JTextField TxtAutor;
     private javax.swing.JTextField TxtPalabra;
     private javax.swing.JTextField TxtTitulo;
     private javax.swing.JLabel jLBBuscar;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel regresar;
     // End of variables declaration//GEN-END:variables
 }

@@ -194,7 +194,7 @@ public class Log_in extends javax.swing.JFrame {
                         VarG.appat = data[3];
                         VarG.apmat = data[4];
                         VarG.puntaje = Integer.parseInt(data[5]);
-                        System.out.println(VarG.nombre);
+                        System.out.println("Nom: "+VarG.nombre);
                         VarG.jfLogin.setVisible(false);
                         //Borra los datos previamente usados
                         borradatos();
