@@ -128,6 +128,11 @@ public class Busqueda extends javax.swing.JFrame {
         TxtPalabra.setFont(new java.awt.Font("Calibri Light", 0, 24)); // NOI18N
         TxtPalabra.setToolTipText("");
         TxtPalabra.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        TxtPalabra.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                TxtPalabraFocusGained(evt);
+            }
+        });
         getContentPane().add(TxtPalabra, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 200, 480, 40));
 
         CMBCampo.setFont(new java.awt.Font("Calibri Light", 1, 28)); // NOI18N
@@ -288,9 +293,22 @@ public class Busqueda extends javax.swing.JFrame {
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-        String la = testField.getName();
+        if(testField.equals(TxtPalabra)){
+            if(TxtPalabra.getText().isEmpty()){
+                TxtPalabra.setText("A");
+            }else{
+                String aux = TxtPalabra.getText();
+                TxtPalabra.setText(aux + "A");
+            }
+        }
+        
+        
        // if(.get)
     }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void TxtPalabraFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TxtPalabraFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtPalabraFocusGained
 
     
     
