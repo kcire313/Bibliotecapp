@@ -5,6 +5,7 @@
  */
 package blibliotecapp;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 /**
@@ -32,9 +33,14 @@ public class Prestamo extends javax.swing.JFrame {
 
         regresar = new javax.swing.JLabel();
         home = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        LBFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         regresar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -51,8 +57,8 @@ public class Prestamo extends javax.swing.JFrame {
         });
         getContentPane().add(home, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 170, 140));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/nuevasP/prestamoB E.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 770));
+        LBFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/nuevasP/prestamoB E.png"))); // NOI18N
+        getContentPane().add(LBFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 770));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -69,6 +75,14 @@ public class Prestamo extends javax.swing.JFrame {
         VarG.jfLogin.setVisible(false);
         this.setVisible(false);
     }//GEN-LAST:event_homeMouseClicked
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        if(VarG.idioma.equals("espanol")){
+            LBFondo.setIcon(new ImageIcon("src/surce/nuevasP/prestamo E.png"));
+        }else{
+            LBFondo.setIcon(new ImageIcon("src/surce/nuevasP/prestamo I.png"));
+        }
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
@@ -107,8 +121,8 @@ public class Prestamo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LBFondo;
     private javax.swing.JLabel home;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel regresar;
     // End of variables declaration//GEN-END:variables
 }

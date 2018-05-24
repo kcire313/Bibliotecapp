@@ -5,6 +5,7 @@
  */
 package blibliotecapp;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 /**
@@ -97,9 +98,11 @@ public class Canjear extends javax.swing.JFrame {
         if(VarG.idioma.equals("espanol")){
             LBpuntos.setText("Puntaje Actual");
             LBpuntaje.setText("0 Pts.");
+            LBfondo.setIcon(new ImageIcon("src/surce/nuevasP/cupones E.png"));
         }else{
             LBpuntos.setText("Current Score");
             LBpuntaje.setText("0 Pts.");
+            LBfondo.setIcon(new ImageIcon("src/surce/nuevasP/cupones I.png"));
         }
     }//GEN-LAST:event_formWindowActivated
 

@@ -5,6 +5,7 @@
  */
 package blibliotecapp;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 /**
@@ -159,8 +160,10 @@ public class Libros extends javax.swing.JFrame {
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
        if(VarG.idioma.equals("ingles")){
             LBIDStatic.setText("Book´s ID");
+            LBfondo.setIcon(new ImageIcon("src/surce/nuevasP/libros I.png"));
         }else{
            LBIDStatic.setText("ID del libro");
+           LBfondo.setIcon(new ImageIcon("src/surce/nuevasP/libros E.png"));
        }
     }//GEN-LAST:event_formWindowActivated
 

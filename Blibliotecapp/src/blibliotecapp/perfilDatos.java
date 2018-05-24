@@ -5,6 +5,7 @@
  */
 package blibliotecapp;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 /**
@@ -34,9 +35,14 @@ public class perfilDatos extends javax.swing.JFrame {
         home = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
+        LBFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         regresar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -68,8 +74,8 @@ public class perfilDatos extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 220, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/nuevasP/perfil E.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 770));
+        LBFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/nuevasP/perfil E.png"))); // NOI18N
+        getContentPane().add(LBFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 770));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -86,6 +92,14 @@ public class perfilDatos extends javax.swing.JFrame {
         VarG.jfLogin.setVisible(false);
         this.setVisible(false);
     }//GEN-LAST:event_homeMouseClicked
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        if(VarG.idioma.equals("espanol")){
+            LBFondo.setIcon(new ImageIcon("src/surce/nuevasP/perfil E.png"));
+        }else{
+            LBFondo.setIcon(new ImageIcon("src/surce/nuevasP/perfil I.png"));
+        }
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
@@ -123,8 +137,8 @@ public class perfilDatos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LBFondo;
     private javax.swing.JLabel home;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel regresar;

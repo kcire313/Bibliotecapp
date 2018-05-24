@@ -29,17 +29,18 @@ public class Log_in extends javax.swing.JFrame {
 
     public Log_in() {
         this.setUndecorated(true);
-        ImageIcon icon = new ImageIcon("src/surce/logesp.png");
+        ImageIcon icon = new ImageIcon("src/surce/nuevasP/login E.png");
         ImageIcon anima = new javax.swing.ImageIcon(getClass().getResource("/surce/gif/libro-abre.gif"));
         anima.getImage().flush();
         switch (VarG.idioma) {
             case "espanol":
-                icon = new ImageIcon("src/surce/logesp.png");
+                
+                icon = new ImageIcon("src/surce/nuevasP/login E.png");
                 error = "Uno o más datos son incorrectos";
                 error1 = "Por favor, intentelo de nuevo";
                 break;
             case "ingles":
-                icon = new ImageIcon("src/surce/logingles.png");
+                icon = new ImageIcon("src/surce/nuevasP/login I.png");
                 error = "Your ID or Password is incorrect";
                 error1 = "Please, try again";
                 break;
@@ -74,6 +75,11 @@ public class Log_in extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 0, 0));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         LBerror.setFont(new java.awt.Font("Californian FB", 1, 24)); // NOI18N
@@ -238,6 +244,14 @@ public class Log_in extends javax.swing.JFrame {
             System.out.println(e.getMessage());
         }
     }//GEN-LAST:event_botonMouseClicked
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        if(VarG.idioma.equals("ingles")){
+            background.setIcon(new ImageIcon("src/surce/nuevasP/login I.png"));
+        }else{
+            background.setIcon(new ImageIcon("src/surce/nuevasP/login E.png"));
+        }
+    }//GEN-LAST:event_formWindowActivated
     public void borradatos() {
         id.setText("");
         pass.setText("");
