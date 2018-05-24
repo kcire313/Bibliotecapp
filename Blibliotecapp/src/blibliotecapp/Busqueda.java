@@ -1026,6 +1026,11 @@ public class Busqueda extends javax.swing.JFrame {
 
     private void LBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LBackMouseClicked
         // TODO add your handling code here:
+        int pos=TxtPalabra.getCaretPosition();
+        String text= TxtPalabra.getText();                             
+        String texto= text.substring(0, pos-1)+text.substring(pos, text.length());
+        TxtPalabra.setText(texto);
+        TxtPalabra.setCaretPosition(pos-1);
     }//GEN-LAST:event_LBackMouseClicked
 
     private void Letra3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Letra3MouseClicked
