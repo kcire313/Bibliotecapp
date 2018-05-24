@@ -78,18 +78,18 @@ public class Log_in extends javax.swing.JFrame {
 
         LBerror.setFont(new java.awt.Font("Californian FB", 1, 24)); // NOI18N
         LBerror.setForeground(new java.awt.Color(204, 0, 0));
-        getContentPane().add(LBerror, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 300, 380, 50));
+        getContentPane().add(LBerror, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 220, 380, 50));
 
         LBerror1.setFont(new java.awt.Font("Californian FB", 1, 24)); // NOI18N
         LBerror1.setForeground(new java.awt.Color(204, 0, 0));
-        getContentPane().add(LBerror1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 330, 380, 50));
+        getContentPane().add(LBerror1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 220, 380, 50));
 
         boton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 botonMouseClicked(evt);
             }
         });
-        getContentPane().add(boton, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 380, 300, 150));
+        getContentPane().add(boton, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 270, 260, 110));
 
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -104,7 +104,7 @@ public class Log_in extends javax.swing.JFrame {
                 idMouseClicked(evt);
             }
         });
-        getContentPane().add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 220, 220, 40));
+        getContentPane().add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 100, 220, 40));
 
         pass.setText("070996");
         pass.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -112,9 +112,9 @@ public class Log_in extends javax.swing.JFrame {
                 passMouseClicked(evt);
             }
         });
-        getContentPane().add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 270, 220, 40));
+        getContentPane().add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 170, 220, 40));
 
-        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/logesp.png"))); // NOI18N
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/nuevasP/login E.png"))); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 770));
 
         pack();
