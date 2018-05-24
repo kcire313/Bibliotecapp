@@ -159,7 +159,7 @@ public class Busqueda extends javax.swing.JFrame {
         });
         getContentPane().add(LetraA, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 460, 230, 140));
 
-        LBFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/busqueda basica.png"))); // NOI18N
+        LBFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/nuevasP/busquedaB E.png"))); // NOI18N
         LBFondo.setText("ss");
         getContentPane().add(LBFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 770));
 
