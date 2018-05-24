@@ -294,23 +294,39 @@ public class Busqueda extends javax.swing.JFrame {
     private void LetraAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraAMouseClicked
         Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
         if(testField.equals(TxtPalabra)){
-            if(TxtPalabra.getText().isEmpty()){
-                TxtPalabra.setText("A");
-            }else{
-                String aux = TxtPalabra.getText();              
-                int pos=TxtPalabra.getCaretPosition();
-                String texto= aux.substring(0, pos)+"A"+aux.substring(pos, aux.length());
-                TxtPalabra.setText(texto);
-                TxtPalabra.setCaretPosition(pos+1);
-            }
+            pushtecla("a", TxtPalabra);
+        }else if(testField.equals(TxtTitulo)){
+            pushtecla("a", TxtTitulo);
+        }else if(testField.equals(TxtAutor)){
+            pushtecla("a", TxtAutor);
+        }else if(testField.equals(TxtAnio)){
+            pushtecla("a", TxtAnio);
         }
-        
-        
-       // if(.get)
     }//GEN-LAST:event_LetraAMouseClicked
-
+//Teclado
+    public void pushtecla(String letra, JTextField txt ){
+   
+        String aux = txt.getText();              
+        int pos=txt.getCaretPosition();
+        String texto= aux.substring(0, pos)+letra+aux.substring(pos, aux.length());
+        txt.setText(texto);
+        txt.setCaretPosition(pos+1);
+    }
+    /*
+         if(txt.getText().isEmpty()){
+                txt.setText(letra);
+            }else{
+                String aux = txt.getText();              
+                int pos=txt.getCaretPosition();
+                String texto= aux.substring(0, pos)++letra++aux.substring(pos, aux.length());
+                txt.setText(texto);
+                txt.setCaretPosition(pos+1);
+            }*/
+    
+    
+    
     private void TxtPalabraFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TxtPalabraFocusGained
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_TxtPalabraFocusGained
 
     
