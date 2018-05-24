@@ -74,7 +74,7 @@ public class Canjear extends javax.swing.JFrame {
         LBpuntaje.setText("0 Pts.");
         getContentPane().add(LBpuntaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, 370, -1));
 
-        LBfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/cupones.png"))); // NOI18N
+        LBfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/nuevasP/cupones E.png"))); // NOI18N
         getContentPane().add(LBfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 770));
 
         pack();

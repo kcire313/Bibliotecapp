@@ -139,7 +139,7 @@ public class Libros extends javax.swing.JFrame {
         LBID.setText("863.3C3553r");
         getContentPane().add(LBID, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 330, 330, 50));
 
-        LBfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/libros.png"))); // NOI18N
+        LBfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/nuevasP/libros E.png"))); // NOI18N
         getContentPane().add(LBfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 770));
 
         pack();
