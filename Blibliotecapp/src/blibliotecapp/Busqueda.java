@@ -505,12 +505,12 @@ public class Busqueda extends javax.swing.JFrame {
     }//GEN-LAST:event_regresarMouseClicked
 
     private void LBBusAvanzadaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LBBusAvanzadaMouseClicked
-      if(!bandera){
-           if(VarG.idioma.equals("ingles")){
-                LBFondo.setIcon(new ImageIcon("src/surce/nuevasP/busquedaA Ipng"));
+        if(VarG.idioma.equals("ingles")){
+                LBFondo.setIcon(new ImageIcon("src/surce/nuevasP/busquedaB I.png"));
             }else{
-                LBFondo.setIcon(new ImageIcon("src/surce/nuevasP/busquedaA E.png"));
+                LBFondo.setIcon(new ImageIcon("src/surce/nuevasP/busquedaA I.png"));
             }
+        if(!bandera){
         LBBusqueda.setVisible(false);
         LBCampo.setVisible(false);
         TxtPalabra.setVisible(false);
@@ -533,12 +533,12 @@ public class Busqueda extends javax.swing.JFrame {
     }//GEN-LAST:event_LBBusAvanzadaMouseClicked
 
     private void LBBusBasicaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LBBusBasicaMouseClicked
-      if (bandera){
-          if(VarG.idioma.equals("ingles")){
+      if(VarG.idioma.equals("ingles")){
                 LBFondo.setIcon(new ImageIcon("src/surce/nuevasP/busquedaB I.png"));
             }else{
                 LBFondo.setIcon(new ImageIcon("src/surce/nuevasP/busquedaB E.png"));
             }
+        if (bandera){
         LBTitulo.setVisible(false);
         LBAutor.setVisible(false);
         LBAño.setVisible(false);
@@ -607,7 +607,11 @@ public class Busqueda extends javax.swing.JFrame {
     }//GEN-LAST:event_jLBBuscarMouseClicked
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        
+        if(VarG.idioma.equals("ingles")){
+                LBFondo.setIcon(new ImageIcon("src/surce/nuevasP/busquedaB I.png"));
+            }else{
+                LBFondo.setIcon(new ImageIcon("src/surce/nuevasP/busquedaB E.png"));
+            }
         String[] ing = {"Title","Author","Book ID","Year"};
         String[] esp = {"Titulo","Autor","ID del libro","Año"};
         TxtPalabra.setText("");

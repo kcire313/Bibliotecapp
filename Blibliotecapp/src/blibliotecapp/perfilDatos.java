@@ -84,6 +84,7 @@ public class perfilDatos extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.setVisible(false);
         VarG.jfLogin.setVisible(true);
+        VarG.jfLogin.id.requestFocus();  
         System.out.println("return profile data");
     }//GEN-LAST:event_regresarMouseClicked
 

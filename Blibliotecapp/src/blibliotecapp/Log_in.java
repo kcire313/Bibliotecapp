@@ -84,11 +84,11 @@ public class Log_in extends javax.swing.JFrame {
 
         LBerror.setFont(new java.awt.Font("Californian FB", 1, 24)); // NOI18N
         LBerror.setForeground(new java.awt.Color(204, 0, 0));
-        getContentPane().add(LBerror, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 220, 380, 50));
+        getContentPane().add(LBerror, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 200, 380, 50));
 
         LBerror1.setFont(new java.awt.Font("Californian FB", 1, 24)); // NOI18N
         LBerror1.setForeground(new java.awt.Color(204, 0, 0));
-        getContentPane().add(LBerror1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 220, 380, 50));
+        getContentPane().add(LBerror1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 240, 380, 50));
 
         boton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -105,19 +105,9 @@ public class Log_in extends javax.swing.JFrame {
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 130, 120));
 
         id.setText("190798");
-        id.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                idMouseClicked(evt);
-            }
-        });
         getContentPane().add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 100, 220, 40));
 
         pass.setText("070996");
-        pass.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                passMouseClicked(evt);
-            }
-        });
         getContentPane().add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 170, 220, 40));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/nuevasP/login E.png"))); // NOI18N
@@ -125,26 +115,6 @@ public class Log_in extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void idMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_idMouseClicked
-        // TODO add your handling code here:
-        try {
-            // TODO add your handling code here:
-            Runtime.getRuntime().exec("cmd /c osk");
-        } catch (IOException ex) {
-            Logger.getLogger(Log_in.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_idMouseClicked
-
-    private void passMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passMouseClicked
-        // TODO add your handling code here:
-        try {
-            // TODO add your handling code here:
-            Runtime.getRuntime().exec("cmd /c osk");
-        } catch (IOException ex) {
-            Logger.getLogger(Log_in.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_passMouseClicked
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         // TODO add your handling code here:
@@ -305,7 +275,7 @@ public class Log_in extends javax.swing.JFrame {
     private javax.swing.JLabel LBerror1;
     public static javax.swing.JLabel background;
     private javax.swing.JLabel boton;
-    private javax.swing.JTextField id;
+    public javax.swing.JTextField id;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPasswordField pass;
     // End of variables declaration//GEN-END:variables

@@ -6,7 +6,6 @@
 package blibliotecapp;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
@@ -22,6 +21,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import sun.audio.AudioPlayer;
 import sun.audio.AudioStream;
@@ -62,18 +62,18 @@ public class Blibliotecapp extends JComponent {
         //Instancias de animaciones
         VarG.anOpen = new javax.swing.ImageIcon(getClass().getResource("/surce/gif/libro-abre.gif"));
         VarG.anClose = new javax.swing.ImageIcon(getClass().getResource("/surce/gif/libro-cierra.gif"));
-        VarG.anActual = VarG.anOpen; 
-        
+        VarG.anActual = VarG.anOpen;
+
         //Instancia de la pantalla de Inicio
         VarG.jfInicio = new Inicio();
         VarG.jfInicio.pack();
         VarG.jfInicio.setLocationRelativeTo(null);
-        
+
         //Instancia de la pantalla de Busqueda
         VarG.jfBusqueda = new Busqueda();
         VarG.jfBusqueda.pack();
         VarG.jfBusqueda.setLocationRelativeTo(null);
-        
+
         //Instancia de la pantalla de log-in
         VarG.jfLogin = new Log_in();
         VarG.jfLogin.pack();
@@ -88,7 +88,7 @@ public class Blibliotecapp extends JComponent {
         VarG.jfIdioma = new Idioma();
         VarG.jfIdioma.pack();
         VarG.jfIdioma.setLocationRelativeTo(null);
-        
+
         //Instancia de la pantalla de Devolucion
         VarG.jfDevolucion = new Devolucion();
         VarG.jfDevolucion.pack();
@@ -103,17 +103,17 @@ public class Blibliotecapp extends JComponent {
         VarG.jfRenovar = new Renovar();
         VarG.jfRenovar.pack();
         VarG.jfRenovar.setLocationRelativeTo(null);
-        
+
         //Instancia de la pantalla de cupones
         VarG.jfCanjear = new Canjear();
         VarG.jfCanjear.pack();
         VarG.jfCanjear.setLocationRelativeTo(null);
-        
+
         //Instancia de la pantalla de Resultados de busqueda
         VarG.jfLibros = new Libros();
         VarG.jfLibros.pack();
         VarG.jfLibros.setLocationRelativeTo(null);
-        
+
         //Key listener para la pantalla
         addMouseListener(new MouseAdapter() {
             @Override
@@ -131,6 +131,7 @@ public class Blibliotecapp extends JComponent {
                     VarG.currentFrame = "prestamo";
                     AudioPlayer.player.start(VarG.aLogin);
                     VarG.jfLogin.setVisible(true);
+                    VarG.jfLogin.id.requestFocus();                    
                 }
                 //Botón devolución
                 if (e.getX() >= 688 && e.getX() <= 938 && e.getY() >= 310 && e.getY() <= 510) {
@@ -138,6 +139,7 @@ public class Blibliotecapp extends JComponent {
                     VarG.currentFrame = "devolucion";
                     AudioPlayer.player.start(VarG.aLogin);
                     VarG.jfLogin.setVisible(true);
+                    VarG.jfLogin.id.requestFocus();
                 }
                 //Botón renovar
                 if (e.getX() >= 942 && e.getX() <= 1192 && e.getY() >= 310 && e.getY() <= 510) {
@@ -145,6 +147,7 @@ public class Blibliotecapp extends JComponent {
                     VarG.currentFrame = "renovar";
                     AudioPlayer.player.start(VarG.aLogin);
                     VarG.jfLogin.setVisible(true);
+                    VarG.jfLogin.id.requestFocus();  
                 }
                 //Botón perfil 
                 if (e.getX() >= 434 && e.getX() <= 650 && e.getY() >= 514 && e.getY() <= 714) {
@@ -152,6 +155,7 @@ public class Blibliotecapp extends JComponent {
                     VarG.currentFrame = "perfil";
                     AudioPlayer.player.start(VarG.aLogin);
                     VarG.jfLogin.setVisible(true);
+                    VarG.jfLogin.id.requestFocus();  
                 }
                 //Botón canjear
                 if (e.getX() >= 688 && e.getX() <= 938 && e.getY() >= 514 && e.getY() <= 714) {
@@ -159,6 +163,7 @@ public class Blibliotecapp extends JComponent {
                     VarG.currentFrame = "canjear";
                     AudioPlayer.player.start(VarG.aLogin);
                     VarG.jfLogin.setVisible(true);
+                    VarG.jfLogin.id.requestFocus();  
                 }
                 //Botón idioma
                 if (e.getX() >= 942 && e.getX() <= 1192 && e.getY() >= 514 && e.getY() <= 714) {
@@ -344,9 +349,9 @@ public class Blibliotecapp extends JComponent {
             VarG.aRenovar = new AudioStream(music);
         } catch (Exception e) {
             System.err.println(e.getMessage());
-        }        
+        }
     }
-    
+
     private void setAudioBusqueda() {
         try {
             InputStream music = new FileInputStream(new File("src\\Audios\\LLenarCasillasEsp2.wav"));
@@ -368,8 +373,8 @@ public class Blibliotecapp extends JComponent {
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
-    }    
-    
+    }
+
     private void setAudioDevolucion() {
         try {
             InputStream music = new FileInputStream(new File("src\\Audios\\DevuelveEsp.wav"));
@@ -392,7 +397,7 @@ public class Blibliotecapp extends JComponent {
             System.err.println(e.getMessage());
         }
     }
-    
+
     public void setAudioPerfilDatos() {
         try {
             InputStream music = new FileInputStream(new File("src\\Audios\\DatosPerfilEsp.wav"));
@@ -415,7 +420,7 @@ public class Blibliotecapp extends JComponent {
             System.err.println(e.getMessage());
         }
     }
-    
+
     public void setAudioCanjear() {
         try {
             InputStream music = new FileInputStream(new File("src\\Audios\\CanjeaEsp.wav"));
