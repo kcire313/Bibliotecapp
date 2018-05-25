@@ -5,6 +5,8 @@
  */
 package blibliotecapp;
 
+import java.awt.Component;
+import java.awt.KeyboardFocusManager;
 import java.io.IOException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -13,6 +15,7 @@ import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import sun.audio.AudioPlayer;
 
 /**
@@ -35,25 +38,24 @@ public class Log_in extends javax.swing.JFrame {
         switch (VarG.idioma) {
             case "espanol":
                 
-                icon = new ImageIcon("src/surce/nuevasP/login E.png");
                 error = "Uno o más datos son incorrectos";
                 error1 = "Por favor, intentelo de nuevo";
                 break;
             case "ingles":
-                icon = new ImageIcon("src/surce/nuevasP/login I.png");
+                
                 error = "Your ID or Password is incorrect";
                 error1 = "Please, try again";
                 break;
             case "frances":
-                icon = new ImageIcon("src/surce/logesp.png");
+               
                 break;
             case "aleman":
-                icon = new ImageIcon("src/surce/logale.png");
+                
                 break;
         }
         //icon.getImage().flush();       
         initComponents();
-        background.setIcon(icon);
+        
     }
 
     /**
@@ -72,6 +74,44 @@ public class Log_in extends javax.swing.JFrame {
         id = new javax.swing.JTextField();
         pass = new javax.swing.JPasswordField();
         background = new javax.swing.JLabel();
+        Letra1 = new javax.swing.JLabel();
+        LSpace = new javax.swing.JLabel();
+        LetraN = new javax.swing.JLabel();
+        LetraA = new javax.swing.JLabel();
+        LetraM = new javax.swing.JLabel();
+        Letra0 = new javax.swing.JLabel();
+        LetraX = new javax.swing.JLabel();
+        LetraU = new javax.swing.JLabel();
+        LetraQ = new javax.swing.JLabel();
+        Letra9 = new javax.swing.JLabel();
+        Letra6 = new javax.swing.JLabel();
+        LetraS = new javax.swing.JLabel();
+        LetraW = new javax.swing.JLabel();
+        LetraT = new javax.swing.JLabel();
+        LetraI = new javax.swing.JLabel();
+        LetraD = new javax.swing.JLabel();
+        LetraZ = new javax.swing.JLabel();
+        LetraK = new javax.swing.JLabel();
+        Letra7 = new javax.swing.JLabel();
+        LetraR = new javax.swing.JLabel();
+        Letra2 = new javax.swing.JLabel();
+        LetraF = new javax.swing.JLabel();
+        Letra5 = new javax.swing.JLabel();
+        Letra3 = new javax.swing.JLabel();
+        LetraE = new javax.swing.JLabel();
+        LetraP = new javax.swing.JLabel();
+        LetraB = new javax.swing.JLabel();
+        LetraY = new javax.swing.JLabel();
+        LetraH = new javax.swing.JLabel();
+        LetraO = new javax.swing.JLabel();
+        LetraC = new javax.swing.JLabel();
+        LBack = new javax.swing.JLabel();
+        LetraV = new javax.swing.JLabel();
+        Letra4 = new javax.swing.JLabel();
+        LetraJ = new javax.swing.JLabel();
+        Letra8 = new javax.swing.JLabel();
+        LetraG = new javax.swing.JLabel();
+        LetraL = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 0, 0));
@@ -112,6 +152,310 @@ public class Log_in extends javax.swing.JFrame {
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/nuevasP/login E.png"))); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 770));
+
+        Letra1.setForeground(new java.awt.Color(255, 255, 255));
+        Letra1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Letra1MouseClicked(evt);
+            }
+        });
+        getContentPane().add(Letra1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 430, 110, 60));
+
+        LSpace.setForeground(new java.awt.Color(255, 255, 255));
+        LSpace.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LSpaceMouseClicked(evt);
+            }
+        });
+        getContentPane().add(LSpace, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 700, 770, 50));
+
+        LetraN.setForeground(new java.awt.Color(255, 255, 255));
+        LetraN.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LetraNMouseClicked(evt);
+            }
+        });
+        getContentPane().add(LetraN, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 640, 100, 50));
+
+        LetraA.setForeground(new java.awt.Color(255, 255, 255));
+        LetraA.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LetraAMouseClicked(evt);
+            }
+        });
+        getContentPane().add(LetraA, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 570, 100, 50));
+
+        LetraM.setForeground(new java.awt.Color(255, 255, 255));
+        LetraM.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LetraMMouseClicked(evt);
+            }
+        });
+        getContentPane().add(LetraM, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 640, 100, 50));
+
+        Letra0.setForeground(new java.awt.Color(255, 255, 255));
+        Letra0.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Letra0MouseClicked(evt);
+            }
+        });
+        getContentPane().add(Letra0, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 430, 110, 60));
+
+        LetraX.setForeground(new java.awt.Color(255, 255, 255));
+        LetraX.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LetraXMouseClicked(evt);
+            }
+        });
+        getContentPane().add(LetraX, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 640, 100, 50));
+
+        LetraU.setForeground(new java.awt.Color(255, 255, 255));
+        LetraU.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LetraUMouseClicked(evt);
+            }
+        });
+        getContentPane().add(LetraU, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 500, 110, 60));
+
+        LetraQ.setForeground(new java.awt.Color(255, 255, 255));
+        LetraQ.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LetraQMouseClicked(evt);
+            }
+        });
+        getContentPane().add(LetraQ, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 500, 110, 60));
+
+        Letra9.setForeground(new java.awt.Color(255, 255, 255));
+        Letra9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Letra9MouseClicked(evt);
+            }
+        });
+        getContentPane().add(Letra9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 430, 110, 60));
+
+        Letra6.setForeground(new java.awt.Color(255, 255, 255));
+        Letra6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Letra6MouseClicked(evt);
+            }
+        });
+        getContentPane().add(Letra6, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 430, 110, 60));
+
+        LetraS.setForeground(new java.awt.Color(255, 255, 255));
+        LetraS.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LetraSMouseClicked(evt);
+            }
+        });
+        getContentPane().add(LetraS, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 570, 110, 50));
+
+        LetraW.setForeground(new java.awt.Color(255, 255, 255));
+        LetraW.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LetraWMouseClicked(evt);
+            }
+        });
+        getContentPane().add(LetraW, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 500, 110, 60));
+
+        LetraT.setForeground(new java.awt.Color(255, 255, 255));
+        LetraT.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LetraTMouseClicked(evt);
+            }
+        });
+        getContentPane().add(LetraT, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 500, 100, 60));
+
+        LetraI.setForeground(new java.awt.Color(255, 255, 255));
+        LetraI.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LetraIMouseClicked(evt);
+            }
+        });
+        getContentPane().add(LetraI, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 500, 110, 60));
+
+        LetraD.setForeground(new java.awt.Color(255, 255, 255));
+        LetraD.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LetraDMouseClicked(evt);
+            }
+        });
+        getContentPane().add(LetraD, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 570, 110, 50));
+
+        LetraZ.setForeground(new java.awt.Color(255, 255, 255));
+        LetraZ.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LetraZMouseClicked(evt);
+            }
+        });
+        getContentPane().add(LetraZ, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 640, 100, 50));
+
+        LetraK.setForeground(new java.awt.Color(255, 255, 255));
+        LetraK.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LetraKMouseClicked(evt);
+            }
+        });
+        getContentPane().add(LetraK, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 570, 100, 50));
+
+        Letra7.setForeground(new java.awt.Color(255, 255, 255));
+        Letra7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Letra7MouseClicked(evt);
+            }
+        });
+        getContentPane().add(Letra7, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 430, 110, 60));
+
+        LetraR.setForeground(new java.awt.Color(255, 255, 255));
+        LetraR.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LetraRMouseClicked(evt);
+            }
+        });
+        getContentPane().add(LetraR, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 500, 100, 60));
+
+        Letra2.setForeground(new java.awt.Color(255, 255, 255));
+        Letra2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Letra2MouseClicked(evt);
+            }
+        });
+        getContentPane().add(Letra2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 430, 110, 60));
+
+        LetraF.setForeground(new java.awt.Color(255, 255, 255));
+        LetraF.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LetraFMouseClicked(evt);
+            }
+        });
+        getContentPane().add(LetraF, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 570, 100, 50));
+
+        Letra5.setForeground(new java.awt.Color(255, 255, 255));
+        Letra5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Letra5MouseClicked(evt);
+            }
+        });
+        getContentPane().add(Letra5, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 430, 110, 60));
+
+        Letra3.setForeground(new java.awt.Color(255, 255, 255));
+        Letra3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Letra3MouseClicked(evt);
+            }
+        });
+        getContentPane().add(Letra3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 430, 110, 60));
+
+        LetraE.setForeground(new java.awt.Color(255, 255, 255));
+        LetraE.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LetraEMouseClicked(evt);
+            }
+        });
+        getContentPane().add(LetraE, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 500, 100, 60));
+
+        LetraP.setForeground(new java.awt.Color(255, 255, 255));
+        LetraP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LetraPMouseClicked(evt);
+            }
+        });
+        getContentPane().add(LetraP, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 500, 100, 60));
+
+        LetraB.setForeground(new java.awt.Color(255, 255, 255));
+        LetraB.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LetraBMouseClicked(evt);
+            }
+        });
+        getContentPane().add(LetraB, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 640, 100, 50));
+
+        LetraY.setForeground(new java.awt.Color(255, 255, 255));
+        LetraY.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LetraYMouseClicked(evt);
+            }
+        });
+        getContentPane().add(LetraY, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 500, 110, 60));
+
+        LetraH.setForeground(new java.awt.Color(255, 255, 255));
+        LetraH.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LetraHMouseClicked(evt);
+            }
+        });
+        getContentPane().add(LetraH, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 570, 110, 50));
+
+        LetraO.setForeground(new java.awt.Color(255, 255, 255));
+        LetraO.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LetraOMouseClicked(evt);
+            }
+        });
+        getContentPane().add(LetraO, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 500, 100, 60));
+
+        LetraC.setForeground(new java.awt.Color(255, 255, 255));
+        LetraC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LetraCMouseClicked(evt);
+            }
+        });
+        getContentPane().add(LetraC, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 640, 110, 50));
+
+        LBack.setForeground(new java.awt.Color(255, 255, 255));
+        LBack.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LBackMouseClicked(evt);
+            }
+        });
+        getContentPane().add(LBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 700, 430, 50));
+
+        LetraV.setForeground(new java.awt.Color(255, 255, 255));
+        LetraV.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LetraVMouseClicked(evt);
+            }
+        });
+        getContentPane().add(LetraV, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 640, 100, 50));
+
+        Letra4.setForeground(new java.awt.Color(255, 255, 255));
+        Letra4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Letra4MouseClicked(evt);
+            }
+        });
+        getContentPane().add(Letra4, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 430, 110, 60));
+
+        LetraJ.setForeground(new java.awt.Color(255, 255, 255));
+        LetraJ.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LetraJMouseClicked(evt);
+            }
+        });
+        getContentPane().add(LetraJ, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 570, 110, 50));
+
+        Letra8.setForeground(new java.awt.Color(255, 255, 255));
+        Letra8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Letra8MouseClicked(evt);
+            }
+        });
+        getContentPane().add(Letra8, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 430, 110, 60));
+
+        LetraG.setForeground(new java.awt.Color(255, 255, 255));
+        LetraG.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LetraGMouseClicked(evt);
+            }
+        });
+        getContentPane().add(LetraG, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 570, 100, 50));
+
+        LetraL.setForeground(new java.awt.Color(255, 255, 255));
+        LetraL.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LetraLMouseClicked(evt);
+            }
+        });
+        getContentPane().add(LetraL, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 570, 100, 50));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -222,6 +566,393 @@ public class Log_in extends javax.swing.JFrame {
             background.setIcon(new ImageIcon("src/surce/nuevasP/login E.png"));
         }
     }//GEN-LAST:event_formWindowActivated
+
+    private void Letra1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Letra1MouseClicked
+        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if(testField.equals(id)){
+            pushtecla("1", id);
+        }else if(testField.equals(pass)){
+            pushtecla("1", pass);
+        }
+    }//GEN-LAST:event_Letra1MouseClicked
+
+    private void LSpaceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LSpaceMouseClicked
+        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if(testField.equals(id)){
+            pushtecla(" ", id);
+        }else if(testField.equals(pass)){
+            pushtecla(" ", pass);
+        
+        }
+    }//GEN-LAST:event_LSpaceMouseClicked
+
+    private void LetraNMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraNMouseClicked
+        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if(testField.equals(id)){
+            pushtecla("n", id);
+        }else if(testField.equals(pass)){
+            pushtecla("n", pass);
+        
+        }
+    }//GEN-LAST:event_LetraNMouseClicked
+
+    private void LetraAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraAMouseClicked
+        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if(testField.equals(id)){
+            pushtecla("a", id);
+        }else if(testField.equals(pass)){
+            pushtecla("a", pass);
+        }
+    }//GEN-LAST:event_LetraAMouseClicked
+
+    private void LetraMMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraMMouseClicked
+        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if(testField.equals(id)){
+            pushtecla("m", id);
+        }else if(testField.equals(pass)){
+            pushtecla("m", pass);
+        
+        }
+    }//GEN-LAST:event_LetraMMouseClicked
+
+    private void Letra0MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Letra0MouseClicked
+        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if(testField.equals(id)){
+            pushtecla("0", id);
+        }else if(testField.equals(pass)){
+            pushtecla("0", pass);
+        
+        }
+    }//GEN-LAST:event_Letra0MouseClicked
+
+    private void LetraXMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraXMouseClicked
+        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if(testField.equals(id)){
+            pushtecla("x", id);
+        }else if(testField.equals(pass)){
+            pushtecla("x", pass);
+        
+        }
+    }//GEN-LAST:event_LetraXMouseClicked
+
+    private void LetraUMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraUMouseClicked
+        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if(testField.equals(id)){
+            pushtecla("u", id);
+        }else if(testField.equals(pass)){
+            pushtecla("u", pass);
+        
+        }
+    }//GEN-LAST:event_LetraUMouseClicked
+
+    private void LetraQMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraQMouseClicked
+        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if(testField.equals(id)){
+            pushtecla("q", id);
+        }else if(testField.equals(pass)){
+            pushtecla("q", pass);
+        
+        }
+    }//GEN-LAST:event_LetraQMouseClicked
+
+    private void Letra9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Letra9MouseClicked
+        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if(testField.equals(id)){
+            pushtecla("9", id);
+        }else if(testField.equals(pass)){
+            pushtecla("9", pass);
+        
+        }
+    }//GEN-LAST:event_Letra9MouseClicked
+
+    private void Letra6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Letra6MouseClicked
+        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if(testField.equals(id)){
+            pushtecla("6", id);
+        }else if(testField.equals(pass)){
+            pushtecla("6", pass);
+        
+        }
+    }//GEN-LAST:event_Letra6MouseClicked
+
+    private void LetraSMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraSMouseClicked
+        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if(testField.equals(id)){
+            pushtecla("s", id);
+        }else if(testField.equals(pass)){
+            pushtecla("s", pass);
+        
+        }
+    }//GEN-LAST:event_LetraSMouseClicked
+
+    private void LetraWMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraWMouseClicked
+        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if(testField.equals(id)){
+            pushtecla("w", id);
+        }else if(testField.equals(pass)){
+            pushtecla("w", pass);
+        
+        }
+    }//GEN-LAST:event_LetraWMouseClicked
+
+    private void LetraTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraTMouseClicked
+        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if(testField.equals(id)){
+            pushtecla("t", id);
+        }else if(testField.equals(pass)){
+            pushtecla("t", pass);
+        
+        }
+    }//GEN-LAST:event_LetraTMouseClicked
+
+    private void LetraIMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraIMouseClicked
+        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if(testField.equals(id)){
+            pushtecla("i", id);
+        }else if(testField.equals(pass)){
+            pushtecla("i", pass);
+        
+        }
+    }//GEN-LAST:event_LetraIMouseClicked
+
+    private void LetraDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraDMouseClicked
+        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if(testField.equals(id)){
+            pushtecla("d", id);
+        }else if(testField.equals(pass)){
+            pushtecla("d", pass);
+        
+        }
+    }//GEN-LAST:event_LetraDMouseClicked
+
+    private void LetraZMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraZMouseClicked
+        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if(testField.equals(id)){
+            pushtecla("z", id);
+        }else if(testField.equals(pass)){
+            pushtecla("z", pass);
+        
+        }
+    }//GEN-LAST:event_LetraZMouseClicked
+
+    private void LetraKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraKMouseClicked
+        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if(testField.equals(id)){
+            pushtecla("k", id);
+        }else if(testField.equals(pass)){
+            pushtecla("k", pass);
+        
+        }
+    }//GEN-LAST:event_LetraKMouseClicked
+
+    private void Letra7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Letra7MouseClicked
+        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if(testField.equals(id)){
+            pushtecla("7", id);
+        }else if(testField.equals(pass)){
+            pushtecla("7", pass);
+       
+        }
+    }//GEN-LAST:event_Letra7MouseClicked
+
+    private void LetraRMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraRMouseClicked
+        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if(testField.equals(id)){
+            pushtecla("r", id);
+        }else if(testField.equals(pass)){
+            pushtecla("r", pass);
+        
+        }
+    }//GEN-LAST:event_LetraRMouseClicked
+
+    private void Letra2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Letra2MouseClicked
+        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if(testField.equals(id)){
+            pushtecla("2", id);
+        }else if(testField.equals(pass)){
+            pushtecla("2", pass);
+       
+        }
+    }//GEN-LAST:event_Letra2MouseClicked
+
+    private void LetraFMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraFMouseClicked
+        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if(testField.equals(id)){
+            pushtecla("f", id);
+        }else if(testField.equals(pass)){
+            pushtecla("f", pass);
+       
+        }
+    }//GEN-LAST:event_LetraFMouseClicked
+
+    private void Letra5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Letra5MouseClicked
+        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if(testField.equals(id)){
+            pushtecla("5", id);
+        }else if(testField.equals(pass)){
+            pushtecla("5", pass);
+        
+        }
+    }//GEN-LAST:event_Letra5MouseClicked
+
+    private void Letra3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Letra3MouseClicked
+        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if(testField.equals(id)){
+            pushtecla("3", id);
+        }else if(testField.equals(pass)){
+            pushtecla("3", pass);
+        
+        }
+    }//GEN-LAST:event_Letra3MouseClicked
+
+    private void LetraEMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraEMouseClicked
+        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if(testField.equals(id)){
+            pushtecla("e", id);
+        }else if(testField.equals(pass)){
+            pushtecla("e", pass);
+       
+        }
+    }//GEN-LAST:event_LetraEMouseClicked
+
+    private void LetraPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraPMouseClicked
+        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if(testField.equals(id)){
+            pushtecla("p", id);
+        }else if(testField.equals(pass)){
+            pushtecla("p", pass);
+       
+        }
+    }//GEN-LAST:event_LetraPMouseClicked
+
+    private void LetraBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraBMouseClicked
+        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if(testField.equals(id)){
+            pushtecla("b", id);
+        }else if(testField.equals(pass)){
+            pushtecla("b", pass);
+        
+        }
+    }//GEN-LAST:event_LetraBMouseClicked
+
+    private void LetraYMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraYMouseClicked
+        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if(testField.equals(id)){
+            pushtecla("y", id);
+        }else if(testField.equals(pass)){
+            pushtecla("y", pass);
+        
+        }
+    }//GEN-LAST:event_LetraYMouseClicked
+
+    private void LetraHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraHMouseClicked
+        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if(testField.equals(id)){
+            pushtecla("h", id);
+        }else if(testField.equals(pass)){
+            pushtecla("h", pass);
+        
+        }
+    }//GEN-LAST:event_LetraHMouseClicked
+
+    private void LetraOMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraOMouseClicked
+        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if(testField.equals(id)){
+            pushtecla("o", id);
+        }else if(testField.equals(pass)){
+            pushtecla("o", pass);
+        
+        }
+    }//GEN-LAST:event_LetraOMouseClicked
+
+    private void LetraCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraCMouseClicked
+        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if(testField.equals(id)){
+            pushtecla("c", id);
+        }else if(testField.equals(pass)){
+            pushtecla("c", pass);
+        
+        }
+    }//GEN-LAST:event_LetraCMouseClicked
+
+    private void LBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LBackMouseClicked
+        // TODO add your handling code here:
+        int pos=id.getCaretPosition();
+        String text= id.getText();
+        String texto= text.substring(0, pos-1)+text.substring(pos, text.length());
+        id.setText(texto);
+        id.setCaretPosition(pos-1);
+    }//GEN-LAST:event_LBackMouseClicked
+
+    private void LetraVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraVMouseClicked
+        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if(testField.equals(id)){
+            pushtecla("v", id);
+        }else if(testField.equals(pass)){
+            pushtecla("v", pass);
+        
+        }
+    }//GEN-LAST:event_LetraVMouseClicked
+
+    private void Letra4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Letra4MouseClicked
+        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if(testField.equals(id)){
+            pushtecla("4", id);
+        }else if(testField.equals(pass)){
+            pushtecla("4", pass);
+       
+        }
+    }//GEN-LAST:event_Letra4MouseClicked
+
+    private void LetraJMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraJMouseClicked
+        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if(testField.equals(id)){
+            pushtecla("j", id);
+        }else if(testField.equals(pass)){
+            pushtecla("j", pass);
+       
+        }
+    }//GEN-LAST:event_LetraJMouseClicked
+
+    private void Letra8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Letra8MouseClicked
+        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if(testField.equals(id)){
+            pushtecla("8", id);
+        }else if(testField.equals(pass)){
+            pushtecla("8", pass);
+        
+        }
+    }//GEN-LAST:event_Letra8MouseClicked
+
+    private void LetraGMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraGMouseClicked
+        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if(testField.equals(id)){
+            pushtecla("g", id);
+        }else if(testField.equals(pass)){
+            pushtecla("g", pass);
+       
+        }
+    }//GEN-LAST:event_LetraGMouseClicked
+
+    private void LetraLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraLMouseClicked
+        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if(testField.equals(id)){
+            pushtecla("l", id);
+        }else if(testField.equals(pass)){
+            pushtecla("l", pass);
+        
+        }
+    }//GEN-LAST:event_LetraLMouseClicked
+    //Teclado
+    public void pushtecla(String letra, JTextField txt ){
+   
+        String aux = txt.getText();              
+        int pos=txt.getCaretPosition();
+        String texto= aux.substring(0, pos)+letra+aux.substring(pos, aux.length());
+        txt.setText(texto);
+        txt.setCaretPosition(pos+1);
+    }
+    
     public void borradatos() {
         id.setText("");
         pass.setText("");
@@ -271,8 +1002,46 @@ public class Log_in extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LBack;
     private javax.swing.JLabel LBerror;
     private javax.swing.JLabel LBerror1;
+    private javax.swing.JLabel LSpace;
+    private javax.swing.JLabel Letra0;
+    private javax.swing.JLabel Letra1;
+    private javax.swing.JLabel Letra2;
+    private javax.swing.JLabel Letra3;
+    private javax.swing.JLabel Letra4;
+    private javax.swing.JLabel Letra5;
+    private javax.swing.JLabel Letra6;
+    private javax.swing.JLabel Letra7;
+    private javax.swing.JLabel Letra8;
+    private javax.swing.JLabel Letra9;
+    private javax.swing.JLabel LetraA;
+    private javax.swing.JLabel LetraB;
+    private javax.swing.JLabel LetraC;
+    private javax.swing.JLabel LetraD;
+    private javax.swing.JLabel LetraE;
+    private javax.swing.JLabel LetraF;
+    private javax.swing.JLabel LetraG;
+    private javax.swing.JLabel LetraH;
+    private javax.swing.JLabel LetraI;
+    private javax.swing.JLabel LetraJ;
+    private javax.swing.JLabel LetraK;
+    private javax.swing.JLabel LetraL;
+    private javax.swing.JLabel LetraM;
+    private javax.swing.JLabel LetraN;
+    private javax.swing.JLabel LetraO;
+    private javax.swing.JLabel LetraP;
+    private javax.swing.JLabel LetraQ;
+    private javax.swing.JLabel LetraR;
+    private javax.swing.JLabel LetraS;
+    private javax.swing.JLabel LetraT;
+    private javax.swing.JLabel LetraU;
+    private javax.swing.JLabel LetraV;
+    private javax.swing.JLabel LetraW;
+    private javax.swing.JLabel LetraX;
+    private javax.swing.JLabel LetraY;
+    private javax.swing.JLabel LetraZ;
     public static javax.swing.JLabel background;
     private javax.swing.JLabel boton;
     public javax.swing.JTextField id;

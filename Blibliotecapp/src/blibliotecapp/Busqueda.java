@@ -508,7 +508,7 @@ public class Busqueda extends javax.swing.JFrame {
         if(VarG.idioma.equals("ingles")){
                 LBFondo.setIcon(new ImageIcon("src/surce/nuevasP/busquedaB I.png"));
             }else{
-                LBFondo.setIcon(new ImageIcon("src/surce/nuevasP/busquedaA I.png"));
+                LBFondo.setIcon(new ImageIcon("src/surce/nuevasP/busquedaA E.png"));
             }
         if(!bandera){
         LBBusqueda.setVisible(false);
@@ -560,11 +560,7 @@ public class Busqueda extends javax.swing.JFrame {
     }//GEN-LAST:event_LBBusBasicaMouseClicked
 
     private void jLBBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBBuscarMouseClicked
-        /*
-        TxtTitulo
-        TxtAutor
-        TxtAnio
-        */
+     
         String busqueda = "";
         String titulo ="";
         String autor="";
@@ -572,7 +568,7 @@ public class Busqueda extends javax.swing.JFrame {
         if (!bandera){
             if (TxtPalabra.getText().trim().isEmpty()){
                 System.out.println("No hay nada escrito en basica");
-                //Poner Aviso de falta de datos
+                //Poner Aviso de falta de datos!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             }else{
                 titulo=TxtPalabra.getText();
                 System.out.println(titulo);
@@ -599,7 +595,8 @@ public class Busqueda extends javax.swing.JFrame {
                     anio=TxtAnio.getText();
                     System.out.println(anio);
                 }    
-                
+                VarG.jfLibros.setVisible(true);
+                this.setVisible(false);
             }    
         }
         
@@ -1030,11 +1027,42 @@ public class Busqueda extends javax.swing.JFrame {
 
     private void LBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LBackMouseClicked
         // TODO add your handling code here:
-        int pos=TxtPalabra.getCaretPosition();
-        String text= TxtPalabra.getText();                             
-        String texto= text.substring(0, pos-1)+text.substring(pos, text.length());
-        TxtPalabra.setText(texto);
-        TxtPalabra.setCaretPosition(pos-1);
+        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if(testField.equals(TxtPalabra)){
+            if (!TxtPalabra.getText().trim().isEmpty()){
+                int pos=TxtPalabra.getCaretPosition();
+                String text= TxtPalabra.getText();                             
+                String texto= text.substring(0, pos-1)+text.substring(pos, text.length());
+                TxtPalabra.setText(texto);
+                TxtPalabra.setCaretPosition(pos-1);
+            }
+        }else if(testField.equals(TxtTitulo)){
+            if(!TxtTitulo.getText().trim().isEmpty()){
+                int pos=TxtTitulo.getCaretPosition();
+                String text= TxtTitulo.getText();                             
+                String texto= text.substring(0, pos-1)+text.substring(pos, text.length());
+                TxtTitulo.setText(texto);
+                TxtTitulo.setCaretPosition(pos-1);
+            }
+        }else if(testField.equals(TxtAutor)){
+            if(!TxtAutor.getText().trim().isEmpty()){
+                int pos=TxtAutor.getCaretPosition();
+                String text= TxtAutor.getText();                             
+                String texto= text.substring(0, pos-1)+text.substring(pos, text.length());
+                TxtAutor.setText(texto);
+                TxtAutor.setCaretPosition(pos-1);
+            }
+            
+        }else if(testField.equals(TxtAnio)){
+            if(!TxtAnio.getText().trim().isEmpty()){
+                int pos=TxtAnio.getCaretPosition();
+                String text= TxtAnio.getText();                             
+                String texto= text.substring(0, pos-1)+text.substring(pos, text.length());
+                TxtAnio.setText(texto);
+                TxtAnio.setCaretPosition(pos-1);
+            }
+            
+        }
     }//GEN-LAST:event_LBackMouseClicked
 
     private void Letra3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Letra3MouseClicked
