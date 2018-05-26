@@ -33,7 +33,7 @@ public class VarG {
     //Variables de las pantallas
     public static Log_in jfLogin=null;
     public static perfilDatos jfPerfil=null;
-    public static Idioma jfIdioma=null;
+    public static Idioma1 jfIdioma=null;
     public static Prestamo jfPrestamo=null;
     public static Renovar jfRenovar=null;
     public static Inicio jfInicio=null;

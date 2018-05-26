@@ -85,7 +85,7 @@ public class Blibliotecapp extends JComponent {
         VarG.jfPerfil.setLocationRelativeTo(null);
 
         //Instancia de la pantalla del cambio de idioma
-        VarG.jfIdioma = new Idioma();
+        VarG.jfIdioma = new Idioma1();
         VarG.jfIdioma.pack();
         VarG.jfIdioma.setLocationRelativeTo(null);
 
