@@ -186,10 +186,10 @@ public class Blibliotecapp extends JComponent {
         }
         switch (VarG.idioma) {
             case "espanol":
-                boton = new ImageIcon("src/surce/espaniol.png").getImage();
+                boton = new ImageIcon("src/surce/botonesE.png").getImage();
                 break;
             case "ingles":
-                boton = new ImageIcon("src/surce/ingles.png").getImage();
+                boton = new ImageIcon("src/surce/botonesI.png").getImage();
                 break;
             case "frances":
                 boton = new ImageIcon("src/surce/espaniol.png").getImage();
