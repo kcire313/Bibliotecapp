@@ -69,12 +69,16 @@ public class Devolucion extends javax.swing.JFrame {
         VarG.jfLogin.setVisible(true);
         VarG.jfLogin.id.requestFocus();  
         System.out.println("return profile data");
+        VarG.anActual = VarG.animaciones.get(8);
+        VarG.anActual.getImage().flush();
     }//GEN-LAST:event_regresarMouseClicked
 
     private void homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeMouseClicked
         // TODO add your handling code here:
         VarG.jfLogin.setVisible(false);
         this.setVisible(false);
+        VarG.anActual = VarG.animaciones.get(8);
+        VarG.anActual.getImage().flush();
     }//GEN-LAST:event_homeMouseClicked
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated

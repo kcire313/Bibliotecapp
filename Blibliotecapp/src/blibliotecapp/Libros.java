@@ -150,11 +150,15 @@ public class Libros extends javax.swing.JFrame {
         VarG.jfBusqueda.setVisible(true);
         this.setVisible(false);
         System.out.println("return profile data");
+        VarG.anActual = VarG.animaciones.get(9);
+        VarG.anActual.getImage().flush();
     }//GEN-LAST:event_regresarMouseClicked
 
     private void homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeMouseClicked
         VarG.jfBusqueda.setVisible(false);
         this.setVisible(false);
+        VarG.anActual = VarG.animaciones.get(9);
+        VarG.anActual.getImage().flush();
     }//GEN-LAST:event_homeMouseClicked
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated

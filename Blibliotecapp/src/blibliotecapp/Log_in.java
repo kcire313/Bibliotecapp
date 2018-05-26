@@ -230,7 +230,7 @@ public class Log_in extends javax.swing.JFrame {
         // TODO add your handling code here:
         borradatos();
         this.setVisible(false);
-        VarG.anActual = VarG.anClose;
+        VarG.anActual = VarG.animaciones.get(6);
         VarG.anActual.getImage().flush();
     }//GEN-LAST:event_jLabel2MouseClicked
 

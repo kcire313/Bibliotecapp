@@ -74,6 +74,8 @@ public class Idioma1 extends javax.swing.JFrame {
     private void regresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresarMouseClicked
         // TODO add your handling code here:
         this.setVisible(false);
+        VarG.anActual = VarG.animaciones.get(5);
+        VarG.anActual.getImage().flush();
     }//GEN-LAST:event_regresarMouseClicked
 
     private void espanolMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_espanolMouseClicked

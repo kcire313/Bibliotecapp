@@ -15,6 +15,7 @@ import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -60,9 +61,19 @@ public class Blibliotecapp extends JComponent {
             JOptionPane.showMessageDialog(null, e.getLocalizedMessage());
         }
         //Instancias de animaciones
-        VarG.anOpen = new javax.swing.ImageIcon(getClass().getResource("/surce/gif/libro-abre.gif"));
-        VarG.anClose = new javax.swing.ImageIcon(getClass().getResource("/surce/gif/libro-cierra.gif"));
-        VarG.anActual = VarG.anOpen;
+        VarG.animaciones = new ArrayList<ImageIcon>();
+        VarG.animaciones.add(new ImageIcon("src/surce/gif/L-A-B.gif"));    //0
+        VarG.animaciones.add(new ImageIcon("src/surce/gif/L-A-I.gif"));    //1
+        VarG.animaciones.add(new ImageIcon("src/surce/gif/L-A-L.gif"));    //2
+        VarG.animaciones.add(new ImageIcon("src/surce/gif/L-C-B.gif"));    //3
+        VarG.animaciones.add(new ImageIcon("src/surce/gif/L-C-C.gif"));    //4
+        VarG.animaciones.add(new ImageIcon("src/surce/gif/L-C-I.gif"));    //5
+        VarG.animaciones.add(new ImageIcon("src/surce/gif/L-C-L.gif"));    //6
+        VarG.animaciones.add(new ImageIcon("src/surce/gif/L-C-P.gif"));    //7
+        VarG.animaciones.add(new ImageIcon("src/surce/gif/L-C-PD.gif"));   //8
+        VarG.animaciones.add(new ImageIcon("src/surce/gif/L-C-Q.gif"));    //9
+        VarG.animaciones.add(new ImageIcon("src/surce/gif/L-C-R.gif"));    //10
+        VarG.anActual = new ImageIcon("src/surce/libro-abre.gif");
 
         //Instancia de la pantalla de Inicio
         VarG.jfInicio = new Inicio();

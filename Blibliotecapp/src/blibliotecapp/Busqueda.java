@@ -502,6 +502,8 @@ public class Busqueda extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.setVisible(false);        
         System.out.println("return to menu");
+        VarG.anActual = VarG.animaciones.get(3);
+        VarG.anActual.getImage().flush();
     }//GEN-LAST:event_regresarMouseClicked
 
     private void LBBusAvanzadaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LBBusAvanzadaMouseClicked

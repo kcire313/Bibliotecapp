@@ -5,6 +5,7 @@
  */
 package blibliotecapp;
 
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import sun.audio.AudioStream;
 
@@ -53,9 +54,8 @@ public class VarG {
     public static AudioStream aCanjear; //Boton de los canjear
     
     //Gifs de transicion
-    public static ImageIcon anOpen;
-    public static ImageIcon anClose; 
     public static ImageIcon anActual; 
+    public static ArrayList<ImageIcon> animaciones;
         
     //Conexión con MySQL
     public static MySqlConexion objConn = new MySqlConexion();
