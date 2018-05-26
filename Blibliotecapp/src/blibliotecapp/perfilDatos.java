@@ -35,6 +35,10 @@ public class perfilDatos extends javax.swing.JFrame {
         home = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        LBID = new javax.swing.JLabel();
+        LBPuntaje = new javax.swing.JLabel();
+        LBNombre = new javax.swing.JLabel();
+        LBHistorial = new javax.swing.JLabel();
         LBFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -59,20 +63,39 @@ public class perfilDatos extends javax.swing.JFrame {
         });
         getContentPane().add(home, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 170, 140));
 
+        jTable1.setFont(new java.awt.Font("Arial Unicode MS", 0, 20)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID Prestamo", "ID Libro", "Titulo", "Fecha Prestamo", "Fecha Devolucion", "Devuelto", "# Renovaciones"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 220, -1, -1));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 340, 720, 370));
+
+        LBID.setFont(new java.awt.Font("Calibri", 0, 40)); // NOI18N
+        LBID.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(LBID, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 410, 490, 60));
+
+        LBPuntaje.setFont(new java.awt.Font("Calibri", 0, 40)); // NOI18N
+        LBPuntaje.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(LBPuntaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 490, 490, 60));
+
+        LBNombre.setFont(new java.awt.Font("Calibri", 0, 40)); // NOI18N
+        LBNombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(LBNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 490, 60));
+
+        LBHistorial.setFont(new java.awt.Font("Rockwell", 1, 60)); // NOI18N
+        LBHistorial.setForeground(new java.awt.Color(0, 102, 204));
+        LBHistorial.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LBHistorial.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        getContentPane().add(LBHistorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 250, 720, 90));
 
         LBFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/nuevasP/perfil E.png"))); // NOI18N
         getContentPane().add(LBFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 770));
@@ -97,8 +120,16 @@ public class perfilDatos extends javax.swing.JFrame {
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         if(VarG.idioma.equals("espanol")){
             LBFondo.setIcon(new ImageIcon("src/surce/nuevasP/perfil E.png"));
+            LBHistorial.setText("Historial de Prestamos");
+            LBNombre.setText(VarG.nombre + " " + VarG.appat + " " + VarG.apmat);
+            LBID.setText("ID: " + Integer.toString(VarG.id_usuario));
+            LBPuntaje.setText("Puntaje: "+Integer.toString(VarG.puntaje));
         }else{
             LBFondo.setIcon(new ImageIcon("src/surce/nuevasP/perfil I.png"));
+            LBHistorial.setText("Borrowed History");
+            LBNombre.setText(VarG.nombre + " " + VarG.appat + " " + VarG.apmat);
+            LBID.setText("ID: " + Integer.toString(VarG.id_usuario));
+            LBPuntaje.setText("Current Points: "+Integer.toString(VarG.puntaje));
         }
     }//GEN-LAST:event_formWindowActivated
 
@@ -139,6 +170,10 @@ public class perfilDatos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LBFondo;
+    private javax.swing.JLabel LBHistorial;
+    private javax.swing.JLabel LBID;
+    private javax.swing.JLabel LBNombre;
+    private javax.swing.JLabel LBPuntaje;
     private javax.swing.JLabel home;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

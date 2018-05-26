@@ -96,14 +96,13 @@ public class Canjear extends javax.swing.JFrame {
     }//GEN-LAST:event_homeMouseClicked
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        LBpuntaje.setText(Integer.toString(VarG.puntaje)  + " Pts.");
         if(VarG.idioma.equals("espanol")){
-            LBpuntos.setText("Puntaje Actual");
-            LBpuntaje.setText("0 Pts.");
             LBfondo.setIcon(new ImageIcon("src/surce/nuevasP/cupones E.png"));
+            LBpuntos.setText("Puntaje Actual");
         }else{
-            LBpuntos.setText("Current Score");
-            LBpuntaje.setText("0 Pts.");
             LBfondo.setIcon(new ImageIcon("src/surce/nuevasP/cupones I.png"));
+            LBpuntos.setText("Current Score");
         }
     }//GEN-LAST:event_formWindowActivated
 

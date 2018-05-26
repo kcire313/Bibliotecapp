@@ -506,7 +506,7 @@ public class Busqueda extends javax.swing.JFrame {
 
     private void LBBusAvanzadaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LBBusAvanzadaMouseClicked
         if(VarG.idioma.equals("ingles")){
-                LBFondo.setIcon(new ImageIcon("src/surce/nuevasP/busquedaB I.png"));
+                LBFondo.setIcon(new ImageIcon("src/surce/nuevasP/busquedaA I.png"));
             }else{
                 LBFondo.setIcon(new ImageIcon("src/surce/nuevasP/busquedaA E.png"));
             }
