@@ -33,9 +33,9 @@ public class Canjear extends javax.swing.JFrame {
 
         regresar = new javax.swing.JLabel();
         home = new javax.swing.JLabel();
-        LBboton = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        Btllavero = new javax.swing.JLabel();
+        Bttasa = new javax.swing.JLabel();
+        Btpluma = new javax.swing.JLabel();
         LBpuntos = new javax.swing.JLabel();
         LBpuntaje = new javax.swing.JLabel();
         LBfondo = new javax.swing.JLabel();
@@ -61,9 +61,15 @@ public class Canjear extends javax.swing.JFrame {
             }
         });
         getContentPane().add(home, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 170, 140));
-        getContentPane().add(LBboton, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 590, 360, 110));
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 590, 360, 110));
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 590, 360, 110));
+        getContentPane().add(Btllavero, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 590, 360, 110));
+        getContentPane().add(Bttasa, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 590, 360, 110));
+
+        Btpluma.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtplumaMouseClicked(evt);
+            }
+        });
+        getContentPane().add(Btpluma, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 590, 360, 110));
 
         LBpuntos.setFont(new java.awt.Font("Calibri", 1, 36)); // NOI18N
         LBpuntos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -110,6 +116,10 @@ public class Canjear extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formWindowActivated
 
+    private void BtplumaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtplumaMouseClicked
+        
+    }//GEN-LAST:event_BtplumaMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -149,13 +159,13 @@ public class Canjear extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel LBboton;
+    private javax.swing.JLabel Btllavero;
+    private javax.swing.JLabel Btpluma;
+    private javax.swing.JLabel Bttasa;
     private javax.swing.JLabel LBfondo;
     private javax.swing.JLabel LBpuntaje;
     private javax.swing.JLabel LBpuntos;
     private javax.swing.JLabel home;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel regresar;
     // End of variables declaration//GEN-END:variables
 }

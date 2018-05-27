@@ -84,10 +84,10 @@ public class Devolucion extends javax.swing.JFrame {
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         if(VarG.idioma.equals("espanol")){
             
-            LBFondo.setIcon(new ImageIcon("src/surce/nuevasP/devolucion E.png"));
+            LBFondo.setIcon(new ImageIcon("src/surce/nuevasP/devolucionB E.png"));
         }else{
          
-            LBFondo.setIcon(new ImageIcon("src/surce/nuevasP/devolucion I.png"));
+            LBFondo.setIcon(new ImageIcon("src/surce/nuevasP/devolucionB I.png"));
         }
     }//GEN-LAST:event_formWindowActivated
 

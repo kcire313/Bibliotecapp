@@ -47,7 +47,7 @@ public class Server {
             @Override
             public String bookData(String id) {                
                 String results = "";
-                String consulta = "select usa.id_prestamo, usuario.id_usuario, libro.id_libro, usa.devuelto, usa.renovacion, libro.titulo, libro.autor, libro.ubicacion, libro.stock, libro.anio, usa.fecha_pres, usa.fecha_dev "
+                String consulta = "select usa.id_prestamo, usuario.id_usuario, libro.id_libro, usa.devuelto, usa.renovacion, libro.titulo, libro.autor, libro.ubicacion, libro.cover, libro.anio, usa.fecha_pres, usa.fecha_dev "
                         + "from libro,usa,usuario where usuario.id_usuario='" + id
                         + "' and usuario.id_usuario=usa.id_usuario"
                         + " and usa.id_libro=libro.id_libro;";               
@@ -71,8 +71,8 @@ public class Server {
                         String autor = VarG.objConn.rs.getString("autor");
                         int anio = VarG.objConn.rs.getInt("anio");
                         int ubicacion = VarG.objConn.rs.getInt("ubicacion");
-                        int stock = VarG.objConn.rs.getInt("stock");                        
-                        results=id_prestamo+"%"+id_usuario+"%"+id_libro+"%"+fecha_pres+"%"+fecha_dev+"%"+devuelto+"%"+renovacion+"%"+titulo+"%"+autor+"%"+anio+"%"+ubicacion+"%"+stock+"&";
+                        int cover = VarG.objConn.rs.getInt("cover");                        
+                        results=id_prestamo+"%"+id_usuario+"%"+id_libro+"%"+fecha_pres+"%"+fecha_dev+"%"+devuelto+"%"+renovacion+"%"+titulo+"%"+autor+"%"+anio+"%"+ubicacion+"%"+cover+"&";
                         //libros.add(new LibroG(id_prestamo, id_usuario, id_libro, fecha_pres, fecha_dev, devuelto, renovacion, titulo, autor, anio, ubicacion, stock));
                         //System.out.println(libros.get(0).getTitulo());
                         while (VarG.objConn.rs.next()) {
@@ -92,8 +92,8 @@ public class Server {
                             autor = VarG.objConn.rs.getString("autor");
                             anio = VarG.objConn.rs.getInt("anio");
                             ubicacion = VarG.objConn.rs.getInt("ubicacion");
-                            stock = VarG.objConn.rs.getInt("stock");
-                            results+=id_prestamo+"%"+id_usuario+"%"+id_libro+"%"+fecha_pres+"%"+fecha_dev+"%"+devuelto+"%"+renovacion+"%"+titulo+"%"+autor+"%"+anio+"%"+ubicacion+"%"+stock+"&";
+                            cover = VarG.objConn.rs.getInt("cover");
+                            results+=id_prestamo+"%"+id_usuario+"%"+id_libro+"%"+fecha_pres+"%"+fecha_dev+"%"+devuelto+"%"+renovacion+"%"+titulo+"%"+autor+"%"+anio+"%"+ubicacion+"%"+cover+"&";
                             //libros.add(new LibroG(id_prestamo, id_usuario, id_libro, fecha_pres, fecha_dev, devuelto, renovacion, titulo, autor, anio, ubicacion, stock));
                         }
                     }

@@ -21,9 +21,9 @@ public class LibroG {
     private String autor;
     private int anio;
     private int ubicacion;
-    private int stock;
+    private int cover;
 
-    public LibroG(int id_prestamo, int id_usuario, String id_libro, String fecha_pres, String fecha_dev, boolean devuelto, int renovacion, String titulo, String autor, int anio, int ubicacion, int stock) {
+    public LibroG(int id_prestamo, int id_usuario, String id_libro, String fecha_pres, String fecha_dev, boolean devuelto, int renovacion, String titulo, String autor, int anio, int ubicacion, int cover) {
         this.id_prestamo = id_prestamo;
         this.id_usuario = id_usuario;
         this.id_libro = id_libro;
@@ -35,7 +35,7 @@ public class LibroG {
         this.autor = autor;
         this.anio = anio;
         this.ubicacion = ubicacion;
-        this.stock = stock;
+        this.cover  = cover;
     }
 
     public int getId_prestamo() {
@@ -127,14 +127,8 @@ public class LibroG {
     }
 
     public int getStock() {
-        return stock;
+        return cover;
     }
 
-    public void setStock(int stock) {
-        this.stock = stock;
-    }
-    
-    
-    
-    
+
 }
