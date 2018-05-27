@@ -440,7 +440,7 @@ public class Blibliotecapp extends JComponent {
                     music = new FileInputStream(new File("src\\Audios\\CanjeaEsp.wav"));
                     break;
                 case "ingles":
-                    music = new FileInputStream(new File("src\\Audios\\CanjeaEsp.wav"));
+                    music = new FileInputStream(new File("src\\Audios\\CanjeaEng.wav"));
                     break;
                 case "frances":
                     music = new FileInputStream(new File("src\\Audios\\CanjeaEsp.wav"));

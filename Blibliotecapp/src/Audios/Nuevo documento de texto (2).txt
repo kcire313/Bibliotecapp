@@ -1,3 +1,7 @@
+Volumen:  26
+Arreglar los audios, en perfil se escuchan los de canjear  :/
+
+
 Inicio de app
 	BienvenidaEsp.wav
 
@@ -33,7 +37,7 @@ Devolucion:
 Prestamo:
 	ScanPrestamoEsp.wav     // ScanPrestamoEng.wav
 
-Renovacion:  ---->  Podemos solo tener 3 estados, GRIS en standby, VERDE cuando le picas y si te deja, NEGRO CON LABELS EN GRIS no te deja hacer nada por fuera de tiempo 
+Renovacion:  ---->  Podemos solo tener 3 estados, GRIS en standby, VERDE cuando le picas y si te deja, NEGRO CON LABELS EN GRIS no te deja hacer nada por FUERA DE TIEMPO
 
 	-->A continuacion se presentan los libros que tienes prestados, si quieres renovar alguno toca el recuadro del libro y para terminar presiona en aceptar. Si tienes un prestamo atrasado no podras hacer la renovacion y tendras que pagar la multa en cajas
 	
