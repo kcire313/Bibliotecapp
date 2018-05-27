@@ -22,6 +22,7 @@ public class VarG {
     public static String appat="NaN";
     public static String apmat="NaN";
     public static int puntaje=0;
+    public static ArrayList<LibroG> libros=new ArrayList<LibroG>();
     
     public static String idioma="espanol";
     

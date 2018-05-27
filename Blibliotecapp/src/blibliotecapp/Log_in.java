@@ -37,25 +37,25 @@ public class Log_in extends javax.swing.JFrame {
         anima.getImage().flush();
         switch (VarG.idioma) {
             case "espanol":
-                
+
                 error = "Uno o más datos son incorrectos";
                 error1 = "Por favor, intentelo de nuevo";
                 break;
             case "ingles":
-                
+
                 error = "Your ID or Password is incorrect";
                 error1 = "Please, try again";
                 break;
             case "frances":
-               
+
                 break;
             case "aleman":
-                
+
                 break;
         }
         //icon.getImage().flush();       
         initComponents();
-        
+
     }
 
     /**
@@ -272,19 +272,40 @@ public class Log_in extends javax.swing.JFrame {
                         //System.out.println("Entró aquí");
                         Registry registry = LocateRegistry.getRegistry();
                         TestRemote testRemote = (TestRemote) registry.lookup("Test");
-                        result=testRemote.pullData(this.id.getText());
-                        data=result.split(",");
+                        result = testRemote.pullData(this.id.getText());
+                        data = result.split(",");
                         VarG.id_usuario = Integer.parseInt(data[0]);
                         VarG.password = data[1];
                         VarG.nombre = data[2];
                         VarG.appat = data[3];
                         VarG.apmat = data[4];
                         VarG.puntaje = Integer.parseInt(data[5]);
-                        System.out.println("Nom: "+VarG.nombre);
+                        System.out.println("Nom: " + VarG.nombre);
                         VarG.jfLogin.setVisible(false);
+
+                        //Apartir de aqui comienza a sacar todos los datos relacionados con los libros
+                        String[] tupla;
+                        result = testRemote.bookData(this.id.getText());
+                        tupla = result.split("&");
+                        //System.out.println(tupla[0]);
+                        data = tupla[0].split("%");                        
+                        boolean band = false;
+                        if (data[5].equals("true")) {
+                            band = true;
+                        }
+                        //System.out.println(Integer.parseInt(data[0])+","+ Integer.parseInt(data[1])+","+ data[2]+","+ data[3]+","+ data[4]+","+ band+","+ Integer.parseInt(data[6])+","+ data[7]+","+ data[8]+","+ Integer.parseInt(data[9])+","+ Integer.parseInt(data[10])+","+ Integer.parseInt(data[11]));
+                        VarG.libros.add(new LibroG(Integer.parseInt(data[0]), Integer.parseInt(data[1]), data[2], data[3], data[4], band, Integer.parseInt(data[6]), data[7], data[8], Integer.parseInt(data[9]), Integer.parseInt(data[10]), Integer.parseInt(data[11])));
+                        for (int i = 1; i < tupla.length; i++) {
+                            data = tupla[i].split("%");                            
+                            band = false;
+                            if (data[5].equals("true")) {
+                                band = true;
+                            }
+                            VarG.libros.add(new LibroG(Integer.parseInt(data[0]), Integer.parseInt(data[1]), data[2], data[3], data[4], band, Integer.parseInt(data[6]), data[7], data[8], Integer.parseInt(data[9]), Integer.parseInt(data[10]), Integer.parseInt(data[11])));
+                        }
+                        System.out.println(VarG.libros.get(0).getTitulo() + "  " + VarG.libros.get(0).getAutor());
                         //Borra los datos previamente usados
                         borradatos();
-
                         //Pantallas de continuidad
                         switch (VarG.currentFrame) {
                             case "perfil":
@@ -326,152 +347,152 @@ public class Log_in extends javax.swing.JFrame {
     }//GEN-LAST:event_botonMouseClicked
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        if(VarG.idioma.equals("ingles")){
+        if (VarG.idioma.equals("ingles")) {
             background.setIcon(new ImageIcon("src/surce/nuevasP/login I.png"));
-        }else{
+        } else {
             background.setIcon(new ImageIcon("src/surce/nuevasP/login E.png"));
         }
     }//GEN-LAST:event_formWindowActivated
 
     private void Letra1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Letra1MouseClicked
-        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-        if(testField.equals(id)){
+        Component testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if (testField.equals(id)) {
             pushtecla("1", id);
-        }else if(testField.equals(pass)){
+        } else if (testField.equals(pass)) {
             pushtecla("1", pass);
         }
     }//GEN-LAST:event_Letra1MouseClicked
 
     private void LSpaceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LSpaceMouseClicked
-        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-        if(testField.equals(id)){
+        Component testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if (testField.equals(id)) {
             id.setText("");
-        }else if(testField.equals(pass)){
+        } else if (testField.equals(pass)) {
             pass.setText("");
-        
+
         }
     }//GEN-LAST:event_LSpaceMouseClicked
 
     private void Letra9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Letra9MouseClicked
-        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-        if(testField.equals(id)){
+        Component testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if (testField.equals(id)) {
             pushtecla("9", id);
-        }else if(testField.equals(pass)){
+        } else if (testField.equals(pass)) {
             pushtecla("9", pass);
-        
+
         }
     }//GEN-LAST:event_Letra9MouseClicked
 
     private void Letra6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Letra6MouseClicked
-        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-        if(testField.equals(id)){
+        Component testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if (testField.equals(id)) {
             pushtecla("6", id);
-        }else if(testField.equals(pass)){
+        } else if (testField.equals(pass)) {
             pushtecla("6", pass);
-        
+
         }
     }//GEN-LAST:event_Letra6MouseClicked
 
     private void Letra7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Letra7MouseClicked
-        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-        if(testField.equals(id)){
+        Component testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if (testField.equals(id)) {
             pushtecla("7", id);
-        }else if(testField.equals(pass)){
+        } else if (testField.equals(pass)) {
             pushtecla("7", pass);
-       
+
         }
     }//GEN-LAST:event_Letra7MouseClicked
 
     private void Letra2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Letra2MouseClicked
-        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-        if(testField.equals(id)){
+        Component testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if (testField.equals(id)) {
             pushtecla("2", id);
-        }else if(testField.equals(pass)){
+        } else if (testField.equals(pass)) {
             pushtecla("2", pass);
-       
+
         }
     }//GEN-LAST:event_Letra2MouseClicked
 
     private void Letra5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Letra5MouseClicked
-        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-        if(testField.equals(id)){
+        Component testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if (testField.equals(id)) {
             pushtecla("5", id);
-        }else if(testField.equals(pass)){
+        } else if (testField.equals(pass)) {
             pushtecla("5", pass);
-        
+
         }
     }//GEN-LAST:event_Letra5MouseClicked
 
     private void Letra3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Letra3MouseClicked
-        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-        if(testField.equals(id)){
+        Component testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if (testField.equals(id)) {
             pushtecla("3", id);
-        }else if(testField.equals(pass)){
+        } else if (testField.equals(pass)) {
             pushtecla("3", pass);
-        
+
         }
     }//GEN-LAST:event_Letra3MouseClicked
 
     private void LBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LBackMouseClicked
         // TODO add your handling code here:
-        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-        if(testField.equals(id)){
-            if (!id.getText().trim().isEmpty()){
-                int pos=id.getCaretPosition();
-                String text= id.getText();                             
-                String texto= text.substring(0, pos-1)+text.substring(pos, text.length());
+        Component testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if (testField.equals(id)) {
+            if (!id.getText().trim().isEmpty()) {
+                int pos = id.getCaretPosition();
+                String text = id.getText();
+                String texto = text.substring(0, pos - 1) + text.substring(pos, text.length());
                 id.setText(texto);
-                id.setCaretPosition(pos-1);
+                id.setCaretPosition(pos - 1);
             }
-        }else if(testField.equals(pass)){
-            if(!pass.getText().trim().isEmpty()){
-                int pos=pass.getCaretPosition();
-                String text= pass.getText();                             
-                String texto= text.substring(0, pos-1)+text.substring(pos, text.length());
+        } else if (testField.equals(pass)) {
+            if (!pass.getText().trim().isEmpty()) {
+                int pos = pass.getCaretPosition();
+                String text = pass.getText();
+                String texto = text.substring(0, pos - 1) + text.substring(pos, text.length());
                 pass.setText(texto);
-                pass.setCaretPosition(pos-1);
+                pass.setCaretPosition(pos - 1);
             }
         }
     }//GEN-LAST:event_LBackMouseClicked
 
     private void Letra4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Letra4MouseClicked
-        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-        if(testField.equals(id)){
+        Component testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if (testField.equals(id)) {
             pushtecla("4", id);
-        }else if(testField.equals(pass)){
+        } else if (testField.equals(pass)) {
             pushtecla("4", pass);
-       
+
         }
     }//GEN-LAST:event_Letra4MouseClicked
 
     private void Letra8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Letra8MouseClicked
-        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-        if(testField.equals(id)){
+        Component testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if (testField.equals(id)) {
             pushtecla("8", id);
-        }else if(testField.equals(pass)){
+        } else if (testField.equals(pass)) {
             pushtecla("8", pass);
-        
+
         }
     }//GEN-LAST:event_Letra8MouseClicked
 
     private void Letra0MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Letra0MouseClicked
-        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-        if(testField.equals(id)){
+        Component testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if (testField.equals(id)) {
             pushtecla("0", id);
-        }else if(testField.equals(pass)){
+        } else if (testField.equals(pass)) {
             pushtecla("0", pass);
         }
     }//GEN-LAST:event_Letra0MouseClicked
     //Teclado
-    public void pushtecla(String letra, JTextField txt ){
-   
-        String aux = txt.getText();              
-        int pos=txt.getCaretPosition();
-        String texto= aux.substring(0, pos)+letra+aux.substring(pos, aux.length());
+    public void pushtecla(String letra, JTextField txt) {
+
+        String aux = txt.getText();
+        int pos = txt.getCaretPosition();
+        String texto = aux.substring(0, pos) + letra + aux.substring(pos, aux.length());
         txt.setText(texto);
-        txt.setCaretPosition(pos+1);
+        txt.setCaretPosition(pos + 1);
     }
-    
+
     public void borradatos() {
         id.setText("");
         pass.setText("");

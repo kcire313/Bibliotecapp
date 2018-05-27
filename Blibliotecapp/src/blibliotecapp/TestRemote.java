@@ -4,8 +4,10 @@
  * and open the template in the editor.
  */
 package blibliotecapp;
+
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 /**
  *
@@ -13,6 +15,7 @@ import java.rmi.RemoteException;
  */
 public interface TestRemote extends Remote {
 
-    String pullData(String name) throws RemoteException;
+    String pullData(String id) throws RemoteException;
 
+    String bookData(String id) throws RemoteException;
 }
