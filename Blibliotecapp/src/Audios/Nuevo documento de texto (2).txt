@@ -1,0 +1,39 @@
+Inicio de app
+	BienvenidaEsp.wav
+
+Pantalla principal:     ------>   Checar el volumen, se escucha raro
+	ComenzarEsp // ComenzarEng 
+//Cambiar a una donde diga todas las opciones:
+...realizar, buscar un libro, pedir un prestamo, renovarlo o devolver un libro, ver tu perfil, canjear tus puntos o cambiar el idioma
+
+Cambiar el idioma:
+	IdiomaEsp // IdiomaEng
+	
+Login: 
+	IngresoDatosEsp.wav // IngresoDatosEng
+	//Si hay error
+		Audio Error ESP.wav // Audio Error ENG.wav	
+
+Perfil:
+	DatosPerfilEsp.wav // DatosPerfilEng.wav
+
+	
+Busqueda:
+	LlenarCasillasEsp.wav  // LlenarCasillasEng.wav
+	// Al dar imprimir el ticket del libro
+		ImprimirInfoLibroEsp.wav // ImprimirInfoLibroEng.wav
+
+Canjear:
+	//Consigue un descuento de algun producto si tienes los puntos suficientes
+
+Devolucion:
+	ScanDevolverEsp.wav     //  ScanDevolverEng.wav
+	-->... si tienes algun atraso se te hará saber y tendras que pagar una multa en cajas
+
+Prestamo:
+	ScanPrestamoEsp.wav     // ScanPrestamoEng.wav
+
+Renovacion:  ---->  Podemos solo tener 3 estados, GRIS en standby, VERDE cuando le picas y si te deja, NEGRO CON LABELS EN GRIS no te deja hacer nada por fuera de tiempo 
+
+	-->A continuacion se presentan los libros que tienes prestados, si quieres renovar alguno toca el recuadro del libro y para terminar presiona en aceptar. Si tienes un prestamo atrasado no podras hacer la renovacion y tendras que pagar la multa en cajas
+	
