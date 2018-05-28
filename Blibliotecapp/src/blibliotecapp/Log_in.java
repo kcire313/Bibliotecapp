@@ -10,6 +10,7 @@ import java.awt.KeyboardFocusManager;
 import java.io.IOException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -284,6 +285,7 @@ public class Log_in extends javax.swing.JFrame {
                         VarG.jfLogin.setVisible(false);
 
                         //Apartir de aqui comienza a sacar todos los datos relacionados con los libros
+                        VarG.libros=new ArrayList<>();
                         String[] tupla;
                         result = testRemote.bookData(this.id.getText());
                         tupla = result.split("&");
@@ -304,6 +306,7 @@ public class Log_in extends javax.swing.JFrame {
                             VarG.libros.add(new LibroG(Integer.parseInt(data[0]), Integer.parseInt(data[1]), data[2], data[3], data[4], band, Integer.parseInt(data[6]), data[7], data[8], Integer.parseInt(data[9]), Integer.parseInt(data[10]), Integer.parseInt(data[11])));
                         }
                         System.out.println(VarG.libros.get(0).getTitulo() + "  " + VarG.libros.get(0).getAutor());
+                        System.out.println(VarG.libros.get(1).getTitulo() + "  " + VarG.libros.get(1).getAutor());
                         //Borra los datos previamente usados
                         borradatos();
                         //Pantallas de continuidad

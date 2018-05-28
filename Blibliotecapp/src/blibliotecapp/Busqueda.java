@@ -7,6 +7,9 @@ package blibliotecapp;
 
 import java.awt.Component;
 import java.awt.KeyboardFocusManager;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -17,17 +20,15 @@ import sun.audio.AudioPlayer;
  *
  * @author erick
  */
-
 public class Busqueda extends javax.swing.JFrame {
+
     /**
      * Creates new form perfilDatos
      */
-    
     public boolean bandera = false;
     //Bandera es para checar si es busqueda Básica o Avanazada
     //false= Básica     true= Avanzada
-    
-    
+
     public Busqueda() {
         this.setUndecorated(true);
         initComponents();
@@ -38,7 +39,7 @@ public class Busqueda extends javax.swing.JFrame {
         TxtAutor.setVisible(false);
         TxtAnio.setVisible(false);
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -173,7 +174,7 @@ public class Busqueda extends javax.swing.JFrame {
         getContentPane().add(TxtPalabra, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 200, 480, 40));
 
         CMBCampo.setFont(new java.awt.Font("Calibri Light", 1, 28)); // NOI18N
-        CMBCampo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Titulo", "Autor", "ID de libro", "Año" }));
+        CMBCampo.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"Titulo", "Autor", "ID de libro", "Año"}));
         getContentPane().add(CMBCampo, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 270, 480, 80));
 
         LBCampo.setFont(new java.awt.Font("Calibri Light", 1, 30)); // NOI18N
@@ -500,163 +501,215 @@ public class Busqueda extends javax.swing.JFrame {
 
     private void regresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresarMouseClicked
         // TODO add your handling code here:
-        this.setVisible(false);        
+        this.setVisible(false);
         System.out.println("return to menu");
         VarG.anActual = VarG.animaciones.get(3);
         VarG.anActual.getImage().flush();
     }//GEN-LAST:event_regresarMouseClicked
 
     private void LBBusAvanzadaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LBBusAvanzadaMouseClicked
-        if(VarG.idioma.equals("ingles")){
-                LBFondo.setIcon(new ImageIcon("src/surce/nuevasP/busquedaA I.png"));
-            }else{
-                LBFondo.setIcon(new ImageIcon("src/surce/nuevasP/busquedaA E.png"));
-            }
-        if(!bandera){
-        LBBusqueda.setVisible(false);
-        LBCampo.setVisible(false);
-        TxtPalabra.setVisible(false);
-        CMBCampo.setVisible(false);
-        bandera = true;
-        LBTitulo.setVisible(bandera);
-        LBAutor.setVisible(bandera);
-        LBAño.setVisible(bandera);
-        TxtTitulo.setVisible(bandera);
-        TxtAutor.setVisible(bandera);
-        TxtAnio.setVisible(bandera);
-        TxtTitulo.setText("");
-        TxtAutor.setText("");
-        TxtAnio.setText("");
-        TxtTitulo.grabFocus();
-        //LBFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/busquedaavanzada.png")));
-      }  
-     
-        
+        if (VarG.idioma.equals("ingles")) {
+            LBFondo.setIcon(new ImageIcon("src/surce/nuevasP/busquedaA I.png"));
+        } else {
+            LBFondo.setIcon(new ImageIcon("src/surce/nuevasP/busquedaA E.png"));
+        }
+        if (!bandera) {
+            LBBusqueda.setVisible(false);
+            LBCampo.setVisible(false);
+            TxtPalabra.setVisible(false);
+            CMBCampo.setVisible(false);
+            bandera = true;
+            LBTitulo.setVisible(bandera);
+            LBAutor.setVisible(bandera);
+            LBAño.setVisible(bandera);
+            TxtTitulo.setVisible(bandera);
+            TxtAutor.setVisible(bandera);
+            TxtAnio.setVisible(bandera);
+            TxtTitulo.setText("");
+            TxtAutor.setText("");
+            TxtAnio.setText("");
+            TxtTitulo.grabFocus();
+            //LBFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/busquedaavanzada.png")));
+        }
+
     }//GEN-LAST:event_LBBusAvanzadaMouseClicked
 
     private void LBBusBasicaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LBBusBasicaMouseClicked
-      if(VarG.idioma.equals("ingles")){
-                LBFondo.setIcon(new ImageIcon("src/surce/nuevasP/busquedaB I.png"));
-            }else{
-                LBFondo.setIcon(new ImageIcon("src/surce/nuevasP/busquedaB E.png"));
-            }
-        if (bandera){
-        LBTitulo.setVisible(false);
-        LBAutor.setVisible(false);
-        LBAño.setVisible(false);
-        TxtTitulo.setVisible(false);
-        TxtAutor.setVisible(false);
-        TxtAnio.setVisible(false);
-        LBBusqueda.setVisible(true);
-        LBCampo.setVisible(true);
-        TxtPalabra.setVisible(true);
-        CMBCampo.setVisible(true);
-        TxtPalabra.setText("");
-        TxtPalabra.grabFocus();
-        CMBCampo.setSelectedIndex(0);
-        bandera = false;
-        //LBFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/busquedabasica.png")));
-      }
-      
-        
+        if (VarG.idioma.equals("ingles")) {
+            LBFondo.setIcon(new ImageIcon("src/surce/nuevasP/busquedaB I.png"));
+        } else {
+            LBFondo.setIcon(new ImageIcon("src/surce/nuevasP/busquedaB E.png"));
+        }
+        if (bandera) {
+            LBTitulo.setVisible(false);
+            LBAutor.setVisible(false);
+            LBAño.setVisible(false);
+            TxtTitulo.setVisible(false);
+            TxtAutor.setVisible(false);
+            TxtAnio.setVisible(false);
+            LBBusqueda.setVisible(true);
+            LBCampo.setVisible(true);
+            TxtPalabra.setVisible(true);
+            CMBCampo.setVisible(true);
+            TxtPalabra.setText("");
+            TxtPalabra.grabFocus();
+            CMBCampo.setSelectedIndex(0);
+            bandera = false;
+            //LBFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/busquedabasica.png")));
+        }
+
     }//GEN-LAST:event_LBBusBasicaMouseClicked
 
     private void jLBBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBBuscarMouseClicked
-     
+
         String busqueda = "";
-        String titulo ="";
-        String autor="";
-        String anio="";
-        if (!bandera){
-            if (TxtPalabra.getText().trim().isEmpty()){
+        String titulo = "";
+        String autor = "";
+        String anio = "";
+        String result = "";
+        String[] tupla, data;
+        if (!bandera) {
+            if (TxtPalabra.getText().trim().isEmpty()) {
                 System.out.println("No hay nada escrito en basica");
                 //Poner Aviso de falta de datos!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            }else{
-                titulo=TxtPalabra.getText();
-                System.out.println(titulo);
-                busqueda=CMBCampo.getSelectedItem().toString();
-                System.out.println(busqueda);
+            } else {
+                try {
+                    titulo = TxtPalabra.getText();
+                    System.out.println(titulo);
+                    int pos = CMBCampo.getSelectedIndex();                    
+                    switch (pos) {
+                        case 0:
+                            busqueda = "titulo";
+                            break;
+                        case 1:
+                            busqueda = "autor";
+                            break;
+                        case 2:
+                            busqueda = "id_libro";
+                            break;
+                        case 3:
+                            busqueda = "anio";
+                            break;
+                        default:
+                            busqueda="titulo";
+                            break;
+                    }
+                    System.out.println(busqueda);
+                    Registry registry = LocateRegistry.getRegistry();
+                    TestRemote testRemote = (TestRemote) registry.lookup("Test");
+                    result = testRemote.searchBook(busqueda, titulo, "basica", "", "");
+                    tupla = result.split("&");                    
+                    data = tupla[0].split("%");                    
+                    VarG.libros.add(new LibroG(data[0], data[1], data[2],Integer.parseInt(data[3]), Integer.parseInt(data[4]), Integer.parseInt(data[5])));                                        
+                    for (int i = 1; i < tupla.length; i++) {
+                        data = tupla[i].split("%");
+                        VarG.libros.add(new LibroG(data[0], data[1], data[2],Integer.parseInt(data[3]), Integer.parseInt(data[4]), Integer.parseInt(data[5])));                    
+                    }
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }                
                 VarG.jfLibros.setVisible(true);
                 this.setVisible(false);
             }
-        }else{
-            if(TxtTitulo.getText().trim().isEmpty() && TxtAutor.getText().trim().isEmpty() && 
-               TxtAnio.getText().trim().isEmpty()  ){
-                 System.out.println("no hay nada escrito en avanzada");
+        } else {
+            if (TxtTitulo.getText().trim().isEmpty() && TxtAutor.getText().trim().isEmpty()
+                    && TxtAnio.getText().trim().isEmpty()) {
+                System.out.println("no hay nada escrito en avanzada");
                 //Poner Aviso de falta de datos
-            }else{
-                if(!TxtTitulo.getText().trim().isEmpty()){
-                    titulo=TxtTitulo.getText();
+            } else {
+                if (!TxtTitulo.getText().trim().isEmpty()) {
+                    titulo = TxtTitulo.getText();
                     System.out.println(titulo);
                 }
-                if(!TxtAutor.getText().trim().isEmpty() ){
-                    autor=TxtAutor.getText();
+                if (!TxtAutor.getText().trim().isEmpty()) {
+                    autor = TxtAutor.getText();
                     System.out.println(autor);
                 }
-                if(!TxtAnio.getText().trim().isEmpty()){
-                    anio=TxtAnio.getText();
+                if (!TxtAnio.getText().trim().isEmpty()) {
+                    anio = TxtAnio.getText();
                     System.out.println(anio);
-                }    
+                }
+                try {
+                    titulo = TxtPalabra.getText();
+                    System.out.println(titulo);
+                    busqueda = CMBCampo.getSelectedItem().toString();
+                    System.out.println(busqueda);
+                    Registry registry = LocateRegistry.getRegistry();
+                    TestRemote testRemote = (TestRemote) registry.lookup("Test");
+                    result = testRemote.searchBook(busqueda, titulo, "avanzada", autor, anio);
+                    tupla = result.split("&");
+                    //System.out.println(tupla[0]);
+                    data = tupla[0].split("%");
+                    VarG.libros.add(new LibroG(data[0], data[1], data[2], Integer.parseInt(data[3]), Integer.parseInt(data[4]), Integer.parseInt(data[5])));
+                    for (int i = 1; i < tupla.length; i++) {
+                        data = tupla[i].split("%");
+                        VarG.libros.add(new LibroG(data[0], data[1], data[2], Integer.parseInt(data[3]), Integer.parseInt(data[4]), Integer.parseInt(data[5])));
+                    }
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }                
                 VarG.jfLibros.setVisible(true);
                 this.setVisible(false);
-            }    
+            }
         }
-        
+
         //AudioPlayer.player.start(VarG.aLogin); //audio
     }//GEN-LAST:event_jLBBuscarMouseClicked
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        if(VarG.idioma.equals("ingles")){
-                LBFondo.setIcon(new ImageIcon("src/surce/nuevasP/busquedaB I.png"));
-            }else{
-                LBFondo.setIcon(new ImageIcon("src/surce/nuevasP/busquedaB E.png"));
-            }
-        String[] ing = {"Title","Author","Book ID","Year"};
-        String[] esp = {"Titulo","Autor","ID del libro","Año"};
+        if (VarG.idioma.equals("ingles")) {
+            LBFondo.setIcon(new ImageIcon("src/surce/nuevasP/busquedaB I.png"));
+        } else {
+            LBFondo.setIcon(new ImageIcon("src/surce/nuevasP/busquedaB E.png"));
+        }
+        String[] ing = {"Title", "Author", "Book ID", "Year"};
+        String[] esp = {"Titulo", "Autor", "ID del libro", "Año"};
         TxtPalabra.setText("");
         TxtTitulo.setText("");
         TxtAutor.setText("");
         TxtAnio.setText("");
-        if(VarG.idioma.equals("ingles")){
+        if (VarG.idioma.equals("ingles")) {
             LBCampo.setText("Words to searh for:");
             LBBusqueda.setText("Search in:");
             LBTitulo.setText("Title:");
             LBAutor.setText("Author:");
             LBAño.setText("Year:");
-            DefaultComboBoxModel model = new DefaultComboBoxModel( ing );
-            CMBCampo.setModel( model );
-        }else{
+            DefaultComboBoxModel model = new DefaultComboBoxModel(ing);
+            CMBCampo.setModel(model);
+        } else {
             LBCampo.setText("Palabra(s) a buscar:");
             LBBusqueda.setText("Buscar en:");
             LBTitulo.setText("Titulo:");
             LBAutor.setText("Autor:");
             LBAño.setText("Año:");
-            DefaultComboBoxModel model = new DefaultComboBoxModel( esp );
-            CMBCampo.setModel( model );
+            DefaultComboBoxModel model = new DefaultComboBoxModel(esp);
+            CMBCampo.setModel(model);
         }
     }//GEN-LAST:event_formWindowActivated
 
     private void LetraAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraAMouseClicked
-        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-        if(testField.equals(TxtPalabra)){
+        Component testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if (testField.equals(TxtPalabra)) {
             pushtecla("a", TxtPalabra);
-        }else if(testField.equals(TxtTitulo)){
+        } else if (testField.equals(TxtTitulo)) {
             pushtecla("a", TxtTitulo);
-        }else if(testField.equals(TxtAutor)){
+        } else if (testField.equals(TxtAutor)) {
             pushtecla("a", TxtAutor);
-        }else if(testField.equals(TxtAnio)){
+        } else if (testField.equals(TxtAnio)) {
             pushtecla("a", TxtAnio);
         }
     }//GEN-LAST:event_LetraAMouseClicked
 //Teclado
-    public void pushtecla(String letra, JTextField txt ){
-   
-        String aux = txt.getText();              
-        int pos=txt.getCaretPosition();
-        String texto= aux.substring(0, pos)+letra+aux.substring(pos, aux.length());
+
+    public void pushtecla(String letra, JTextField txt) {
+
+        String aux = txt.getText();
+        int pos = txt.getCaretPosition();
+        String texto = aux.substring(0, pos) + letra + aux.substring(pos, aux.length());
         txt.setText(texto);
-        txt.setCaretPosition(pos+1);
+        txt.setCaretPosition(pos + 1);
     }
+
     /*
          if(txt.getText().isEmpty()){
                 txt.setText(letra);
@@ -667,361 +720,358 @@ public class Busqueda extends javax.swing.JFrame {
                 txt.setText(texto);
                 txt.setCaretPosition(pos+1);
             }*/
-    
-    
-    
     private void TxtPalabraFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TxtPalabraFocusGained
 
     }//GEN-LAST:event_TxtPalabraFocusGained
 
     private void LetraSMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraSMouseClicked
-        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-        if(testField.equals(TxtPalabra)){
+        Component testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if (testField.equals(TxtPalabra)) {
             pushtecla("s", TxtPalabra);
-        }else if(testField.equals(TxtTitulo)){
+        } else if (testField.equals(TxtTitulo)) {
             pushtecla("s", TxtTitulo);
-        }else if(testField.equals(TxtAutor)){
+        } else if (testField.equals(TxtAutor)) {
             pushtecla("s", TxtAutor);
-        }else if(testField.equals(TxtAnio)){
+        } else if (testField.equals(TxtAnio)) {
             pushtecla("s", TxtAnio);
         }
     }//GEN-LAST:event_LetraSMouseClicked
 
     private void LetraDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraDMouseClicked
-        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-        if(testField.equals(TxtPalabra)){
+        Component testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if (testField.equals(TxtPalabra)) {
             pushtecla("d", TxtPalabra);
-        }else if(testField.equals(TxtTitulo)){
+        } else if (testField.equals(TxtTitulo)) {
             pushtecla("d", TxtTitulo);
-        }else if(testField.equals(TxtAutor)){
+        } else if (testField.equals(TxtAutor)) {
             pushtecla("d", TxtAutor);
-        }else if(testField.equals(TxtAnio)){
+        } else if (testField.equals(TxtAnio)) {
             pushtecla("d", TxtAnio);
         }
     }//GEN-LAST:event_LetraDMouseClicked
 
     private void LetraFMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraFMouseClicked
-        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-        if(testField.equals(TxtPalabra)){
+        Component testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if (testField.equals(TxtPalabra)) {
             pushtecla("f", TxtPalabra);
-        }else if(testField.equals(TxtTitulo)){
+        } else if (testField.equals(TxtTitulo)) {
             pushtecla("f", TxtTitulo);
-        }else if(testField.equals(TxtAutor)){
+        } else if (testField.equals(TxtAutor)) {
             pushtecla("f", TxtAutor);
-        }else if(testField.equals(TxtAnio)){
+        } else if (testField.equals(TxtAnio)) {
             pushtecla("f", TxtAnio);
         }
     }//GEN-LAST:event_LetraFMouseClicked
 
     private void LetraZMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraZMouseClicked
-        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-        if(testField.equals(TxtPalabra)){
+        Component testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if (testField.equals(TxtPalabra)) {
             pushtecla("z", TxtPalabra);
-        }else if(testField.equals(TxtTitulo)){
+        } else if (testField.equals(TxtTitulo)) {
             pushtecla("z", TxtTitulo);
-        }else if(testField.equals(TxtAutor)){
+        } else if (testField.equals(TxtAutor)) {
             pushtecla("z", TxtAutor);
-        }else if(testField.equals(TxtAnio)){
+        } else if (testField.equals(TxtAnio)) {
             pushtecla("z", TxtAnio);
         }
     }//GEN-LAST:event_LetraZMouseClicked
 
     private void LetraXMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraXMouseClicked
-        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-        if(testField.equals(TxtPalabra)){
+        Component testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if (testField.equals(TxtPalabra)) {
             pushtecla("x", TxtPalabra);
-        }else if(testField.equals(TxtTitulo)){
+        } else if (testField.equals(TxtTitulo)) {
             pushtecla("x", TxtTitulo);
-        }else if(testField.equals(TxtAutor)){
+        } else if (testField.equals(TxtAutor)) {
             pushtecla("x", TxtAutor);
-        }else if(testField.equals(TxtAnio)){
+        } else if (testField.equals(TxtAnio)) {
             pushtecla("x", TxtAnio);
         }
     }//GEN-LAST:event_LetraXMouseClicked
 
     private void LetraCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraCMouseClicked
-        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-        if(testField.equals(TxtPalabra)){
+        Component testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if (testField.equals(TxtPalabra)) {
             pushtecla("c", TxtPalabra);
-        }else if(testField.equals(TxtTitulo)){
+        } else if (testField.equals(TxtTitulo)) {
             pushtecla("c", TxtTitulo);
-        }else if(testField.equals(TxtAutor)){
+        } else if (testField.equals(TxtAutor)) {
             pushtecla("c", TxtAutor);
-        }else if(testField.equals(TxtAnio)){
+        } else if (testField.equals(TxtAnio)) {
             pushtecla("c", TxtAnio);
         }
     }//GEN-LAST:event_LetraCMouseClicked
 
     private void LetraGMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraGMouseClicked
-        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-        if(testField.equals(TxtPalabra)){
+        Component testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if (testField.equals(TxtPalabra)) {
             pushtecla("g", TxtPalabra);
-        }else if(testField.equals(TxtTitulo)){
+        } else if (testField.equals(TxtTitulo)) {
             pushtecla("g", TxtTitulo);
-        }else if(testField.equals(TxtAutor)){
+        } else if (testField.equals(TxtAutor)) {
             pushtecla("g", TxtAutor);
-        }else if(testField.equals(TxtAnio)){
+        } else if (testField.equals(TxtAnio)) {
             pushtecla("g", TxtAnio);
         }
     }//GEN-LAST:event_LetraGMouseClicked
 
     private void LetraVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraVMouseClicked
-        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-        if(testField.equals(TxtPalabra)){
+        Component testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if (testField.equals(TxtPalabra)) {
             pushtecla("v", TxtPalabra);
-        }else if(testField.equals(TxtTitulo)){
+        } else if (testField.equals(TxtTitulo)) {
             pushtecla("v", TxtTitulo);
-        }else if(testField.equals(TxtAutor)){
+        } else if (testField.equals(TxtAutor)) {
             pushtecla("v", TxtAutor);
-        }else if(testField.equals(TxtAnio)){
+        } else if (testField.equals(TxtAnio)) {
             pushtecla("v", TxtAnio);
         }
     }//GEN-LAST:event_LetraVMouseClicked
 
     private void LetraQMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraQMouseClicked
-        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-        if(testField.equals(TxtPalabra)){
+        Component testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if (testField.equals(TxtPalabra)) {
             pushtecla("q", TxtPalabra);
-        }else if(testField.equals(TxtTitulo)){
+        } else if (testField.equals(TxtTitulo)) {
             pushtecla("q", TxtTitulo);
-        }else if(testField.equals(TxtAutor)){
+        } else if (testField.equals(TxtAutor)) {
             pushtecla("q", TxtAutor);
-        }else if(testField.equals(TxtAnio)){
+        } else if (testField.equals(TxtAnio)) {
             pushtecla("q", TxtAnio);
         }
     }//GEN-LAST:event_LetraQMouseClicked
 
     private void LetraWMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraWMouseClicked
-        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-        if(testField.equals(TxtPalabra)){
+        Component testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if (testField.equals(TxtPalabra)) {
             pushtecla("w", TxtPalabra);
-        }else if(testField.equals(TxtTitulo)){
+        } else if (testField.equals(TxtTitulo)) {
             pushtecla("w", TxtTitulo);
-        }else if(testField.equals(TxtAutor)){
+        } else if (testField.equals(TxtAutor)) {
             pushtecla("w", TxtAutor);
-        }else if(testField.equals(TxtAnio)){
+        } else if (testField.equals(TxtAnio)) {
             pushtecla("w", TxtAnio);
         }
     }//GEN-LAST:event_LetraWMouseClicked
 
     private void LetraEMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraEMouseClicked
-        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-        if(testField.equals(TxtPalabra)){
+        Component testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if (testField.equals(TxtPalabra)) {
             pushtecla("e", TxtPalabra);
-        }else if(testField.equals(TxtTitulo)){
+        } else if (testField.equals(TxtTitulo)) {
             pushtecla("e", TxtTitulo);
-        }else if(testField.equals(TxtAutor)){
+        } else if (testField.equals(TxtAutor)) {
             pushtecla("e", TxtAutor);
-        }else if(testField.equals(TxtAnio)){
+        } else if (testField.equals(TxtAnio)) {
             pushtecla("e", TxtAnio);
         }
 
     }//GEN-LAST:event_LetraEMouseClicked
 
     private void LetraRMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraRMouseClicked
-        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-        if(testField.equals(TxtPalabra)){
+        Component testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if (testField.equals(TxtPalabra)) {
             pushtecla("r", TxtPalabra);
-        }else if(testField.equals(TxtTitulo)){
+        } else if (testField.equals(TxtTitulo)) {
             pushtecla("r", TxtTitulo);
-        }else if(testField.equals(TxtAutor)){
+        } else if (testField.equals(TxtAutor)) {
             pushtecla("r", TxtAutor);
-        }else if(testField.equals(TxtAnio)){
+        } else if (testField.equals(TxtAnio)) {
             pushtecla("r", TxtAnio);
         }
     }//GEN-LAST:event_LetraRMouseClicked
 
     private void LetraTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraTMouseClicked
-        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-        if(testField.equals(TxtPalabra)){
+        Component testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if (testField.equals(TxtPalabra)) {
             pushtecla("t", TxtPalabra);
-        }else if(testField.equals(TxtTitulo)){
+        } else if (testField.equals(TxtTitulo)) {
             pushtecla("t", TxtTitulo);
-        }else if(testField.equals(TxtAutor)){
+        } else if (testField.equals(TxtAutor)) {
             pushtecla("t", TxtAutor);
-        }else if(testField.equals(TxtAnio)){
+        } else if (testField.equals(TxtAnio)) {
             pushtecla("t", TxtAnio);
         }
     }//GEN-LAST:event_LetraTMouseClicked
 
     private void LetraYMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraYMouseClicked
-        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-        if(testField.equals(TxtPalabra)){
+        Component testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if (testField.equals(TxtPalabra)) {
             pushtecla("y", TxtPalabra);
-        }else if(testField.equals(TxtTitulo)){
+        } else if (testField.equals(TxtTitulo)) {
             pushtecla("y", TxtTitulo);
-        }else if(testField.equals(TxtAutor)){
+        } else if (testField.equals(TxtAutor)) {
             pushtecla("y", TxtAutor);
-        }else if(testField.equals(TxtAnio)){
+        } else if (testField.equals(TxtAnio)) {
             pushtecla("y", TxtAnio);
         }
     }//GEN-LAST:event_LetraYMouseClicked
 
     private void Letra2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Letra2MouseClicked
-        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-        if(testField.equals(TxtPalabra)){
+        Component testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if (testField.equals(TxtPalabra)) {
             pushtecla("2", TxtPalabra);
-        }else if(testField.equals(TxtTitulo)){
+        } else if (testField.equals(TxtTitulo)) {
             pushtecla("2", TxtTitulo);
-        }else if(testField.equals(TxtAutor)){
+        } else if (testField.equals(TxtAutor)) {
             pushtecla("2", TxtAutor);
-        }else if(testField.equals(TxtAnio)){
+        } else if (testField.equals(TxtAnio)) {
             pushtecla("2", TxtAnio);
         }
     }//GEN-LAST:event_Letra2MouseClicked
 
     private void LetraHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraHMouseClicked
-       Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-        if(testField.equals(TxtPalabra)){
+        Component testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if (testField.equals(TxtPalabra)) {
             pushtecla("h", TxtPalabra);
-        }else if(testField.equals(TxtTitulo)){
+        } else if (testField.equals(TxtTitulo)) {
             pushtecla("h", TxtTitulo);
-        }else if(testField.equals(TxtAutor)){
+        } else if (testField.equals(TxtAutor)) {
             pushtecla("h", TxtAutor);
-        }else if(testField.equals(TxtAnio)){
+        } else if (testField.equals(TxtAnio)) {
             pushtecla("h", TxtAnio);
         }
     }//GEN-LAST:event_LetraHMouseClicked
 
     private void LetraBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraBMouseClicked
-        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-        if(testField.equals(TxtPalabra)){
+        Component testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if (testField.equals(TxtPalabra)) {
             pushtecla("b", TxtPalabra);
-        }else if(testField.equals(TxtTitulo)){
+        } else if (testField.equals(TxtTitulo)) {
             pushtecla("b", TxtTitulo);
-        }else if(testField.equals(TxtAutor)){
+        } else if (testField.equals(TxtAutor)) {
             pushtecla("b", TxtAutor);
-        }else if(testField.equals(TxtAnio)){
+        } else if (testField.equals(TxtAnio)) {
             pushtecla("b", TxtAnio);
         }
     }//GEN-LAST:event_LetraBMouseClicked
 
     private void LetraJMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraJMouseClicked
-        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-        if(testField.equals(TxtPalabra)){
+        Component testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if (testField.equals(TxtPalabra)) {
             pushtecla("j", TxtPalabra);
-        }else if(testField.equals(TxtTitulo)){
+        } else if (testField.equals(TxtTitulo)) {
             pushtecla("j", TxtTitulo);
-        }else if(testField.equals(TxtAutor)){
+        } else if (testField.equals(TxtAutor)) {
             pushtecla("j", TxtAutor);
-        }else if(testField.equals(TxtAnio)){
+        } else if (testField.equals(TxtAnio)) {
             pushtecla("j", TxtAnio);
         }
     }//GEN-LAST:event_LetraJMouseClicked
 
     private void LetraNMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraNMouseClicked
-       Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-        if(testField.equals(TxtPalabra)){
+        Component testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if (testField.equals(TxtPalabra)) {
             pushtecla("n", TxtPalabra);
-        }else if(testField.equals(TxtTitulo)){
+        } else if (testField.equals(TxtTitulo)) {
             pushtecla("n", TxtTitulo);
-        }else if(testField.equals(TxtAutor)){
+        } else if (testField.equals(TxtAutor)) {
             pushtecla("n", TxtAutor);
-        }else if(testField.equals(TxtAnio)){
+        } else if (testField.equals(TxtAnio)) {
             pushtecla("n", TxtAnio);
         }
     }//GEN-LAST:event_LetraNMouseClicked
 
     private void LetraUMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraUMouseClicked
-        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-        if(testField.equals(TxtPalabra)){
+        Component testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if (testField.equals(TxtPalabra)) {
             pushtecla("u", TxtPalabra);
-        }else if(testField.equals(TxtTitulo)){
+        } else if (testField.equals(TxtTitulo)) {
             pushtecla("u", TxtTitulo);
-        }else if(testField.equals(TxtAutor)){
+        } else if (testField.equals(TxtAutor)) {
             pushtecla("u", TxtAutor);
-        }else if(testField.equals(TxtAnio)){
+        } else if (testField.equals(TxtAnio)) {
             pushtecla("u", TxtAnio);
         }
     }//GEN-LAST:event_LetraUMouseClicked
 
     private void LetraIMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraIMouseClicked
-        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-        if(testField.equals(TxtPalabra)){
+        Component testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if (testField.equals(TxtPalabra)) {
             pushtecla("i", TxtPalabra);
-        }else if(testField.equals(TxtTitulo)){
+        } else if (testField.equals(TxtTitulo)) {
             pushtecla("i", TxtTitulo);
-        }else if(testField.equals(TxtAutor)){
+        } else if (testField.equals(TxtAutor)) {
             pushtecla("i", TxtAutor);
-        }else if(testField.equals(TxtAnio)){
+        } else if (testField.equals(TxtAnio)) {
             pushtecla("i", TxtAnio);
         }
     }//GEN-LAST:event_LetraIMouseClicked
 
     private void LetraOMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraOMouseClicked
-        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-        if(testField.equals(TxtPalabra)){
+        Component testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if (testField.equals(TxtPalabra)) {
             pushtecla("o", TxtPalabra);
-        }else if(testField.equals(TxtTitulo)){
+        } else if (testField.equals(TxtTitulo)) {
             pushtecla("o", TxtTitulo);
-        }else if(testField.equals(TxtAutor)){
+        } else if (testField.equals(TxtAutor)) {
             pushtecla("o", TxtAutor);
-        }else if(testField.equals(TxtAnio)){
+        } else if (testField.equals(TxtAnio)) {
             pushtecla("o", TxtAnio);
         }
     }//GEN-LAST:event_LetraOMouseClicked
 
     private void LetraPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraPMouseClicked
-        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-        if(testField.equals(TxtPalabra)){
+        Component testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if (testField.equals(TxtPalabra)) {
             pushtecla("p", TxtPalabra);
-        }else if(testField.equals(TxtTitulo)){
+        } else if (testField.equals(TxtTitulo)) {
             pushtecla("p", TxtTitulo);
-        }else if(testField.equals(TxtAutor)){
+        } else if (testField.equals(TxtAutor)) {
             pushtecla("p", TxtAutor);
-        }else if(testField.equals(TxtAnio)){
+        } else if (testField.equals(TxtAnio)) {
             pushtecla("p", TxtAnio);
         }
     }//GEN-LAST:event_LetraPMouseClicked
 
     private void LetraMMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraMMouseClicked
-        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-        if(testField.equals(TxtPalabra)){
+        Component testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if (testField.equals(TxtPalabra)) {
             pushtecla("m", TxtPalabra);
-        }else if(testField.equals(TxtTitulo)){
+        } else if (testField.equals(TxtTitulo)) {
             pushtecla("m", TxtTitulo);
-        }else if(testField.equals(TxtAutor)){
+        } else if (testField.equals(TxtAutor)) {
             pushtecla("m", TxtAutor);
-        }else if(testField.equals(TxtAnio)){
+        } else if (testField.equals(TxtAnio)) {
             pushtecla("m", TxtAnio);
         }
     }//GEN-LAST:event_LetraMMouseClicked
 
     private void LetraKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraKMouseClicked
-        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-        if(testField.equals(TxtPalabra)){
+        Component testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if (testField.equals(TxtPalabra)) {
             pushtecla("k", TxtPalabra);
-        }else if(testField.equals(TxtTitulo)){
+        } else if (testField.equals(TxtTitulo)) {
             pushtecla("k", TxtTitulo);
-        }else if(testField.equals(TxtAutor)){
+        } else if (testField.equals(TxtAutor)) {
             pushtecla("k", TxtAutor);
-        }else if(testField.equals(TxtAnio)){
+        } else if (testField.equals(TxtAnio)) {
             pushtecla("k", TxtAnio);
         }
     }//GEN-LAST:event_LetraKMouseClicked
 
     private void LetraLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraLMouseClicked
-        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-        if(testField.equals(TxtPalabra)){
+        Component testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if (testField.equals(TxtPalabra)) {
             pushtecla("l", TxtPalabra);
-        }else if(testField.equals(TxtTitulo)){
+        } else if (testField.equals(TxtTitulo)) {
             pushtecla("l", TxtTitulo);
-        }else if(testField.equals(TxtAutor)){
+        } else if (testField.equals(TxtAutor)) {
             pushtecla("l", TxtAutor);
-        }else if(testField.equals(TxtAnio)){
+        } else if (testField.equals(TxtAnio)) {
             pushtecla("l", TxtAnio);
         }
     }//GEN-LAST:event_LetraLMouseClicked
 
     private void LSpaceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LSpaceMouseClicked
-        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-        if(testField.equals(TxtPalabra)){
+        Component testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if (testField.equals(TxtPalabra)) {
             pushtecla(" ", TxtPalabra);
-        }else if(testField.equals(TxtTitulo)){
+        } else if (testField.equals(TxtTitulo)) {
             pushtecla(" ", TxtTitulo);
-        }else if(testField.equals(TxtAutor)){
+        } else if (testField.equals(TxtAutor)) {
             pushtecla(" ", TxtAutor);
-        }else if(testField.equals(TxtAnio)){
+        } else if (testField.equals(TxtAnio)) {
             pushtecla(" ", TxtAnio);
         }
 
@@ -1029,164 +1079,161 @@ public class Busqueda extends javax.swing.JFrame {
 
     private void LBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LBackMouseClicked
         // TODO add your handling code here:
-        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-        if(testField.equals(TxtPalabra)){
-            if (!TxtPalabra.getText().trim().isEmpty()){
-                int pos=TxtPalabra.getCaretPosition();
-                String text= TxtPalabra.getText();                             
-                String texto= text.substring(0, pos-1)+text.substring(pos, text.length());
+        Component testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if (testField.equals(TxtPalabra)) {
+            if (!TxtPalabra.getText().trim().isEmpty()) {
+                int pos = TxtPalabra.getCaretPosition();
+                String text = TxtPalabra.getText();
+                String texto = text.substring(0, pos - 1) + text.substring(pos, text.length());
                 TxtPalabra.setText(texto);
-                TxtPalabra.setCaretPosition(pos-1);
+                TxtPalabra.setCaretPosition(pos - 1);
             }
-        }else if(testField.equals(TxtTitulo)){
-            if(!TxtTitulo.getText().trim().isEmpty()){
-                int pos=TxtTitulo.getCaretPosition();
-                String text= TxtTitulo.getText();                             
-                String texto= text.substring(0, pos-1)+text.substring(pos, text.length());
+        } else if (testField.equals(TxtTitulo)) {
+            if (!TxtTitulo.getText().trim().isEmpty()) {
+                int pos = TxtTitulo.getCaretPosition();
+                String text = TxtTitulo.getText();
+                String texto = text.substring(0, pos - 1) + text.substring(pos, text.length());
                 TxtTitulo.setText(texto);
-                TxtTitulo.setCaretPosition(pos-1);
+                TxtTitulo.setCaretPosition(pos - 1);
             }
-        }else if(testField.equals(TxtAutor)){
-            if(!TxtAutor.getText().trim().isEmpty()){
-                int pos=TxtAutor.getCaretPosition();
-                String text= TxtAutor.getText();                             
-                String texto= text.substring(0, pos-1)+text.substring(pos, text.length());
+        } else if (testField.equals(TxtAutor)) {
+            if (!TxtAutor.getText().trim().isEmpty()) {
+                int pos = TxtAutor.getCaretPosition();
+                String text = TxtAutor.getText();
+                String texto = text.substring(0, pos - 1) + text.substring(pos, text.length());
                 TxtAutor.setText(texto);
-                TxtAutor.setCaretPosition(pos-1);
+                TxtAutor.setCaretPosition(pos - 1);
             }
-            
-        }else if(testField.equals(TxtAnio)){
-            if(!TxtAnio.getText().trim().isEmpty()){
-                int pos=TxtAnio.getCaretPosition();
-                String text= TxtAnio.getText();                             
-                String texto= text.substring(0, pos-1)+text.substring(pos, text.length());
+
+        } else if (testField.equals(TxtAnio)) {
+            if (!TxtAnio.getText().trim().isEmpty()) {
+                int pos = TxtAnio.getCaretPosition();
+                String text = TxtAnio.getText();
+                String texto = text.substring(0, pos - 1) + text.substring(pos, text.length());
                 TxtAnio.setText(texto);
-                TxtAnio.setCaretPosition(pos-1);
+                TxtAnio.setCaretPosition(pos - 1);
             }
-            
+
         }
     }//GEN-LAST:event_LBackMouseClicked
 
     private void Letra3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Letra3MouseClicked
-        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-        if(testField.equals(TxtPalabra)){
+        Component testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if (testField.equals(TxtPalabra)) {
             pushtecla("3", TxtPalabra);
-        }else if(testField.equals(TxtTitulo)){
+        } else if (testField.equals(TxtTitulo)) {
             pushtecla("3", TxtTitulo);
-        }else if(testField.equals(TxtAutor)){
+        } else if (testField.equals(TxtAutor)) {
             pushtecla("3", TxtAutor);
-        }else if(testField.equals(TxtAnio)){
+        } else if (testField.equals(TxtAnio)) {
             pushtecla("3", TxtAnio);
         }
     }//GEN-LAST:event_Letra3MouseClicked
 
     private void Letra4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Letra4MouseClicked
-        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-        if(testField.equals(TxtPalabra)){
+        Component testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if (testField.equals(TxtPalabra)) {
             pushtecla("4", TxtPalabra);
-        }else if(testField.equals(TxtTitulo)){
+        } else if (testField.equals(TxtTitulo)) {
             pushtecla("4", TxtTitulo);
-        }else if(testField.equals(TxtAutor)){
+        } else if (testField.equals(TxtAutor)) {
             pushtecla("4", TxtAutor);
-        }else if(testField.equals(TxtAnio)){
+        } else if (testField.equals(TxtAnio)) {
             pushtecla("4", TxtAnio);
         }
     }//GEN-LAST:event_Letra4MouseClicked
 
     private void Letra5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Letra5MouseClicked
-        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-        if(testField.equals(TxtPalabra)){
+        Component testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if (testField.equals(TxtPalabra)) {
             pushtecla("5", TxtPalabra);
-        }else if(testField.equals(TxtTitulo)){
+        } else if (testField.equals(TxtTitulo)) {
             pushtecla("5", TxtTitulo);
-        }else if(testField.equals(TxtAutor)){
+        } else if (testField.equals(TxtAutor)) {
             pushtecla("5", TxtAutor);
-        }else if(testField.equals(TxtAnio)){
+        } else if (testField.equals(TxtAnio)) {
             pushtecla("5", TxtAnio);
         }
     }//GEN-LAST:event_Letra5MouseClicked
 
     private void Letra6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Letra6MouseClicked
-        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-        if(testField.equals(TxtPalabra)){
+        Component testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if (testField.equals(TxtPalabra)) {
             pushtecla("6", TxtPalabra);
-        }else if(testField.equals(TxtTitulo)){
+        } else if (testField.equals(TxtTitulo)) {
             pushtecla("6", TxtTitulo);
-        }else if(testField.equals(TxtAutor)){
+        } else if (testField.equals(TxtAutor)) {
             pushtecla("6", TxtAutor);
-        }else if(testField.equals(TxtAnio)){
+        } else if (testField.equals(TxtAnio)) {
             pushtecla("6", TxtAnio);
         }
     }//GEN-LAST:event_Letra6MouseClicked
 
     private void Letra7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Letra7MouseClicked
-        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-        if(testField.equals(TxtPalabra)){
+        Component testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if (testField.equals(TxtPalabra)) {
             pushtecla("7", TxtPalabra);
-        }else if(testField.equals(TxtTitulo)){
+        } else if (testField.equals(TxtTitulo)) {
             pushtecla("7", TxtTitulo);
-        }else if(testField.equals(TxtAutor)){
+        } else if (testField.equals(TxtAutor)) {
             pushtecla("7", TxtAutor);
-        }else if(testField.equals(TxtAnio)){
+        } else if (testField.equals(TxtAnio)) {
             pushtecla("7", TxtAnio);
         }
     }//GEN-LAST:event_Letra7MouseClicked
 
     private void Letra8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Letra8MouseClicked
-        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-        if(testField.equals(TxtPalabra)){
+        Component testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if (testField.equals(TxtPalabra)) {
             pushtecla("8", TxtPalabra);
-        }else if(testField.equals(TxtTitulo)){
+        } else if (testField.equals(TxtTitulo)) {
             pushtecla("8", TxtTitulo);
-        }else if(testField.equals(TxtAutor)){
+        } else if (testField.equals(TxtAutor)) {
             pushtecla("8", TxtAutor);
-        }else if(testField.equals(TxtAnio)){
+        } else if (testField.equals(TxtAnio)) {
             pushtecla("8", TxtAnio);
         }
     }//GEN-LAST:event_Letra8MouseClicked
 
     private void Letra9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Letra9MouseClicked
-        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-        if(testField.equals(TxtPalabra)){
+        Component testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if (testField.equals(TxtPalabra)) {
             pushtecla("9", TxtPalabra);
-        }else if(testField.equals(TxtTitulo)){
+        } else if (testField.equals(TxtTitulo)) {
             pushtecla("9", TxtTitulo);
-        }else if(testField.equals(TxtAutor)){
+        } else if (testField.equals(TxtAutor)) {
             pushtecla("9", TxtAutor);
-        }else if(testField.equals(TxtAnio)){
+        } else if (testField.equals(TxtAnio)) {
             pushtecla("9", TxtAnio);
         }
     }//GEN-LAST:event_Letra9MouseClicked
 
     private void Letra0MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Letra0MouseClicked
-        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-        if(testField.equals(TxtPalabra)){
+        Component testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if (testField.equals(TxtPalabra)) {
             pushtecla("0", TxtPalabra);
-        }else if(testField.equals(TxtTitulo)){
+        } else if (testField.equals(TxtTitulo)) {
             pushtecla("0", TxtTitulo);
-        }else if(testField.equals(TxtAutor)){
+        } else if (testField.equals(TxtAutor)) {
             pushtecla("0", TxtAutor);
-        }else if(testField.equals(TxtAnio)){
+        } else if (testField.equals(TxtAnio)) {
             pushtecla("0", TxtAnio);
         }
     }//GEN-LAST:event_Letra0MouseClicked
 
     private void Letra1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Letra1MouseClicked
-        Component  testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-        if(testField.equals(TxtPalabra)){
+        Component testField = KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        if (testField.equals(TxtPalabra)) {
             pushtecla("1", TxtPalabra);
-        }else if(testField.equals(TxtTitulo)){
+        } else if (testField.equals(TxtTitulo)) {
             pushtecla("1", TxtTitulo);
-        }else if(testField.equals(TxtAutor)){
+        } else if (testField.equals(TxtAutor)) {
             pushtecla("1", TxtAutor);
-        }else if(testField.equals(TxtAnio)){
+        } else if (testField.equals(TxtAnio)) {
             pushtecla("1", TxtAnio);
         }
     }//GEN-LAST:event_Letra1MouseClicked
 
-    
-    
-    
     /**
      * @param args the command line arguments
      */
@@ -1233,7 +1280,7 @@ public class Busqueda extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Busqueda().setVisible(true);
-                
+
             }
         });
     }

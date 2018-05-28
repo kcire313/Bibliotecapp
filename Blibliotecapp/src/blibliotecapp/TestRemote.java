@@ -18,4 +18,6 @@ public interface TestRemote extends Remote {
     String pullData(String id) throws RemoteException;
 
     String bookData(String id) throws RemoteException;
+    
+    String searchBook(String donde,String que,String tipo,String autor,String anio)throws RemoteException;
 }

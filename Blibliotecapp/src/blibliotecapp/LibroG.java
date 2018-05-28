@@ -38,6 +38,15 @@ public class LibroG {
         this.cover  = cover;
     }
 
+    public LibroG(String id_libro, String titulo, String autor, int anio, int ubicacion, int cover) {
+        this.id_libro = id_libro;
+        this.titulo = titulo;
+        this.autor = autor;
+        this.anio = anio;
+        this.ubicacion = ubicacion;
+        this.cover = cover;
+    }
+    
     public int getId_prestamo() {
         return id_prestamo;
     }

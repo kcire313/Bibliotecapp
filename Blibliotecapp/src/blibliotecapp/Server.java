@@ -45,12 +45,12 @@ public class Server {
             }
 
             @Override
-            public String bookData(String id) {                
+            public String bookData(String id) {
                 String results = "";
                 String consulta = "select usa.id_prestamo, usuario.id_usuario, libro.id_libro, usa.devuelto, usa.renovacion, libro.titulo, libro.autor, libro.ubicacion, libro.cover, libro.anio, usa.fecha_pres, usa.fecha_dev "
                         + "from libro,usa,usuario where usuario.id_usuario='" + id
                         + "' and usuario.id_usuario=usa.id_usuario"
-                        + " and usa.id_libro=libro.id_libro;";               
+                        + " and usa.id_libro=libro.id_libro;";
                 System.out.println(consulta);
                 VarG.objConn.Consultar(consulta);
                 try {
@@ -71,8 +71,8 @@ public class Server {
                         String autor = VarG.objConn.rs.getString("autor");
                         int anio = VarG.objConn.rs.getInt("anio");
                         int ubicacion = VarG.objConn.rs.getInt("ubicacion");
-                        int cover = VarG.objConn.rs.getInt("cover");                        
-                        results=id_prestamo+"%"+id_usuario+"%"+id_libro+"%"+fecha_pres+"%"+fecha_dev+"%"+devuelto+"%"+renovacion+"%"+titulo+"%"+autor+"%"+anio+"%"+ubicacion+"%"+cover+"&";
+                        int cover = VarG.objConn.rs.getInt("cover");
+                        results = id_prestamo + "%" + id_usuario + "%" + id_libro + "%" + fecha_pres + "%" + fecha_dev + "%" + devuelto + "%" + renovacion + "%" + titulo + "%" + autor + "%" + anio + "%" + ubicacion + "%" + cover + "&";
                         //libros.add(new LibroG(id_prestamo, id_usuario, id_libro, fecha_pres, fecha_dev, devuelto, renovacion, titulo, autor, anio, ubicacion, stock));
                         //System.out.println(libros.get(0).getTitulo());
                         while (VarG.objConn.rs.next()) {
@@ -93,12 +93,50 @@ public class Server {
                             anio = VarG.objConn.rs.getInt("anio");
                             ubicacion = VarG.objConn.rs.getInt("ubicacion");
                             cover = VarG.objConn.rs.getInt("cover");
-                            results+=id_prestamo+"%"+id_usuario+"%"+id_libro+"%"+fecha_pres+"%"+fecha_dev+"%"+devuelto+"%"+renovacion+"%"+titulo+"%"+autor+"%"+anio+"%"+ubicacion+"%"+cover+"&";
+                            results += id_prestamo + "%" + id_usuario + "%" + id_libro + "%" + fecha_pres + "%" + fecha_dev + "%" + devuelto + "%" + renovacion + "%" + titulo + "%" + autor + "%" + anio + "%" + ubicacion + "%" + cover + "&";
                             //libros.add(new LibroG(id_prestamo, id_usuario, id_libro, fecha_pres, fecha_dev, devuelto, renovacion, titulo, autor, anio, ubicacion, stock));
                         }
                     }
                 } catch (SQLException ex) {
                     Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                return results;
+            }
+
+            @Override
+            public String searchBook(String donde, String que, String tipo, String iautor, String ianio) throws RemoteException {
+                String results = "";
+                String consulta = "";
+                if (tipo.equals("basica")) {
+                    consulta = "select * from libro where " + donde + " like '%" + que + "%';";
+                } else {
+                    consulta = "select * from libro where titulo like '%" + que + "%' and autor like '%" + iautor + "%' and anio like '%" + ianio + "%';";
+                }
+                System.out.println(consulta);
+                try {
+                    VarG.objConn.Consultar(consulta);
+                    if (VarG.objConn.rs.getRow() != 0) {
+                        String id_libro = VarG.objConn.rs.getString("id_libro");
+                        String titulo = VarG.objConn.rs.getString("titulo");
+                        System.out.println(titulo);
+                        String autor = VarG.objConn.rs.getString("autor");
+                        int anio = VarG.objConn.rs.getInt("anio");
+                        int ubicacion = VarG.objConn.rs.getInt("ubicacion");
+                        int cover = VarG.objConn.rs.getInt("cover");
+                        results = id_libro + "%" + titulo + "%" + autor + "%" + anio + "%" + ubicacion + "%" + cover + "&";
+                        while (VarG.objConn.rs.next()) {
+                            id_libro = VarG.objConn.rs.getString("id_libro");
+                            titulo = VarG.objConn.rs.getString("titulo");
+                            autor = VarG.objConn.rs.getString("autor");
+                            anio = VarG.objConn.rs.getInt("anio");
+                            ubicacion = VarG.objConn.rs.getInt("ubicacion");
+                            cover = VarG.objConn.rs.getInt("cover");
+                            results += id_libro + "%" + titulo + "%" + autor + "%" + anio + "%" + ubicacion + "%" + cover + "&";
+                            //libros.add(new LibroG(id_prestamo, id_usuario, id_libro, fecha_pres, fecha_dev, devuelto, renovacion, titulo, autor, anio, ubicacion, stock));
+                        }
+                    }
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
                 }
                 return results;
             }
