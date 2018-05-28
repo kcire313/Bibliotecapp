@@ -33,6 +33,12 @@ public class Devolucion extends javax.swing.JFrame {
 
         regresar = new javax.swing.JLabel();
         home = new javax.swing.JLabel();
+        LB4 = new javax.swing.JLabel();
+        LB3 = new javax.swing.JLabel();
+        LB1 = new javax.swing.JLabel();
+        LB2 = new javax.swing.JLabel();
+        BtDevolver = new javax.swing.JLabel();
+        BtEscanear = new javax.swing.JLabel();
         LBFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -56,6 +62,20 @@ public class Devolucion extends javax.swing.JFrame {
             }
         });
         getContentPane().add(home, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 170, 140));
+
+        LB4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/nuevasP/F-Continuar.png"))); // NOI18N
+        getContentPane().add(LB4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 610, 990, 130));
+
+        LB3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/nuevasP/F-Continuar.png"))); // NOI18N
+        getContentPane().add(LB3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 480, 990, 130));
+
+        LB1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/nuevasP/F-Continuar.png"))); // NOI18N
+        getContentPane().add(LB1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 990, 130));
+
+        LB2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/nuevasP/F-Continuar.png"))); // NOI18N
+        getContentPane().add(LB2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, 990, 130));
+        getContentPane().add(BtDevolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 470, 270, 270));
+        getContentPane().add(BtEscanear, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 170, 270, 270));
 
         LBFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/nuevasP/devolucionB E.png"))); // NOI18N
         getContentPane().add(LBFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 770));
@@ -83,10 +103,8 @@ public class Devolucion extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         if(VarG.idioma.equals("espanol")){
-            
             LBFondo.setIcon(new ImageIcon("src/surce/nuevasP/devolucionB E.png"));
         }else{
-         
             LBFondo.setIcon(new ImageIcon("src/surce/nuevasP/devolucionB I.png"));
         }
     }//GEN-LAST:event_formWindowActivated
@@ -128,6 +146,12 @@ public class Devolucion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel BtDevolver;
+    private javax.swing.JLabel BtEscanear;
+    private javax.swing.JLabel LB1;
+    private javax.swing.JLabel LB2;
+    private javax.swing.JLabel LB3;
+    private javax.swing.JLabel LB4;
     private javax.swing.JLabel LBFondo;
     private javax.swing.JLabel home;
     private javax.swing.JLabel regresar;

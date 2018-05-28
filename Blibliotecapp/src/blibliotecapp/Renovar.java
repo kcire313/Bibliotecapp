@@ -33,6 +33,12 @@ public class Renovar extends javax.swing.JFrame {
 
         regresar = new javax.swing.JLabel();
         home = new javax.swing.JLabel();
+        LB1 = new javax.swing.JLabel();
+        LB2 = new javax.swing.JLabel();
+        LB3 = new javax.swing.JLabel();
+        LB4 = new javax.swing.JLabel();
+        Btinfo = new javax.swing.JLabel();
+        Btaceptar = new javax.swing.JLabel();
         LBFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -56,6 +62,20 @@ public class Renovar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(home, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 170, 140));
+
+        LB1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/nuevasP/F-Continuar.png"))); // NOI18N
+        getContentPane().add(LB1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 990, 130));
+
+        LB2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/nuevasP/F-Continuar.png"))); // NOI18N
+        getContentPane().add(LB2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, 990, 130));
+
+        LB3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/nuevasP/F-Continuar.png"))); // NOI18N
+        getContentPane().add(LB3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 480, 990, 130));
+
+        LB4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/nuevasP/F-Continuar.png"))); // NOI18N
+        getContentPane().add(LB4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 610, 990, 130));
+        getContentPane().add(Btinfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 150, 270, 440));
+        getContentPane().add(Btaceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 610, 270, 130));
 
         LBFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/nuevasP/renovacionI E.png"))); // NOI18N
         LBFondo.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -135,6 +155,12 @@ public class Renovar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Btaceptar;
+    private javax.swing.JLabel Btinfo;
+    private javax.swing.JLabel LB1;
+    private javax.swing.JLabel LB2;
+    private javax.swing.JLabel LB3;
+    private javax.swing.JLabel LB4;
     private javax.swing.JLabel LBFondo;
     private javax.swing.JLabel home;
     private javax.swing.JLabel regresar;
