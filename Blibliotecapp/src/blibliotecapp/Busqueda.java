@@ -568,14 +568,14 @@ public class Busqueda extends javax.swing.JFrame {
         String anio = "";
         String result = "";
         String[] tupla, data;
+        VarG.libros= new ArrayList<LibroG>();
         if (!bandera) {
             if (TxtPalabra.getText().trim().isEmpty()) {
                 System.out.println("No hay nada escrito en basica");
                 //Poner Aviso de falta de datos!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             } else {
                 try {
-                    titulo = TxtPalabra.getText();
-                    System.out.println(titulo);
+                    titulo = TxtPalabra.getText();                    
                     int pos = CMBCampo.getSelectedIndex();                    
                     switch (pos) {
                         case 0:
@@ -593,8 +593,7 @@ public class Busqueda extends javax.swing.JFrame {
                         default:
                             busqueda="titulo";
                             break;
-                    }
-                    System.out.println(busqueda);
+                    }                    
                     Registry registry = LocateRegistry.getRegistry();
                     TestRemote testRemote = (TestRemote) registry.lookup("Test");
                     result = testRemote.searchBook(busqueda, titulo, "basica", "", "");
@@ -619,26 +618,23 @@ public class Busqueda extends javax.swing.JFrame {
             } else {
                 if (!TxtTitulo.getText().trim().isEmpty()) {
                     titulo = TxtTitulo.getText();
-                    System.out.println(titulo);
+                    //System.out.println(titulo);
                 }
                 if (!TxtAutor.getText().trim().isEmpty()) {
                     autor = TxtAutor.getText();
-                    System.out.println(autor);
+                    //System.out.println(autor);
                 }
                 if (!TxtAnio.getText().trim().isEmpty()) {
                     anio = TxtAnio.getText();
-                    System.out.println(anio);
+                    //System.out.println(anio);
                 }
                 try {
-                    titulo = TxtPalabra.getText();
-                    System.out.println(titulo);
-                    busqueda = CMBCampo.getSelectedItem().toString();
-                    System.out.println(busqueda);
+                    titulo = TxtPalabra.getText();                    
+                    busqueda = CMBCampo.getSelectedItem().toString();                    
                     Registry registry = LocateRegistry.getRegistry();
                     TestRemote testRemote = (TestRemote) registry.lookup("Test");
                     result = testRemote.searchBook(busqueda, titulo, "avanzada", autor, anio);
-                    tupla = result.split("&");
-                    //System.out.println(tupla[0]);
+                    tupla = result.split("&");                    
                     data = tupla[0].split("%");
                     VarG.libros.add(new LibroG(data[0], data[1], data[2], Integer.parseInt(data[3]), Integer.parseInt(data[4]), Integer.parseInt(data[5])));
                     for (int i = 1; i < tupla.length; i++) {

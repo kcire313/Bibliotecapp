@@ -72,11 +72,8 @@ public class Server {
                         int anio = VarG.objConn.rs.getInt("anio");
                         int ubicacion = VarG.objConn.rs.getInt("ubicacion");
                         int cover = VarG.objConn.rs.getInt("cover");
-                        results = id_prestamo + "%" + id_usuario + "%" + id_libro + "%" + fecha_pres + "%" + fecha_dev + "%" + devuelto + "%" + renovacion + "%" + titulo + "%" + autor + "%" + anio + "%" + ubicacion + "%" + cover + "&";
-                        //libros.add(new LibroG(id_prestamo, id_usuario, id_libro, fecha_pres, fecha_dev, devuelto, renovacion, titulo, autor, anio, ubicacion, stock));
-                        //System.out.println(libros.get(0).getTitulo());
+                        results = id_prestamo + "%" + id_usuario + "%" + id_libro + "%" + fecha_pres + "%" + fecha_dev + "%" + devuelto + "%" + renovacion + "%" + titulo + "%" + autor + "%" + anio + "%" + ubicacion + "%" + cover + "&";                        
                         while (VarG.objConn.rs.next()) {
-                            System.out.println("entro");
                             id_prestamo = VarG.objConn.rs.getInt("id_prestamo");
                             id_usuario = VarG.objConn.rs.getInt("id_usuario");
                             id_libro = VarG.objConn.rs.getString("id_libro");
@@ -117,8 +114,7 @@ public class Server {
                     VarG.objConn.Consultar(consulta);
                     if (VarG.objConn.rs.getRow() != 0) {
                         String id_libro = VarG.objConn.rs.getString("id_libro");
-                        String titulo = VarG.objConn.rs.getString("titulo");
-                        System.out.println(titulo);
+                        String titulo = VarG.objConn.rs.getString("titulo");                        
                         String autor = VarG.objConn.rs.getString("autor");
                         int anio = VarG.objConn.rs.getInt("anio");
                         int ubicacion = VarG.objConn.rs.getInt("ubicacion");
