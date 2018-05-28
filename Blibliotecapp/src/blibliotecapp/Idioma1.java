@@ -90,15 +90,7 @@ public class Idioma1 extends javax.swing.JFrame {
     public void cambiaIdioma(String idioma) {
         VarG.idioma = idioma;
         imagesProfile(); //Cambia las imagenes del Log_in
-        setAudioPerfil(); //Cambia el audio del boton de perfil
-        setAudioBusqueda(); //Cambia el audio del boton de busqueda
-        setAudioIdiomas(); //Cambia el audio del boton de idiomas
-        setAudioPrestamo(); //Cambia el audio del boton de prestamo
-        setAudioRenovar(); //Cambia el audio del boton de renovar
-        setAudioDevolucion(); //Cambia el audio del boton de devolucion
-        setAudioPerfilDatos(); //Cambia el audio del boton de perfil datos
-        setAudioCanjear(); //Cambia el audio del boton de canjea
-        
+        loadAudios();        
 
         //Faltan mas funciones para las demas pantallas!!!!
         this.setVisible(false); //Cierra la ventana
@@ -214,13 +206,13 @@ public class Idioma1 extends javax.swing.JFrame {
 
     public void setAudioPrestamo() {
         try {
-            InputStream music = new FileInputStream(new File("src\\Audios\\PrestamoEsp.wav"));
+            InputStream music = new FileInputStream(new File("src\\Audios\\ScanPrestamoEsp.wav"));
             switch (VarG.idioma) {
                 case "espanol":
-                    music = new FileInputStream(new File("src\\Audios\\PrestamoEsp.wav"));
+                    music = new FileInputStream(new File("src\\Audios\\ScanPrestamoEsp.wav"));
                     break;
                 case "ingles":
-                    music = new FileInputStream(new File("src\\Audios\\PrestamoEng.wav"));
+                    music = new FileInputStream(new File("src\\Audios\\ScanPrestamoEng.wav"));
                     break;
                 case "frances":
                     music = new FileInputStream(new File("src\\Audios\\PrestamoEsp.wav"));
@@ -237,13 +229,13 @@ public class Idioma1 extends javax.swing.JFrame {
 
     public void setAudioRenovar() {
         try {
-            InputStream music = new FileInputStream(new File("src\\Audios\\RenovarPrestamoEsp.wav"));
+            InputStream music = new FileInputStream(new File("src\\Audios\\ScanRenovacionEsp.wav"));
             switch (VarG.idioma) {
                 case "espanol":
-                    music = new FileInputStream(new File("src\\Audios\\RenovarPrestamoEsp.wav"));
+                    music = new FileInputStream(new File("src\\Audios\\ScanRenovacionEsp.wav"));
                     break;
                 case "ingles":
-                    music = new FileInputStream(new File("src\\Audios\\RenovarPrestamoEng.wav"));
+                    music = new FileInputStream(new File("src\\Audios\\ScanRenovacionEng.wav"));
                     break;
                 case "frances":
                     music = new FileInputStream(new File("src\\Audios\\RenovarPrestamoEsp.wav"));
@@ -283,13 +275,13 @@ public class Idioma1 extends javax.swing.JFrame {
     
     private void setAudioDevolucion() {
         try {
-            InputStream music = new FileInputStream(new File("src\\Audios\\DevuelveEsp.wav"));
+            InputStream music = new FileInputStream(new File("src\\Audios\\ScanDevolverEsp.wav"));
             switch (VarG.idioma) {
                 case "espanol":
-                    music = new FileInputStream(new File("src\\Audios\\DevuelveEsp.wav"));
+                    music = new FileInputStream(new File("src\\Audios\\ScanDevolverEsp.wav"));
                     break;
                 case "ingles":
-                    music = new FileInputStream(new File("src\\Audios\\DevuelveEng.wav"));
+                    music = new FileInputStream(new File("src\\Audios\\ScanDevolverEng.wav"));
                     break;
                 case "frances":
                     music = new FileInputStream(new File("src\\Audios\\DevuelveEsp.wav"));
@@ -348,5 +340,16 @@ public class Idioma1 extends javax.swing.JFrame {
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
+    }
+
+    public void loadAudios() {
+        setAudioPerfil(); //Cambia el audio del boton de perfil
+        setAudioBusqueda(); //Cambia el audio del boton de busqueda
+        setAudioIdiomas(); //Cambia el audio del boton de idiomas
+        setAudioPrestamo(); //Cambia el audio del boton de prestamo
+        setAudioRenovar(); //Cambia el audio del boton de renovar
+        setAudioDevolucion(); //Cambia el audio del boton de devolucion
+        setAudioPerfilDatos(); //Cambia el audio del boton de perfil datos
+        setAudioCanjear(); //Cambia el audio del boton de canjea
     }
 }

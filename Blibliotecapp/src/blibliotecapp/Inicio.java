@@ -60,11 +60,12 @@ public class Inicio extends javax.swing.JFrame {
          InputStream music;
         try {
             music = new FileInputStream(new File("src\\Audios\\ComenzarEsp.wav"));            
-            audios = new AudioStream(music); 
+            VarG.aComienzo = new AudioStream(music);             
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getLocalizedMessage());
         }
-         AudioPlayer.player.start(audios);
+         AudioPlayer.player.start(VarG.aComienzo);         
+         AudioPlayer.player.stop(VarG.aBienvenida);
     }//GEN-LAST:event_butonMouseClicked
 
     /**

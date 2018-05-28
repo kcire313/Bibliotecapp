@@ -45,6 +45,8 @@ public class VarG {
     public static Libros jfLibros=null;
     
     //Variables de audio
+    public static AudioStream aBienvenida; //Audio de la bienvenida
+    public static AudioStream aComienzo; //Audio cuando comienza
     public static AudioStream aLogin; //Boton del Perfil
     public static AudioStream aIdioma; //Boton de los idiomas
     public static AudioStream aBusqueda; //Boton de los Busqueda2
