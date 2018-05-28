@@ -40,6 +40,9 @@ public class Blibliotecapp extends JComponent {
     private Image placa = new ImageIcon("src/surce/placa.gif").getImage();
     private Image boton = new ImageIcon("src/surce/espaniol.png").getImage();
     private Image uaalogo = new ImageIcon("src/surce/uaalogo.png").getImage();
+    private Image audio = new ImageIcon("src/surce/nuevasP/high-volume.png").getImage();
+    private Image aActual = audio;
+    private Image noAudio = new ImageIcon("src/surce/nuevasP/no-audio.png").getImage();
     private AudioStream audios;
 
     public Blibliotecapp() {
@@ -178,7 +181,7 @@ public class Blibliotecapp extends JComponent {
                     VarG.jfIdioma.setVisible(true);
                 }                
                 //Botón idioma
-                if (e.getX() >= 1230 && e.getX() <= 1330 && e.getY() >= 660 && e.getY() <= 740) {
+                if (e.getX() >= 1230 && e.getX() <= 1330 && e.getY() >= 660 && e.getY() <= 760) {
                     System.out.println("audio");
                     turnOnOffAudios();
                 }
@@ -217,6 +220,7 @@ public class Blibliotecapp extends JComponent {
         g.drawImage(placa, 1150, 50, this);
         g.drawImage(boton, 0, 0, this);
         g.drawImage(uaalogo, 491, 50, this); //Logo de fuego
+        g.drawImage(aActual, 1230, 660, this);
         g.setColor(Color.BLUE);
         //animaciones
         g.drawImage(VarG.anActual.getImage(), 0, 0, 1366, 768, this);
@@ -263,9 +267,11 @@ public class Blibliotecapp extends JComponent {
 
     private void turnOnOffAudios() {
         if (audioOnOff) {
+            aActual=noAudio;
             cleanAudios();
             audioOnOff = false;
         } else {
+            aActual=audio;
             VarG.jfIdioma.loadAudios();
             audioOnOff = true;
         }

@@ -609,6 +609,7 @@ public class Busqueda extends javax.swing.JFrame {
                 }                
                 VarG.jfLibros.setVisible(true);
                 this.setVisible(false);
+                //System.out.println(VarG.libros.get(0).getTitulo());//----------------------------------
             }
         } else {
             if (TxtTitulo.getText().trim().isEmpty() && TxtAutor.getText().trim().isEmpty()
@@ -629,7 +630,7 @@ public class Busqueda extends javax.swing.JFrame {
                     //System.out.println(anio);
                 }
                 try {
-                    titulo = TxtPalabra.getText();                    
+                    //titulo = TxtPalabra.getText();                    
                     busqueda = CMBCampo.getSelectedItem().toString();                    
                     Registry registry = LocateRegistry.getRegistry();
                     TestRemote testRemote = (TestRemote) registry.lookup("Test");
@@ -645,6 +646,7 @@ public class Busqueda extends javax.swing.JFrame {
                     System.out.println(e.getMessage());
                 }                
                 VarG.jfLibros.setVisible(true);
+                //System.out.println(VarG.libros.get(0).getTitulo());//----------------------------------
                 this.setVisible(false);
             }
         }
