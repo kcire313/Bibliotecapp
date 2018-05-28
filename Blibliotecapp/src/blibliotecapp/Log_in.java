@@ -119,10 +119,10 @@ public class Log_in extends javax.swing.JFrame {
         });
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 130, 120));
 
-        id.setText("190798");
+        id.setText("195268");
         getContentPane().add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 100, 220, 40));
 
-        pass.setText("070996");
+        pass.setText("210696");
         getContentPane().add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 170, 220, 40));
 
         Letra1.setForeground(new java.awt.Color(255, 255, 255));
@@ -270,7 +270,7 @@ public class Log_in extends javax.swing.JFrame {
                     String[] data;
                     String result;
                     if (VarG.objConn.rs.getString(2).equals(pass.getText().trim())) {
-                        //System.out.println("Entró aquí");
+                        System.out.println("Entró aquí login");
                         Registry registry = LocateRegistry.getRegistry();
                         TestRemote testRemote = (TestRemote) registry.lookup("Test");
                         result = testRemote.pullData(this.id.getText());
@@ -305,11 +305,12 @@ public class Log_in extends javax.swing.JFrame {
                             }
                             VarG.libros.add(new LibroG(Integer.parseInt(data[0]), Integer.parseInt(data[1]), data[2], data[3], data[4], band, Integer.parseInt(data[6]), data[7], data[8], Integer.parseInt(data[9]), Integer.parseInt(data[10]), Integer.parseInt(data[11])));
                         }
-                        System.out.println(VarG.libros.get(0).getTitulo() + "  " + VarG.libros.get(0).getAutor());
-                        System.out.println(VarG.libros.get(1).getTitulo() + "  " + VarG.libros.get(1).getAutor());
+   //                     System.out.println(VarG.libros.get(0).getTitulo() + "  " + VarG.libros.get(0).getAutor());
+   //                     System.out.println(VarG.libros.get(1).getTitulo() + "  " + VarG.libros.get(1).getAutor());
                         //Borra los datos previamente usados
-                        borradatos();
+                        //borradatos();
                         //Pantallas de continuidad
+                        System.out.println("Entra a current frame");
                         switch (VarG.currentFrame) {
                             case "perfil":
                                 AudioPlayer.player.start(VarG.aPerfilDatos);
@@ -328,6 +329,7 @@ public class Log_in extends javax.swing.JFrame {
                                 AudioPlayer.player.start(VarG.aDevolucion);
                                 break;
                             case "canjear":
+                                System.out.println("entro cajas");
                                 VarG.jfCanjear.setVisible(true);
                                 AudioPlayer.player.start(VarG.aCanjear);
                                 break;

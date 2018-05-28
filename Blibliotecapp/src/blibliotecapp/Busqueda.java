@@ -655,7 +655,7 @@ public class Busqueda extends javax.swing.JFrame {
     }//GEN-LAST:event_jLBBuscarMouseClicked
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        if (VarG.idioma.equals("ingles")) {
+     if (VarG.idioma.equals("ingles")) {
             LBFondo.setIcon(new ImageIcon("src/surce/nuevasP/busquedaB I.png"));
         } else {
             LBFondo.setIcon(new ImageIcon("src/surce/nuevasP/busquedaB E.png"));

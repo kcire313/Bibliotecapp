@@ -7,6 +7,7 @@ package blibliotecapp;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -34,7 +35,7 @@ public class perfilDatos extends javax.swing.JFrame {
         regresar = new javax.swing.JLabel();
         home = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        Tabla = new javax.swing.JTable();
         LBID = new javax.swing.JLabel();
         LBPuntaje = new javax.swing.JLabel();
         LBNombre = new javax.swing.JLabel();
@@ -63,8 +64,8 @@ public class perfilDatos extends javax.swing.JFrame {
         });
         getContentPane().add(home, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 170, 140));
 
-        jTable1.setFont(new java.awt.Font("Arial Unicode MS", 0, 20)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        Tabla.setFont(new java.awt.Font("Arial Unicode MS", 0, 20)); // NOI18N
+        Tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -74,8 +75,16 @@ public class perfilDatos extends javax.swing.JFrame {
             new String [] {
                 "ID Prestamo", "ID Libro", "Titulo", "Fecha Prestamo", "Fecha Devolucion", "Devuelto", "# Renovaciones"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(Tabla);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 340, 720, 370));
 
@@ -128,13 +137,35 @@ public class perfilDatos extends javax.swing.JFrame {
             LBNombre.setText(VarG.nombre + " " + VarG.appat + " " + VarG.apmat);
             LBID.setText("ID: " + Integer.toString(VarG.id_usuario));
             LBPuntaje.setText("Puntaje: "+Integer.toString(VarG.puntaje));
+            String col[] = {"ID Prestamo","ID Libro","Titulo","Fecha Prestamo","Fecha Devolucion","Devuelto","# Renovaciones"};
+            DefaultTableModel tableModel = new DefaultTableModel(col,0);
+            String aux = "";
+            for(int i = 0; i < VarG.libros.size();i++){
+                if(VarG.libros.get(i).isDevuelto()){
+                     aux = "Si";
+                }else{
+                    aux = "No";
+                }
+                Object[] objs = {VarG.libros.get(i).getId_prestamo(), VarG.libros.get(i).getId_libro(),
+                                  VarG.libros.get(i).getTitulo(), VarG.libros.get(i).getFecha_pres(),
+                                  VarG.libros.get(i).getFecha_dev(),aux , VarG.libros.get(i).getRenovacion()};
+                tableModel.addColumn((i+1),objs);
+            }
+            Tabla.setModel(tableModel);
+            
+            
         }else{
             LBFondo.setIcon(new ImageIcon("src/surce/nuevasP/perfil I.png"));
             LBHistorial.setText("Borrowed History");
             LBNombre.setText(VarG.nombre + " " + VarG.appat + " " + VarG.apmat);
             LBID.setText("ID: " + Integer.toString(VarG.id_usuario));
             LBPuntaje.setText("Current Points: "+Integer.toString(VarG.puntaje));
+            String col[] = {"ID Borrow","ID Book","Title","Date Borrow","Date Return","Returned","# Renovatios"};
+            DefaultTableModel tableModel = new DefaultTableModel(col,0);
+            Tabla.setModel(tableModel);
         }
+        
+        
     }//GEN-LAST:event_formWindowActivated
 
     /**
@@ -178,9 +209,9 @@ public class perfilDatos extends javax.swing.JFrame {
     private javax.swing.JLabel LBID;
     private javax.swing.JLabel LBNombre;
     private javax.swing.JLabel LBPuntaje;
+    private javax.swing.JTable Tabla;
     private javax.swing.JLabel home;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel regresar;
     // End of variables declaration//GEN-END:variables
 }

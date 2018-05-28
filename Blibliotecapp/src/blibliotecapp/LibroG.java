@@ -135,7 +135,7 @@ public class LibroG {
         this.ubicacion = ubicacion;
     }
 
-    public int getStock() {
+    public int getCover() {
         return cover;
     }
 

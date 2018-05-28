@@ -21,7 +21,7 @@ public class Libros extends javax.swing.JFrame {
     public Libros() {
         this.setUndecorated(true);
         initComponents();
-
+        bandera=false;   //Control si no se encontraron datos
     }
 
     @SuppressWarnings("unchecked")
@@ -48,6 +48,7 @@ public class Libros extends javax.swing.JFrame {
         LBdatos4 = new javax.swing.JLabel();
         LBIDStatic = new javax.swing.JLabel();
         LBID = new javax.swing.JLabel();
+        Btampliar = new javax.swing.JLabel();
         LBmapa = new javax.swing.JLabel();
         LbImagen = new javax.swing.JLabel();
         LbUp = new javax.swing.JLabel();
@@ -80,6 +81,12 @@ public class Libros extends javax.swing.JFrame {
         LBcontador.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LBcontador.setText("0/0");
         getContentPane().add(LBcontador, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, 150, 100));
+
+        LBop0.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LBop0MouseClicked(evt);
+            }
+        });
         getContentPane().add(LBop0, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 850, 100));
 
         LBtitulo0.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
@@ -116,6 +123,12 @@ public class Libros extends javax.swing.JFrame {
         LBdatos2.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         LBdatos2.setForeground(new java.awt.Color(51, 51, 51));
         getContentPane().add(LBdatos2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 840, 50));
+
+        LBop3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LBop3MouseClicked(evt);
+            }
+        });
         getContentPane().add(LBop3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, 850, 100));
 
         LBtitulo3.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
@@ -124,6 +137,12 @@ public class Libros extends javax.swing.JFrame {
         LBdatos3.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         LBdatos3.setForeground(new java.awt.Color(51, 51, 51));
         getContentPane().add(LBdatos3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 540, 840, 50));
+
+        LBop4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LBop4MouseClicked(evt);
+            }
+        });
         getContentPane().add(LBop4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 600, 850, 100));
 
         LBtitulo4.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
@@ -135,13 +154,18 @@ public class Libros extends javax.swing.JFrame {
 
         LBIDStatic.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         LBIDStatic.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        LBIDStatic.setText("ID del libro");
         getContentPane().add(LBIDStatic, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 280, 330, 50));
 
         LBID.setFont(new java.awt.Font("Arial", 1, 30)); // NOI18N
         LBID.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        LBID.setText("863.3C3553r");
         getContentPane().add(LBID, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 330, 330, 50));
+
+        Btampliar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtampliarMouseClicked(evt);
+            }
+        });
+        getContentPane().add(Btampliar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 414, 330, 190));
 
         LBmapa.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(LBmapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(1004, 424, 320, 140));
@@ -186,12 +210,12 @@ public class Libros extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         //limpiar todos los labels de info
-
+        limpiar();
         if (VarG.idioma.equals("ingles")) {
-            LBIDStatic.setText("Book´s ID");
+            //LBIDStatic.setText("Book´s ID");
             LbFondo.setIcon(new ImageIcon("src/surce/nuevasP/libros I.png"));
         } else {
-            LBIDStatic.setText("ID del libro");
+            //LBIDStatic.setText("ID del libro");
             LbFondo.setIcon(new ImageIcon("src/surce/nuevasP/libros E.png"));
         }
         //validar la página actual
@@ -203,27 +227,48 @@ public class Libros extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowActivated
 
     private void LBop1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LBop1MouseClicked
-        //Mapa
-        ImageIcon imageIcon = new ImageIcon("src/surce/nuevasP/mapaPlantaAlta1.png"); // load the image to a imageIcon
+        try{
+        String map = getmapa(VarG.libros.get(1 + pActual * 5).getUbicacion());
+        ImageIcon imageIcon = new ImageIcon(map); // load the image to a imageIcon
         Image image = imageIcon.getImage(); // transform it 
         Image newimg = image.getScaledInstance(imageIcon.getIconHeight() * 310 / 470, imageIcon.getIconHeight() * 230 / 800, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
         imageIcon = new ImageIcon(newimg);
         LBmapa.setIcon(imageIcon);
         //Cover
-        ImageIcon imageIcon1 = new ImageIcon("src/surce/cover/2.jpg"); // load the image to a imageIcon
+        ImageIcon imageIcon1 = new ImageIcon("src/surce/cover/"+VarG.libros.get(1 + pActual * 5).getCover()+".jpg"); // load the image to a imageIcon
         Image image2 = imageIcon1.getImage(); // transform it 
         Image newimg3 = image2.getScaledInstance(imageIcon1.getIconHeight() * 120 / 470, imageIcon1.getIconHeight() * 300 / 800, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
         imageIcon1 = new ImageIcon(newimg3);
         LbImagen.setIcon(imageIcon1);
-
+        
+        this.LBIDStatic.setText("ID:" + VarG.libros.get(1 + pActual * 5).getId_libro());
+        
+        }catch(Exception e){
+            System.out.println(e);
+        }      
+             
+      
     }//GEN-LAST:event_LBop1MouseClicked
 
     private void LBop2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LBop2MouseClicked
-        ImageIcon imageIcon = new ImageIcon("src/surce/nuevasP/mapaPlantaBaja4.png"); // load the image to a imageIcon
+        try{
+        String map = getmapa(VarG.libros.get(2 + pActual * 5).getUbicacion());
+        ImageIcon imageIcon = new ImageIcon(map); // load the image to a imageIcon
         Image image = imageIcon.getImage(); // transform it 
-        Image newimg = image.getScaledInstance(imageIcon.getIconHeight() * 220 / 470, imageIcon.getIconHeight() * 250 / 800, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+        Image newimg = image.getScaledInstance(imageIcon.getIconHeight() * 310 / 470, imageIcon.getIconHeight() * 230 / 800, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
         imageIcon = new ImageIcon(newimg);
         LBmapa.setIcon(imageIcon);
+        //Cover
+        ImageIcon imageIcon1 = new ImageIcon("src/surce/cover/"+VarG.libros.get(2 + pActual * 5).getCover()+".jpg"); // load the image to a imageIcon
+        Image image2 = imageIcon1.getImage(); // transform it 
+        Image newimg3 = image2.getScaledInstance(imageIcon1.getIconHeight() * 120 / 470, imageIcon1.getIconHeight() * 300 / 800, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+        imageIcon1 = new ImageIcon(newimg3);
+        LbImagen.setIcon(imageIcon1);
+        
+        this.LBIDStatic.setText("ID:" + VarG.libros.get(2 + pActual * 5).getId_libro());
+         }catch(Exception e){
+            System.out.println(e);
+        }      
     }//GEN-LAST:event_LBop2MouseClicked
 
     private void LBDownMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LBDownMouseClicked
@@ -239,8 +284,81 @@ public class Libros extends javax.swing.JFrame {
             imprimir(pActual);
         }
     }//GEN-LAST:event_LbUpMouseClicked
+
+    private void LBop0MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LBop0MouseClicked
+        try{
+        String map = getmapa(VarG.libros.get(0 + pActual * 5).getUbicacion());
+        ImageIcon imageIcon = new ImageIcon(map); // load the image to a imageIcon
+        Image image = imageIcon.getImage(); // transform it 
+        Image newimg = image.getScaledInstance(imageIcon.getIconHeight() * 310 / 470, imageIcon.getIconHeight() * 230 / 800, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+        imageIcon = new ImageIcon(newimg);
+        LBmapa.setIcon(imageIcon);
+        //Cover
+        ImageIcon imageIcon1 = new ImageIcon("src/surce/cover/"+VarG.libros.get(0 + pActual * 5).getCover()+".jpg"); // load the image to a imageIcon
+        Image image2 = imageIcon1.getImage(); // transform it 
+        Image newimg3 = image2.getScaledInstance(imageIcon1.getIconHeight() * 120 / 470, imageIcon1.getIconHeight() * 300 / 800, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+        imageIcon1 = new ImageIcon(newimg3);
+        LbImagen.setIcon(imageIcon1);
+        
+        this.LBIDStatic.setText("ID:" + VarG.libros.get(0 + pActual * 5).getId_libro());
+        
+         }catch(Exception e){
+            System.out.println(e);
+        }      
+    }//GEN-LAST:event_LBop0MouseClicked
+
+    private void LBop3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LBop3MouseClicked
+        try{
+        String map = getmapa(VarG.libros.get(3 + pActual * 5).getUbicacion());
+        ImageIcon imageIcon = new ImageIcon(map); // load the image to a imageIcon
+        Image image = imageIcon.getImage(); // transform it 
+        Image newimg = image.getScaledInstance(imageIcon.getIconHeight() * 310 / 470, imageIcon.getIconHeight() * 230 / 800, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+        imageIcon = new ImageIcon(newimg);
+        LBmapa.setIcon(imageIcon);
+        //Cover
+        ImageIcon imageIcon1 = new ImageIcon("src/surce/cover/"+VarG.libros.get(3 + pActual * 5).getCover()+".jpg"); // load the image to a imageIcon
+        Image image2 = imageIcon1.getImage(); // transform it 
+        Image newimg3 = image2.getScaledInstance(imageIcon1.getIconHeight() * 120 / 470, imageIcon1.getIconHeight() * 300 / 800, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+        imageIcon1 = new ImageIcon(newimg3);
+        LbImagen.setIcon(imageIcon1);
+        
+        this.LBIDStatic.setText("ID:" + VarG.libros.get(3 + pActual * 5).getId_libro());
+        
+        }catch(Exception e){
+            System.out.println(e);
+        }      
+    }//GEN-LAST:event_LBop3MouseClicked
+
+    private void LBop4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LBop4MouseClicked
+        try{
+        String map = getmapa(VarG.libros.get(4 + pActual * 5).getUbicacion());
+        ImageIcon imageIcon = new ImageIcon(map); // load the image to a imageIcon
+        Image image = imageIcon.getImage(); // transform it 
+        Image newimg = image.getScaledInstance(imageIcon.getIconHeight() * 310 / 470, imageIcon.getIconHeight() * 230 / 800, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+        imageIcon = new ImageIcon(newimg);
+        LBmapa.setIcon(imageIcon);
+        //Cover
+        ImageIcon imageIcon1 = new ImageIcon("src/surce/cover/"+VarG.libros.get(4 + pActual * 5).getCover()+".jpg"); // load the image to a imageIcon
+        Image image2 = imageIcon1.getImage(); // transform it 
+        Image newimg3 = image2.getScaledInstance(imageIcon1.getIconHeight() * 120 / 470, imageIcon1.getIconHeight() * 300 / 800, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+        imageIcon1 = new ImageIcon(newimg3);
+        LbImagen.setIcon(imageIcon1);
+        
+        this.LBIDStatic.setText("ID:" + VarG.libros.get(4 + pActual * 5).getId_libro());
+        
+        }catch(Exception e){
+            System.out.println(e);
+        }      
+    }//GEN-LAST:event_LBop4MouseClicked
+
+    private void BtampliarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtampliarMouseClicked
+            
+    }//GEN-LAST:event_BtampliarMouseClicked
     void imprimir(int i) {
-        //limpiar antes de imprimir
+        limpiar();
+        if (VarG.libros.size() == 0){
+            this.LBtitulo0.setText("NO SE ENCONTRARON LIBROS ");
+        }
         if (VarG.libros.size() >= 1 + i * 5) {
             this.LBtitulo0.setText(VarG.libros.get(0 + i * 5).getTitulo());
             this.LBdatos0.setText(VarG.libros.get(0 + i * 5).getAutor() + "/ año: " + VarG.libros.get(0 + i * 5).getAnio());
@@ -262,6 +380,47 @@ public class Libros extends javax.swing.JFrame {
             this.LBdatos4.setText(VarG.libros.get(4 + i * 5).getAutor() + "/ año: " + VarG.libros.get(4 + i * 5).getAnio());
         }
         this.LBcontador.setText((pActual + 1) + "/" + (paginas + 1));
+    }
+    
+    public void limpiar(){
+        this.LBID.setText("");
+        this.LBcontador.setText("");
+        this.LBdatos0.setText("");
+        this.LBdatos1.setText("");
+        this.LBdatos2.setText("");
+        this.LBdatos3.setText("");
+        this.LBdatos4.setText("");
+        this.LBmapa.setIcon(null);
+        this.LBtitulo0.setText("");
+        this.LBtitulo1.setText("");
+        this.LBtitulo2.setText("");
+        this.LBtitulo3.setText("");
+        this.LBtitulo4.setText("");
+        this.LbImagen.setIcon(null);
+        this.LBIDStatic.setText("");
+        this.LBID.setText("");
+    
+    }
+    public String getmapa(int ub){
+            if (ub>=0 && ub <= 7){
+                String map = "src/surce/nuevasP/mapaPlantaBaja"+ub+".png";
+                System.out.println(map);
+                if(VarG.idioma.equals("ingles")){
+                     this.LBID.setText("Ground Floor");
+                }else{
+                    this.LBID.setText("Planta Baja");
+                }
+                return map;
+            }else{
+                String map = "src/surce/nuevasP/mapaPlantaAlta"+(ub-7)+".png";
+                if(VarG.idioma.equals("ingles")){
+                     this.LBID.setText("Top Floor");
+                }else{
+                    this.LBID.setText("Planta Alta");
+                }
+                return map;
+                
+            }
     }
 
     /**
@@ -303,6 +462,7 @@ public class Libros extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Btampliar;
     private javax.swing.JLabel LBDown;
     private javax.swing.JLabel LBID;
     private javax.swing.JLabel LBIDStatic;
@@ -330,4 +490,5 @@ public class Libros extends javax.swing.JFrame {
     private javax.swing.JLabel regresar;
     // End of variables declaration//GEN-END:variables
 int pActual, paginas;
+boolean bandera;
 }
