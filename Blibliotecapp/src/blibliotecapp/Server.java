@@ -165,7 +165,9 @@ public class Server {
                             + "values (" + id_usuario + ", '" + id_libro + "', CURDATE(), CURDATE() + INTERVAL 3 DAY," + devuelto + ", " + renovacion + ");";
                 } else if (tipo.equals("update")) {
                     consulta = "UPDATE usa SET devuelto= "+devuelto+" WHERE id_prestamo = "+id_prestamo+";";
-                }                
+                } else if(tipo.equals("puntaje")){
+                    consulta = "UPDATE usuario SET puntaje= "+id_prestamo+" WHERE id_usuario = "+id_usuario+";";
+                } 
                 VarG.objConn.Actualizar(consulta);
                 System.out.println(consulta);
             }
