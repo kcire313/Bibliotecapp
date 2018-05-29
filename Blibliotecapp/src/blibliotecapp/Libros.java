@@ -354,7 +354,10 @@ public class Libros extends javax.swing.JFrame {
     }//GEN-LAST:event_LBop4MouseClicked
 
     private void BtampliarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtampliarMouseClicked
-            
+        if(!LBID.getText().isEmpty()){
+            VarG.jmapa.setVisible(true);
+        }
+        
     }//GEN-LAST:event_BtampliarMouseClicked
     void imprimir(int i) {
         limpiar();
@@ -406,6 +409,7 @@ public class Libros extends javax.swing.JFrame {
     public String getmapa(int ub){
             if (ub>=0 && ub <= 7){
                 String map = "src/surce/nuevasP/mapaPlantaBaja"+ub+".png";
+                VarG.mapa = map;
                 System.out.println(map);
                 if(VarG.idioma.equals("ingles")){
                      this.LBID.setText("Ground Floor");
@@ -415,6 +419,7 @@ public class Libros extends javax.swing.JFrame {
                 return map;
             }else{
                 String map = "src/surce/nuevasP/mapaPlantaAlta"+(ub-7)+".png";
+                VarG.mapa = map;
                 if(VarG.idioma.equals("ingles")){
                      this.LBID.setText("Top Floor");
                 }else{

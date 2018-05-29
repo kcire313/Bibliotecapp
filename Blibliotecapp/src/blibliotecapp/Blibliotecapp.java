@@ -121,6 +121,11 @@ public class Blibliotecapp extends JComponent {
         //Carga los audios
         VarG.jfIdioma.loadAudios();
         
+        //Mapa
+        VarG.jmapa = new Mapa();
+        VarG.jmapa.pack();
+        VarG.jmapa.setLocationRelativeTo(null);
+        
         //Key listener para la pantalla
         addMouseListener(new MouseAdapter() {
             @Override

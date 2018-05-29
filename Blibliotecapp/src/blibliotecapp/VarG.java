@@ -43,6 +43,7 @@ public class VarG {
     public static Devolucion jfDevolucion=null;
     public static Canjear jfCanjear=null;
     public static Libros jfLibros=null;
+    public static Mapa jmapa=null;
     
     //Variables de audio
     public static AudioStream aBienvenida; //Audio de la bienvenida
@@ -59,6 +60,9 @@ public class VarG {
     //Gifs de transicion
     public static ImageIcon anActual; 
     public static ArrayList<ImageIcon> animaciones;
+    
+    //Mapa Libro Seleccionado
+    public static String mapa;
         
     //Conexión con MySQL
     public static MySqlConexion objConn = new MySqlConexion();

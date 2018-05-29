@@ -42,6 +42,13 @@ public class Mapa extends javax.swing.JFrame {
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+                formWindowLostFocus(evt);
+            }
+        });
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -70,12 +77,16 @@ public class Mapa extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         background.setIcon(new ImageIcon("src/surce/nuevasP/mapa.png"));
-        ImageIcon imageIcon = new ImageIcon("src/surce/nuevasP/mapaPlantaBaja1.png"); // load the image to a imageIcon
+        ImageIcon imageIcon = new ImageIcon(VarG.mapa); // load the image to a imageIcon
         Image image = imageIcon.getImage(); // transform it 
         Image newimg = image.getScaledInstance(imageIcon.getIconHeight() * 750 / 470, imageIcon.getIconHeight() * 700 / 800, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
         imageIcon = new ImageIcon(newimg);
         Mapa.setIcon(imageIcon);
     }//GEN-LAST:event_formWindowActivated
+
+    private void formWindowLostFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowLostFocus
+       this.setVisible(false);
+    }//GEN-LAST:event_formWindowLostFocus
     public void cambiaIdioma(String idioma) {
         VarG.idioma = idioma;
         imagesProfile(); //Cambia las imagenes del Log_in
