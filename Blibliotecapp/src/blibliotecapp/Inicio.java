@@ -59,7 +59,7 @@ public class Inicio extends javax.swing.JFrame {
          AudioStream audios=null; 
          InputStream music;
         try {
-            music = new FileInputStream(new File("src\\Audios\\ComenzarEsp.wav"));            
+            music = new FileInputStream(new File("src\\Audios\\comenzarEsp.wav"));            
             VarG.aComienzo = new AudioStream(music);             
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getLocalizedMessage());

@@ -237,13 +237,13 @@ public class Idioma1 extends javax.swing.JFrame {
 
     public void setAudioRenovar() {
         try {
-            InputStream music = new FileInputStream(new File("src\\Audios\\ScanRenovacionEsp.wav"));
+            InputStream music = new FileInputStream(new File("src\\Audios\\ScanRenovarEsp.wav"));
             switch (VarG.idioma) {
                 case "espanol":
-                    music = new FileInputStream(new File("src\\Audios\\ScanRenovacionEsp.wav"));
+                    music = new FileInputStream(new File("src\\Audios\\ScanRenovarEsp.wav"));
                     break;
                 case "ingles":
-                    music = new FileInputStream(new File("src\\Audios\\ScanRenovacionEng.wav"));
+                    music = new FileInputStream(new File("src\\Audios\\ScanRenovarEng.wav"));
                     break;
                 case "frances":
                     music = new FileInputStream(new File("src\\Audios\\RenovarPrestamoEsp.wav"));
