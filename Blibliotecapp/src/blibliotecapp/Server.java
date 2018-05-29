@@ -156,6 +156,19 @@ public class Server {
                 }
                 return results;
             }
+
+            @Override
+            public void insertPrestamo(int id_usuario, String id_libro,int id_prestamo, int devuelto, int renovacion, String tipo) throws RemoteException {
+                String consulta = "";
+                if (tipo.equals("insert")) {
+                    consulta = "insert into usa (id_usuario, id_libro, fecha_pres, fecha_dev, devuelto, renovacion)"
+                            + "values (" + id_usuario + ", '" + id_libro + "', CURDATE(), CURDATE() + INTERVAL 3 DAY," + devuelto + ", " + renovacion + ");";
+                } else if (tipo.equals("update")) {
+                    consulta = "UPDATE usa SET devuelto= "+devuelto+" WHERE id_prestamo = "+id_prestamo+";";
+                }                
+                VarG.objConn.Actualizar(consulta);
+                System.out.println(consulta);
+            }
         },
                 0);
 

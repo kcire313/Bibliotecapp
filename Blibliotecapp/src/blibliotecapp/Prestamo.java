@@ -256,7 +256,6 @@ public class Prestamo extends javax.swing.JFrame {
             LBFondo.setIcon(new ImageIcon("src/surce/nuevasP/prestamoB I.png"));
         }
 
-
         if (VarG.libros.size() >= 1) {
             this.LBn1.setText("1");
             this.LBr1.setText(Integer.toString(VarG.libros.get(0).getRenovacion()));
@@ -320,6 +319,8 @@ public class Prestamo extends javax.swing.JFrame {
                 tupla = result.split("&");
                 data = tupla[0].split("%");
                 VarG.libros.add(new LibroG(data[0], data[1], data[2], Integer.parseInt(data[3]), Integer.parseInt(data[4]), Integer.parseInt(data[5])));
+                int pos =VarG.libros.size()-1;
+                VarG.libros.get(pos).setDevuelto(true);
             } catch (Exception e) {
             }
 
@@ -431,6 +432,17 @@ public class Prestamo extends javax.swing.JFrame {
         //Query para crear el o los prestamos, un query por separado
         //Quiza meter a un array todos los libros nuevos y de ahi un query por cada uno en array
         //Anuncio de que libro sacaste y caundo se devuelve 
+        for (int i = 0; i < VarG.libros.size(); i++) {            
+            if (VarG.libros.get(i).isDevuelto()) {                
+                try {
+                    Registry registry = LocateRegistry.getRegistry();
+                    TestRemote testRemote = (TestRemote) registry.lookup("Test");                    
+                    testRemote.insertPrestamo(VarG.id_usuario, VarG.libros.get(i).getId_libro(), 0, 0, 0, "insert");
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+        }
 
     }//GEN-LAST:event_BtDevolverMouseClicked
     public void checkpres() {

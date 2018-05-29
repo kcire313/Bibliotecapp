@@ -19,4 +19,6 @@ public interface TestRemote extends Remote {
     String bookData(String id) throws RemoteException;
     
     String searchBook(String donde,String que,String tipo,String autor,String anio)throws RemoteException;
+    
+    void insertPrestamo(int id_usuario,String id_libro,int id_prestamo,int devuelto, int renovacion,String tipo)throws RemoteException;
 }
