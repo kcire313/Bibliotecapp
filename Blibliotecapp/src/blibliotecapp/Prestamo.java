@@ -35,6 +35,7 @@ public class Prestamo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLScan = new javax.swing.JLabel();
         regresar = new javax.swing.JLabel();
         home = new javax.swing.JLabel();
         Btop1 = new javax.swing.JLabel();
@@ -76,6 +77,7 @@ public class Prestamo extends javax.swing.JFrame {
             }
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(jLScan, new org.netbeans.lib.awtextra.AbsoluteConstraints(523, 264, 320, 240));
 
         regresar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -580,6 +582,7 @@ public class Prestamo extends javax.swing.JFrame {
     private javax.swing.JLabel LBtit3;
     private javax.swing.JLabel LBtit4;
     private javax.swing.JLabel home;
+    public javax.swing.JLabel jLScan;
     private javax.swing.JLabel regresar;
     // End of variables declaration//GEN-END:variables
     ArrayList<LibroG> ArrPrestados = new ArrayList<LibroG>();
