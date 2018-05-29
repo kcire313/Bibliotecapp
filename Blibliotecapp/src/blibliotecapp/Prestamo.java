@@ -258,6 +258,7 @@ public class Prestamo extends javax.swing.JFrame {
     private void BtEscanearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtEscanearMouseClicked
         String result = "";
         String[] tupla, data;
+        BtDevolver.setVisible(true);
         if (VarG.libros.size() == 4) {
             //Enviar mensaje de que no puedes sacar mas libros 
             System.out.println("No puedes sacar mas libros");
