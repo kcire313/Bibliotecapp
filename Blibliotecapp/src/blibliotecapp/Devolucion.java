@@ -31,6 +31,7 @@ public class Devolucion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLScan = new javax.swing.JLabel();
         regresar = new javax.swing.JLabel();
         home = new javax.swing.JLabel();
         LB4 = new javax.swing.JLabel();
@@ -48,6 +49,7 @@ public class Devolucion extends javax.swing.JFrame {
             }
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(jLScan, new org.netbeans.lib.awtextra.AbsoluteConstraints(523, 264, 320, 240));
 
         regresar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -75,6 +77,12 @@ public class Devolucion extends javax.swing.JFrame {
         LB2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/nuevasP/F-Continuar.png"))); // NOI18N
         getContentPane().add(LB2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, 990, 130));
         getContentPane().add(BtDevolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 470, 270, 270));
+
+        BtEscanear.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtEscanearMouseClicked(evt);
+            }
+        });
         getContentPane().add(BtEscanear, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 170, 270, 270));
 
         LBFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/nuevasP/devolucionB E.png"))); // NOI18N
@@ -88,7 +96,7 @@ public class Devolucion extends javax.swing.JFrame {
         this.setVisible(false);
         VarG.jfLogin.setVisible(true);
         VarG.jfIdioma.pausarAudios();
-        VarG.jfLogin.id.requestFocus();  
+        VarG.jfLogin.id.requestFocus();
         System.out.println("return profile data");
         VarG.anActual = VarG.animaciones.get(8);
         VarG.anActual.getImage().flush();
@@ -104,12 +112,18 @@ public class Devolucion extends javax.swing.JFrame {
     }//GEN-LAST:event_homeMouseClicked
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        if(VarG.idioma.equals("espanol")){
+        if (VarG.idioma.equals("espanol")) {
             LBFondo.setIcon(new ImageIcon("src/surce/nuevasP/devolucionB E.png"));
-        }else{
+        } else {
             LBFondo.setIcon(new ImageIcon("src/surce/nuevasP/devolucionB I.png"));
         }
     }//GEN-LAST:event_formWindowActivated
+
+    private void BtEscanearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtEscanearMouseClicked
+        ImageIcon scan = new ImageIcon("src/surce/gif/scan.gif"); // animacion
+        scan.getImage().flush();
+        this.jLScan.setIcon(scan);
+    }//GEN-LAST:event_BtEscanearMouseClicked
 
     /**
      * @param args the command line arguments
@@ -156,6 +170,7 @@ public class Devolucion extends javax.swing.JFrame {
     private javax.swing.JLabel LB4;
     private javax.swing.JLabel LBFondo;
     private javax.swing.JLabel home;
+    private javax.swing.JLabel jLScan;
     private javax.swing.JLabel regresar;
     // End of variables declaration//GEN-END:variables
 }

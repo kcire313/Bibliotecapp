@@ -309,7 +309,7 @@ public class Prestamo extends javax.swing.JFrame {
             //Enviar mensaje de que no puedes sacar mas libros
             System.out.println("No puedes sacar mas libros");
         } else {
-            ImageIcon scan = new ImageIcon("src/surce/gif/scan.gif");
+            ImageIcon scan = new ImageIcon("src/surce/gif/scan.gif"); //animacion
             scan.getImage().flush();
             this.jLScan.setIcon(scan);
             //Query SacaRandom de libro, obtener datos del libro 
