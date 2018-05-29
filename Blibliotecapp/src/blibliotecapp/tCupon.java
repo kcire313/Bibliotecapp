@@ -59,15 +59,15 @@ public class tCupon extends javax.swing.JFrame {
         getContentPane().add(LBAviso, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 660, 190));
         getContentPane().add(jLImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 310, 310));
 
-        jLNombre.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLNombre.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         jLNombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 310, 240, 80));
 
-        jLPromocion.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLPromocion.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         jLPromocion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLPromocion, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 180, 240, 90));
 
-        jLCupon.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLCupon.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         jLCupon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLCupon, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 60, 240, 80));
 
@@ -96,26 +96,48 @@ public class tCupon extends javax.swing.JFrame {
                 this.LBAviso.setText("No tienes los puntos suficientes");
             }
         }else{
+            String cupon, nombre,promocion;
             this.LBAviso.setText(null);
             jLBackground.setIcon(new ImageIcon("src/surce/nuevasP/tCupon.png"));
             switch(VarG.prod){
                 case 0:
+                    if(VarG.idioma.equals("ingles")){
+                        cupon = "Cupon";
+                        nombre = "Pen";
+                    }else{
+                        cupon = "Cupón";
+                        nombre = "Pluma";
+                    }
                     this.jLImagen.setIcon(new ImageIcon("src/surce/nuevasP/obj3.jpg"));
-                    this.jLCupon.setText("Plumas 2x1");
-                    this.jLNombre.setText(null);
-                    this.jLPromocion.setText(null);
+                    this.jLCupon.setText(cupon);
+                    this.jLNombre.setText(nombre);
+                    this.jLPromocion.setText("2x1");
                     break;
                 case 1:
+                    if(VarG.idioma.equals("ingles")){
+                        cupon = "Cupon";
+                        nombre = "Key Chain";
+                    }else{
+                        cupon = "Cupón";
+                        nombre = "Llavero";
+                    }
                     this.jLImagen.setIcon(new ImageIcon("src/surce/nuevasP/obj2.jpg"));
-                    this.jLCupon.setText("Descuento Llavero");
-                    this.jLNombre.setText(null);
-                    this.jLPromocion.setText(null);
+                    this.jLCupon.setText(cupon);
+                    this.jLNombre.setText(nombre);
+                    this.jLPromocion.setText("-50");
                     break;
                 case 2:
+                    if(VarG.idioma.equals("ingles")){
+                        cupon = "Cupon";
+                        nombre = "Mug";
+                    }else{
+                        cupon = "Cupón";
+                        nombre = "Tasa";
+                    }
                     this.jLImagen.setIcon(new ImageIcon("src/surce/nuevasP/obj1.jpg"));
-                    this.jLCupon.setText("Descuento Tasa");
-                    this.jLNombre.setText(null);
-                    this.jLPromocion.setText(null);
+                    this.jLCupon.setText(cupon);
+                    this.jLNombre.setText(nombre);
+                    this.jLPromocion.setText("-20");
                     break; 
             }
             

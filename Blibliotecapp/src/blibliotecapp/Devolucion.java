@@ -360,7 +360,15 @@ public class Devolucion extends javax.swing.JFrame {
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
-                //VarG.libros.remove(i);
+                VarG.puntaje += 10;
+                try {
+                    Registry registry = LocateRegistry.getRegistry();
+                    TestRemote testRemote = (TestRemote) registry.lookup("Test");
+                    testRemote.insertPrestamo(VarG.id_usuario, "", VarG.puntaje, 0, 0, "puntaje");
+                    VarG.jtcupon.setVisible(true);
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
             }
         }
         this.LBdevolver.setVisible(false);
