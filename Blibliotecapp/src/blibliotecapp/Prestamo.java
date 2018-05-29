@@ -306,7 +306,7 @@ public class Prestamo extends javax.swing.JFrame {
         String[] tupla, data;
         if (VarG.libros.size() == 4) {
             //Enviar mensaje de que no puedes sacar mas libros
-            System.out.println("No puedes sacar mas libros");
+            System.out.println("No puedes sacar mas libros puto");
         } else {
             ImageIcon scan = new ImageIcon("src/surce/gif/scan.gif"); //animacion
             scan.getImage().flush();
@@ -319,7 +319,7 @@ public class Prestamo extends javax.swing.JFrame {
                 tupla = result.split("&");
                 data = tupla[0].split("%");
                 VarG.libros.add(new LibroG(data[0], data[1], data[2], Integer.parseInt(data[3]), Integer.parseInt(data[4]), Integer.parseInt(data[5])));
-                int pos =VarG.libros.size()-1;
+                int pos = VarG.libros.size() - 1;
                 VarG.libros.get(pos).setDevuelto(true);
             } catch (Exception e) {
             }
@@ -330,7 +330,6 @@ public class Prestamo extends javax.swing.JFrame {
                 LBFondo.setIcon(new ImageIcon("src/surce/nuevasP/prestamo I.png"));
             }
             if (this.LBn1.getText().isEmpty()) {
-                /*
                 this.LBn1.setText("1");
                 this.LBr1.setText(Integer.toString(VarG.libros.get(0).getRenovacion()));
                 this.LBdev1.setText(VarG.libros.get(0).getFecha_dev());
@@ -339,22 +338,18 @@ public class Prestamo extends javax.swing.JFrame {
                 this.LBdat1.setForeground(Color.BLACK);
                 this.LBtit1.setText(VarG.libros.get(0).getTitulo());
                 this.LB1.setIcon(new ImageIcon("src/surce/nuevasP/F-Cancelar.png"));
-                 */
+
             }
             if (this.LBn2.getText().isEmpty()) {
-                /*
-                 this.LBn2.setText("2");
-                 this.LBtit2.setForeground(Color.BLACK);
+                this.LBn2.setText("2");
+                this.LBtit2.setForeground(Color.BLACK);
                 this.LBdat2.setForeground(Color.BLACK);
                 this.LBr2.setText(Integer.toString(VarG.libros.get(1).getRenovacion()));
                 this.LBdev2.setText(VarG.libros.get(1).getFecha_dev());
                 this.LBtit2.setText(VarG.libros.get(1).getTitulo());
                 this.LBdat2.setText(VarG.libros.get(1).getAutor() + "/ año: " + VarG.libros.get(1).getAnio());
                 this.LB2.setIcon(new ImageIcon("src/surce/nuevasP/F-Cancelar.png"));
-                 */
-            }
-            if (this.LBn3.getText().isEmpty()) {
-                /*
+            } else if (this.LBn3.getText().isEmpty()) {
                 this.LBn3.setText("3");
                 this.LBtit3.setForeground(Color.BLACK);
                 this.LBdat3.setForeground(Color.BLACK);
@@ -363,19 +358,17 @@ public class Prestamo extends javax.swing.JFrame {
                 this.LBtit3.setText(VarG.libros.get(2).getTitulo());
                 this.LBdat3.setText(VarG.libros.get(2).getAutor() + "/ año: " + VarG.libros.get(2).getAnio());
                 this.LB3.setIcon(new ImageIcon("src/surce/nuevasP/F-Cancelar.png"));
-                 */
-            }
-            if (this.LBn4.getText().isEmpty()) {
-                /*
+            } else if (this.LBn4.getText().isEmpty()) {
+
                 this.LBn4.setText("4");
-                   this.LBtit4.setForeground(Color.BLACK);
+                this.LBtit4.setForeground(Color.BLACK);
                 this.LBdat4.setForeground(Color.BLACK);
                 this.LBr4.setText(Integer.toString(VarG.libros.get(3).getRenovacion()));
                 this.LBdev4.setText(VarG.libros.get(3).getFecha_dev());
                 this.LBtit4.setText(VarG.libros.get(3).getTitulo());
                 this.LBdat4.setText(VarG.libros.get(3).getAutor() + "/ año: " + VarG.libros.get(3).getAnio());
                 this.LB4.setIcon(new ImageIcon("src/surce/nuevasP/F-Cancelar.png"));
-                 */
+
             }
         }
     }//GEN-LAST:event_BtEscanearMouseClicked
@@ -388,6 +381,7 @@ public class Prestamo extends javax.swing.JFrame {
         if (LBn1.getText().equals("1")) {
             if (!LBtit1.getForeground().equals(Color.GRAY)) {
                 //Quitar el LB1 ya que se esta cancelando el prestamo 
+                VarG.libros.remove(0);
                 limpiar(1);
                 //Preguntar si ahora solo quedan libros prestados para desactivar la de aceptar y 
                 //volver a poner fondo con boton bloqueado
@@ -400,6 +394,7 @@ public class Prestamo extends javax.swing.JFrame {
         if (LBn2.getText().equals("2")) {
             if (!LBtit2.getForeground().equals(Color.GRAY)) {
                 //Quitar el LB1 ya que se esta cancelando el prestamo 
+                VarG.libros.remove(1);
                 limpiar(2);
                 checkpres();
             }
@@ -409,7 +404,8 @@ public class Prestamo extends javax.swing.JFrame {
     private void Btop3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Btop3MouseClicked
         if (LBn3.getText().equals("3")) {
             if (!LBtit3.getForeground().equals(Color.GRAY)) {
-                //Quitar el LB1 ya que se esta cancelando el prestamo 
+                //Quitar el LB1 ya que se esta cancelando el prestamo
+                VarG.libros.remove(2);
                 limpiar(3);
                 checkpres();
             }
@@ -420,6 +416,7 @@ public class Prestamo extends javax.swing.JFrame {
         if (LBn4.getText().equals("4")) {
             if (!LBtit4.getForeground().equals(Color.GRAY)) {
                 //Quitar el LB1 ya que se esta cancelando el prestamo 
+                VarG.libros.remove(3);
                 limpiar(4);
                 checkpres();
             }
@@ -432,11 +429,13 @@ public class Prestamo extends javax.swing.JFrame {
         //Query para crear el o los prestamos, un query por separado
         //Quiza meter a un array todos los libros nuevos y de ahi un query por cada uno en array
         //Anuncio de que libro sacaste y caundo se devuelve 
-        for (int i = 0; i < VarG.libros.size(); i++) {            
-            if (VarG.libros.get(i).isDevuelto()) {                
+        for (int i = 0; i < VarG.libros.size(); i++) {
+            
+            if (VarG.libros.get(i).isDevuelto()) {
+                System.out.println("quiobolas");
                 try {
                     Registry registry = LocateRegistry.getRegistry();
-                    TestRemote testRemote = (TestRemote) registry.lookup("Test");                    
+                    TestRemote testRemote = (TestRemote) registry.lookup("Test");
                     testRemote.insertPrestamo(VarG.id_usuario, VarG.libros.get(i).getId_libro(), 0, 0, 0, "insert");
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
@@ -448,24 +447,24 @@ public class Prestamo extends javax.swing.JFrame {
     public void checkpres() {
         int aux = 0;
         if (LBn1.getText().equals("1")) {
-            if (LBtit1.getForeground().equals(Color.GRAY)) {
+            //if (LBtit1.getForeground().equals(Color.GRAY)) {
                 aux += 1;
-            }
+            //}
         }
         if (LBn2.getText().equals("2")) {
-            if (LBtit2.getForeground().equals(Color.GRAY)) {
+            //if (LBtit2.getForeground().equals(Color.GRAY)) {
                 aux += 1;
-            }
+            //}
         }
         if (LBn3.getText().equals("3")) {
-            if (LBtit3.getForeground().equals(Color.GRAY)) {
+            //if (LBtit3.getForeground().equals(Color.GRAY)) {
                 aux += 1;
-            }
+            //}
         }
         if (LBn4.getText().equals("4")) {
-            if (LBtit4.getForeground().equals(Color.GRAY)) {
+            //if (LBtit4.getForeground().equals(Color.GRAY)) {
                 aux += 1;
-            }
+            //}
         }
         if (VarG.libros.size() == aux) {
             if (VarG.idioma.equals("espanol")) {
