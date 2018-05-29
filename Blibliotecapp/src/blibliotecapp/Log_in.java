@@ -266,6 +266,7 @@ public class Log_in extends javax.swing.JFrame {
                         break;
                 }
                 String auxId=id.getText();
+                VarG.jfIdioma.pausarAudios();
                 String consulta = "select * from usuario where id_usuario=" + id.getText() + ";";
                 VarG.objConn.Consultar(consulta);
                 if (VarG.objConn.rs.getRow() != 0) {
@@ -361,7 +362,7 @@ public class Log_in extends javax.swing.JFrame {
             background.setIcon(new ImageIcon("src/surce/nuevasP/login E.png"));
         }
         //Comentar si es necesario hacer pruebas
-        borradatos();
+        //borradatos();
     }//GEN-LAST:event_formWindowActivated
 
     private void Letra1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Letra1MouseClicked
@@ -583,10 +584,10 @@ public class Log_in extends javax.swing.JFrame {
             result = testRemote.searchBook("", id , "prestamo", "", "");
             tupla = result.split("&");
             data = tupla[0].split("%");
-            VarG.libros.add(new LibroG(data[0], data[1], data[2], Integer.parseInt(data[3]), Integer.parseInt(data[4]), Integer.parseInt(data[5])));
+            VarG.libros.add(new LibroG(data[0],Integer.parseInt(data[6]), data[1], data[2], Integer.parseInt(data[3]), Integer.parseInt(data[4]), Integer.parseInt(data[5])));
             for (int i = 1; i < tupla.length; i++) {
                 data = tupla[i].split("%");
-                VarG.libros.add(new LibroG(data[0], data[1], data[2], Integer.parseInt(data[3]), Integer.parseInt(data[4]), Integer.parseInt(data[5])));
+                VarG.libros.add(new LibroG(data[0],Integer.parseInt(data[6]), data[1], data[2], Integer.parseInt(data[3]), Integer.parseInt(data[4]), Integer.parseInt(data[5])));
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());

@@ -104,6 +104,7 @@ public class Server {
             public String searchBook(String donde, String que, String tipo, String iautor, String ianio) throws RemoteException {
                 String results = "";
                 String consulta = "";
+                boolean band = false;
                 if (tipo.equals("basica")) {
                     consulta = "select * from libro where " + donde + " like '%" + que + "%';";
                 } else if (tipo.equals("avanzada")) {
@@ -111,9 +112,10 @@ public class Server {
                 } else if (tipo.equals("random")) {
                     consulta = "SELECT * FROM libro ORDER BY RAND() LIMIT 1;";
                 } else if (tipo.equals("prestamo")) {
-                    consulta = "select libro.titulo, libro.autor, libro.anio, libro.id_libro, libro,ubicacion, libro.cover "
+                    band = true;
+                    consulta = "select libro.titulo, libro.autor, libro.anio, libro.id_libro, libro.ubicacion, libro.cover, usa.renovacion "
                             + "from libro,usa,usuario "
-                            + "where usuario.id_usuario="+ que 
+                            + "where usuario.id_usuario=" + que
                             + " and usuario.id_usuario=usa.id_usuario "
                             + " and usa.id_libro=libro.id_libro and usa.devuelto=0;";
                 }
@@ -127,7 +129,12 @@ public class Server {
                         int anio = VarG.objConn.rs.getInt("anio");
                         int ubicacion = VarG.objConn.rs.getInt("ubicacion");
                         int cover = VarG.objConn.rs.getInt("cover");
-                        results = id_libro + "%" + titulo + "%" + autor + "%" + anio + "%" + ubicacion + "%" + cover + "&";
+                        if (band) {
+                            int renovacion = VarG.objConn.rs.getInt("renovacion");
+                            results = id_libro + "%" + titulo + "%" + autor + "%" + anio + "%" + ubicacion + "%" + cover + "%" + renovacion + "&";
+                        } else {
+                            results = id_libro + "%" + titulo + "%" + autor + "%" + anio + "%" + ubicacion + "%" + cover + "&";
+                        }
                         while (VarG.objConn.rs.next()) {
                             id_libro = VarG.objConn.rs.getString("id_libro");
                             titulo = VarG.objConn.rs.getString("titulo");
@@ -135,7 +142,12 @@ public class Server {
                             anio = VarG.objConn.rs.getInt("anio");
                             ubicacion = VarG.objConn.rs.getInt("ubicacion");
                             cover = VarG.objConn.rs.getInt("cover");
-                            results += id_libro + "%" + titulo + "%" + autor + "%" + anio + "%" + ubicacion + "%" + cover + "&";
+                            if (band) {
+                                int renovacion = VarG.objConn.rs.getInt("renovacion");
+                                results = id_libro + "%" + titulo + "%" + autor + "%" + anio + "%" + ubicacion + "%" + cover + "%" + renovacion + "&";
+                            } else {
+                                results = id_libro + "%" + titulo + "%" + autor + "%" + anio + "%" + ubicacion + "%" + cover + "&";
+                            }
                             //libros.add(new LibroG(id_prestamo, id_usuario, id_libro, fecha_pres, fecha_dev, devuelto, renovacion, titulo, autor, anio, ubicacion, stock));
                         }
                     }
