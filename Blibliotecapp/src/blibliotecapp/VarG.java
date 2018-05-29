@@ -23,7 +23,6 @@ public class VarG {
     public static String apmat="NaN";
     public static int puntaje=0;
     public static ArrayList<LibroG> libros=new ArrayList<LibroG>();
-    
     public static String idioma="espanol";
     
     //Variable para saber que pagina abrir despues del login
@@ -44,6 +43,9 @@ public class VarG {
     public static Canjear jfCanjear=null;
     public static Libros jfLibros=null;
     public static Mapa jmapa=null;
+    public static tCupon jtcupon=null;
+    public static tPrestamo jtPrestamo=null;
+    public static tDevolucion jtDevolucion=null;
     
     //Variables de audio
     public static AudioStream aBienvenida; //Audio de la bienvenida
@@ -63,6 +65,10 @@ public class VarG {
     
     //Mapa Libro Seleccionado
     public static String mapa;
+    
+    //Control CanjePuntos
+    public static boolean compra;
+    public static int prod;
         
     //Conexión con MySQL
     public static MySqlConexion objConn = new MySqlConexion();

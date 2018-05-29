@@ -5,6 +5,8 @@
  */
 package blibliotecapp;
 
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
@@ -61,7 +63,19 @@ public class Canjear extends javax.swing.JFrame {
             }
         });
         getContentPane().add(home, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 170, 140));
+
+        Btllavero.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtllaveroMouseClicked(evt);
+            }
+        });
         getContentPane().add(Btllavero, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 590, 360, 110));
+
+        Bttasa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BttasaMouseClicked(evt);
+            }
+        });
         getContentPane().add(Bttasa, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 590, 360, 110));
 
         Btpluma.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -92,7 +106,7 @@ public class Canjear extends javax.swing.JFrame {
         this.setVisible(false);
         VarG.jfIdioma.pausarAudios();
         VarG.jfLogin.setVisible(true);
-        VarG.jfLogin.id.requestFocus();  
+        VarG.jfLogin.id.requestFocus();
         System.out.println("return profile data");
         VarG.anActual = VarG.animaciones.get(4);
         VarG.anActual.getImage().flush();
@@ -108,19 +122,76 @@ public class Canjear extends javax.swing.JFrame {
     }//GEN-LAST:event_homeMouseClicked
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        LBpuntaje.setText(Integer.toString(VarG.puntaje)  + " Pts.");
-        if(VarG.idioma.equals("espanol")){
+        LBpuntaje.setText(Integer.toString(VarG.puntaje) + " Pts.");
+        VarG.compra=false;
+        if (VarG.idioma.equals("espanol")) {
             LBfondo.setIcon(new ImageIcon("src/surce/nuevasP/cupones E.png"));
             LBpuntos.setText("Puntaje Actual");
-        }else{
+        } else {
             LBfondo.setIcon(new ImageIcon("src/surce/nuevasP/cupones I.png"));
             LBpuntos.setText("Current Score");
         }
     }//GEN-LAST:event_formWindowActivated
 
     private void BtplumaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtplumaMouseClicked
-        
+        if (VarG.puntaje >= 50) {
+            VarG.compra=true;
+            VarG.puntaje -=50;
+            VarG.prod = 0;
+            try {
+                Registry registry = LocateRegistry.getRegistry();
+                TestRemote testRemote = (TestRemote) registry.lookup("Test");
+                testRemote.insertPrestamo(VarG.id_usuario, "", VarG.puntaje, 0, 0, "puntaje");
+                VarG.jtcupon.setVisible(true);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+            VarG.jtcupon.setVisible(true);
+        } else {
+            VarG.compra=false;
+            VarG.jtcupon.setVisible(true);
+        }
     }//GEN-LAST:event_BtplumaMouseClicked
+
+    private void BtllaveroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtllaveroMouseClicked
+        if (VarG.puntaje >= 150) {
+            VarG.compra=true;
+            VarG.puntaje -=150;
+            VarG.prod = 1;
+            try {
+                Registry registry = LocateRegistry.getRegistry();
+                TestRemote testRemote = (TestRemote) registry.lookup("Test");
+                testRemote.insertPrestamo(VarG.id_usuario, "", VarG.puntaje, 0, 0, "puntaje");
+                VarG.jtcupon.setVisible(true);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+            VarG.jtcupon.setVisible(true);
+        } else {
+            VarG.compra=false;
+            VarG.jtcupon.setVisible(true);
+        }
+    }//GEN-LAST:event_BtllaveroMouseClicked
+
+    private void BttasaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BttasaMouseClicked
+        if (VarG.puntaje >= 250) {
+            VarG.compra=true;
+            VarG.puntaje -=250;
+            VarG.prod = 2;
+            try {
+                Registry registry = LocateRegistry.getRegistry();
+                TestRemote testRemote = (TestRemote) registry.lookup("Test");
+                testRemote.insertPrestamo(VarG.id_usuario, "", VarG.puntaje, 0, 0, "puntaje");
+                VarG.jtcupon.setVisible(true);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+            VarG.jtcupon.setVisible(true);
+        } else {
+            VarG.compra=false;
+            VarG.jtcupon.setVisible(true);
+        }
+    }//GEN-LAST:event_BttasaMouseClicked
 
     /**
      * @param args the command line arguments

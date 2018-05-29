@@ -16,6 +16,7 @@ public class tDevolucion extends javax.swing.JFrame {
      * Creates new form tPrestamo
      */
     public tDevolucion() {
+        this.setUndecorated(true);
         initComponents();
     }
 
@@ -49,21 +50,69 @@ public class tDevolucion extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLID1.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        jLID1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLID1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 210, 80));
+
+        jLID2.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        jLID2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLID2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 210, 80));
+
+        jLID3.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        jLID3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLID3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 210, 80));
+
+        jLID4.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        jLID4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLID4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, 210, 80));
+
+        jLibro1.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        jLibro1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLibro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 210, 80));
+
+        jLibro2.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        jLibro2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLibro2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, 210, 80));
+
+        jLibro3.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        jLibro3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLibro3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 310, 210, 80));
+
+        jLibro4.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        jLibro4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLibro4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 410, 210, 80));
+
+        jLPts1.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        jLPts1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLPts1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 110, 210, 80));
+
+        jLPts2.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        jLPts2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLPts2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 210, 210, 80));
+
+        jLPts3.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        jLPts3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLPts3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 310, 210, 80));
+
+        jLPts4.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        jLPts4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLPts4, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 410, 210, 80));
+
+        jLCob1.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        jLCob1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLCob1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 110, 210, 80));
+
+        jLCob2.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        jLCob2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLCob2, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 210, 210, 80));
+
+        jLCob3.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        jLCob3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLCob3, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 310, 210, 80));
+
+        jLCob4.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        jLCob4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLCob4, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 410, 210, 80));
         getContentPane().add(jLBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 550, 400, 200));
 

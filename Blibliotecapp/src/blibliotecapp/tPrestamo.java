@@ -1,5 +1,8 @@
 package blibliotecapp;
 
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -16,6 +19,7 @@ public class tPrestamo extends javax.swing.JFrame {
      * Creates new form tPrestamo
      */
     public tPrestamo() {
+        this.setUndecorated(true);
         initComponents();
     }
 
@@ -45,20 +49,78 @@ public class tPrestamo extends javax.swing.JFrame {
         jLBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+                formWindowLostFocus(evt);
+            }
+        });
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLNombre.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
+        jLNombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 620, 60));
+
+        jLID1.setFont(new java.awt.Font("Arial", 2, 24)); // NOI18N
+        jLID1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLID1.setToolTipText("");
         getContentPane().add(jLID1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 300, 100));
+
+        jLID2.setFont(new java.awt.Font("Arial", 2, 24)); // NOI18N
+        jLID2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLID2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 300, 100));
+
+        jLID3.setFont(new java.awt.Font("Arial", 2, 24)); // NOI18N
+        jLID3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLID3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 300, 100));
+
+        jLID4.setFont(new java.awt.Font("Arial", 2, 24)); // NOI18N
+        jLID4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLID4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 500, 300, 100));
+
+        jLibro1.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        jLibro1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLibro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 200, 300, 100));
+
+        jLibro2.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        jLibro2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLibro2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 300, 300, 100));
+
+        jLibro3.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        jLibro3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLibro3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 400, 300, 100));
+
+        jLibro4.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        jLibro4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLibro4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 500, 300, 100));
+
+        jLFecha1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        jLFecha1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLFecha1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 200, 300, 100));
+
+        jLFecha2.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        jLFecha2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLFecha2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 300, 300, 100));
+
+        jLFecha3.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        jLFecha3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLFecha3, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 400, 300, 100));
+
+        jLFecha4.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        jLFecha4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLFecha4, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 500, 300, 100));
+
+        jLBoton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLBotonMouseClicked(evt);
+            }
+        });
         getContentPane().add(jLBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 630, 600, 140));
 
         jLBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/nuevasP/tPrestamo.png"))); // NOI18N
@@ -66,6 +128,59 @@ public class tPrestamo extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        this.jLNombre.setText(VarG.nombre+" "+VarG.appat);
+        for (int i = 0; i < VarG.libros.size(); i++) {
+            if (!VarG.libros.get(i).isDevuelto()) {
+                VarG.libros.remove(i);
+            }
+        }
+        try{
+            if (VarG.libros.get(0).isDevuelto()) {
+                this.jLID1.setText(VarG.libros.get(0).getId_libro());
+                this.jLibro1.setText(VarG.libros.get(0).getTitulo());
+                this.jLFecha1.setText(VarG.libros.get(0).getFecha_dev());
+            }
+            if (VarG.libros.get(1).isDevuelto()) {
+                this.jLID2.setText(VarG.libros.get(1).getId_libro());
+                this.jLibro2.setText(VarG.libros.get(1).getTitulo());
+                this.jLFecha2.setText(VarG.libros.get(1).getFecha_dev());
+            }
+            if (VarG.libros.get(2).isDevuelto()) {
+                this.jLID3.setText(VarG.libros.get(2).getId_libro());
+                this.jLibro3.setText(VarG.libros.get(2).getTitulo());
+                this.jLFecha3.setText(VarG.libros.get(2).getFecha_dev());
+            }
+            if (VarG.libros.get(3).isDevuelto()) {
+                this.jLID4.setText(VarG.libros.get(3).getId_libro());
+                this.jLibro4.setText(VarG.libros.get(3).getTitulo());
+                this.jLFecha4.setText(VarG.libros.get(3).getFecha_dev());
+            }
+            
+            
+        }catch(Exception e){
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_formWindowActivated
+
+    private void jLBotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBotonMouseClicked
+        VarG.jfLogin.setVisible(false);
+        VarG.jfPrestamo.setVisible(false);
+        this.setVisible(false);
+        VarG.jfIdioma.pausarAudios();
+        VarG.anActual = VarG.animaciones.get(8);
+        VarG.anActual.getImage().flush();
+    }//GEN-LAST:event_jLBotonMouseClicked
+
+    private void formWindowLostFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowLostFocus
+        VarG.jfLogin.setVisible(false);
+        this.setVisible(false);
+        VarG.jfPrestamo.setVisible(false);
+        VarG.jfIdioma.pausarAudios();
+        VarG.anActual = VarG.animaciones.get(8);
+        VarG.anActual.getImage().flush();
+    }//GEN-LAST:event_formWindowLostFocus
 
     /**
      * @param args the command line arguments

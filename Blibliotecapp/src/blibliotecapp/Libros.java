@@ -28,6 +28,8 @@ public class Libros extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        CMapa = new javax.swing.JLabel();
+        Mapa = new javax.swing.JLabel();
         regresar = new javax.swing.JLabel();
         home = new javax.swing.JLabel();
         LBcontador = new javax.swing.JLabel();
@@ -53,6 +55,7 @@ public class Libros extends javax.swing.JFrame {
         LbImagen = new javax.swing.JLabel();
         LbUp = new javax.swing.JLabel();
         LBDown = new javax.swing.JLabel();
+        LBImprimir = new javax.swing.JLabel();
         LbFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -62,6 +65,16 @@ public class Libros extends javax.swing.JFrame {
             }
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        CMapa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CMapaMouseClicked(evt);
+            }
+        });
+        getContentPane().add(CMapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 4, 1360, 740));
+
+        Mapa.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(Mapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 1190, 680));
 
         regresar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -187,6 +200,13 @@ public class Libros extends javax.swing.JFrame {
         });
         getContentPane().add(LBDown, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 440, 60, 250));
 
+        LBImprimir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LBImprimirMouseClicked(evt);
+            }
+        });
+        getContentPane().add(LBImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(994, 630, 350, 100));
+
         LbFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/nuevasP/libros E.png"))); // NOI18N
         getContentPane().add(LbFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 770));
 
@@ -212,6 +232,8 @@ public class Libros extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         //limpiar todos los labels de info
+        this.CMapa.setVisible(false);
+        this.Mapa.setVisible(false);
         limpiar();
         if (VarG.idioma.equals("ingles")) {
             //LBIDStatic.setText("Book´s ID");
@@ -355,10 +377,27 @@ public class Libros extends javax.swing.JFrame {
 
     private void BtampliarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtampliarMouseClicked
         if(!LBID.getText().isEmpty()){
-            VarG.jmapa.setVisible(true);
+            CMapa.setVisible(true);
+            Mapa.setVisible(true);
+            ImageIcon imageIcon = new ImageIcon(VarG.mapa); // load the image to a imageIcon
+            Image image = imageIcon.getImage(); // transform it 
+            Image newimg = image.getScaledInstance(imageIcon.getIconHeight() * 950 / 470, imageIcon.getIconHeight() * 900 / 800, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+            imageIcon = new ImageIcon(newimg);
+            Mapa.setIcon(imageIcon);
         }
         
     }//GEN-LAST:event_BtampliarMouseClicked
+
+    private void CMapaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CMapaMouseClicked
+       CMapa.setVisible(false);
+       Mapa.setVisible(false);
+       Mapa.setIcon(null);
+    }//GEN-LAST:event_CMapaMouseClicked
+
+    private void LBImprimirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LBImprimirMouseClicked
+       //Audio Imprimiendo ticket
+        
+    }//GEN-LAST:event_LBImprimirMouseClicked
     void imprimir(int i) {
         limpiar();
         if (VarG.libros.size() == 0){
@@ -390,7 +429,7 @@ public class Libros extends javax.swing.JFrame {
         }
         this.LBcontador.setText((pActual + 1) + "/" + (paginas + 1));
     }
-    
+
     public void limpiar(){
         this.LBID.setText("");
         this.LBcontador.setText("");
@@ -474,9 +513,11 @@ public class Libros extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Btampliar;
+    private javax.swing.JLabel CMapa;
     private javax.swing.JLabel LBDown;
     private javax.swing.JLabel LBID;
     private javax.swing.JLabel LBIDStatic;
+    private javax.swing.JLabel LBImprimir;
     private javax.swing.JLabel LBcontador;
     private javax.swing.JLabel LBdatos0;
     private javax.swing.JLabel LBdatos1;
@@ -497,6 +538,7 @@ public class Libros extends javax.swing.JFrame {
     private javax.swing.JLabel LbFondo;
     private javax.swing.JLabel LbImagen;
     private javax.swing.JLabel LbUp;
+    private javax.swing.JLabel Mapa;
     private javax.swing.JLabel home;
     private javax.swing.JLabel regresar;
     // End of variables declaration//GEN-END:variables

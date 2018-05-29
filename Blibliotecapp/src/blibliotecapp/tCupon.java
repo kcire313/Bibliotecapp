@@ -5,6 +5,8 @@
  */
 package blibliotecapp;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author Alan
@@ -15,6 +17,7 @@ public class tCupon extends javax.swing.JFrame {
      * Creates new form tCupon
      */
     public tCupon() {
+        this.setUndecorated(true);
         initComponents();
     }
 
@@ -27,6 +30,7 @@ public class tCupon extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        LBAviso = new javax.swing.JLabel();
         jLImagen = new javax.swing.JLabel();
         jLNombre = new javax.swing.JLabel();
         jLPromocion = new javax.swing.JLabel();
@@ -35,18 +39,99 @@ public class tCupon extends javax.swing.JFrame {
         jLBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+                formWindowLostFocus(evt);
+            }
+        });
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jLImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 310, 310));
-        getContentPane().add(jLNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 310, 240, 80));
-        getContentPane().add(jLPromocion, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 180, 240, 90));
-        getContentPane().add(jLCupon, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 60, 240, 80));
-        getContentPane().add(jLBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 430, 240, 140));
 
-        jLBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/nuevasP/tCupon.png"))); // NOI18N
+        LBAviso.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        LBAviso.setForeground(new java.awt.Color(153, 0, 0));
+        LBAviso.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(LBAviso, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 660, 190));
+        getContentPane().add(jLImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 310, 310));
+
+        jLNombre.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLNombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 310, 240, 80));
+
+        jLPromocion.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLPromocion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLPromocion, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 180, 240, 90));
+
+        jLCupon.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLCupon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLCupon, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 60, 240, 80));
+
+        jLBoton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLBotonMouseClicked(evt);
+            }
+        });
+        getContentPane().add(jLBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 430, 240, 140));
         getContentPane().add(jLBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 600));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        if(!VarG.compra){
+            this.LBAviso.setText(null);
+            this.jLImagen.setIcon(null);
+            this.jLCupon.setText(null);
+            this.jLNombre.setText(null);
+            this.jLPromocion.setText(null);
+            jLBackground.setIcon(new ImageIcon("src/surce/nuevasP/tCuponvacio.png"));
+            if(VarG.idioma.equals("ingles")){
+                this.LBAviso.setText("You don´t have enough points");
+            }else{
+                this.LBAviso.setText("No tienes los puntos suficientes");
+            }
+        }else{
+            this.LBAviso.setText(null);
+            jLBackground.setIcon(new ImageIcon("src/surce/nuevasP/tCupon.png"));
+            switch(VarG.prod){
+                case 0:
+                    this.jLImagen.setIcon(new ImageIcon("src/surce/nuevasP/obj3.jpg"));
+                    this.jLCupon.setText("Plumas 2x1");
+                    this.jLNombre.setText(null);
+                    this.jLPromocion.setText(null);
+                    break;
+                case 1:
+                    this.jLImagen.setIcon(new ImageIcon("src/surce/nuevasP/obj2.jpg"));
+                    this.jLCupon.setText("Descuento Llavero");
+                    this.jLNombre.setText(null);
+                    this.jLPromocion.setText(null);
+                    break;
+                case 2:
+                    this.jLImagen.setIcon(new ImageIcon("src/surce/nuevasP/obj1.jpg"));
+                    this.jLCupon.setText("Descuento Tasa");
+                    this.jLNombre.setText(null);
+                    this.jLPromocion.setText(null);
+                    break; 
+            }
+            
+        }
+        
+        
+       // jLBackground.setIcon(new ImageIcon("src/surce/nuevasP/tCupon.png"));
+    }//GEN-LAST:event_formWindowActivated
+
+    private void jLBotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBotonMouseClicked
+        this.setVisible(false);
+    }//GEN-LAST:event_jLBotonMouseClicked
+
+    private void formWindowLostFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowLostFocus
+        this.setVisible(false);
+    }//GEN-LAST:event_formWindowLostFocus
 
     /**
      * @param args the command line arguments
@@ -84,6 +169,7 @@ public class tCupon extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LBAviso;
     private javax.swing.JLabel jLBackground;
     private javax.swing.JLabel jLBoton;
     private javax.swing.JLabel jLCupon;

@@ -126,6 +126,21 @@ public class Blibliotecapp extends JComponent {
         VarG.jmapa.pack();
         VarG.jmapa.setLocationRelativeTo(null);
         
+        //ticket cupon
+        VarG.jtcupon = new tCupon();
+        VarG.jtcupon.pack();
+        VarG.jtcupon.setLocationRelativeTo(null);
+        
+        //Ticket prestamo
+        VarG.jtPrestamo= new tPrestamo();
+        VarG.jtPrestamo.pack();
+        VarG.jtPrestamo.setLocationRelativeTo(null);
+        
+        //Ticket devolucion
+        VarG.jtDevolucion= new tDevolucion();
+        VarG.jtDevolucion.pack();
+        VarG.jtDevolucion.setLocationRelativeTo(null);
+        
         //Key listener para la pantalla
         addMouseListener(new MouseAdapter() {
             @Override

@@ -77,32 +77,13 @@ public class Mapa extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         background.setIcon(new ImageIcon("src/surce/nuevasP/mapa.png"));
-        ImageIcon imageIcon = new ImageIcon(VarG.mapa); // load the image to a imageIcon
-        Image image = imageIcon.getImage(); // transform it 
-        Image newimg = image.getScaledInstance(imageIcon.getIconHeight() * 750 / 470, imageIcon.getIconHeight() * 700 / 800, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
-        imageIcon = new ImageIcon(newimg);
-        Mapa.setIcon(imageIcon);
+        
     }//GEN-LAST:event_formWindowActivated
 
     private void formWindowLostFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowLostFocus
        this.setVisible(false);
     }//GEN-LAST:event_formWindowLostFocus
-    public void cambiaIdioma(String idioma) {
-        VarG.idioma = idioma;
-        imagesProfile(); //Cambia las imagenes del Log_in
-        setAudioPerfil(); //Cambia el audio del boton de perfil
-        setAudioBusqueda(); //Cambia el audio del boton de busqueda
-        setAudioIdiomas(); //Cambia el audio del boton de idiomas
-        setAudioPrestamo(); //Cambia el audio del boton de prestamo
-        setAudioRenovar(); //Cambia el audio del boton de renovar
-        setAudioDevolucion(); //Cambia el audio del boton de devolucion
-        setAudioPerfilDatos(); //Cambia el audio del boton de perfil datos
-        setAudioCanjear(); //Cambia el audio del boton de canjea
-        
-
-        //Faltan mas funciones para las demas pantallas!!!!
-        this.setVisible(false); //Cierra la ventana
-    }
+   
 
     /**
      * @param args the command line arguments
