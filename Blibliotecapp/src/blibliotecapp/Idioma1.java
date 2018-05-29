@@ -37,6 +37,7 @@ public class Idioma1 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
         ingles = new javax.swing.JLabel();
         espanol = new javax.swing.JLabel();
         regresar = new javax.swing.JLabel();
@@ -44,6 +45,9 @@ public class Idioma1 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 50, -1, -1));
 
         ingles.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -139,6 +143,7 @@ public class Idioma1 extends javax.swing.JFrame {
     private javax.swing.JLabel background;
     private javax.swing.JLabel espanol;
     private javax.swing.JLabel ingles;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel regresar;
     // End of variables declaration//GEN-END:variables
 
