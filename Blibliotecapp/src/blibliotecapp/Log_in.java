@@ -325,6 +325,7 @@ public class Log_in extends javax.swing.JFrame {
                                 AudioPlayer.player.start(VarG.aPrestamo);
                                 break;
                             case "renovar":
+                                limpiaLibrosDevueltos();
                                 VarG.jfRenovar.setVisible(true);
                                 AudioPlayer.player.start(VarG.aRenovar);
                                 break;
