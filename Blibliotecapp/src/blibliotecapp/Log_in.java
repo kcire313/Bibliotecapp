@@ -265,7 +265,7 @@ public class Log_in extends javax.swing.JFrame {
                         error1 = "Please, try again";
                         break;
                 }
-                String auxId=id.getText();
+                String auxId = id.getText();
                 VarG.jfIdioma.pausarAudios();
                 String consulta = "select * from usuario where id_usuario=" + id.getText() + ";";
                 VarG.objConn.Consultar(consulta);
@@ -329,6 +329,7 @@ public class Log_in extends javax.swing.JFrame {
                                 AudioPlayer.player.start(VarG.aRenovar);
                                 break;
                             case "devolucion":
+                                limpiaLibrosDevueltos();
                                 VarG.jfDevolucion.setVisible(true);
                                 AudioPlayer.player.start(VarG.aDevolucion);
                                 break;
@@ -581,16 +582,24 @@ public class Log_in extends javax.swing.JFrame {
             String[] tupla, data;
             Registry registry = LocateRegistry.getRegistry();
             TestRemote testRemote = (TestRemote) registry.lookup("Test");
-            result = testRemote.searchBook("", id , "prestamo", "", "");
+            result = testRemote.searchBook("", id, "prestamo", "", "");
             tupla = result.split("&");
             data = tupla[0].split("%");
-            VarG.libros.add(new LibroG(data[0],Integer.parseInt(data[6]), data[1], data[2], Integer.parseInt(data[3]), Integer.parseInt(data[4]), Integer.parseInt(data[5])));
+            VarG.libros.add(new LibroG(data[0], Integer.parseInt(data[6]), data[1], data[2], Integer.parseInt(data[3]), Integer.parseInt(data[4]), Integer.parseInt(data[5])));
             for (int i = 1; i < tupla.length; i++) {
                 data = tupla[i].split("%");
-                VarG.libros.add(new LibroG(data[0],Integer.parseInt(data[6]), data[1], data[2], Integer.parseInt(data[3]), Integer.parseInt(data[4]), Integer.parseInt(data[5])));
+                VarG.libros.add(new LibroG(data[0], Integer.parseInt(data[6]), data[1], data[2], Integer.parseInt(data[3]), Integer.parseInt(data[4]), Integer.parseInt(data[5])));
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
+        }
+    }
+
+    private void limpiaLibrosDevueltos() {
+        for (int i = 0; i < VarG.libros.size(); i++) {
+            if (VarG.libros.get(i).isDevuelto()) {
+                VarG.libros.remove(i);
+            }
         }
     }
 }

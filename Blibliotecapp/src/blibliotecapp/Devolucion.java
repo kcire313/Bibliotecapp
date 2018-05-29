@@ -289,7 +289,7 @@ public class Devolucion extends javax.swing.JFrame {
 
     private void Btop1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Btop1MouseClicked
         try {
-            if (VarG.libros.get(0).isDevuelto()) {                
+            if (VarG.libros.get(0).isDevuelto()) {
                 VarG.libros.get(0).setDevuelto(false);
                 limpiar(5);
                 VarG.libros.trimToSize();
@@ -322,6 +322,7 @@ public class Devolucion extends javax.swing.JFrame {
         if (checklleno()) {
             System.out.println("No puedes devolver mas libros");
         } else {
+            LBdevolver.setVisible(true);
             ImageIcon scan = new ImageIcon("src/surce/gif/scan.gif"); //animacion
             scan.getImage().flush();
             this.jLScan.setIcon(scan);
@@ -359,10 +360,15 @@ public class Devolucion extends javax.swing.JFrame {
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
+                //VarG.libros.remove(i);
             }
         }
         this.LBdevolver.setVisible(false);
-        // VarG.jtDevolucion.setVisible(true);
+        VarG.jtDevolucion.setVisible(true);
+        limpiar(5);
+        VarG.libros.trimToSize();
+        pintardev();
+        
     }//GEN-LAST:event_LBdevolverMouseClicked
     public boolean checklleno() {
         boolean aux = true;
@@ -374,7 +380,7 @@ public class Devolucion extends javax.swing.JFrame {
         return aux;
     }
 
-    public void pintardev() {
+    public void pintardev() {        
         try {
             boolean aux = false;
             for (int i = 0; i < VarG.libros.size(); i++) {
