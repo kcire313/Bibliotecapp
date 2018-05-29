@@ -265,6 +265,7 @@ public class Log_in extends javax.swing.JFrame {
                         error1 = "Please, try again";
                         break;
                 }
+                String auxId=id.getText();
                 String consulta = "select * from usuario where id_usuario=" + id.getText() + ";";
                 VarG.objConn.Consultar(consulta);
                 if (VarG.objConn.rs.getRow() != 0) {
@@ -286,12 +287,12 @@ public class Log_in extends javax.swing.JFrame {
                         VarG.jfLogin.setVisible(false);
 
                         //Apartir de aqui comienza a sacar todos los datos relacionados con los libros
-                        VarG.libros=new ArrayList<>();
+                        VarG.libros = new ArrayList<>();
                         String[] tupla;
                         result = testRemote.bookData(this.id.getText());
                         tupla = result.split("&");
                         //System.out.println(tupla[0]);
-                        data = tupla[0].split("%");                        
+                        data = tupla[0].split("%");
                         boolean band = false;
                         if (data[5].equals("true")) {
                             band = true;
@@ -299,15 +300,15 @@ public class Log_in extends javax.swing.JFrame {
                         //System.out.println(Integer.parseInt(data[0])+","+ Integer.parseInt(data[1])+","+ data[2]+","+ data[3]+","+ data[4]+","+ band+","+ Integer.parseInt(data[6])+","+ data[7]+","+ data[8]+","+ Integer.parseInt(data[9])+","+ Integer.parseInt(data[10])+","+ Integer.parseInt(data[11]));
                         VarG.libros.add(new LibroG(Integer.parseInt(data[0]), Integer.parseInt(data[1]), data[2], data[3], data[4], band, Integer.parseInt(data[6]), data[7], data[8], Integer.parseInt(data[9]), Integer.parseInt(data[10]), Integer.parseInt(data[11])));
                         for (int i = 1; i < tupla.length; i++) {
-                            data = tupla[i].split("%");                            
+                            data = tupla[i].split("%");
                             band = false;
                             if (data[5].equals("true")) {
                                 band = true;
                             }
                             VarG.libros.add(new LibroG(Integer.parseInt(data[0]), Integer.parseInt(data[1]), data[2], data[3], data[4], band, Integer.parseInt(data[6]), data[7], data[8], Integer.parseInt(data[9]), Integer.parseInt(data[10]), Integer.parseInt(data[11])));
                         }
-   //                     System.out.println(VarG.libros.get(0).getTitulo() + "  " + VarG.libros.get(0).getAutor());
-   //                     System.out.println(VarG.libros.get(1).getTitulo() + "  " + VarG.libros.get(1).getAutor());
+                        //                     System.out.println(VarG.libros.get(0).getTitulo() + "  " + VarG.libros.get(0).getAutor());
+                        //                     System.out.println(VarG.libros.get(1).getTitulo() + "  " + VarG.libros.get(1).getAutor());
                         //Borra los datos previamente usados
                         //borradatos();
                         //Pantallas de continuidad
@@ -318,6 +319,7 @@ public class Log_in extends javax.swing.JFrame {
                                 VarG.jfPerfil.setVisible(true);
                                 break;
                             case "prestamo":
+                                sacaLibrosPrestados(auxId);
                                 VarG.jfPrestamo.setVisible(true);
                                 AudioPlayer.player.start(VarG.aPrestamo);
                                 break;
@@ -570,4 +572,24 @@ public class Log_in extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPasswordField pass;
     // End of variables declaration//GEN-END:variables
+
+    private void sacaLibrosPrestados(String id) {
+        try {
+            VarG.libros = new ArrayList<LibroG>();
+            String result = "";
+            String[] tupla, data;
+            Registry registry = LocateRegistry.getRegistry();
+            TestRemote testRemote = (TestRemote) registry.lookup("Test");
+            result = testRemote.searchBook("", id , "prestamo", "", "");
+            tupla = result.split("&");
+            data = tupla[0].split("%");
+            VarG.libros.add(new LibroG(data[0], data[1], data[2], Integer.parseInt(data[3]), Integer.parseInt(data[4]), Integer.parseInt(data[5])));
+            for (int i = 1; i < tupla.length; i++) {
+                data = tupla[i].split("%");
+                VarG.libros.add(new LibroG(data[0], data[1], data[2], Integer.parseInt(data[3]), Integer.parseInt(data[4]), Integer.parseInt(data[5])));
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }

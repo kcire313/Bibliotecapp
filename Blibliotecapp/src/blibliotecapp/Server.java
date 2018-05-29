@@ -72,7 +72,7 @@ public class Server {
                         int anio = VarG.objConn.rs.getInt("anio");
                         int ubicacion = VarG.objConn.rs.getInt("ubicacion");
                         int cover = VarG.objConn.rs.getInt("cover");
-                        results = id_prestamo + "%" + id_usuario + "%" + id_libro + "%" + fecha_pres + "%" + fecha_dev + "%" + devuelto + "%" + renovacion + "%" + titulo + "%" + autor + "%" + anio + "%" + ubicacion + "%" + cover + "&";                        
+                        results = id_prestamo + "%" + id_usuario + "%" + id_libro + "%" + fecha_pres + "%" + fecha_dev + "%" + devuelto + "%" + renovacion + "%" + titulo + "%" + autor + "%" + anio + "%" + ubicacion + "%" + cover + "&";
                         while (VarG.objConn.rs.next()) {
                             id_prestamo = VarG.objConn.rs.getInt("id_prestamo");
                             id_usuario = VarG.objConn.rs.getInt("id_usuario");
@@ -106,15 +106,23 @@ public class Server {
                 String consulta = "";
                 if (tipo.equals("basica")) {
                     consulta = "select * from libro where " + donde + " like '%" + que + "%';";
-                } else {
+                } else if (tipo.equals("avanzada")) {
                     consulta = "select * from libro where titulo like '%" + que + "%' and autor like '%" + iautor + "%' and anio like '%" + ianio + "%';";
+                } else if (tipo.equals("random")) {
+                    consulta = "SELECT * FROM libro ORDER BY RAND() LIMIT 1;";
+                } else if (tipo.equals("prestamo")) {
+                    consulta = "select libro.titulo, libro.autor, libro.anio, libro.id_libro, libro,ubicacion, libro.cover "
+                            + "from libro,usa,usuario "
+                            + "where usuario.id_usuario="+ que 
+                            + "and usuario.id_usuario=usa.id_usuario "
+                            + "and usa.id_libro=libro.id_libro and usa.devuelto=0;";
                 }
                 System.out.println(consulta);
                 try {
                     VarG.objConn.Consultar(consulta);
                     if (VarG.objConn.rs.getRow() != 0) {
                         String id_libro = VarG.objConn.rs.getString("id_libro");
-                        String titulo = VarG.objConn.rs.getString("titulo");                        
+                        String titulo = VarG.objConn.rs.getString("titulo");
                         String autor = VarG.objConn.rs.getString("autor");
                         int anio = VarG.objConn.rs.getInt("anio");
                         int ubicacion = VarG.objConn.rs.getInt("ubicacion");
