@@ -362,7 +362,11 @@ public class Libros extends javax.swing.JFrame {
     void imprimir(int i) {
         limpiar();
         if (VarG.libros.size() == 0){
-            this.LBtitulo0.setText("NO SE ENCONTRARON LIBROS ");
+            if(VarG.idioma.equals("ingles")){
+                this.LBtitulo0.setText("BOOK NOT FOUND");
+            }else{
+                this.LBtitulo0.setText("NO SE ENCONTRARON LIBROS ");
+            }    
         }
         if (VarG.libros.size() >= 1 + i * 5) {
             this.LBtitulo0.setText(VarG.libros.get(0 + i * 5).getTitulo());

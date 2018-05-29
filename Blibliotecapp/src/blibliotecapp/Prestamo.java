@@ -255,50 +255,46 @@ public class Prestamo extends javax.swing.JFrame {
         } else {
             LBFondo.setIcon(new ImageIcon("src/surce/nuevasP/prestamoB I.png"));
         }
-        for (LibroG libro : VarG.libros) {
-            if (!libro.isDevuelto()) {
-                ArrPrestados.add(libro);
-            }
-        }
 
-        if (ArrPrestados.size() >= 1) {
+
+        if (VarG.libros.size() >= 1) {
             this.LBn1.setText("1");
-            this.LBr1.setText(Integer.toString(ArrPrestados.get(0).getRenovacion()));
-            this.LBdev1.setText(ArrPrestados.get(0).getFecha_dev());
-            this.LBtit1.setText(ArrPrestados.get(0).getTitulo());
+            this.LBr1.setText(Integer.toString(VarG.libros.get(0).getRenovacion()));
+            this.LBdev1.setText(VarG.libros.get(0).getFecha_dev());
+            this.LBtit1.setText(VarG.libros.get(0).getTitulo());
             this.LBtit1.setForeground(Color.GRAY);
-            this.LBdat1.setText(ArrPrestados.get(0).getAutor() + "/ año: " + ArrPrestados.get(0).getAnio());
+            this.LBdat1.setText(VarG.libros.get(0).getAutor() + "/ año: " + VarG.libros.get(0).getAnio());
             this.LBdat1.setForeground(Color.GRAY);
             this.LB1.setIcon(new ImageIcon("src/surce/nuevasP/F-Neutral.png"));
 
         }
-        if (ArrPrestados.size() >= 2) {
+        if (VarG.libros.size() >= 2) {
             this.LBn2.setText("2");
-            this.LBr2.setText(Integer.toString(ArrPrestados.get(1).getRenovacion()));
-            this.LBdev2.setText(ArrPrestados.get(1).getFecha_dev());
-            this.LBtit2.setText(ArrPrestados.get(1).getTitulo());
+            this.LBr2.setText(Integer.toString(VarG.libros.get(1).getRenovacion()));
+            this.LBdev2.setText(VarG.libros.get(1).getFecha_dev());
+            this.LBtit2.setText(VarG.libros.get(1).getTitulo());
             this.LBtit2.setForeground(Color.GRAY);
-            this.LBdat2.setText(ArrPrestados.get(1).getAutor() + "/ año: " + ArrPrestados.get(1).getAnio());
+            this.LBdat2.setText(VarG.libros.get(1).getAutor() + "/ año: " + VarG.libros.get(1).getAnio());
             this.LBdat2.setForeground(Color.GRAY);
             this.LB2.setIcon(new ImageIcon("src/surce/nuevasP/F-Neutral.png"));
         }
-        if (ArrPrestados.size() >= 3) {
+        if (VarG.libros.size() >= 3) {
             this.LBn3.setText("3");
-            this.LBr3.setText(Integer.toString(ArrPrestados.get(2).getRenovacion()));
-            this.LBdev3.setText(ArrPrestados.get(2).getFecha_dev());
-            this.LBtit3.setText(ArrPrestados.get(2).getTitulo());
+            this.LBr3.setText(Integer.toString(VarG.libros.get(2).getRenovacion()));
+            this.LBdev3.setText(VarG.libros.get(2).getFecha_dev());
+            this.LBtit3.setText(VarG.libros.get(2).getTitulo());
             this.LBtit3.setForeground(Color.GRAY);
-            this.LBdat3.setText(ArrPrestados.get(2).getAutor() + "/ año: " + ArrPrestados.get(2).getAnio());
+            this.LBdat3.setText(VarG.libros.get(2).getAutor() + "/ año: " + VarG.libros.get(2).getAnio());
             this.LBdat3.setForeground(Color.GRAY);
             this.LB3.setIcon(new ImageIcon("src/surce/nuevasP/F-Neutral.png"));
         }
-        if (ArrPrestados.size() >= 4) {
+        if (VarG.libros.size() >= 4) {
             this.LBn4.setText("4");
-            this.LBr4.setText(Integer.toString(ArrPrestados.get(3).getRenovacion()));
-            this.LBdev4.setText(ArrPrestados.get(3).getFecha_dev());
-            this.LBtit4.setText(ArrPrestados.get(3).getTitulo());
+            this.LBr4.setText(Integer.toString(VarG.libros.get(3).getRenovacion()));
+            this.LBdev4.setText(VarG.libros.get(3).getFecha_dev());
+            this.LBtit4.setText(VarG.libros.get(3).getTitulo());
             this.LBtit4.setForeground(Color.GRAY);
-            this.LBdat4.setText(ArrPrestados.get(3).getAutor() + "/ año: " + ArrPrestados.get(3).getAnio());
+            this.LBdat4.setText(VarG.libros.get(3).getAutor() + "/ año: " + VarG.libros.get(3).getAnio());
             this.LBdat4.setForeground(Color.GRAY);
             this.LB4.setIcon(new ImageIcon("src/surce/nuevasP/F-Neutral.png"));
         }
@@ -309,7 +305,7 @@ public class Prestamo extends javax.swing.JFrame {
     private void BtEscanearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtEscanearMouseClicked
         String result = "";
         String[] tupla, data;
-        if (ArrPrestados.size() == 4) {
+        if (VarG.libros.size() == 4) {
             //Enviar mensaje de que no puedes sacar mas libros
             System.out.println("No puedes sacar mas libros");
         } else {
@@ -335,12 +331,12 @@ public class Prestamo extends javax.swing.JFrame {
             if (this.LBn1.getText().isEmpty()) {
                 /*
                 this.LBn1.setText("1");
-                this.LBr1.setText(Integer.toString(ArrPrestados.get(0).getRenovacion()));
-                this.LBdev1.setText(ArrPrestados.get(0).getFecha_dev());
+                this.LBr1.setText(Integer.toString(VarG.libros.get(0).getRenovacion()));
+                this.LBdev1.setText(VarG.libros.get(0).getFecha_dev());
                 this.LBtit1.setForeground(Color.BLACK);
-                this.LBdat1.setText(ArrPrestados.get(0).getAutor() + "/ año: " + ArrPrestados.get(0).getAnio());
+                this.LBdat1.setText(VarG.libros.get(0).getAutor() + "/ año: " + VarG.libros.get(0).getAnio());
                 this.LBdat1.setForeground(Color.BLACK);
-                this.LBtit1.setText(ArrPrestados.get(0).getTitulo());
+                this.LBtit1.setText(VarG.libros.get(0).getTitulo());
                 this.LB1.setIcon(new ImageIcon("src/surce/nuevasP/F-Cancelar.png"));
                  */
             }
@@ -349,10 +345,10 @@ public class Prestamo extends javax.swing.JFrame {
                  this.LBn2.setText("2");
                  this.LBtit2.setForeground(Color.BLACK);
                 this.LBdat2.setForeground(Color.BLACK);
-                this.LBr2.setText(Integer.toString(ArrPrestados.get(1).getRenovacion()));
-                this.LBdev2.setText(ArrPrestados.get(1).getFecha_dev());
-                this.LBtit2.setText(ArrPrestados.get(1).getTitulo());
-                this.LBdat2.setText(ArrPrestados.get(1).getAutor() + "/ año: " + ArrPrestados.get(1).getAnio());
+                this.LBr2.setText(Integer.toString(VarG.libros.get(1).getRenovacion()));
+                this.LBdev2.setText(VarG.libros.get(1).getFecha_dev());
+                this.LBtit2.setText(VarG.libros.get(1).getTitulo());
+                this.LBdat2.setText(VarG.libros.get(1).getAutor() + "/ año: " + VarG.libros.get(1).getAnio());
                 this.LB2.setIcon(new ImageIcon("src/surce/nuevasP/F-Cancelar.png"));
                  */
             }
@@ -361,10 +357,10 @@ public class Prestamo extends javax.swing.JFrame {
                 this.LBn3.setText("3");
                 this.LBtit3.setForeground(Color.BLACK);
                 this.LBdat3.setForeground(Color.BLACK);
-                this.LBr3.setText(Integer.toString(ArrPrestados.get(2).getRenovacion()));
-                this.LBdev3.setText(ArrPrestados.get(2).getFecha_dev());
-                this.LBtit3.setText(ArrPrestados.get(2).getTitulo());
-                this.LBdat3.setText(ArrPrestados.get(2).getAutor() + "/ año: " + ArrPrestados.get(2).getAnio());
+                this.LBr3.setText(Integer.toString(VarG.libros.get(2).getRenovacion()));
+                this.LBdev3.setText(VarG.libros.get(2).getFecha_dev());
+                this.LBtit3.setText(VarG.libros.get(2).getTitulo());
+                this.LBdat3.setText(VarG.libros.get(2).getAutor() + "/ año: " + VarG.libros.get(2).getAnio());
                 this.LB3.setIcon(new ImageIcon("src/surce/nuevasP/F-Cancelar.png"));
                  */
             }
@@ -373,10 +369,10 @@ public class Prestamo extends javax.swing.JFrame {
                 this.LBn4.setText("4");
                    this.LBtit4.setForeground(Color.BLACK);
                 this.LBdat4.setForeground(Color.BLACK);
-                this.LBr4.setText(Integer.toString(ArrPrestados.get(3).getRenovacion()));
-                this.LBdev4.setText(ArrPrestados.get(3).getFecha_dev());
-                this.LBtit4.setText(ArrPrestados.get(3).getTitulo());
-                this.LBdat4.setText(ArrPrestados.get(3).getAutor() + "/ año: " + ArrPrestados.get(3).getAnio());
+                this.LBr4.setText(Integer.toString(VarG.libros.get(3).getRenovacion()));
+                this.LBdev4.setText(VarG.libros.get(3).getFecha_dev());
+                this.LBtit4.setText(VarG.libros.get(3).getTitulo());
+                this.LBdat4.setText(VarG.libros.get(3).getAutor() + "/ año: " + VarG.libros.get(3).getAnio());
                 this.LB4.setIcon(new ImageIcon("src/surce/nuevasP/F-Cancelar.png"));
                  */
             }
@@ -459,7 +455,7 @@ public class Prestamo extends javax.swing.JFrame {
                 aux += 1;
             }
         }
-        if (ArrPrestados.size() == aux) {
+        if (VarG.libros.size() == aux) {
             if (VarG.idioma.equals("espanol")) {
                 LBFondo.setIcon(new ImageIcon("src/surce/nuevasP/prestamoB E.png"));
             } else {
@@ -588,5 +584,5 @@ public class Prestamo extends javax.swing.JFrame {
     public javax.swing.JLabel jLScan;
     private javax.swing.JLabel regresar;
     // End of variables declaration//GEN-END:variables
-    ArrayList<LibroG> ArrPrestados = new ArrayList<LibroG>();
+   // ArrayList<LibroG> VarG.libros = new ArrayList<LibroG>();
 }

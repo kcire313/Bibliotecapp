@@ -114,8 +114,8 @@ public class Server {
                     consulta = "select libro.titulo, libro.autor, libro.anio, libro.id_libro, libro,ubicacion, libro.cover "
                             + "from libro,usa,usuario "
                             + "where usuario.id_usuario="+ que 
-                            + "and usuario.id_usuario=usa.id_usuario "
-                            + "and usa.id_libro=libro.id_libro and usa.devuelto=0;";
+                            + " and usuario.id_usuario=usa.id_usuario "
+                            + " and usa.id_libro=libro.id_libro and usa.devuelto=0;";
                 }
                 System.out.println(consulta);
                 try {
