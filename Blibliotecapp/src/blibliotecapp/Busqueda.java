@@ -598,6 +598,7 @@ public class Busqueda extends javax.swing.JFrame {
                     Registry registry = LocateRegistry.getRegistry();
                     TestRemote testRemote = (TestRemote) registry.lookup("Test");
                     result = testRemote.searchBook(busqueda, titulo, "basica", "", "");
+                    System.out.println(result);
                     tupla = result.split("&");                    
                     data = tupla[0].split("%");                    
                     VarG.libros.add(new LibroG(data[0], data[1], data[2],Integer.parseInt(data[3]), Integer.parseInt(data[4]), Integer.parseInt(data[5])));                                        
@@ -605,6 +606,7 @@ public class Busqueda extends javax.swing.JFrame {
                         data = tupla[i].split("%");
                         VarG.libros.add(new LibroG(data[0], data[1], data[2],Integer.parseInt(data[3]), Integer.parseInt(data[4]), Integer.parseInt(data[5])));                    
                     }
+                    VarG.libros.size();
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }                

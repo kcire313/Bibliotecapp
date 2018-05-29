@@ -144,9 +144,9 @@ public class Server {
                             cover = VarG.objConn.rs.getInt("cover");
                             if (band) {
                                 int renovacion = VarG.objConn.rs.getInt("renovacion");
-                                results = id_libro + "%" + titulo + "%" + autor + "%" + anio + "%" + ubicacion + "%" + cover + "%" + renovacion + "&";
+                                results += id_libro + "%" + titulo + "%" + autor + "%" + anio + "%" + ubicacion + "%" + cover + "%" + renovacion + "&";
                             } else {
-                                results = id_libro + "%" + titulo + "%" + autor + "%" + anio + "%" + ubicacion + "%" + cover + "&";
+                                results += id_libro + "%" + titulo + "%" + autor + "%" + anio + "%" + ubicacion + "%" + cover + "&";
                             }
                             //libros.add(new LibroG(id_prestamo, id_usuario, id_libro, fecha_pres, fecha_dev, devuelto, renovacion, titulo, autor, anio, ubicacion, stock));
                         }
