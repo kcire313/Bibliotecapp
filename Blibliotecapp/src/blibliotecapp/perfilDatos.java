@@ -64,13 +64,10 @@ public class perfilDatos extends javax.swing.JFrame {
         });
         getContentPane().add(home, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 170, 140));
 
-        Tabla.setFont(new java.awt.Font("Arial Unicode MS", 0, 20)); // NOI18N
+        Tabla.setFont(new java.awt.Font("Arial Unicode MS", 0, 14)); // NOI18N
         Tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "ID Prestamo", "ID Libro", "Titulo", "Fecha Prestamo", "Fecha Devolucion", "Devuelto", "# Renovaciones"
@@ -85,8 +82,20 @@ public class perfilDatos extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(Tabla);
+        if (Tabla.getColumnModel().getColumnCount() > 0) {
+            Tabla.getColumnModel().getColumn(0).setResizable(false);
+            Tabla.getColumnModel().getColumn(0).setPreferredWidth(20);
+            Tabla.getColumnModel().getColumn(1).setResizable(false);
+            Tabla.getColumnModel().getColumn(3).setResizable(false);
+            Tabla.getColumnModel().getColumn(3).setPreferredWidth(50);
+            Tabla.getColumnModel().getColumn(4).setResizable(false);
+            Tabla.getColumnModel().getColumn(4).setPreferredWidth(50);
+            Tabla.getColumnModel().getColumn(5).setResizable(false);
+            Tabla.getColumnModel().getColumn(5).setPreferredWidth(8);
+            Tabla.getColumnModel().getColumn(6).setPreferredWidth(27);
+        }
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 340, 720, 370));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 340, 770, 280));
 
         LBID.setFont(new java.awt.Font("Calibri", 0, 40)); // NOI18N
         LBID.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -154,6 +163,7 @@ public class perfilDatos extends javax.swing.JFrame {
                 tableModel.addRow(/*(i+1),*/objs);
             }
             Tabla.setModel(tableModel);
+            Tabla.setEnabled(false);
             
             
         }else{
@@ -164,7 +174,20 @@ public class perfilDatos extends javax.swing.JFrame {
             LBPuntaje.setText("Current Points: "+Integer.toString(VarG.puntaje));
             String col[] = {"ID Borrow","ID Book","Title","Date Borrow","Date Return","Returned","# Renovatios"};
             DefaultTableModel tableModel = new DefaultTableModel(col,0);
+            String aux = "";
+            for(int i = 0; i < VarG.libros.size();i++){
+                if(VarG.libros.get(i).isDevuelto()){
+                     aux = "Yes";
+                }else{
+                    aux = "No";
+                }
+                Object[] objs = {VarG.libros.get(i).getId_prestamo(), VarG.libros.get(i).getId_libro(),
+                                  VarG.libros.get(i).getTitulo(), VarG.libros.get(i).getFecha_pres(),
+                                  VarG.libros.get(i).getFecha_dev(),aux , VarG.libros.get(i).getRenovacion()};
+                tableModel.addRow(/*(i+1),*/objs);
+            }
             Tabla.setModel(tableModel);
+            Tabla.setEnabled(false);
         }
         
         

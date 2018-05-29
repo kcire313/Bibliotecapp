@@ -358,6 +358,8 @@ public class Log_in extends javax.swing.JFrame {
         } else {
             background.setIcon(new ImageIcon("src/surce/nuevasP/login E.png"));
         }
+        //Comentar si es necesario hacer pruebas
+        borradatos();
     }//GEN-LAST:event_formWindowActivated
 
     private void Letra1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Letra1MouseClicked
