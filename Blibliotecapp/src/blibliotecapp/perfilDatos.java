@@ -151,7 +151,7 @@ public class perfilDatos extends javax.swing.JFrame {
                 Object[] objs = {VarG.libros.get(i).getId_prestamo(), VarG.libros.get(i).getId_libro(),
                                   VarG.libros.get(i).getTitulo(), VarG.libros.get(i).getFecha_pres(),
                                   VarG.libros.get(i).getFecha_dev(),aux , VarG.libros.get(i).getRenovacion()};
-                tableModel.addColumn((i+1),objs);
+                tableModel.addRow(/*(i+1),*/objs);
             }
             Tabla.setModel(tableModel);
             

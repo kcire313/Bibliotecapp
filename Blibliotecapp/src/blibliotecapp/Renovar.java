@@ -5,6 +5,7 @@
  */
 package blibliotecapp;
 
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
@@ -74,6 +75,12 @@ public class Renovar extends javax.swing.JFrame {
 
         LB4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/surce/nuevasP/F-Continuar.png"))); // NOI18N
         getContentPane().add(LB4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 610, 990, 130));
+
+        Btinfo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtinfoMouseClicked(evt);
+            }
+        });
         getContentPane().add(Btinfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 150, 270, 440));
         getContentPane().add(Btaceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 610, 270, 130));
 
@@ -93,7 +100,7 @@ public class Renovar extends javax.swing.JFrame {
         this.setVisible(false);
         VarG.jfIdioma.pausarAudios();
         VarG.jfLogin.setVisible(true);
-        VarG.jfLogin.id.requestFocus();  
+        VarG.jfLogin.id.requestFocus();
         System.out.println("return profile data");
         VarG.anActual = VarG.animaciones.get(10);
         VarG.anActual.getImage().flush();
@@ -113,12 +120,23 @@ public class Renovar extends javax.swing.JFrame {
     }//GEN-LAST:event_LBFondoMouseClicked
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        if(VarG.idioma.equals("espanol")){
-            LBFondo.setIcon(new ImageIcon("src/surce/nuevasP/renovacionI E.png"));
-        }else{
-            LBFondo.setIcon(new ImageIcon("src/surce/nuevasP/renovacionI I.png"));
+        fondo = new ArrayList<ImageIcon>();
+        if (VarG.idioma.equals("espanol")) {
+            fondo.add(new ImageIcon("src/surce/nuevasP/renovacionI E.png"));
+            fondo.add(new ImageIcon("src/surce/nuevasP/renovacion E.png"));
+            LBFondo.setIcon(fondo.get(0));
+        } else {
+            fondo.add(new ImageIcon("src/surce/nuevasP/renovacionI I.png"));
+            fondo.add(new ImageIcon("src/surce/nuevasP/renovacion I.png"));
+            LBFondo.setIcon(fondo.get(0));
         }
     }//GEN-LAST:event_formWindowActivated
+
+    private void BtinfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtinfoMouseClicked
+        ImageIcon aux = fondo.remove(0);
+        fondo.add(aux);
+        LBFondo.setIcon(fondo.get(0));
+    }//GEN-LAST:event_BtinfoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -167,4 +185,5 @@ public class Renovar extends javax.swing.JFrame {
     private javax.swing.JLabel home;
     private javax.swing.JLabel regresar;
     // End of variables declaration//GEN-END:variables
+    ArrayList<ImageIcon> fondo;
 }
