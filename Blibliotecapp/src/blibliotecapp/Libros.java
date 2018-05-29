@@ -196,6 +196,7 @@ public class Libros extends javax.swing.JFrame {
     private void regresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresarMouseClicked
         VarG.jfBusqueda.setVisible(true);
         this.setVisible(false);
+        VarG.jfIdioma.pausarAudios();
         System.out.println("return profile data");
         VarG.anActual = VarG.animaciones.get(9);
         VarG.anActual.getImage().flush();
@@ -204,6 +205,7 @@ public class Libros extends javax.swing.JFrame {
     private void homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeMouseClicked
         VarG.jfBusqueda.setVisible(false);
         this.setVisible(false);
+        VarG.jfIdioma.pausarAudios();
         VarG.anActual = VarG.animaciones.get(9);
         VarG.anActual.getImage().flush();
     }//GEN-LAST:event_homeMouseClicked

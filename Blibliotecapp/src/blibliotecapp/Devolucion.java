@@ -87,6 +87,7 @@ public class Devolucion extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.setVisible(false);
         VarG.jfLogin.setVisible(true);
+        VarG.jfIdioma.pausarAudios();
         VarG.jfLogin.id.requestFocus();  
         System.out.println("return profile data");
         VarG.anActual = VarG.animaciones.get(8);
@@ -97,6 +98,7 @@ public class Devolucion extends javax.swing.JFrame {
         // TODO add your handling code here:
         VarG.jfLogin.setVisible(false);
         this.setVisible(false);
+        VarG.jfIdioma.pausarAudios();
         VarG.anActual = VarG.animaciones.get(8);
         VarG.anActual.getImage().flush();
     }//GEN-LAST:event_homeMouseClicked

@@ -11,6 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import sun.audio.AudioPlayer;
 import sun.audio.AudioStream;
 
 /**
@@ -74,6 +75,7 @@ public class Idioma1 extends javax.swing.JFrame {
     private void regresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresarMouseClicked
         // TODO add your handling code here:
         this.setVisible(false);
+        pausarAudios();
         VarG.anActual = VarG.animaciones.get(5);
         VarG.anActual.getImage().flush();
     }//GEN-LAST:event_regresarMouseClicked
@@ -87,10 +89,11 @@ public class Idioma1 extends javax.swing.JFrame {
         // TODO add your handling code here:
         cambiaIdioma("ingles");
     }//GEN-LAST:event_inglesMouseClicked
+
     public void cambiaIdioma(String idioma) {
         VarG.idioma = idioma;
         imagesProfile(); //Cambia las imagenes del Log_in
-        loadAudios();        
+        loadAudios();
 
         //Faltan mas funciones para las demas pantallas!!!!
         this.setVisible(false); //Cierra la ventana
@@ -272,7 +275,7 @@ public class Idioma1 extends javax.swing.JFrame {
             System.err.println(e.getMessage());
         }
     }
-    
+
     private void setAudioDevolucion() {
         try {
             InputStream music = new FileInputStream(new File("src\\Audios\\ScanDevolverEsp.wav"));
@@ -295,7 +298,7 @@ public class Idioma1 extends javax.swing.JFrame {
             System.err.println(e.getMessage());
         }
     }
-    
+
     public void setAudioPerfilDatos() {
         try {
             InputStream music = new FileInputStream(new File("src\\Audios\\DatosPerfilEsp.wav"));
@@ -318,7 +321,7 @@ public class Idioma1 extends javax.swing.JFrame {
             System.err.println(e.getMessage());
         }
     }
-    
+
     public void setAudioCanjear() {
         try {
             InputStream music = new FileInputStream(new File("src\\Audios\\CanjeaEsp.wav"));
@@ -351,5 +354,41 @@ public class Idioma1 extends javax.swing.JFrame {
         setAudioDevolucion(); //Cambia el audio del boton de devolucion
         setAudioPerfilDatos(); //Cambia el audio del boton de perfil datos
         setAudioCanjear(); //Cambia el audio del boton de canjea
+    }
+
+    public void cleanAudios() {
+        AudioPlayer.player.stop(VarG.aBienvenida);
+        AudioPlayer.player.stop(VarG.aComienzo);
+        AudioPlayer.player.stop(VarG.aLogin);
+        AudioPlayer.player.stop(VarG.aIdioma);
+        AudioPlayer.player.stop(VarG.aBusqueda);
+        AudioPlayer.player.stop(VarG.aPrestamo);
+        AudioPlayer.player.stop(VarG.aRenovar);
+        AudioPlayer.player.stop(VarG.aDevolucion);
+        AudioPlayer.player.stop(VarG.aPerfilDatos);
+        AudioPlayer.player.stop(VarG.aCanjear);
+        VarG.aBienvenida = null;
+        VarG.aComienzo = null;
+        VarG.aLogin = null;
+        VarG.aIdioma = null;
+        VarG.aBusqueda = null;
+        VarG.aPrestamo = null;
+        VarG.aRenovar = null;
+        VarG.aDevolucion = null;
+        VarG.aPerfilDatos = null;
+        VarG.aCanjear = null;
+    }
+
+    public void pausarAudios() {
+        AudioPlayer.player.stop(VarG.aBienvenida);
+        AudioPlayer.player.stop(VarG.aComienzo);
+        AudioPlayer.player.stop(VarG.aLogin);
+        AudioPlayer.player.stop(VarG.aIdioma);
+        AudioPlayer.player.stop(VarG.aBusqueda);
+        AudioPlayer.player.stop(VarG.aPrestamo);
+        AudioPlayer.player.stop(VarG.aRenovar);
+        AudioPlayer.player.stop(VarG.aDevolucion);
+        AudioPlayer.player.stop(VarG.aPerfilDatos);
+        AudioPlayer.player.stop(VarG.aCanjear);
     }
 }

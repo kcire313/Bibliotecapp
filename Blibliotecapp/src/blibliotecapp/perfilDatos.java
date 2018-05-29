@@ -115,6 +115,7 @@ public class perfilDatos extends javax.swing.JFrame {
     private void regresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresarMouseClicked
         // TODO add your handling code here:
         this.setVisible(false);
+        VarG.jfIdioma.pausarAudios();
         VarG.jfLogin.setVisible(true);
         VarG.jfLogin.id.requestFocus();  
         System.out.println("return profile data");
@@ -126,6 +127,7 @@ public class perfilDatos extends javax.swing.JFrame {
         // TODO add your handling code here:
         VarG.jfLogin.setVisible(false);
         this.setVisible(false);
+        VarG.jfIdioma.pausarAudios();
         VarG.anActual = VarG.animaciones.get(7);
         VarG.anActual.getImage().flush();
     }//GEN-LAST:event_homeMouseClicked

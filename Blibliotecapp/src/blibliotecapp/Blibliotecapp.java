@@ -131,6 +131,7 @@ public class Blibliotecapp extends JComponent {
                 //Botón búsqueda
                 if (e.getX() >= 180 && e.getX() <= 430 && e.getY() >= 310 && e.getY() <= 714) {
                     System.out.println("Búsqueda");
+                    VarG.jfIdioma.pausarAudios();
                     AudioPlayer.player.start(VarG.aBusqueda);
                     VarG.jfBusqueda.setVisible(true);
                 }
@@ -138,6 +139,7 @@ public class Blibliotecapp extends JComponent {
                 if (e.getX() >= 430 && e.getX() <= 680 && e.getY() >= 310 && e.getY() <= 510) {
                     System.out.println("Prestamo");
                     VarG.currentFrame = "prestamo";
+                    VarG.jfIdioma.pausarAudios();
                     AudioPlayer.player.start(VarG.aLogin);
                     VarG.jfLogin.setVisible(true);
                     VarG.jfLogin.id.requestFocus();
@@ -146,6 +148,7 @@ public class Blibliotecapp extends JComponent {
                 if (e.getX() >= 688 && e.getX() <= 938 && e.getY() >= 310 && e.getY() <= 510) {
                     System.out.println("devolución");
                     VarG.currentFrame = "devolucion";
+                    VarG.jfIdioma.pausarAudios();
                     AudioPlayer.player.start(VarG.aLogin);
                     VarG.jfLogin.setVisible(true);
                     VarG.jfLogin.id.requestFocus();
@@ -154,6 +157,7 @@ public class Blibliotecapp extends JComponent {
                 if (e.getX() >= 942 && e.getX() <= 1192 && e.getY() >= 310 && e.getY() <= 510) {
                     System.out.println("renovar");
                     VarG.currentFrame = "renovar";
+                    VarG.jfIdioma.pausarAudios();
                     AudioPlayer.player.start(VarG.aLogin);
                     VarG.jfLogin.setVisible(true);
                     VarG.jfLogin.id.requestFocus();
@@ -162,6 +166,7 @@ public class Blibliotecapp extends JComponent {
                 if (e.getX() >= 434 && e.getX() <= 650 && e.getY() >= 514 && e.getY() <= 714) {
                     System.out.println("Profile");
                     VarG.currentFrame = "perfil";
+                    VarG.jfIdioma.pausarAudios();
                     AudioPlayer.player.start(VarG.aLogin);
                     VarG.jfLogin.setVisible(true);
                     VarG.jfLogin.id.requestFocus();
@@ -170,6 +175,7 @@ public class Blibliotecapp extends JComponent {
                 if (e.getX() >= 688 && e.getX() <= 938 && e.getY() >= 514 && e.getY() <= 714) {
                     System.out.println("canjear");
                     VarG.currentFrame = "canjear";
+                    VarG.jfIdioma.pausarAudios();
                     AudioPlayer.player.start(VarG.aLogin);
                     VarG.jfLogin.setVisible(true);
                     VarG.jfLogin.id.requestFocus();
@@ -177,12 +183,14 @@ public class Blibliotecapp extends JComponent {
                 //Botón idioma
                 if (e.getX() >= 942 && e.getX() <= 1192 && e.getY() >= 514 && e.getY() <= 714) {
                     System.out.println("idioma");
+                    VarG.jfIdioma.pausarAudios();
                     AudioPlayer.player.start(VarG.aIdioma);
                     VarG.jfIdioma.setVisible(true);
                 }                
                 //Botón idioma
                 if (e.getX() >= 1230 && e.getX() <= 1330 && e.getY() >= 660 && e.getY() <= 760) {
                     System.out.println("audio");
+                    VarG.jfIdioma.pausarAudios();
                     turnOnOffAudios();
                 }
 
@@ -268,7 +276,7 @@ public class Blibliotecapp extends JComponent {
     private void turnOnOffAudios() {
         if (audioOnOff) {
             aActual=noAudio;
-            cleanAudios();
+            VarG.jfIdioma.cleanAudios();
             audioOnOff = false;
         } else {
             aActual=audio;
@@ -277,28 +285,7 @@ public class Blibliotecapp extends JComponent {
         }
     }
 
-    private void cleanAudios() {
-        AudioPlayer.player.stop(VarG.aBienvenida);
-        AudioPlayer.player.stop(VarG.aComienzo);
-        AudioPlayer.player.stop(VarG.aLogin);
-        AudioPlayer.player.stop(VarG.aIdioma);
-        AudioPlayer.player.stop(VarG.aBusqueda);
-        AudioPlayer.player.stop(VarG.aPrestamo);
-        AudioPlayer.player.stop(VarG.aRenovar);
-        AudioPlayer.player.stop(VarG.aDevolucion);
-        AudioPlayer.player.stop(VarG.aPerfilDatos);
-        AudioPlayer.player.stop(VarG.aCanjear);
-        VarG.aBienvenida = null;
-        VarG.aComienzo = null;
-        VarG.aLogin = null;
-        VarG.aIdioma = null;
-        VarG.aBusqueda = null;
-        VarG.aPrestamo = null;
-        VarG.aRenovar = null;
-        VarG.aDevolucion = null;
-        VarG.aPerfilDatos = null;
-        VarG.aCanjear = null;
-    }      
+    
     
     private void callInicio() {
         VarG.jfInicio.setVisible(true);

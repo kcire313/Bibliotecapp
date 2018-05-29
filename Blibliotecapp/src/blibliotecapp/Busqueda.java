@@ -503,6 +503,7 @@ public class Busqueda extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.setVisible(false);
         System.out.println("return to menu");
+        VarG.jfIdioma.pausarAudios();
         VarG.anActual = VarG.animaciones.get(3);
         VarG.anActual.getImage().flush();
     }//GEN-LAST:event_regresarMouseClicked
