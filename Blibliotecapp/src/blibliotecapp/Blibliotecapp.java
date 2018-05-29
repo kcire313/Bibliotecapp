@@ -89,7 +89,7 @@ public class Blibliotecapp extends JComponent {
         VarG.jfPerfil.setLocationRelativeTo(null);
 
         //Instancia de la pantalla del cambio de idioma
-        VarG.jfIdioma = new Idioma1();
+        VarG.jfIdioma = new Idioma();
         VarG.jfIdioma.pack();
         VarG.jfIdioma.setLocationRelativeTo(null);
 
@@ -132,14 +132,19 @@ public class Blibliotecapp extends JComponent {
         VarG.jtcupon.setLocationRelativeTo(null);
         
         //Ticket prestamo
-        VarG.jtPrestamo= new tPrestamo();
+        VarG.jtPrestamo = new tPrestamo();
         VarG.jtPrestamo.pack();
         VarG.jtPrestamo.setLocationRelativeTo(null);
         
         //Ticket devolucion
-        VarG.jtDevolucion= new tDevolucion();
+        VarG.jtDevolucion = new tDevolucion();
         VarG.jtDevolucion.pack();
         VarG.jtDevolucion.setLocationRelativeTo(null);
+        
+        //Ticket libro
+        VarG.jtLibro = new tLibro();
+        VarG.jtLibro.pack();
+        VarG.jtLibro.setLocationRelativeTo(null);
         
         //Key listener para la pantalla
         addMouseListener(new MouseAdapter() {

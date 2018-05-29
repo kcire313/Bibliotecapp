@@ -248,6 +248,7 @@ public class Libros extends javax.swing.JFrame {
         paginas = (int) Math.ceil((float) VarG.libros.size() / 5) - 1;
         System.out.println((int) Math.ceil((float) VarG.libros.size() / 5));
         imprimir(0);
+        VarG.tiket = null;
     }//GEN-LAST:event_formWindowActivated
 
     private void LBop1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LBop1MouseClicked
@@ -264,6 +265,8 @@ public class Libros extends javax.swing.JFrame {
         Image newimg3 = image2.getScaledInstance(imageIcon1.getIconHeight() * 120 / 470, imageIcon1.getIconHeight() * 300 / 800, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
         imageIcon1 = new ImageIcon(newimg3);
         LbImagen.setIcon(imageIcon1);
+        
+        VarG.tiket = VarG.libros.get(1 + pActual * 5);
         
         this.LBIDStatic.setText("ID:" + VarG.libros.get(1 + pActual * 5).getId_libro());
         
@@ -288,6 +291,8 @@ public class Libros extends javax.swing.JFrame {
         Image newimg3 = image2.getScaledInstance(imageIcon1.getIconHeight() * 120 / 470, imageIcon1.getIconHeight() * 300 / 800, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
         imageIcon1 = new ImageIcon(newimg3);
         LbImagen.setIcon(imageIcon1);
+        
+        VarG.tiket = VarG.libros.get(2 + pActual * 5);
         
         this.LBIDStatic.setText("ID:" + VarG.libros.get(2 + pActual * 5).getId_libro());
          }catch(Exception e){
@@ -324,6 +329,8 @@ public class Libros extends javax.swing.JFrame {
         imageIcon1 = new ImageIcon(newimg3);
         LbImagen.setIcon(imageIcon1);
         
+        VarG.tiket = VarG.libros.get(0 + pActual * 5);
+        
         this.LBIDStatic.setText("ID:" + VarG.libros.get(0 + pActual * 5).getId_libro());
         
          }catch(Exception e){
@@ -346,6 +353,8 @@ public class Libros extends javax.swing.JFrame {
         imageIcon1 = new ImageIcon(newimg3);
         LbImagen.setIcon(imageIcon1);
         
+        VarG.tiket = VarG.libros.get(3 + pActual * 5);
+        
         this.LBIDStatic.setText("ID:" + VarG.libros.get(3 + pActual * 5).getId_libro());
         
         }catch(Exception e){
@@ -367,6 +376,8 @@ public class Libros extends javax.swing.JFrame {
         Image newimg3 = image2.getScaledInstance(imageIcon1.getIconHeight() * 120 / 470, imageIcon1.getIconHeight() * 300 / 800, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
         imageIcon1 = new ImageIcon(newimg3);
         LbImagen.setIcon(imageIcon1);
+        
+        VarG.tiket = VarG.libros.get(4 + pActual * 5);
         
         this.LBIDStatic.setText("ID:" + VarG.libros.get(4 + pActual * 5).getId_libro());
         
@@ -396,7 +407,7 @@ public class Libros extends javax.swing.JFrame {
 
     private void LBImprimirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LBImprimirMouseClicked
        //Audio Imprimiendo ticket
-        
+       VarG.jtLibro.setVisible(true);
     }//GEN-LAST:event_LBImprimirMouseClicked
     void imprimir(int i) {
         limpiar();

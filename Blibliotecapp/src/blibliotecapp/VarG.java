@@ -34,7 +34,7 @@ public class VarG {
     //Variables de las pantallas
     public static Log_in jfLogin=null;
     public static perfilDatos jfPerfil=null;
-    public static Idioma1 jfIdioma=null;
+    public static Idioma jfIdioma=null;
     public static Prestamo jfPrestamo=null;
     public static Renovar jfRenovar=null;
     public static Inicio jfInicio=null;
@@ -46,6 +46,7 @@ public class VarG {
     public static tCupon jtcupon=null;
     public static tPrestamo jtPrestamo=null;
     public static tDevolucion jtDevolucion=null;
+    public static tLibro jtLibro=null;
     
     //Variables de audio
     public static AudioStream aBienvenida; //Audio de la bienvenida
@@ -69,6 +70,8 @@ public class VarG {
     //Control CanjePuntos
     public static boolean compra;
     public static int prod;
+    
+    public static LibroG tiket;
         
     //Conexión con MySQL
     public static MySqlConexion objConn = new MySqlConexion();
