@@ -392,7 +392,7 @@ public class Renovar extends javax.swing.JFrame {
         try {
             if (VarG.libros.size() > 0) {
                 if (now.compareTo(l1) != 0) {
-                    if (now.compareTo(p1) < 0 && VarG.libros.get(0).getRenovacion() < 3) {
+                    if (now.compareTo(p1) < 0 && VarG.libros.get(0).getRenovacion() < 4) {
                         if (VarG.libros.get(0).isDevuelto()) {
                             this.LBn1.setText("1");
                             this.LBr1.setText(Integer.toString(VarG.libros.get(0).getRenovacion()));
@@ -438,7 +438,7 @@ public class Renovar extends javax.swing.JFrame {
             }
             if (VarG.libros.size() > 1) {
                 if (now.compareTo(l2) != 0) {
-                    if (now.compareTo(p2) < 0 && VarG.libros.get(0).getRenovacion() < 3) {
+                    if (now.compareTo(p2) < 0 && VarG.libros.get(1).getRenovacion() < 4) {
                         if (VarG.libros.get(1).isDevuelto()) {
                             this.LBn2.setText("2");
                             this.LBr2.setText(Integer.toString(VarG.libros.get(1).getRenovacion()));
@@ -484,7 +484,7 @@ public class Renovar extends javax.swing.JFrame {
             }
             if (VarG.libros.size() > 2) {
                 if (now.compareTo(l3) != 0) {
-                    if (now.compareTo(p3) < 0 && VarG.libros.get(0).getRenovacion() < 3) {
+                    if (now.compareTo(p3) < 0 && VarG.libros.get(2).getRenovacion() < 4) {
                         if (VarG.libros.get(2).isDevuelto()) {
                             this.LBn3.setText("3");
                             this.LBr3.setText(Integer.toString(VarG.libros.get(2).getRenovacion()));
@@ -530,7 +530,7 @@ public class Renovar extends javax.swing.JFrame {
             }
             if (VarG.libros.size() > 3) {
                 if (now.compareTo(l4) != 0) {
-                    if (now.compareTo(p4) < 0 && VarG.libros.get(0).getRenovacion() < 3) {
+                    if (now.compareTo(p4) < 0 && VarG.libros.get(3).getRenovacion() < 4) {
                         if (VarG.libros.get(3).isDevuelto()) {
                             this.LBn4.setText("4");
                             this.LBr4.setText(Integer.toString(VarG.libros.get(3).getRenovacion()));
