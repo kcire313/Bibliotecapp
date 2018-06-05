@@ -325,19 +325,26 @@ public class Log_in extends javax.swing.JFrame {
                                 AudioPlayer.player.start(VarG.aPrestamo);
                                 break;
                             case "renovar":
-                                limpiaLibrosDevueltos();
+                                cicloLimpiar();
+                                //limpiaLibrosDevueltos();
                                 VarG.jfRenovar.setVisible(true);
                                 AudioPlayer.player.start(VarG.aRenovar);
                                 break;
                             case "devolucion":
+                                cicloLimpiar();/*
                                 limpiaLibrosDevueltos();
+                                limpiaLibrosDevueltos();
+                                limpiaLibrosDevueltos();
+                                limpiaLibrosDevueltos();
+                                limpiaLibrosDevueltos();
+                                limpiaLibrosDevueltos();*/
                                 VarG.jfDevolucion.setVisible(true);
                                 AudioPlayer.player.start(VarG.aDevolucion);
                                 break;
                             case "canjear":
                                 System.out.println("entro cajas");
-                                VarG.jfCanjear.setVisible(true);                                
-                                AudioPlayer.player.start(VarG.aCanjear);                                
+                                VarG.jfCanjear.setVisible(true);
+                                AudioPlayer.player.start(VarG.aCanjear);
                                 break;
                         }
 
@@ -599,10 +606,18 @@ public class Log_in extends javax.swing.JFrame {
     }
 
     private void limpiaLibrosDevueltos() {
+        VarG.jfDevolucion.limpiar(5);
         for (int i = 0; i < VarG.libros.size(); i++) {
             if (VarG.libros.get(i).isDevuelto()) {
                 VarG.libros.remove(i);
             }
+        }
+        VarG.jfDevolucion.pintardev();
+    }
+
+    private void cicloLimpiar() {
+        for (int i = 0; i < 10; i++) {
+            limpiaLibrosDevueltos();
         }
     }
 }

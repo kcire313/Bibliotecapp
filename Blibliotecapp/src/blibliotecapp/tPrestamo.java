@@ -3,6 +3,7 @@ package blibliotecapp;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /*
@@ -140,27 +141,29 @@ public class tPrestamo extends javax.swing.JFrame {
         try {
             Date now = new Date(System.currentTimeMillis());
             SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
-            if (VarG.libros.get(0).isDevuelto()) {
+            Calendar c = Calendar.getInstance();
+            c.setTime(now);
+            c.add(Calendar.DATE, 3);
+            if (VarG.libros.get(0).isDevuelto() && VarG.libros.get(0).getRenovacion()==0) {
                 this.jLID1.setText(VarG.libros.get(0).getId_libro());
                 this.jLibro1.setText(VarG.libros.get(0).getTitulo());
-                this.jLFecha1.setText(date.format(now));
+                this.jLFecha1.setText(date.format(c.getTime()));
             }
-            if (VarG.libros.get(1).isDevuelto()) {
+            if (VarG.libros.get(1).isDevuelto() && VarG.libros.get(1).getRenovacion()==0) {
                 this.jLID2.setText(VarG.libros.get(1).getId_libro());
                 this.jLibro2.setText(VarG.libros.get(1).getTitulo());
-                this.jLFecha2.setText(date.format(now));
+                this.jLFecha2.setText(date.format(c.getTime()));
             }
-            if (VarG.libros.get(2).isDevuelto()) {
+            if (VarG.libros.get(2).isDevuelto() && VarG.libros.get(2).getRenovacion()==0) {
                 this.jLID3.setText(VarG.libros.get(2).getId_libro());
                 this.jLibro3.setText(VarG.libros.get(2).getTitulo());
-                this.jLFecha3.setText(date.format(now));
+                this.jLFecha3.setText(date.format(c.getTime()));
             }
-            if (VarG.libros.get(3).isDevuelto()) {
+            if (VarG.libros.get(3).isDevuelto() && VarG.libros.get(3).getRenovacion()==0) {
                 this.jLID4.setText(VarG.libros.get(3).getId_libro());
                 this.jLibro4.setText(VarG.libros.get(3).getTitulo());
-                this.jLFecha4.setText(date.format(now));
+                this.jLFecha4.setText(date.format(c.getTime()));
             }
-
         } catch (Exception e) {
             System.out.println(e);
         }
