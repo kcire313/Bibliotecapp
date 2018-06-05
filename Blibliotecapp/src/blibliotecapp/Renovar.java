@@ -316,15 +316,19 @@ public class Renovar extends javax.swing.JFrame {
             TestRemote testRemote = (TestRemote) registry.lookup("Test");
             if (k1) {
                 testRemote.insertPrestamo(0, "", VarG.libros.get(0).getId_prestamo(), 0, 0, "renovar");
+                pintardev();
             }
             if (k2) {
                 testRemote.insertPrestamo(0, "", VarG.libros.get(1).getId_prestamo(), 0, 0, "renovar");
+                pintardev();
             }
             if (k3) {
                 testRemote.insertPrestamo(0, "", VarG.libros.get(2).getId_prestamo(), 0, 0, "renovar");
+                pintardev();
             }
             if (k4) {
                 testRemote.insertPrestamo(0, "", VarG.libros.get(3).getId_prestamo(), 0, 0, "renovar");
+                pintardev();
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -333,7 +337,6 @@ public class Renovar extends javax.swing.JFrame {
         k2 = false;
         k3 = false;
         k4 = false;
-        pintardev();
     }//GEN-LAST:event_BtaceptarMouseClicked
 
     public void pintardev() {
@@ -391,7 +394,7 @@ public class Renovar extends javax.swing.JFrame {
         }
         try {
             if (VarG.libros.size() > 0) {
-                if (now.compareTo(l1) != 0) {
+                if (!sameDate(now, l1)) {
                     if (now.compareTo(p1) < 0 && VarG.libros.get(0).getRenovacion() < 4) {
                         if (VarG.libros.get(0).isDevuelto()) {
                             this.LBn1.setText("1");
@@ -425,7 +428,7 @@ public class Renovar extends javax.swing.JFrame {
                         this.LB1.setIcon(new ImageIcon("src/surce/nuevasP/F-Prohibido.png"));
                     }
 
-                } else {
+                } else if (VarG.libros.get(0).getRenovacion() < 4) {
                     this.LBn1.setText("1");
                     this.LBr1.setText(Integer.toString(VarG.libros.get(0).getRenovacion()));
                     this.LBdev1.setText(VarG.libros.get(0).getFecha_dev());
@@ -434,10 +437,19 @@ public class Renovar extends javax.swing.JFrame {
                     this.LBdat1.setForeground(Color.GRAY);
                     this.LBtit1.setText(VarG.libros.get(0).getTitulo());
                     this.LB1.setIcon(new ImageIcon("src/surce/nuevasP/F-Neutral.png"));
+                } else {
+                    this.LBn1.setText("1");
+                    this.LBr1.setText(Integer.toString(VarG.libros.get(0).getRenovacion()));
+                    this.LBdev1.setText(VarG.libros.get(0).getFecha_dev());
+                    this.LBtit1.setForeground(Color.GRAY);
+                    this.LBdat1.setText(VarG.libros.get(0).getAutor() + "/ año: " + VarG.libros.get(0).getAnio());
+                    this.LBdat1.setForeground(Color.GRAY);
+                    this.LBtit1.setText(VarG.libros.get(0).getTitulo());
+                    this.LB1.setIcon(new ImageIcon("src/surce/nuevasP/F-Prohibido.png"));
                 }
             }
             if (VarG.libros.size() > 1) {
-                if (now.compareTo(l2) != 0) {
+                if (!sameDate(now, l2)) {
                     if (now.compareTo(p2) < 0 && VarG.libros.get(1).getRenovacion() < 4) {
                         if (VarG.libros.get(1).isDevuelto()) {
                             this.LBn2.setText("2");
@@ -471,7 +483,7 @@ public class Renovar extends javax.swing.JFrame {
                         this.LB2.setIcon(new ImageIcon("src/surce/nuevasP/F-Prohibido.png"));
                     }
 
-                } else {
+                } else if (VarG.libros.get(1).getRenovacion() < 4) {
                     this.LBn2.setText("2");
                     this.LBtit2.setForeground(Color.GRAY);
                     this.LBdat2.setForeground(Color.GRAY);
@@ -480,10 +492,19 @@ public class Renovar extends javax.swing.JFrame {
                     this.LBtit2.setText(VarG.libros.get(1).getTitulo());
                     this.LBdat2.setText(VarG.libros.get(1).getAutor() + "/ año: " + VarG.libros.get(1).getAnio());
                     this.LB2.setIcon(new ImageIcon("src/surce/nuevasP/F-Neutral.png"));
+                } else {
+                    this.LBn2.setText("2");
+                    this.LBtit2.setForeground(Color.GRAY);
+                    this.LBdat2.setForeground(Color.GRAY);
+                    this.LBr2.setText(Integer.toString(VarG.libros.get(1).getRenovacion()));
+                    this.LBdev2.setText(VarG.libros.get(1).getFecha_dev());
+                    this.LBtit2.setText(VarG.libros.get(1).getTitulo());
+                    this.LBdat2.setText(VarG.libros.get(1).getAutor() + "/ año: " + VarG.libros.get(1).getAnio());
+                    this.LB2.setIcon(new ImageIcon("src/surce/nuevasP/F-Prohibido.png"));
                 }
             }
             if (VarG.libros.size() > 2) {
-                if (now.compareTo(l3) != 0) {
+                if (!sameDate(now, l3)) {
                     if (now.compareTo(p3) < 0 && VarG.libros.get(2).getRenovacion() < 4) {
                         if (VarG.libros.get(2).isDevuelto()) {
                             this.LBn3.setText("3");
@@ -517,7 +538,7 @@ public class Renovar extends javax.swing.JFrame {
                         this.LB3.setIcon(new ImageIcon("src/surce/nuevasP/F-Prohibido.png"));
                     }
 
-                } else {
+                } else if (VarG.libros.get(2).getRenovacion() < 4) {
                     this.LBn3.setText("3");
                     this.LBtit3.setForeground(Color.GRAY);
                     this.LBdat3.setForeground(Color.GRAY);
@@ -526,10 +547,19 @@ public class Renovar extends javax.swing.JFrame {
                     this.LBtit3.setText(VarG.libros.get(2).getTitulo());
                     this.LBdat3.setText(VarG.libros.get(2).getAutor() + "/ año: " + VarG.libros.get(2).getAnio());
                     this.LB3.setIcon(new ImageIcon("src/surce/nuevasP/F-Neutral.png"));
+                } else {
+                    this.LBn3.setText("3");
+                    this.LBtit3.setForeground(Color.GRAY);
+                    this.LBdat3.setForeground(Color.GRAY);
+                    this.LBr3.setText(Integer.toString(VarG.libros.get(2).getRenovacion()));
+                    this.LBdev3.setText(VarG.libros.get(2).getFecha_dev());
+                    this.LBtit3.setText(VarG.libros.get(2).getTitulo());
+                    this.LBdat3.setText(VarG.libros.get(2).getAutor() + "/ año: " + VarG.libros.get(2).getAnio());
+                    this.LB3.setIcon(new ImageIcon("src/surce/nuevasP/F-Prohibido.png"));
                 }
             }
             if (VarG.libros.size() > 3) {
-                if (now.compareTo(l4) != 0) {
+                if (!sameDate(now, l4)) {
                     if (now.compareTo(p4) < 0 && VarG.libros.get(3).getRenovacion() < 4) {
                         if (VarG.libros.get(3).isDevuelto()) {
                             this.LBn4.setText("4");
@@ -564,7 +594,7 @@ public class Renovar extends javax.swing.JFrame {
                         this.LB4.setIcon(new ImageIcon("src/surce/nuevasP/F-Prohibido.png"));
                     }
 
-                } else {
+                } else if (VarG.libros.get(3).getRenovacion() < 4) {
                     this.LBn4.setText("4");
                     this.LBtit4.setForeground(Color.GRAY);
                     this.LBdat4.setForeground(Color.GRAY);
@@ -573,11 +603,27 @@ public class Renovar extends javax.swing.JFrame {
                     this.LBtit4.setText(VarG.libros.get(3).getTitulo());
                     this.LBdat4.setText(VarG.libros.get(3).getAutor() + "/ año: " + VarG.libros.get(3).getAnio());
                     this.LB4.setIcon(new ImageIcon("src/surce/nuevasP/F-Neutral.png"));
+                } else {
+                    this.LBn4.setText("4");
+                    this.LBtit4.setForeground(Color.GRAY);
+                    this.LBdat4.setForeground(Color.GRAY);
+                    this.LBr4.setText(Integer.toString(VarG.libros.get(3).getRenovacion()));
+                    this.LBdev4.setText(VarG.libros.get(3).getFecha_dev());
+                    this.LBtit4.setText(VarG.libros.get(3).getTitulo());
+                    this.LBdat4.setText(VarG.libros.get(3).getAutor() + "/ año: " + VarG.libros.get(3).getAnio());
+                    this.LB4.setIcon(new ImageIcon("src/surce/nuevasP/F-Prohibido.png"));
                 }
             }
         } catch (Exception e) {
             System.out.println(e);
         }
+    }
+
+    public boolean sameDate(Date d1, Date d2) {
+        if (d1.getDay() == d2.getDay() && d1.getMonth() == d2.getMonth() && d1.getYear() == d2.getYear()) {
+            return true;
+        }
+        return false;
     }
 
     public void limpiar(int num) {
