@@ -8,6 +8,8 @@ package blibliotecapp;
 import java.awt.Color;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -352,7 +354,6 @@ public class Devolucion extends javax.swing.JFrame {
         //Query update a cada uno VarG que este com devuelto
         for (int i = 0; i < VarG.libros.size(); i++) {
             if (VarG.libros.get(i).isDevuelto()) {
-                //System.out.println("quiobolas");
                 try {
                     Registry registry = LocateRegistry.getRegistry();
                     TestRemote testRemote = (TestRemote) registry.lookup("Test");
@@ -365,7 +366,6 @@ public class Devolucion extends javax.swing.JFrame {
                     Registry registry = LocateRegistry.getRegistry();
                     TestRemote testRemote = (TestRemote) registry.lookup("Test");
                     testRemote.insertPrestamo(VarG.id_usuario, "", VarG.puntaje, 0, 0, "puntaje");
-                    VarG.jtcupon.setVisible(true);
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
@@ -376,7 +376,7 @@ public class Devolucion extends javax.swing.JFrame {
         limpiar(5);
         VarG.libros.trimToSize();
         pintardev();
-        
+
     }//GEN-LAST:event_LBdevolverMouseClicked
     public boolean checklleno() {
         boolean aux = true;
@@ -388,9 +388,36 @@ public class Devolucion extends javax.swing.JFrame {
         return aux;
     }
 
-    public void pintardev() {        
+    public void pintardev() {
         try {
             boolean aux = false;
+
+            SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+
+            Date now = new Date(System.currentTimeMillis());
+            now.setHours(0);
+            now.setMinutes(0);
+            now.setSeconds(0);
+
+            Date l1, l2, l3, l4;
+            l1 = new Date();
+            l2 = new Date();
+            l3 = new Date();
+            l4 = new Date();
+
+            if (VarG.libros.size() > 0) {
+                l1 = date.parse(VarG.libros.get(0).getFecha_dev());
+            }
+            if (VarG.libros.size() > 1) {
+                l2 = date.parse(VarG.libros.get(1).getFecha_dev());
+            }
+            if (VarG.libros.size() > 2) {
+                l3 = date.parse(VarG.libros.get(2).getFecha_dev());
+            }
+            if (VarG.libros.size() > 3) {
+                l4 = date.parse(VarG.libros.get(3).getFecha_dev());
+            }
+
             for (int i = 0; i < VarG.libros.size(); i++) {
                 if (VarG.libros.get(i).isDevuelto()) {
                     aux = true;
@@ -411,8 +438,11 @@ public class Devolucion extends javax.swing.JFrame {
                 this.LBtit1.setForeground(Color.GRAY);
                 this.LBdat1.setText(VarG.libros.get(0).getAutor() + "/ año: " + VarG.libros.get(0).getAnio());
                 this.LBdat1.setForeground(Color.GRAY);
-                this.LB1.setIcon(new ImageIcon("src/surce/nuevasP/F-Neutral.png"));
-
+                if (now.compareTo(l1) < 0) {
+                    this.LB1.setIcon(new ImageIcon("src/surce/nuevasP/F-Neutral.png"));
+                } else {
+                    this.LB1.setIcon(new ImageIcon("src/surce/nuevasP/F-Prohibido.png"));
+                }
             } else {
                 this.LBn1.setText("1");
                 this.LBr1.setText(Integer.toString(VarG.libros.get(0).getRenovacion()));
@@ -431,7 +461,12 @@ public class Devolucion extends javax.swing.JFrame {
                 this.LBtit2.setForeground(Color.GRAY);
                 this.LBdat2.setText(VarG.libros.get(1).getAutor() + "/ año: " + VarG.libros.get(1).getAnio());
                 this.LBdat2.setForeground(Color.GRAY);
-                this.LB2.setIcon(new ImageIcon("src/surce/nuevasP/F-Neutral.png"));
+                if (now.compareTo(l2) < 0) {
+                    this.LB2.setIcon(new ImageIcon("src/surce/nuevasP/F-Neutral.png"));
+                } else {
+                    this.LB2.setIcon(new ImageIcon("src/surce/nuevasP/F-Prohibido.png"));
+                }
+
             } else {
                 this.LBn2.setText("2");
                 this.LBtit2.setForeground(Color.BLACK);
@@ -450,7 +485,12 @@ public class Devolucion extends javax.swing.JFrame {
                 this.LBtit3.setForeground(Color.GRAY);
                 this.LBdat3.setText(VarG.libros.get(2).getAutor() + "/ año: " + VarG.libros.get(2).getAnio());
                 this.LBdat3.setForeground(Color.GRAY);
-                this.LB3.setIcon(new ImageIcon("src/surce/nuevasP/F-Neutral.png"));
+                if (now.compareTo(l3) < 0) {
+                    this.LB3.setIcon(new ImageIcon("src/surce/nuevasP/F-Neutral.png"));
+                } else {
+                    this.LB3.setIcon(new ImageIcon("src/surce/nuevasP/F-Prohibido.png"));
+                }
+
             } else {
                 this.LBn3.setText("3");
                 this.LBtit3.setForeground(Color.BLACK);
@@ -469,7 +509,11 @@ public class Devolucion extends javax.swing.JFrame {
                 this.LBtit4.setForeground(Color.GRAY);
                 this.LBdat4.setText(VarG.libros.get(3).getAutor() + "/ año: " + VarG.libros.get(3).getAnio());
                 this.LBdat4.setForeground(Color.GRAY);
-                this.LB4.setIcon(new ImageIcon("src/surce/nuevasP/F-Neutral.png"));
+                if (now.compareTo(l4) < 0) {
+                    this.LB4.setIcon(new ImageIcon("src/surce/nuevasP/F-Neutral.png"));
+                } else {
+                    this.LB4.setIcon(new ImageIcon("src/surce/nuevasP/F-Prohibido.png"));
+                }
 
             } else {
                 this.LBn4.setText("4");

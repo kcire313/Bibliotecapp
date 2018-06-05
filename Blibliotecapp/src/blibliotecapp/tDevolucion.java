@@ -1,15 +1,17 @@
 package blibliotecapp;
 
 import java.awt.Color;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Alan
@@ -146,42 +148,97 @@ public class tDevolucion extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         for (int i = 0; i < VarG.libros.size(); i++) {
+            System.out.println("");
             if (!VarG.libros.get(i).isDevuelto()) {
                 VarG.libros.remove(i);
             }
         }
         try {
+            SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+            Date now = new Date(System.currentTimeMillis());
+            now.setHours(0);
+            now.setMinutes(0);
+            now.setSeconds(0);
+            Date l1, l2, l3, l4;
+            l1 = new Date();
+            l2 = new Date();
+            l3 = new Date();
+            l4 = new Date();
+
+            if (VarG.libros.size() > 0) {
+
+                l1 = date.parse(VarG.libros.get(0).getFecha_dev());
+
+            }
+            if (VarG.libros.size() > 1) {
+                l2 = date.parse(VarG.libros.get(1).getFecha_dev());
+            }
+            if (VarG.libros.size() > 2) {
+                l3 = date.parse(VarG.libros.get(2).getFecha_dev());
+            }
+            if (VarG.libros.size() > 3) {
+                l4 = date.parse(VarG.libros.get(3).getFecha_dev());
+            }
+
             if (VarG.libros.get(0).isDevuelto()) {
                 this.jLID1.setText(VarG.libros.get(0).getId_libro());
                 this.jLibro1.setText(VarG.libros.get(0).getTitulo());
-                this.jLPts1.setForeground(Color.BLUE);
-                this.jLPts1.setText("10");
-                this.jLCob1.setForeground(Color.RED);
-                this.jLCob1.setText("0");
+                if (now.compareTo(l1) < 0) {
+                    this.jLPts1.setForeground(Color.BLUE);
+                    this.jLPts1.setText("10");
+                    this.jLCob1.setForeground(Color.RED);
+                    this.jLCob1.setText("0");
+                } else {
+                    this.jLPts1.setForeground(Color.BLUE);
+                    this.jLPts1.setText("0");
+                    this.jLCob1.setForeground(Color.RED);
+                    this.jLCob1.setText("10");
+                }
             }
             if (VarG.libros.get(1).isDevuelto()) {
-                 this.jLID1.setText(VarG.libros.get(1).getId_libro());
-                this.jLibro1.setText(VarG.libros.get(1).getTitulo());
-                this.jLPts1.setForeground(Color.BLUE);
-                this.jLPts1.setText("10");
-                this.jLCob1.setForeground(Color.RED);
-                this.jLCob1.setText("0");
+                this.jLID2.setText(VarG.libros.get(1).getId_libro());
+                this.jLibro2.setText(VarG.libros.get(1).getTitulo());
+                if (now.compareTo(l2) < 0) {
+                    this.jLPts2.setForeground(Color.BLUE);
+                    this.jLPts2.setText("10");
+                    this.jLCob2.setForeground(Color.RED);
+                    this.jLCob2.setText("0");
+                } else {
+                    this.jLPts2.setForeground(Color.BLUE);
+                    this.jLPts2.setText("0");
+                    this.jLCob2.setForeground(Color.RED);
+                    this.jLCob2.setText("10");
+                }
             }
             if (VarG.libros.get(2).isDevuelto()) {
-                 this.jLID1.setText(VarG.libros.get(2).getId_libro());
-                this.jLibro1.setText(VarG.libros.get(2).getTitulo());
-                this.jLPts1.setForeground(Color.BLUE);
-                this.jLPts1.setText("10");
-                this.jLCob1.setForeground(Color.RED);
-                this.jLCob1.setText("0");
+                this.jLID3.setText(VarG.libros.get(2).getId_libro());
+                this.jLibro3.setText(VarG.libros.get(2).getTitulo());
+                if (now.compareTo(l3) < 0) {
+                    this.jLPts3.setForeground(Color.BLUE);
+                    this.jLPts3.setText("10");
+                    this.jLCob3.setForeground(Color.RED);
+                    this.jLCob3.setText("0");
+                } else {
+                    this.jLPts3.setForeground(Color.BLUE);
+                    this.jLPts3.setText("0");
+                    this.jLCob3.setForeground(Color.RED);
+                    this.jLCob3.setText("10");
+                }
             }
             if (VarG.libros.get(3).isDevuelto()) {
-                 this.jLID1.setText(VarG.libros.get(3).getId_libro());
-                this.jLibro1.setText(VarG.libros.get(3).getTitulo());
-                this.jLPts1.setForeground(Color.BLUE);
-                this.jLPts1.setText("10");
-                this.jLCob1.setForeground(Color.RED);
-                this.jLCob1.setText("0");
+                this.jLID4.setText(VarG.libros.get(3).getId_libro());
+                this.jLibro4.setText(VarG.libros.get(3).getTitulo());
+                if (now.compareTo(l4) < 0) {
+                    this.jLPts4.setForeground(Color.BLUE);
+                    this.jLPts4.setText("10");
+                    this.jLCob4.setForeground(Color.RED);
+                    this.jLCob4.setText("0");
+                } else {
+                    this.jLPts4.setForeground(Color.BLUE);
+                    this.jLPts4.setText("0");
+                    this.jLCob4.setForeground(Color.RED);
+                    this.jLCob4.setText("10");
+                }
             }
 
         } catch (Exception e) {
