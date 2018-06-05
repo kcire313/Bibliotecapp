@@ -684,6 +684,7 @@ public class Busqueda extends javax.swing.JFrame {
             DefaultComboBoxModel model = new DefaultComboBoxModel(esp);
             CMBCampo.setModel(model);
         }
+        TxtTitulo.setFocusable(true);
     }//GEN-LAST:event_formWindowActivated
 
     private void LetraAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LetraAMouseClicked

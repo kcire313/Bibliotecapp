@@ -59,6 +59,8 @@ public class VarG {
     public static AudioStream aDevolucion; //Boton de los devolucion
     public static AudioStream aPerfilDatos; //Boton de los devolucion
     public static AudioStream aCanjear; //Boton de los canjear
+    public static AudioStream aIntroduccion; //Boton de los canjear
+    public static AudioStream aError; //Audio de error en log-in
     
     //Gifs de transicion
     public static ImageIcon anActual; 

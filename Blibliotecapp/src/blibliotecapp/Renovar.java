@@ -6,6 +6,8 @@
 package blibliotecapp;
 
 import java.awt.Color;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -265,7 +267,7 @@ public class Renovar extends javax.swing.JFrame {
             LBFondo.setIcon(fondo.get(0));
         }
         limpiar(5);
-        k1=k2=k3=k4 = false;
+        k1 = k2 = k3 = k4 = false;
         //Por alguna razon aqui saca todos los libros como si fuera Query de Perfil, en vez de corregir Server
         //Solo quitare el libro extra y si hay error entonces corregimos
         for (int i = 0; i < VarG.libros.size(); i++) {
@@ -309,16 +311,35 @@ public class Renovar extends javax.swing.JFrame {
     }//GEN-LAST:event_LB1MouseClicked
 
     private void BtaceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtaceptarMouseClicked
-        if(k1){}
-        if(k2){}
-        if(k3){}
-        if(k4){}
+        try {
+            Registry registry = LocateRegistry.getRegistry();
+            TestRemote testRemote = (TestRemote) registry.lookup("Test");
+            if (k1) {
+                testRemote.insertPrestamo(0, "", VarG.libros.get(0).getId_prestamo(), 0, 0, "renovar");
+            }
+            if (k2) {
+                testRemote.insertPrestamo(0, "", VarG.libros.get(1).getId_prestamo(), 0, 0, "renovar");
+            }
+            if (k3) {
+                testRemote.insertPrestamo(0, "", VarG.libros.get(2).getId_prestamo(), 0, 0, "renovar");
+            }
+            if (k4) {
+                testRemote.insertPrestamo(0, "", VarG.libros.get(3).getId_prestamo(), 0, 0, "renovar");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        k1 = false;
+        k2 = false;
+        k3 = false;
+        k4 = false;
+        pintardev();
     }//GEN-LAST:event_BtaceptarMouseClicked
 
     public void pintardev() {
-        
+
         SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
-        
+
         Date now = new Date(System.currentTimeMillis());
         now.setHours(0);
         now.setMinutes(0);
@@ -332,21 +353,44 @@ public class Renovar extends javax.swing.JFrame {
         p2 = new Date();
         p3 = new Date();
         p4 = new Date();
-        
+
         try {
-            p1 = date.parse(VarG.libros.get(0).getFecha_dev());
-            p2 = date.parse(VarG.libros.get(1).getFecha_dev());
-            p3 = date.parse(VarG.libros.get(2).getFecha_dev());
-            p4 = date.parse(VarG.libros.get(3).getFecha_dev());
-            l1 = date.parse(VarG.libros.get(0).getFecha_pres());
-            l2 = date.parse(VarG.libros.get(1).getFecha_pres());
-            l3 = date.parse(VarG.libros.get(2).getFecha_pres());
-            l4 = date.parse(VarG.libros.get(3).getFecha_pres());
+            switch (VarG.libros.size()) {
+                case 1:
+                    p1 = date.parse(VarG.libros.get(0).getFecha_dev());
+                    l1 = date.parse(VarG.libros.get(0).getFecha_pres());
+                    break;
+                case 2:
+                    p1 = date.parse(VarG.libros.get(0).getFecha_dev());
+                    p2 = date.parse(VarG.libros.get(1).getFecha_dev());
+                    l1 = date.parse(VarG.libros.get(0).getFecha_pres());
+                    l2 = date.parse(VarG.libros.get(1).getFecha_pres());
+                    break;
+                case 3:
+                    p1 = date.parse(VarG.libros.get(0).getFecha_dev());
+                    p2 = date.parse(VarG.libros.get(1).getFecha_dev());
+                    p3 = date.parse(VarG.libros.get(2).getFecha_dev());
+                    l1 = date.parse(VarG.libros.get(0).getFecha_pres());
+                    l2 = date.parse(VarG.libros.get(1).getFecha_pres());
+                    l3 = date.parse(VarG.libros.get(2).getFecha_pres());
+                    break;
+                case 4:
+                    p1 = date.parse(VarG.libros.get(0).getFecha_dev());
+                    p2 = date.parse(VarG.libros.get(1).getFecha_dev());
+                    p3 = date.parse(VarG.libros.get(2).getFecha_dev());
+                    p4 = date.parse(VarG.libros.get(3).getFecha_dev());
+                    l1 = date.parse(VarG.libros.get(0).getFecha_pres());
+                    l2 = date.parse(VarG.libros.get(1).getFecha_pres());
+                    l3 = date.parse(VarG.libros.get(2).getFecha_pres());
+                    l4 = date.parse(VarG.libros.get(3).getFecha_pres());
+                    break;
+            }
+
         } catch (ParseException ex) {
             Logger.getLogger(Renovar.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
-            if (now.compareTo(l1) != 0) {
+            if (now.compareTo(l1) != 0 && VarG.libros.size()>0) {
                 if (now.compareTo(p1) < 0 || VarG.libros.get(0).getRenovacion() == 3) {
                     if (VarG.libros.get(0).isDevuelto()) {
                         this.LBn1.setText("1");
@@ -357,7 +401,7 @@ public class Renovar extends javax.swing.JFrame {
                         this.LBdat1.setText(VarG.libros.get(0).getAutor() + "/ año: " + VarG.libros.get(0).getAnio());
                         this.LBdat1.setForeground(Color.BLACK);
                         this.LB1.setIcon(new ImageIcon("src/surce/nuevasP/F-Continuar.png"));
-                        k1=true;
+                        k1 = true;
                     } else {
                         this.LBn1.setText("1");
                         this.LBr1.setText(Integer.toString(VarG.libros.get(0).getRenovacion()));
@@ -367,7 +411,7 @@ public class Renovar extends javax.swing.JFrame {
                         this.LBdat1.setForeground(Color.BLACK);
                         this.LBtit1.setText(VarG.libros.get(0).getTitulo());
                         this.LB1.setIcon(new ImageIcon("src/surce/nuevasP/F-Cancelar.png"));
-                        k1=false;
+                        k1 = false;
                     }
                 } else {
                     this.LBn1.setText("1");
@@ -390,7 +434,7 @@ public class Renovar extends javax.swing.JFrame {
                 this.LBtit1.setText(VarG.libros.get(0).getTitulo());
                 this.LB1.setIcon(new ImageIcon("src/surce/nuevasP/F-Neutral.png"));
             }
-            if (now.compareTo(l2) != 0) {
+            if (now.compareTo(l2) != 0 && VarG.libros.size()>1) {
                 if (now.compareTo(p2) < 0 || VarG.libros.get(0).getRenovacion() == 3) {
                     if (VarG.libros.get(1).isDevuelto()) {
                         this.LBn2.setText("2");
@@ -401,7 +445,7 @@ public class Renovar extends javax.swing.JFrame {
                         this.LBdat2.setText(VarG.libros.get(1).getAutor() + "/ año: " + VarG.libros.get(1).getAnio());
                         this.LBdat2.setForeground(Color.BLACK);
                         this.LB2.setIcon(new ImageIcon("src/surce/nuevasP/F-Continuar.png"));
-                        k2=true;
+                        k2 = true;
                     } else {
                         this.LBn2.setText("2");
                         this.LBtit2.setForeground(Color.BLACK);
@@ -411,7 +455,7 @@ public class Renovar extends javax.swing.JFrame {
                         this.LBtit2.setText(VarG.libros.get(1).getTitulo());
                         this.LBdat2.setText(VarG.libros.get(1).getAutor() + "/ año: " + VarG.libros.get(1).getAnio());
                         this.LB2.setIcon(new ImageIcon("src/surce/nuevasP/F-Cancelar.png"));
-                        k2=false;
+                        k2 = false;
                     }
                 } else {
                     this.LBn2.setText("2");
@@ -434,7 +478,7 @@ public class Renovar extends javax.swing.JFrame {
                 this.LBdat2.setText(VarG.libros.get(1).getAutor() + "/ año: " + VarG.libros.get(1).getAnio());
                 this.LB2.setIcon(new ImageIcon("src/surce/nuevasP/F-Neutral.png"));
             }
-            if (now.compareTo(l3) != 0) {
+            if (now.compareTo(l3) != 0 && VarG.libros.size()>2) {
                 if (now.compareTo(p3) < 0 || VarG.libros.get(0).getRenovacion() == 3) {
                     if (VarG.libros.get(2).isDevuelto()) {
                         this.LBn3.setText("3");
@@ -445,7 +489,7 @@ public class Renovar extends javax.swing.JFrame {
                         this.LBdat3.setText(VarG.libros.get(2).getAutor() + "/ año: " + VarG.libros.get(2).getAnio());
                         this.LBdat3.setForeground(Color.BLACK);
                         this.LB3.setIcon(new ImageIcon("src/surce/nuevasP/F-Continuar.png"));
-                        k3=true;
+                        k3 = true;
                     } else {
                         this.LBn3.setText("3");
                         this.LBtit3.setForeground(Color.BLACK);
@@ -455,7 +499,7 @@ public class Renovar extends javax.swing.JFrame {
                         this.LBtit3.setText(VarG.libros.get(2).getTitulo());
                         this.LBdat3.setText(VarG.libros.get(2).getAutor() + "/ año: " + VarG.libros.get(2).getAnio());
                         this.LB3.setIcon(new ImageIcon("src/surce/nuevasP/F-Cancelar.png"));
-                        k3=false;
+                        k3 = false;
                     }
                 } else {
                     this.LBn3.setText("3");
@@ -478,7 +522,7 @@ public class Renovar extends javax.swing.JFrame {
                 this.LBdat3.setText(VarG.libros.get(2).getAutor() + "/ año: " + VarG.libros.get(2).getAnio());
                 this.LB3.setIcon(new ImageIcon("src/surce/nuevasP/F-Neutral.png"));
             }
-            if (now.compareTo(l4) != 0) {
+            if (now.compareTo(l4) != 0 && VarG.libros.size()>3) {
                 if (now.compareTo(p4) < 0 || VarG.libros.get(0).getRenovacion() == 3) {
                     if (VarG.libros.get(3).isDevuelto()) {
                         this.LBn4.setText("4");
@@ -489,7 +533,7 @@ public class Renovar extends javax.swing.JFrame {
                         this.LBdat4.setText(VarG.libros.get(3).getAutor() + "/ año: " + VarG.libros.get(3).getAnio());
                         this.LBdat4.setForeground(Color.BLACK);
                         this.LB4.setIcon(new ImageIcon("src/surce/nuevasP/F-Continuar.png"));
-                        k4=true;
+                        k4 = true;
 
                     } else {
                         this.LBn4.setText("4");
@@ -500,7 +544,7 @@ public class Renovar extends javax.swing.JFrame {
                         this.LBtit4.setText(VarG.libros.get(3).getTitulo());
                         this.LBdat4.setText(VarG.libros.get(3).getAutor() + "/ año: " + VarG.libros.get(3).getAnio());
                         this.LB4.setIcon(new ImageIcon("src/surce/nuevasP/F-Cancelar.png"));
-                        k4=false;
+                        k4 = false;
                     }
                 } else {
                     this.LBn4.setText("4");
@@ -647,5 +691,5 @@ public class Renovar extends javax.swing.JFrame {
     private javax.swing.JLabel regresar;
     // End of variables declaration//GEN-END:variables
     ArrayList<ImageIcon> fondo;
-    boolean k1,k2,k3,k4;
+    boolean k1, k2, k3, k4;
 }

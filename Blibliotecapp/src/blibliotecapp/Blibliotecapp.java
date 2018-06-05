@@ -207,12 +207,13 @@ public class Blibliotecapp extends JComponent {
                 }
                 //Botón idioma
                 if (e.getX() >= 942 && e.getX() <= 1192 && e.getY() >= 514 && e.getY() <= 714) {
-                    System.out.println("idioma");
+                    System.out.println("idioma");                    
                     VarG.jfIdioma.pausarAudios();
+                    System.out.println("pausó");
                     AudioPlayer.player.start(VarG.aIdioma);
                     VarG.jfIdioma.setVisible(true);
                 }                
-                //Botón idioma
+                //Botón audio
                 if (e.getX() >= 1230 && e.getX() <= 1330 && e.getY() >= 660 && e.getY() <= 760) {
                     System.out.println("audio");
                     VarG.jfIdioma.pausarAudios();

@@ -336,8 +336,8 @@ public class Log_in extends javax.swing.JFrame {
                                 break;
                             case "canjear":
                                 System.out.println("entro cajas");
-                                VarG.jfCanjear.setVisible(true);
-                                AudioPlayer.player.start(VarG.aCanjear);
+                                VarG.jfCanjear.setVisible(true);                                
+                                AudioPlayer.player.start(VarG.aCanjear);                                
                                 break;
                         }
 
@@ -514,6 +514,8 @@ public class Log_in extends javax.swing.JFrame {
     }
 
     public void moserror() {
+        VarG.jfIdioma.pausarAudios();
+        AudioPlayer.player.start(VarG.aError);
         LBerror.setText(error);
         LBerror1.setText(error1);
     }

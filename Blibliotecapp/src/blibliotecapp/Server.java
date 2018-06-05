@@ -168,7 +168,7 @@ public class Server {
                 } else if(tipo.equals("puntaje")){
                     consulta = "UPDATE usuario SET puntaje= "+id_prestamo+" WHERE id_usuario = "+id_usuario+";";
                 }else if(tipo.equals("renovar")){
-                    consulta="UPDATE usa SET fecha_dev = CURDATE() + INTERVAL 3 DAY WHERE id_prestamo = "+id_prestamo+";";
+                    consulta="UPDATE usa SET fecha_dev = CURDATE() + INTERVAL 3 DAY , renovacion = renovacion+1 WHERE id_prestamo = "+id_prestamo+";";
                 }
                 VarG.objConn.Actualizar(consulta);
                 System.out.println(consulta);

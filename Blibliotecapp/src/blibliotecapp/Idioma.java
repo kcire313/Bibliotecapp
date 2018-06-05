@@ -82,12 +82,16 @@ public class Idioma extends javax.swing.JFrame {
 
     private void espanolMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_espanolMouseClicked
         // TODO add your handling code here:
+        pausarAudios();
         cambiaIdioma("espanol");
+        //AudioPlayer.player.start(VarG.aIntroduccion);
     }//GEN-LAST:event_espanolMouseClicked
 
     private void inglesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inglesMouseClicked
         // TODO add your handling code here:
+        pausarAudios();
         cambiaIdioma("ingles");
+        //AudioPlayer.player.start(VarG.aIntroduccion);
     }//GEN-LAST:event_inglesMouseClicked
 
     public void cambiaIdioma(String idioma) {
@@ -153,12 +157,6 @@ public class Idioma extends javax.swing.JFrame {
             case "ingles":
                 icon = new ImageIcon("src/surce/logingles.png");
                 break;
-            case "frances":
-                icon = new ImageIcon("src/surce/logesp.png");
-                break;
-            case "aleman":
-                icon = new ImageIcon("src/surce/logale.png");
-                break;
         }
         Log_in.background.setIcon(icon);
     }
@@ -172,12 +170,6 @@ public class Idioma extends javax.swing.JFrame {
                     break;
                 case "ingles":
                     music = new FileInputStream(new File("src\\Audios\\IngresoDatosEng.wav"));
-                    break;
-                case "frances":
-                    music = new FileInputStream(new File("src\\Audios\\IngresoDatosEsp.wav"));
-                    break;
-                case "aleman":
-                    music = new FileInputStream(new File("src\\Audios\\IngresoDatosEsp.wav"));
                     break;
             }
             VarG.aLogin = new AudioStream(music);
@@ -196,12 +188,6 @@ public class Idioma extends javax.swing.JFrame {
                 case "ingles":
                     music = new FileInputStream(new File("src\\Audios\\IdiomaEng.wav"));
                     break;
-                case "frances":
-                    music = new FileInputStream(new File("src\\Audios\\IdiomaEsp.wav"));
-                    break;
-                case "aleman":
-                    music = new FileInputStream(new File("src\\Audios\\IdiomaEsp.wav"));
-                    break;
             }
             VarG.aIdioma = new AudioStream(music);
         } catch (Exception e) {
@@ -218,12 +204,6 @@ public class Idioma extends javax.swing.JFrame {
                     break;
                 case "ingles":
                     music = new FileInputStream(new File("src\\Audios\\ScanPrestamoEng.wav"));
-                    break;
-                case "frances":
-                    music = new FileInputStream(new File("src\\Audios\\PrestamoEsp.wav"));
-                    break;
-                case "aleman":
-                    music = new FileInputStream(new File("src\\Audios\\PrestamoEsp.wav"));
                     break;
             }
             VarG.aPrestamo = new AudioStream(music);
@@ -242,12 +222,6 @@ public class Idioma extends javax.swing.JFrame {
                 case "ingles":
                     music = new FileInputStream(new File("src\\Audios\\ScanRenovarEng.wav"));
                     break;
-                case "frances":
-                    music = new FileInputStream(new File("src\\Audios\\RenovarPrestamoEsp.wav"));
-                    break;
-                case "aleman":
-                    music = new FileInputStream(new File("src\\Audios\\RenovarPrestamoEsp.wav"));
-                    break;
             }
             VarG.aRenovar = new AudioStream(music);
         } catch (Exception e) {
@@ -264,12 +238,6 @@ public class Idioma extends javax.swing.JFrame {
                     break;
                 case "ingles":
                     music = new FileInputStream(new File("src\\Audios\\LLenarCasillasEng.wav"));
-                    break;
-                case "frances":
-                    music = new FileInputStream(new File("src\\Audios\\LLenarCasillasEsp2.wav"));
-                    break;
-                case "aleman":
-                    music = new FileInputStream(new File("src\\Audios\\LLenarCasillasEsp2.wav"));
                     break;
             }
             VarG.aBusqueda = new AudioStream(music);
@@ -288,12 +256,6 @@ public class Idioma extends javax.swing.JFrame {
                 case "ingles":
                     music = new FileInputStream(new File("src\\Audios\\ScanDevolverEng.wav"));
                     break;
-                case "frances":
-                    music = new FileInputStream(new File("src\\Audios\\DevuelveEsp.wav"));
-                    break;
-                case "aleman":
-                    music = new FileInputStream(new File("src\\Audios\\DevuelveEsp.wav"));
-                    break;
             }
             VarG.aDevolucion = new AudioStream(music);
         } catch (Exception e) {
@@ -311,12 +273,6 @@ public class Idioma extends javax.swing.JFrame {
                 case "ingles":
                     music = new FileInputStream(new File("src\\Audios\\DatosPerfilEng.wav"));
                     break;
-                case "frances":
-                    music = new FileInputStream(new File("src\\Audios\\DatosPerfilEsp.wav"));
-                    break;
-                case "aleman":
-                    music = new FileInputStream(new File("src\\Audios\\DatosPerfilEsp.wav"));
-                    break;
             }
             VarG.aPerfilDatos = new AudioStream(music);
         } catch (Exception e) {
@@ -332,16 +288,44 @@ public class Idioma extends javax.swing.JFrame {
                     music = new FileInputStream(new File("src\\Audios\\CanjeaEsp.wav"));
                     break;
                 case "ingles":
-                    music = new FileInputStream(new File("src\\Audios\\CanjeaEsp.wav"));
-                    break;
-                case "frances":
-                    music = new FileInputStream(new File("src\\Audios\\CanjeaEsp.wav"));
-                    break;
-                case "aleman":
-                    music = new FileInputStream(new File("src\\Audios\\CanjeaEsp.wav"));
+                    music = new FileInputStream(new File("src\\Audios\\CanjeaEng.wav"));
                     break;
             }
-            VarG.aPerfilDatos = new AudioStream(music);
+            VarG.aCanjear = new AudioStream(music);
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+    }
+
+    public void setAudioIntroduccion() {
+        try {
+            InputStream music = new FileInputStream(new File("src\\Audios\\comenzarEsp.wav"));
+            switch (VarG.idioma) {
+                case "espanol":
+                    music = new FileInputStream(new File("src\\Audios\\comenzarEsp.wav"));
+                    break;
+                case "ingles":
+                    music = new FileInputStream(new File("src\\Audios\\comenzarEng.wav"));
+                    break;
+            }
+            VarG.aIntroduccion = new AudioStream(music);
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+    }
+    
+    public void setAudioError() {
+        try {
+            InputStream music = new FileInputStream(new File("src\\Audios\\AudioErrorESP.wav"));
+            switch (VarG.idioma) {
+                case "espanol":
+                    music = new FileInputStream(new File("src\\Audios\\AudioErrorESP.wav"));
+                    break;
+                case "ingles":
+                    music = new FileInputStream(new File("src\\Audios\\AudioErrorENG.wav"));
+                    break;
+            }
+            VarG.aError = new AudioStream(music);
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
@@ -356,6 +340,8 @@ public class Idioma extends javax.swing.JFrame {
         setAudioDevolucion(); //Cambia el audio del boton de devolucion
         setAudioPerfilDatos(); //Cambia el audio del boton de perfil datos
         setAudioCanjear(); //Cambia el audio del boton de canjea
+        setAudioIntroduccion(); //Cambia el audio del comienzo de cada idioma
+        setAudioError(); //Asigna el audio de errores
     }
 
     public void cleanAudios() {
@@ -369,6 +355,8 @@ public class Idioma extends javax.swing.JFrame {
         AudioPlayer.player.stop(VarG.aDevolucion);
         AudioPlayer.player.stop(VarG.aPerfilDatos);
         AudioPlayer.player.stop(VarG.aCanjear);
+        AudioPlayer.player.stop(VarG.aError);
+        AudioPlayer.player.stop(VarG.aIntroduccion);
         VarG.aBienvenida = null;
         VarG.aComienzo = null;
         VarG.aLogin = null;
@@ -379,6 +367,8 @@ public class Idioma extends javax.swing.JFrame {
         VarG.aDevolucion = null;
         VarG.aPerfilDatos = null;
         VarG.aCanjear = null;
+        VarG.aError = null;
+        VarG.aIntroduccion = null;
     }
 
     public void pausarAudios() {
@@ -392,5 +382,7 @@ public class Idioma extends javax.swing.JFrame {
         AudioPlayer.player.stop(VarG.aDevolucion);
         AudioPlayer.player.stop(VarG.aPerfilDatos);
         AudioPlayer.player.stop(VarG.aCanjear);
+        AudioPlayer.player.stop(VarG.aError);
+        AudioPlayer.player.stop(VarG.aIntroduccion);
     }
 }
