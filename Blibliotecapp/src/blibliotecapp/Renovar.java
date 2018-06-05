@@ -337,6 +337,8 @@ public class Renovar extends javax.swing.JFrame {
         k2 = false;
         k3 = false;
         k4 = false;
+    //     this.BtDevolver.setVisible(false);
+        VarG.jtPrestamo.setVisible(true);
     }//GEN-LAST:event_BtaceptarMouseClicked
 
     public void pintardev() {

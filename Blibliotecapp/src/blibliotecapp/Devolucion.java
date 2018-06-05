@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
 import javax.swing.ImageIcon;
@@ -247,6 +248,7 @@ public class Devolucion extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         limpiar(5);
+        k1 = k2 = k3 = k4 = 0;
         //Por alguna razon aqui saca todos los libros como si fuera Query de Perfil, en vez de corregir Server
         //Solo quitare el libro extra y si hay error entonces corregimos
         for (int i = 0; i < VarG.libros.size(); i++) {
@@ -352,6 +354,11 @@ public class Devolucion extends javax.swing.JFrame {
 
     private void LBdevolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LBdevolverMouseClicked
         //Query update a cada uno VarG que este com devuelto
+        int[] val = new int[4];
+        val[0] = k1;
+        val[1] = k2;
+        val[2] = k3;
+        val[3] = k4;
         for (int i = 0; i < VarG.libros.size(); i++) {
             if (VarG.libros.get(i).isDevuelto()) {
                 try {
@@ -361,7 +368,8 @@ public class Devolucion extends javax.swing.JFrame {
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
-                VarG.puntaje += 10;
+                
+                VarG.puntaje += val[i];
                 try {
                     Registry registry = LocateRegistry.getRegistry();
                     TestRemote testRemote = (TestRemote) registry.lookup("Test");
@@ -440,6 +448,7 @@ public class Devolucion extends javax.swing.JFrame {
                 this.LBdat1.setForeground(Color.GRAY);
                 if (now.compareTo(l1) < 0) {
                     this.LB1.setIcon(new ImageIcon("src/surce/nuevasP/F-Neutral.png"));
+                    k1 = 10;
                 } else {
                     this.LB1.setIcon(new ImageIcon("src/surce/nuevasP/F-Prohibido.png"));
                 }
@@ -463,6 +472,7 @@ public class Devolucion extends javax.swing.JFrame {
                 this.LBdat2.setForeground(Color.GRAY);
                 if (now.compareTo(l2) < 0) {
                     this.LB2.setIcon(new ImageIcon("src/surce/nuevasP/F-Neutral.png"));
+                    k2 = 10;
                 } else {
                     this.LB2.setIcon(new ImageIcon("src/surce/nuevasP/F-Prohibido.png"));
                 }
@@ -487,6 +497,7 @@ public class Devolucion extends javax.swing.JFrame {
                 this.LBdat3.setForeground(Color.GRAY);
                 if (now.compareTo(l3) < 0) {
                     this.LB3.setIcon(new ImageIcon("src/surce/nuevasP/F-Neutral.png"));
+                    k3 = 10;
                 } else {
                     this.LB3.setIcon(new ImageIcon("src/surce/nuevasP/F-Prohibido.png"));
                 }
@@ -511,6 +522,7 @@ public class Devolucion extends javax.swing.JFrame {
                 this.LBdat4.setForeground(Color.GRAY);
                 if (now.compareTo(l4) < 0) {
                     this.LB4.setIcon(new ImageIcon("src/surce/nuevasP/F-Neutral.png"));
+                    k4 = 10;
                 } else {
                     this.LB4.setIcon(new ImageIcon("src/surce/nuevasP/F-Prohibido.png"));
                 }
@@ -650,4 +662,5 @@ public class Devolucion extends javax.swing.JFrame {
     private javax.swing.JLabel jLScan;
     private javax.swing.JLabel regresar;
     // End of variables declaration//GEN-END:variables
+    int k1,k2,k3,k4;
 }
