@@ -182,6 +182,7 @@ public class tPrestamo extends javax.swing.JFrame {
         VarG.jfLogin.setVisible(false);
         this.setVisible(false);
         VarG.jfPrestamo.setVisible(false);
+        VarG.jfRenovar.setVisible(false);
         VarG.jfIdioma.pausarAudios();
         VarG.anActual = VarG.animaciones.get(8);
         VarG.anActual.getImage().flush();
